@@ -1,0 +1,31 @@
+# Optimization & Cleanup Plan
+
+## Goal
+Remove legacy JavaScript modules and event handling logic that have been superseded by Alpine.js. Implement "Alpine-native" routing to simplify the architecture further.
+
+## User Review Required
+> [!NOTE]
+> This change will delete `js/modules/` (group.js, char.js, inventory.js, quest.js) and `js/router.js`. All logic will reside in `alpineStore.js`.
+
+## Proposed Changes
+
+### 1. Alpine Store (`js/alpineStore.js`)
+- [NEW] Add `currentTab` state to `game` store.
+- [NEW] Add `setTab(tabId)` method (synchronizes with window.location.hash).
+
+### 2. Main Entry Point (`js/main.js`)
+- [MODIFY] Remove `router.js` import.
+- [NEW] Add `hashchange` listener to update `$store.game.currentTab`.
+
+### 3. HTML Structure (`index.html`)
+- [MODIFY] Replace CSS-based visibility classes (`hidden`, `fade-in`) with Alpine `x-show="currentTab === 'id'"` on all `<section>` tags.
+- [MODIFY] Update navigation links to just use standard `#hash` links (works natively with hashchange listener).
+
+### 4. File Cleanup
+- [DELETE] `js/router.js`
+- [DELETE] Directory `js/modules/` (all contents)
+
+## Verification Plan
+1. **Navigation Test**: Click through Navbar links. Verify content switches correctly.
+2. **Deep Link Test**: Reload page with `#gruppe`. Verify Group section shows up.
+3. **Console Check**: Ensure no 404s for missing modules.

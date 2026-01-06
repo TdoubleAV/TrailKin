@@ -1,0 +1,68 @@
+# Tasks
+
+- [x] Analyze current rules and `inspirationData` in [index.html](file:///C:/Users/Daniel/.gemini/antigravity/brain/665fe787-297a-4306-8902-72487a314dd1/index.html) <!-- id: 0 -->
+- [x] Read and analyze Cairn RPG Character Creation guide <!-- id: 1 -->
+- [x] Create a comparison/proposal document (Implementation Plan) <!-- id: 2 -->
+- [x] Implement Character Generator <!-- id: 3 -->
+    - [x] Create Background Data Structure (12 items) <!-- id: 4 -->
+    - [x] Add "Würfeln" Button to UI <!-- id: 5 -->
+    - [x] Implement random generation logic <!-- id: 6 -->
+- [x] Implement Inventory Slots <!-- id: 7 -->
+    - [x] Update Data Structure for Slots (Char 3, Group 12) <!-- id: 8 -->
+    - [x] Visualize Slots in UI (Grid/Boxes) <!-- id: 9 -->
+    - [x] Logic for adding/removing items with slot limits <!-- id: 10 -->
+- [x] Refactor Group Management (Remove prompts) <!-- id: 11 -->
+    - [x] Design non-blocking UI (Modal/Input) <!-- id: 12 -->
+    - [x] Implement new Group Create/Rename logic <!-- id: 13 -->
+    - [x] Verify functionality <!-- id: 14 -->
+- [x] Refactor Group Management (Remove prompts) <!-- id: 11 -->
+    - [x] Architecture Refactoring (ES Modules) <!-- id: 19 -->
+    ## ES Module Refactoring
+    - [x] Setup folder structure ([js/](file:///C:/Users/Daniel/.gemini/antigravity/brain/665fe787-297a-4306-8902-72487a314dd1/js/main.js), `js/modules/`, `js/data/`)
+    - [x] Extract State Management ([state.js](file:///C:/Users/Daniel/.gemini/antigravity/brain/665fe787-297a-4306-8902-72487a314dd1/js/state.js))
+    - [x] Extract Data ([inspiration.js](file:///C:/Users/Daniel/.gemini/antigravity/brain/665fe787-297a-4306-8902-72487a314dd1/js/data/inspiration.js))
+    - [x] Extract Modal Logic ([modal.js](file:///C:/Users/Daniel/.gemini/antigravity/brain/665fe787-297a-4306-8902-72487a314dd1/js/modules/modal.js))
+    - [x] Extract Group Management ([group.js](file:///C:/Users/Daniel/.gemini/antigravity/brain/665fe787-297a-4306-8902-72487a314dd1/js/modules/group.js))
+    - [x] Extract Character Management ([char.js](file:///C:/Users/Daniel/.gemini/antigravity/brain/665fe787-297a-4306-8902-72487a314dd1/js/modules/char.js))
+    - [x] Extract Inventory Logic ([inventory.js](file:///C:/Users/Daniel/.gemini/antigravity/brain/665fe787-297a-4306-8902-72487a314dd1/js/modules/inventory.js))
+    - [x] Extract Quest- [-] Phase 2: Event Delegation (Skipped in favor of Alpine.js)
+  - [x] Identify click handlers
+  - [x] Create plan
+  - [-] Implement in main.js
+  - [-] Replace inline handlers
+
+- [x] Phase 3: Alpine.js Migration (Version 3.0)
+  - [x] Create [alpine_migration_plan.md](file:///C:/Users/Daniel/.gemini/antigravity/brain/665fe787-297a-4306-8902-72487a314dd1/alpine_migration_plan.md)
+  - [x] Add Alpine.js via CDN
+  - [x] Implement [alpineStore.js](file:///C:/Users/Daniel/.gemini/antigravity/brain/665fe787-297a-4306-8902-72487a314dd1/js/alpineStore.js) (Central State)
+  - [x] Migrate Groups Section
+  - [x] Migrate Modal Logic
+  - [x] Migrate Character List
+  - [x] Migrate Inventory
+  - [x] Migrate Quest/Inspiration Generators
+  - [x] Migrate Theme Toggle
+  - [x] Clean up [main.js](file:///C:/Users/Daniel/.gemini/antigravity/brain/665fe787-297a-4306-8902-72487a314dd1/js/main.js) and remove legacy modules
+  - [x] Verify Full Functionality
+
+- [x] Phase 4: Cleanup & Optimization
+  - [x] Delete `js/modules/` directory
+  - [x] Delete [js/router.js](file:///C:/Users/Daniel/.gemini/antigravity/brain/665fe787-297a-4306-8902-72487a314dd1/js/router.js)
+  - [x] Implement Alpine-native Routing
+  - [x] Update [index.html](file:///C:/Users/Daniel/.gemini/antigravity/brain/665fe787-297a-4306-8902-72487a314dd1/index.html) visibility logic
+  - [x] Final Project Structure Verification
+
+- [x] Phase 5: Documentation (User Request)
+  - [x] Comment [js/alpineStore.js](file:///C:/Users/Daniel/.gemini/antigravity/brain/665fe787-297a-4306-8902-72487a314dd1/js/alpineStore.js) (State Management)
+  - [x] Comment [index.html](file:///C:/Users/Daniel/.gemini/antigravity/brain/665fe787-297a-4306-8902-72487a314dd1/index.html) (UI Sections & Directives)
+  - [x] Comment [js/main.js](file:///C:/Users/Daniel/.gemini/antigravity/brain/665fe787-297a-4306-8902-72487a314dd1/js/main.js) (Initialization)
+  - [x] Comment [js/state.js](file:///C:/Users/Daniel/.gemini/antigravity/brain/665fe787-297a-4306-8902-72487a314dd1/js/state.js) (Data Models)s (Navigation, Groups, Characters, Inventory, Quests)
+    - [x] Create walkthrough documentationality <!-- id: 25 -->
+- [ ] Phase 6: PWA & Offline Support
+  - [ ] Implement `sw.js` (Service Worker)
+  - [ ] Register Service Worker in [index.html](file:///C:/Users/Daniel/.gemini/antigravity/brain/665fe787-297a-4306-8902-72487a314dd1/index.html)
+  - [ ] Verify Offline Mode
+
+- [ ] Unify Inventory Logic <!-- id: 15 -->
+    - [x] Update renderInventory to use interactive slots <!-- id: 16 -->
+    - [x] Remove old input field and button <!-- id: 17 -->
+    - [x] Refactor renderInventory to support click-to-add with modal, remove legacy HTML for input. <!-- id: 18 -->

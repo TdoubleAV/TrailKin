@@ -1,0 +1,60 @@
+# Implementierungsplan: Cairn RPG Integration
+
+## Analyse: Cairn RPG vs. Abenteuer-Spaziergänger
+Das Ziel ist es, Elemente aus [Cairn RPG](https://cairnrpg.com/second-edition/players-guide/character-creation/) zu übernehmen, ohne die Leichtigkeit der Spaziergang-App zu verlieren.
+
+### 1. Attribute & Stats
+*   **Cairn:** Stärke (STR), Geschick (DEX), Willenskraft (WIL) + Treffer-Schutz (HP).
+*   **App Status:** HP (Leben/Mut) und Mana (Glanz).
+### 1. Attribute & Stats
+*   **HP / Puste:**
+    *   Cairn Regeln: "Resting for a few moments and having a drink of water restores lost HP".
+    *   Das spricht extrem für den Namen **"Puste"**. Wer keine Puste mehr hat, kann Angriffen nicht mehr ausweichen. Ein Schluck Wasser bringt die Puste zurück.
+    *   **Entscheidung:** Wir nennen es **"Puste (HP)"** oder einfach **"Schutz"**.
+    *   *Empfehlung:* **Puste**. Es ist intuitiv für Spaziergänge ("Ich bin außer Puste").
+
+### 2. Hintergründe (Generator)
+*   **Status:** Wird umgesetzt.
+*   **Quelle:** Wir nutzen [Cairn Backgrounds](https://cairnrpg.com/second-edition/backgrounds/) als Inspiration.
+*   **Auswahl (12 Stück):**
+    1.  **Waldläufer (Foundling)** - *Start:* Kompass, Wanderstab
+    2.  **Kräuterkundiger (Fungal Forager)** - *Start:* Pilzbuch, Lupe
+    3.  **Dieb (Cutpurse)** - *Start:* Dietrich, Kapuze
+    4.  **Ritter (Marchguard)** - *Start:* Holzschwert, Schild
+    5.  **Barde (Jongleur)** - *Start:* Flöte, Bunte Bälle
+    6.  **Gelehrter (Scrivener)** - *Start:* Notizbuch, Stift
+    7.  **Magier (Hexenbane)** - *Start:* Zauberstab (Ast), Kreide
+    8.  **Händler (Kettlewright)** - *Start:* Beutel voll Münzen, Kochlöffel
+    9.  **Barbier (Barber-Surgeon)** - *Start:* Verbandszeug, Schere
+    10. **Bestienmeister (Beast Handler)** - *Start:* Leckerlis, Pfeife
+    11. **Alchemist (Aurifex)** - *Start:* Leere Flaschen, Buntes Wasser
+    12. **Glücksritter (Mountebank)** - *Start:* Würfel, Kartenspiel
+
+### 3. Inventar (Hybrid-Slots)
+*   **Konzept:** Hybrid-System.
+*   **Charakter:** 3 Slots (Hand, Körper, Extra).
+*   **Gruppe:** 12 Slots (Gemeinsamer Beutel/Bollerwagen).
+*   **Mechanik:** Visuelle Darstellung als Kästchen. Keine Überladung möglich (außer man wirft was weg).
+
+
+
+---
+
+## Vorgeschlagene Änderungen
+
+### Phase 1: Der Charakter-Generator (Priorität: Hoch)
+Implementierung eines "Würfeln"-Buttons in der Charakter-Erstellung.
+*   Datenbank mit ~10-20 einfachen Hintergründen (an Cairn angelehnt, aber kinderfreundlich/spaziergangstauglich).
+*   Automatische Befüllung von Name, Klasse und 1-2 Start-Gegenständen.
+
+### Phase 2: Inventar-Slots (Priorität: Mittel)
+Umbau der Inventar-Liste zu einem Grid-System.
+*   Visuelle Darstellung von Slots (leer/gefüllt).
+*   Drag & Drop (optional) oder einfaches Hinzufügen bis "Voll".
+
+## User Review Required
+## User Review Required
+> [!IMPORTANT]
+> Ich fange jetzt mit dem **Charakter-Generator** an.
+> Danach das **Inventar**.
+> HP benenne ich erst einmal in **Puste (HP)** um, da es super zur Mechanik (Wasser trinken = Heilung) passt. Sag Bescheid, wenn du doch lieber nur "HP" willst.

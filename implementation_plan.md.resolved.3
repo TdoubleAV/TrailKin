@@ -1,0 +1,59 @@
+# Implementierungsplan: Cairn RPG Integration
+
+## Analyse: Cairn RPG vs. Abenteuer-Spaziergänger
+Das Ziel ist es, Elemente aus [Cairn RPG](https://cairnrpg.com/second-edition/players-guide/character-creation/) zu übernehmen, ohne die Leichtigkeit der Spaziergang-App zu verlieren.
+
+### 1. Attribute & Stats
+*   **Cairn:** Stärke (STR), Geschick (DEX), Willenskraft (WIL) + Treffer-Schutz (HP).
+*   **App Status:** HP (Leben/Mut) und Mana (Glanz).
+*   **Vorschlag: Umbenennung von HP (Hit Protection)**
+    Cairn's HP ist "Schadensvermeidung". Hier sind 10 thematische Alternativen:
+    1.  **Puste:** (Passt super zum Spazieren) Wer keine Puste mehr hat, kann nicht mehr ausweichen.
+    2.  **Haltung:** (Wie in Sekiro) Wer die Balance verliert, wird getroffen.
+    3.  **Deckung:** (Taktisch) Wie gut man sich schützt.
+    4.  **Glück:** (Abstrakt) Das Schicksal schützt dich... bis es aufgebraucht ist.
+    5.  **Reflexe:** Die Fähigkeit, schnell zu reagieren.
+    6.  **Schild:** Ein abstrakter Wert für Rüstung/Parade.
+    7.  **Fokus:** Konzentration im Kampf. Ohne Fokus macht man Fehler.
+    8.  **Zähigkeit (Grit):** Der Wille, nicht aufzugeben.
+    9.  **Vorsicht:** Wer unvorsichtig wird (0 Punkte), verletzt sich.
+    10. **Energie:** Videospiel-Klassiker. Ein Schutzschild.
+
+    *Favorit:* **Puste** oder **Haltung** (Passt gut zur "Draußen"-Thematik).
+
+### 2. Hintergründe (Generator)
+*   **Status:** Vom User genehmigt ("sofort übernehmen").
+*   **Plan:** Wir bauen einen einfachen Generator mit ~12 Hintergründen basierend auf Cairn (angepasst).
+    *   *Beispiele:* Pilzsammler (hat Pilzführer), Fährtenleser (hat Lupe), Gassenjunge (hat Dietrich).
+
+### 3. Inventar (Hybrid-Slots)
+*   **Anforderung:** Mix aus persönlichen und Gruppen-Slots.
+*   **Vorschlag:**
+    *   **Persönlich:** 3 Slots pro Charakter (Hand, Körper, Gürtel). Genug für Waffe + Rüstung + 1 Item.
+    *   **Gruppe:** 10-12 Slots "Bollerwagen/Rucksack".
+    *   **Mechanik:** Wenn voll, dann voll. Einfaches visuelles Feedback.
+
+### 4. Omen (Omens)
+*   **Cairn:** Eine Ressource um das Schicksal zu ändern.
+*   **Vorschlag (NEU):** Ein "Omen"-Counter für die Gruppe.
+    *   Startet bei 1. Kann ausgegeben werden, um einen Fehlschlag in einen Erfolg zu verwandeln (Deus Ex Machina).
+
+---
+
+## Vorgeschlagene Änderungen
+
+### Phase 1: Der Charakter-Generator (Priorität: Hoch)
+Implementierung eines "Würfeln"-Buttons in der Charakter-Erstellung.
+*   Datenbank mit ~10-20 einfachen Hintergründen (an Cairn angelehnt, aber kinderfreundlich/spaziergangstauglich).
+*   Automatische Befüllung von Name, Klasse und 1-2 Start-Gegenständen.
+
+### Phase 2: Inventar-Slots (Priorität: Mittel)
+Umbau der Inventar-Liste zu einem Grid-System.
+*   Visuelle Darstellung von Slots (leer/gefüllt).
+*   Drag & Drop (optional) oder einfaches Hinzufügen bis "Voll".
+
+## User Review Required
+> [!IMPORTANT]
+> 1. **Welchen Namen für HP sollen wir nutzen?** (Puste, Haltung, Glück...?)
+> 2. **Ist die Slot-Aufteilung okay?** (3 pro Held, 12 für die Gruppe)
+> 3. Der Generator wird jetzt umgesetzt.

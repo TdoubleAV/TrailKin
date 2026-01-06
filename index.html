@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abenteuer-Spaziergänger</title>
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
+    <meta name="theme-color" content="#059669">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('Service Worker registered!'))
+                    .catch(err => console.log('Service Worker failed:', err));
+            });
+        }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        amber: { 50: '#fffbeb', 100: '#fef3c7', 200: '#fde68a' },
+                        stone: { 300: '#d6d3d1', 400: '#a8a29e', 600: '#57534e', 700: '#44403c', 800: '#292524', 900: '#1c1917' },
+                        emerald: { 50: '#ecfdf5', 600: '#059669', 700: '#047857', 800: '#065f46', 900: '#064e3b' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        details>summary {
+            list-style: none;
+        }
+
+        details>summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details[open] summary .arrow-down {
+            transform: rotate(180deg);
+        }
+
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+
+        .nav-link.active {
+            background-color: #059669;
+            color: white;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+    <!-- Alpine.js for reactive UI -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+
+<body class="bg-amber-50 text-stone-800 dark:bg-stone-950 dark:text-stone-200 transition-colors duration-300">
+
+    <div class="container mx-auto max-w-4xl p-4 md:p-8" x-data="$store.game">
+        <header class="text-center mb-8 relative">
+            <button @click="toggleTheme()"
+                class="absolute right-0 top-0 text-2xl p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+                title="Theme wechseln">
+                <span id="theme-icon" x-text="theme === 'dark' ? '☀️' : '🌙'">🌙</span>
+            </button>
+            <h1 class="text-4xl md:text-5xl font-bold text-emerald-800 dark:text-emerald-400">Abenteuer-Spaziergänger
+            </h1>
+            <p class="text-stone-600 dark:text-stone-400 mt-2">Dein Helfer für magische Spaziergänge</p>
+        </header>
+
+        <nav
+            class="sticky top-2 z-10 bg-white/70 dark:bg-stone-900/80 backdrop-blur-md rounded-xl shadow-md mb-8 p-2 flex justify-center items-center flex-wrap gap-2 transition-colors duration-300">
+            <a href="#schnellstart" class="nav-link active text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
+                data-section="schnellstart">🚀 Start</a>
+            <a href="#gruppe" class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
+                data-section="gruppe">🛡️ Gruppe</a>
+            <a href="#regeln" class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
+                data-section="regeln">📜 Regeln</a>
+            <a href="#inspiration" class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
+                data-section="inspiration">💡 Ideen</a>
+            <a href="#quest" class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
+                data-section="quest">🗺️ Quest</a>
+        </nav>
+
+        <main>
+            <!-- 
+                ========================================================================
+                SECTION 1: SCHNELLSTART / LANDING PAGE
+                ========================================================================
+                Purpose: Brief introduction to the game rules for new players.
+                Visibility: Shown when currentTab is 'schnellstart' (default).
+            -->
+            <section id="schnellstart" class="game-section space-y-8 fade-in" x-show="currentTab === 'schnellstart'">
+                <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
+                    <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">Das Grundspiel in 60
+                        Sekunden</h2>
+                    <p class="text-stone-600 dark:text-stone-300 mb-6">Alles, was ihr für den Anfang braucht. Legt
+                        sofort los!</p>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg">1. Verteilt die Rollen</h3>
+                            <p class="text-sm text-stone-700 dark:text-stone-300 mt-1">Ein Spielleiter (SL) erzählt, die
+                                anderen sind Helden (Ritter, Zauberin) und der Hund ist der treue Begleiter.</p>
+                        </div>
+                        <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg">2. Definiert eine Quest</h3>
+                            <p class="text-sm text-stone-700 dark:text-stone-300 mt-1">Am einfachsten: Eine
+                                Sammel-Quest. Findet 3 magische Gegenstände (z.B. eine 'Drachenschuppe' = spitzer
+                                Stein).</p>
+                        </div>
+                        <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg">3. Nutzt die Umgebung</h3>
+                            <p class="text-sm text-stone-700 dark:text-stone-300 mt-1">Ein Ast wird zum Zauberstab, eine
+                                Pfütze zum Sumpfmonster. Alles ist Teil des Abenteuers!</p>
+                        </div>
+                        <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg">4. Löst Proben durch Erzählen</h3>
+                            <p class="text-sm text-stone-700 dark:text-stone-300 mt-1">Wenn es schwierig wird,
+                                beschreibt der Held kreativ, wie er es schafft. Der SL entscheidet über den Erfolg.</p>
+                        </div>
+                        <div
+                            class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg col-span-1 md:col-span-2 lg:col-span-2">
+                            <h3 class="font-bold text-lg">Das Wichtigste</h3>
+                            <p class="text-sm text-stone-700 dark:text-stone-300 mt-1">Es gibt keine falschen Ideen! Das
+                                Ziel ist, gemeinsam eine lustige Geschichte zu erleben. Lasst eurer Fantasie freien
+                                Lauf.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 
+                ========================================================================
+                SECTION 2: GROUP MANAGEMENT
+                ========================================================================
+                Purpose: Main dashboard. Manage characters, inventory, and groups.
+                Directives: 
+                    - x-data="$store.game": Links this section to global game store.
+                    - x-show="currentTab === 'gruppe'": Routing.
+            -->
+            <section id="gruppe" class="game-section fade-in" x-show="currentTab === 'gruppe'" x-data="$store.game">
+                <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg mb-6 transition-colors">
+
+                    <!-- Gruppen-Auswahl -->
+                    <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                        <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400">Meine Gruppe</h2>
+                        <div class="flex items-center gap-2">
+                            <select x-model.number="activeGroupId" @change="saveGame()"
+                                class="bg-white dark:bg-stone-900 border border-stone-300 dark:border-stone-600 rounded-lg px-3 py-2 text-sm outline-none">
+                                <template x-for="group in groups" :key="group.id">
+                                    <option :value="group.id" x-text="group.name"></option>
+                                </template>
+                            </select>
+                            <button @click="createGroup()"
+                                class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-3 py-2 rounded-lg text-sm"
+                                title="Neue Gruppe">+ Neu</button>
+                            <button @click="renameGroup()"
+                                class="bg-amber-500 hover:bg-amber-600 text-white font-bold px-3 py-2 rounded-lg text-sm"
+                                title="Gruppe umbenennen">✏️</button>
+                            <button @click="deleteGroup()"
+                                class="bg-red-500 hover:bg-red-600 text-white font-bold px-3 py-2 rounded-lg text-sm"
+                                title="Gruppe löschen">🗑️</button>
+                        </div>
+                    </div>
+
+                    <p class="text-stone-600 dark:text-stone-300 mb-4">Verwaltet eure Helden und den treuen Begleiter.
+                    </p>
+
+                    <!-- Charakter Liste -->
+                    <!-- Charakter Liste -->
+                    <div id="char-list" class="grid md:grid-cols-2 gap-4 mb-6">
+                        <template x-for="char in currentGroup?.characters" :key="char.id">
+                            <div
+                                class="hero-card bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-900 p-4 rounded-lg relative transition-colors">
+                                <!-- Header: Name & Class & Delete -->
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="w-full mr-2">
+                                        <input type="text" x-model="char.name" @blur="saveGame()"
+                                            class="char-input font-bold text-lg bg-transparent border-b border-transparent focus:border-emerald-500 outline-none w-2/3 text-stone-800 dark:text-stone-200">
+                                        <input type="text" x-model="char.class" @blur="saveGame()"
+                                            class="char-input text-sm text-stone-500 dark:text-stone-400 bg-transparent block w-full mt-1">
+                                    </div>
+                                    <button @click="removeChar(char.id)"
+                                        class="text-red-400 hover:text-red-600 text-lg p-1 opacity-60 hover:opacity-100 transition-opacity"
+                                        title="Held löschen">❌</button>
+                                </div>
+
+                                <div class="flex items-center gap-4 mt-3">
+                                    <!-- HP -->
+                                    <div class="flex-1">
+                                        <label class="text-xs font-bold text-red-700 dark:text-red-400 uppercase">HP
+                                            (Puste)</label>
+                                        <div class="flex items-center gap-2 mt-1">
+                                            <button @click="modStat(char.id, 'hp', -1)"
+                                                class="w-8 h-8 rounded-full bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300 font-bold hover:bg-red-200 dark:hover:bg-red-800 transition-colors">-</button>
+                                            <span
+                                                class="font-mono text-xl w-6 text-center text-stone-800 dark:text-stone-200"
+                                                x-text="char.hp"></span>
+                                            <button @click="modStat(char.id, 'hp', 1)"
+                                                class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 font-bold hover:bg-emerald-200 dark:hover:bg-emerald-800 transition-colors">+</button>
+                                        </div>
+                                    </div>
+                                    <!-- Mana/Wil -->
+                                    <div class="flex-1">
+                                        <label
+                                            class="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase">Wille
+                                            (WIL)</label>
+                                        <div class="flex items-center gap-2 mt-1">
+                                            <button @click="modStat(char.id, 'mana', -1)"
+                                                class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-bold hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors">-</button>
+                                            <span
+                                                class="font-mono text-xl w-6 text-center text-stone-800 dark:text-stone-200"
+                                                x-text="char.mana"></span>
+                                            <button @click="modStat(char.id, 'mana', 1)"
+                                                class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-bold hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Personal Slots -->
+                                <div class="mt-4 pt-3 border-t border-emerald-100 dark:border-emerald-800">
+                                    <label
+                                        class="text-xs font-bold text-stone-500 dark:text-stone-400 uppercase mb-2 block">Ausrüstung
+                                        (3 Slots)</label>
+                                    <div class="grid grid-cols-3 gap-2">
+                                        <!-- Slot 1 -->
+                                        <template x-if="char.inventory && char.inventory[0]">
+                                            <div
+                                                class="aspect-square bg-white dark:bg-stone-800 border border-emerald-500 rounded flex items-center justify-center p-1 relative group text-xs text-center overflow-hidden">
+                                                <span
+                                                    class="text-[10px] leading-tight break-words w-full h-full flex items-center justify-center"
+                                                    x-text="char.inventory[0]"></span>
+                                                <button @click="removeCharItem(char.id, 0)"
+                                                    class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center lg:opacity-0 lg:group-hover:opacity-100 transition-opacity text-[10px]">×</button>
+                                            </div>
+                                        </template>
+                                        <template x-if="!char.inventory || !char.inventory[0]">
+                                            <div class="aspect-square bg-transparent border border-dashed border-stone-300 dark:border-stone-600 rounded flex items-center justify-center text-stone-300 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5"
+                                                @click="addCharItem(char.id)">+</div>
+                                        </template>
+
+                                        <!-- Slot 2 -->
+                                        <template x-if="char.inventory && char.inventory[1]">
+                                            <div
+                                                class="aspect-square bg-white dark:bg-stone-800 border border-emerald-500 rounded flex items-center justify-center p-1 relative group text-xs text-center overflow-hidden">
+                                                <span
+                                                    class="text-[10px] leading-tight break-words w-full h-full flex items-center justify-center"
+                                                    x-text="char.inventory[1]"></span>
+                                                <button @click="removeCharItem(char.id, 1)"
+                                                    class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center lg:opacity-0 lg:group-hover:opacity-100 transition-opacity text-[10px]">×</button>
+                                            </div>
+                                        </template>
+                                        <template x-if="!char.inventory || !char.inventory[1]">
+                                            <div class="aspect-square bg-transparent border border-dashed border-stone-300 dark:border-stone-600 rounded flex items-center justify-center text-stone-300 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5"
+                                                @click="addCharItem(char.id)">+</div>
+                                        </template>
+
+                                        <!-- Slot 3 -->
+                                        <template x-if="char.inventory && char.inventory[2]">
+                                            <div
+                                                class="aspect-square bg-white dark:bg-stone-800 border border-emerald-500 rounded flex items-center justify-center p-1 relative group text-xs text-center overflow-hidden">
+                                                <span
+                                                    class="text-[10px] leading-tight break-words w-full h-full flex items-center justify-center"
+                                                    x-text="char.inventory[2]"></span>
+                                                <button @click="removeCharItem(char.id, 2)"
+                                                    class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center lg:opacity-0 lg:group-hover:opacity-100 transition-opacity text-[10px]">×</button>
+                                            </div>
+                                        </template>
+                                        <template x-if="!char.inventory || !char.inventory[2]">
+                                            <div class="aspect-square bg-transparent border border-dashed border-stone-300 dark:border-stone-600 rounded flex items-center justify-center text-stone-300 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5"
+                                                @click="addCharItem(char.id)">+</div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <button @click="addCharacter()"
+                            class="bg-stone-200 dark:bg-stone-700 hover:bg-stone-300 dark:hover:bg-stone-600 text-stone-700 dark:text-stone-200 font-bold py-3 px-4 rounded-lg border-2 border-dashed border-stone-400 dark:border-stone-500 transition-colors">
+                            + Leer</button>
+                        <button @click="generateRandomChar()"
+                            class="bg-purple-100 dark:bg-purple-900/30 hover:bg-purple-200 dark:hover:bg-purple-900/50 text-purple-800 dark:text-purple-300 font-bold py-3 px-4 rounded-lg border-2 border-dashed border-purple-300 dark:border-purple-700 transition-colors">
+                            🎲 Würfeln</button>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-emerald-800 dark:text-emerald-400 mt-8 mb-4">Gemeinsames Inventar
+                    </h3>
+                    <div id="inventory-list" class="grid grid-cols-3 md:grid-cols-4 gap-2 mb-4">
+                        <template x-for="i in 12" :key="i">
+                            <div class="contents">
+                                <template x-if="currentGroup?.inventory[i-1]">
+                                    <div
+                                        class="aspect-square bg-amber-100 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-800 rounded flex items-center justify-center p-2 relative group text-xs text-center overflow-hidden">
+                                        <span
+                                            class="text-[11px] leading-tight break-words w-full h-full flex items-center justify-center font-medium text-amber-900 dark:text-amber-100"
+                                            x-text="currentGroup.inventory[i-1]"></span>
+                                        <button @click="removeItem(i-1)"
+                                            class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center lg:opacity-0 lg:group-hover:opacity-100 transition-opacity font-bold shadow-sm">×</button>
+                                    </div>
+                                </template>
+                                <template x-if="!currentGroup?.inventory[i-1]">
+                                    <div @click="addGroupItem()"
+                                        class="aspect-square bg-transparent border-2 border-dashed border-stone-300 dark:border-stone-600 rounded flex items-center justify-center text-stone-300 cursor-pointer hover:bg-stone-50 dark:hover:bg-white/5 transition-colors">
+                                        <span class="text-2xl font-light">+</span>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 
+                ========================================================================
+                SECTION 3: RULES & MODULES
+                ========================================================================
+                Purpose: Detailed reference for game mechanics and optional modules.
+                Visibility: 'regeln' tab.
+            -->
+            <section id="regeln" class="game-section space-y-6 fade-in" x-show="currentTab === 'regeln'">
+                <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
+                    <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">Regelwerk & Module</h2>
+                    <p class="text-stone-600 dark:text-stone-300 mb-6">Hier findet ihr die Details und optionale Regeln,
+                        um das Spiel spannender zu machen.</p>
+                    <details class="bg-amber-100/50 dark:bg-stone-700/30 p-4 rounded-lg mb-3 transition-colors">
+                        <summary
+                            class="font-semibold cursor-pointer flex justify-between items-center text-stone-800 dark:text-stone-200">
+                            Modul A: Konflikt-Proben <span class="arrow-down transition-transform duration-300">▼</span>
+                        </summary>
+                        <div
+                            class="mt-4 text-stone-700 dark:text-stone-300 space-y-3 border-t border-amber-200 dark:border-stone-600 pt-3">
+                            <p>Nutzt diese, wenn der Ausgang einer Aktion vom Zufall oder Geschick abhängen soll.</p>
+                            <p><strong>Schere, Stein, Papier:</strong> Held spielt gegen SL. Sieg = Aktion gelingt
+                                super. Niederlage = Aktion misslingt mit lustiger Konsequenz. Unentschieden =
+                                Teilerfolg.</p>
+                            <p><strong>Glücks-Alternativen:</strong> "Gerade oder Ungerade" mit Fingern oder das
+                                "Farben-Orakel" (nächstes Auto).</p>
+                            <p><strong>Geschicklichkeits-Alternativen:</strong> Eine Strecke balancieren oder einen
+                                Tannenzapfen auf ein Ziel werfen.</p>
+                        </div>
+                    </details>
+                    <details class="bg-amber-100/50 dark:bg-stone-700/30 p-4 rounded-lg mb-3 transition-colors">
+                        <summary
+                            class="font-semibold cursor-pointer flex justify-between items-center text-stone-800 dark:text-stone-200">
+                            Modul B: Spannungs-Mechaniken <span
+                                class="arrow-down transition-transform duration-300">▼</span>
+                        </summary>
+                        <div
+                            class="mt-4 text-stone-700 dark:text-stone-300 space-y-3 border-t border-amber-200 dark:border-stone-600 pt-3">
+                            <p><strong>Fortschritts-Uhr:</strong> Legt ein echtes Ziel als Timer fest.
+                                <br><em>Zeitdruck:</em> "Wir müssen X finden, bevor wir die Brücke erreichen!"
+                                <br><em>Anhäufung:</em> "Bei jedem Fehlschlag ist der böse Magier einen Schritt näher!"
+                            </p>
+                        </div>
+                    </details>
+                    <details class="bg-amber-100/50 dark:bg-stone-700/30 p-4 rounded-lg transition-colors">
+                        <summary
+                            class="font-semibold cursor-pointer flex justify-between items-center text-stone-800 dark:text-stone-200">
+                            Modul C: Konsequenz-Mechaniken <span
+                                class="arrow-down transition-transform duration-300">▼</span>
+                        </summary>
+                        <div
+                            class="mt-4 text-stone-700 dark:text-stone-300 space-y-3 border-t border-amber-200 dark:border-stone-600 pt-3">
+                            <p><strong>Zustände:</strong> Ein Fehlschlag gibt einen lustigen Zustand.
+                                <br><em>Negativ:</em> "'Juckreiz' erwischt! Du musst bis auf Weiteres auf einem Bein
+                                hüpfen." <br><em>Positiv:</em> "'Stark' durch einen Schluck aus dem Bach! Deine nächste
+                                Probe gelingt automatisch."
+                            </p>
+                            <p><strong>Scheitern mit Fortschritt:</strong> Ein Fehlschlag stoppt nie die Geschichte! Er
+                                macht sie nur interessanter. Statt "Du schaffst es nicht", sag lieber "Du schaffst es,
+                                aber das laute Platschen weckt den Kobold!".</p>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <!-- 
+                ========================================================================
+                SECTION 4: INSPIRATION GENERATOR
+                ========================================================================
+                Purpose: Randomly generate items and fantasy associations based on environment.
+            -->
+            <section id="inspiration" class="game-section fade-in" x-show="currentTab === 'inspiration'">
+                <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
+                    <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">Ideen-Generator</h2>
+                    <p class="text-stone-600 dark:text-stone-300 mb-6">Wählt eure Umgebung und holt euch spontane Ideen
+                        für magische Verwandlungen.</p>
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <button @click="$store.game.generateInspiration('wald')"
+                            class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-lg">🌳
+                            Wald</button>
+                        <button @click="$store.game.generateInspiration('quartier')"
+                            class="bg-stone-400 hover:bg-stone-500 text-white font-semibold px-4 py-2 rounded-lg">🏡
+                            Quartier</button>
+                        <button @click="$store.game.generateInspiration('stadt')"
+                            class="bg-stone-400 hover:bg-stone-500 text-white font-semibold px-4 py-2 rounded-lg">🏙️
+                            Stadt</button>
+                        <button @click="$store.game.generateInspiration('altstadt')"
+                            class="bg-stone-400 hover:bg-stone-500 text-white font-semibold px-4 py-2 rounded-lg">🏰
+                            Altstadt</button>
+                    </div>
+
+                    <div id="inspiration-output" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <template x-if="$store.game.quest.inspiration">
+                            <div
+                                class="fade-in bg-stone-50 dark:bg-stone-900 border-l-4 border-emerald-500 p-3 rounded">
+                                <div
+                                    class="text-sm font-bold text-stone-500 dark:text-stone-400 uppercase tracking-wider mb-1">
+                                    Du findest:</div>
+                                <div class="text-xl font-bold text-emerald-800 dark:text-emerald-400 mb-1"
+                                    x-text="'&quot;' + $store.game.quest.inspiration.item + '&quot;'"></div>
+                                <div class="text-sm text-stone-600 dark:text-stone-300 italic">...vielleicht ist es
+                                    <span class="text-emerald-600 dark:text-emerald-500"
+                                        x-text="$store.game.quest.inspiration.fantasy"></span>?
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 
+                ========================================================================
+                SECTION 5: QUEST GENERATOR
+                ========================================================================
+                Purpose: Create full fetch quests and assign them to the current group.
+                State: Uses local 'env' state for the dropdown.
+            -->
+            <section id="quest" class="game-section fade-in" x-show="currentTab === 'quest'" x-data="{ env: 'wald' }">
+                <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
+                    <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">Quest-Generator</h2>
+                    <p class="text-stone-600 dark:text-stone-300 mb-6">Keine Idee für heute? Lasst euch eine
+                        Sammel-Quest erstellen!</p>
+                    <div class="flex flex-wrap items-center gap-4 mb-6">
+                        <p class="font-semibold">Wählt eine Umgebung:</p>
+                        <select x-model="env"
+                            class="bg-white dark:bg-stone-900 border border-stone-300 dark:border-stone-600 rounded-lg px-3 py-2 outline-none">
+                            <option value="wald">Wald</option>
+                            <option value="quartier">Quartier</option>
+                            <option value="stadt">Stadt</option>
+                            <option value="altstadt">Altstadt</option>
+                        </select>
+                        <button @click="$store.game.generateQuest(env)"
+                            class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-2 rounded-lg">Quest
+                            erstellen</button>
+                    </div>
+                    <div class="bg-amber-100/50 dark:bg-stone-700/30 p-6 rounded-lg transition-colors">
+                        <h3 class="font-bold text-lg text-emerald-800 dark:text-emerald-400">Hinweis:</h3>
+                        <p class="text-stone-600 dark:text-stone-400 italic">Das Erstellen einer Quest leitet euch
+                            direkt zur Gruppen-Übersicht weiter, wo die Quest gespeichert wird.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+
+    <!-- ES Modules -->
+    <script type="module" src="js/main.js"></script>
+    <!-- Alpine.js Reactive Modal -->
+    <div x-data="$store.game">
+        <div x-show="modal.open" x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+            x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0" @click.self="closeModal()"
+            class="fixed inset-0 bg-black/50 flex items-center justify-center z-50" style="display: none;">
+            <div x-show="modal.open" x-transition:enter="transition ease-out duration-200"
+                x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 scale-100"
+                x-transition:leave-end="opacity-0 scale-95" @click.stop
+                class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-xl w-full max-w-sm mx-4">
+                <h3 x-text="modal.title" class="text-xl font-bold mb-4 text-emerald-800 dark:text-emerald-400"></h3>
+                <input x-model="modal.value" x-ref="modalInput" @keydown.enter="confirmModal()"
+                    @keydown.escape="closeModal()"
+                    class="w-full p-2 border border-stone-300 dark:border-stone-600 rounded mb-4 bg-white dark:bg-stone-900 text-stone-900 dark:text-white outline-none focus:border-emerald-500"
+                    autocomplete="off" type="text">
+                <div class="flex justify-end gap-2">
+                    <button @click="closeModal()"
+                        class="px-4 py-2 rounded text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-700 font-medium">Abbrechen</button>
+                    <button @click="confirmModal()"
+                        class="px-4 py-2 rounded bg-emerald-600 text-white hover:bg-emerald-700 font-bold shadow-sm">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

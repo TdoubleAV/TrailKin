@@ -1,0 +1,40 @@
+# Implementierungsplan: Refactoring Gruppen-Management
+
+## Problem
+Die Nutzung von `window.prompt()` für "Neue Gruppe" und "Umbenennen" ist unzuverlässig (wird von manchen Browsern/Einstellungen blockiert). Der User wünscht sich zudem eine Vereinfachung, ähnlich wie bei den Charakteren.
+
+## Analyse: Charakter-System vs. Gruppen-System
+*   **Charaktere:** Werden direkt hinzugefügt ("Neuer Held") oder gewürfelt. Namensänderung erfolgt vermutlich noch nicht inline (muss geprüft werden) oder ist implizit.
+*   **Gruppen:** Aktuell über Buttons (+, ✏️, 🗑️) gesteuert, die `prompt` aufrufen.
+
+## Lösungsvorschlag: Inline-Input oder Modal
+Wir entfernen `prompt()` komplett und nutzen ein Overlay (Modal) für Eingaben. Das ist:
+1.  **Zuverlässig:** Funktioniert überall (auch mobile PWA).
+2.  **Schick:** Passt zum Design der App.
+3.  **Erweiterbar:** Erlaubt später mehr Optionen.
+
+### UI Änderungen
+Wir fügen einen `<dialog>` (oder ein Overlay-Div) in [index.html](file:///C:/Users/Daniel/.gemini/antigravity/brain/665fe787-297a-4306-8902-72487a314dd1/index.html) ein, der für Texteingaben genutzt wird.
+
+#### Neues Markup (am Ende des Body):
+```html
+<div id="input-modal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
+    <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-xl w-full max-w-sm mx-4">
+        <h3 id="modal-title" class="text-xl font-bold mb-4 text-emerald-800 dark:text-emerald-400">Eingabe</h3>
+        <input type="text" id="modal-input" class="w-full p-2 border rounded mb-4 dark:bg-stone-900 dark:text-white" autofocus>
+        <div class="flex justify-end gap-2">
+            <button onclick="closeModal()" class="px-4 py-2 rounded text-stone-600 hover:bg-stone-100">Abbrechen</button>
+            <button id="modal-confirm" class="px-4 py-2 rounded bg-emerald-600 text-white hover:bg-emerald-700">OK</button>
+        </div>
+    </div>
+</div>
+```
+
+### Logik Anpassung
+*   [createNewGroup()](file:///C:/Users/Daniel/.gemini/antigravity/brain/665fe787-297a-4306-8902-72487a314dd1/index.html#425-437) -> Öffnet Modal -> Bei OK: Erstellt Gruppe.
+*   [renameCurrentGroup()](file:///C:/Users/Daniel/.gemini/antigravity/brain/665fe787-297a-4306-8902-72487a314dd1/index.html#455-465) -> Öffnet Modal (mit altem Namen) -> Bei OK: Speichert Namen.
+
+## User Review Required
+> [!IMPORTANT]
+> Ich werde `window.prompt` durch ein schickes, zuverlässiges **Modal-Fenster** ersetzen.
+> Das löst das Problem, dass der Button "nicht funktioniert" (weil der Browser das Popup blockt).

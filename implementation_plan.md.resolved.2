@@ -1,0 +1,51 @@
+# Implementierungsplan: Cairn RPG Integration
+
+## Analyse: Cairn RPG vs. Abenteuer-Spaziergänger
+Das Ziel ist es, Elemente aus [Cairn RPG](https://cairnrpg.com/second-edition/players-guide/character-creation/) zu übernehmen, ohne die Leichtigkeit der Spaziergang-App zu verlieren.
+
+### 1. Attribute & Stats
+*   **Cairn:** Stärke (STR), Geschick (DEX), Willenskraft (WIL) + Treffer-Schutz (HP).
+*   **App Status:** HP (Leben/Mut) und Mana (Glanz).
+*   **Vorschlag:** Wir behalten das einfache System, aber benennen es thematisch passender um oder erweitern es leicht.
+    *   **HP -> Mut (Protection):** Wie in Cairn ist HP nicht "Fleisch", sondern die Fähigkeit, Schaden zu vermeiden. Wenn Mut auf 0 fällt, passiert etwas Schlimmes (Erschöpfung, Angst).
+    *   **Mana -> Wille (WIL):** Für Zauber und um schwierige geistige Proben zu bestehen.
+
+### 2. Hintergründe (Backgrounds)
+*   **Cairn:** Zufällige Hintergründe mit spezifischem Start-Equipment.
+*   **App Status:** Freie Eingabe von Name/Klasse.
+*   **Vorschlag (NEU):** **Zufalls-Generator für Charaktere**.
+    *   Ein Button "Würfle Charakter", der einen Hintergrund wählt (z.B. "Pilzsammler", "Rattenfänger") und passendes Start-Inventar hinzufügt.
+    *   Dies senkt die Hürde für den Start enorm ("Keine Idee" ist kein Problem mehr).
+
+### 3. Inventar (Slots)
+*   **Cairn:** Slot-basiertes System (meist 10 Slots). Begrenzt, was man tragen kann.
+*   **App Status:** Unbegrenzte Liste.
+*   **Vorschlag (NEU):** **Visuelles Slot-Inventar**.
+    *   Begrenzung auf 10 Slots für die Gruppe (oder pro Charakter?).
+    *   Für die "Spaziergang-App" ist ein **gemeinsamer Rucksack** mit z.B. 12 Slots sinnvoller als Einzel-Inventare.
+    *   Items werden als "Chips" in Slots dargestellt.
+
+### 4. Omen (Omens)
+*   **Cairn:** Eine Ressource um das Schicksal zu ändern.
+*   **Vorschlag (NEU):** Ein "Omen"-Counter für die Gruppe.
+    *   Startet bei 1. Kann ausgegeben werden, um einen Fehlschlag in einen Erfolg zu verwandeln (Deus Ex Machina).
+
+---
+
+## Vorgeschlagene Änderungen
+
+### Phase 1: Der Charakter-Generator (Priorität: Hoch)
+Implementierung eines "Würfeln"-Buttons in der Charakter-Erstellung.
+*   Datenbank mit ~10-20 einfachen Hintergründen (an Cairn angelehnt, aber kinderfreundlich/spaziergangstauglich).
+*   Automatische Befüllung von Name, Klasse und 1-2 Start-Gegenständen.
+
+### Phase 2: Inventar-Slots (Priorität: Mittel)
+Umbau der Inventar-Liste zu einem Grid-System.
+*   Visuelle Darstellung von Slots (leer/gefüllt).
+*   Drag & Drop (optional) oder einfaches Hinzufügen bis "Voll".
+
+## User Review Required
+> [!IMPORTANT]
+> Soll ich mit **Phase 1 (Charakter-Generator)** beginnen? Dies bringt am meisten "Sofort-Spaß" ohne die Regeln komplexer zu machen.
+>
+> Soll das Inventar begrenzt werden (Slot-System) oder endlos bleiben?

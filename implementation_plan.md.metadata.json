@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Detaillierter Plan für die Umstellung auf ES Modules. Gliedert die JS-Logik in separate Dateien für State, Routing, UI und Business Logic.",
+  "updatedAt":  "2026-01-06T08:25:12.975853800Z",
+  "version":  "8"
+}
