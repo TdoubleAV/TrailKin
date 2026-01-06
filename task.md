@@ -62,6 +62,12 @@
   - [x] Register Service Worker in `index.html`
   - [x] Verify Offline Mode
 
+- [/] Phase 7: Monetization - Phase 1
+  - [x] Add "Support This Project" footer with Ko-fi link
+  - [ ] Create Ko-fi page
+  - [ ] Add GitHub Sponsors
+  - [ ] Create Discord community
+
 - [x] Unify Inventory Logic <!-- id: 15 -->
     - [x] Update renderInventory to use interactive slots <!-- id: 16 -->
     - [x] Remove old input field and button <!-- id: 17 -->
