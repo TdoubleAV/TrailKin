@@ -1,0 +1,119 @@
+﻿{
+  "meta": {
+    "language": "de",
+    "name": "Deutsch",
+    "flag": "🇩🇪"
+  },
+  "nav": {
+    "start": "🚀 Start",
+    "group": "🛡️ Gruppe",
+    "rules": "📜 Regeln",
+    "ideas": "💡 Ideen",
+    "quest": "🗺️ Quest"
+  },
+  "header": {
+    "title": "Trailkin",
+    "tagline": "Dein Abenteuer beginnt vor der Haustür",
+    "themeToggle": "Theme wechseln"
+  },
+  "quickstart": {
+    "title": "Das Grundspiel in 60 Sekunden",
+    "subtitle": "Alles, was ihr für den Anfang braucht. Legt sofort los!",
+    "step1_title": "1. Verteilt die Rollen",
+    "step1_desc": "Ein Spielleiter (SL) erzählt, die anderen sind Helden (Ritter, Zauberin) und der Hund ist der treue Begleiter.",
+    "step2_title": "2. Definiert eine Quest",
+    "step2_desc": "Am einfachsten: Eine Sammel-Quest. Findet 3 magische Gegenstände (z.B. eine 'Drachenschuppe' = spitzer Stein).",
+    "step3_title": "3. Nutzt die Umgebung",
+    "step3_desc": "Ein Ast wird zum Zauberstab, eine Pfütze zum Sumpfmonster. Alles ist Teil des Abenteuers!",
+    "step4_title": "4. Löst Proben durch Erzählen",
+    "step4_desc": "Wenn es schwierig wird, beschreibt der Held kreativ, wie er es schafft. Der SL entscheidet über den Erfolg.",
+    "important_title": "Das Wichtigste",
+    "important_desc": "Es gibt keine falschen Ideen! Das Ziel ist, gemeinsam eine lustige Geschichte zu erleben. Lasst eurer Fantasie freien Lauf."
+  },
+  "group": {
+    "title": "Meine Gruppe",
+    "subtitle": "Verwaltet eure Helden und den treuen Begleiter.",
+    "newGroup": "+ Neu",
+    "rename": "Gruppe umbenennen",
+    "delete": "Gruppe löschen",
+    "addEmpty": "+ Leer",
+    "addRandom": "🎲 Würfeln",
+    "sharedInventory": "Gemeinsames Inventar"
+  },
+  "characters": {
+    "newHero": "Neuer Held",
+    "adventurer": "Abenteurer",
+    "deleteHero": "Held löschen",
+    "hpLabel": "HP (Puste)",
+    "willLabel": "Wille (WIL)",
+    "equipment": "Ausrüstung (3 Slots)"
+  },
+  "rules": {
+    "title": "Regelwerk & Module",
+    "subtitle": "Hier findet ihr die Details und optionale Regeln, um das Spiel spannender zu machen.",
+    "moduleA_title": "Modul A: Konflikt-Proben",
+    "moduleA_intro": "Nutzt diese, wenn der Ausgang einer Aktion vom Zufall oder Geschick abhängen soll.",
+    "moduleA_rps": "Schere, Stein, Papier:",
+    "moduleA_rps_desc": "Held spielt gegen SL. Sieg = Aktion gelingt super. Niederlage = Aktion misslingt mit lustiger Konsequenz. Unentschieden = Teilerfolg.",
+    "moduleA_luck": "Glücks-Alternativen:",
+    "moduleA_luck_desc": "Gerade oder Ungerade mit Fingern oder das Farben-Orakel (nächstes Auto).",
+    "moduleA_skill": "Geschicklichkeits-Alternativen:",
+    "moduleA_skill_desc": "Eine Strecke balancieren oder einen Tannenzapfen auf ein Ziel werfen.",
+    "moduleB_title": "Modul B: Spannungs-Mechaniken",
+    "moduleB_clock": "Fortschritts-Uhr:",
+    "moduleB_clock_desc": "Legt ein echtes Ziel als Timer fest.",
+    "moduleB_pressure": "Zeitdruck:",
+    "moduleB_pressure_example": "Wir müssen X finden, bevor wir die Brücke erreichen!",
+    "moduleB_accumulation": "Anhäufung:",
+    "moduleB_accumulation_example": "Bei jedem Fehlschlag ist der böse Magier einen Schritt näher!",
+    "moduleC_title": "Modul C: Konsequenz-Mechaniken",
+    "moduleC_states": "Zustände:",
+    "moduleC_states_desc": "Ein Fehlschlag gibt einen lustigen Zustand.",
+    "moduleC_negative": "Negativ:",
+    "moduleC_negative_example": "Juckreiz erwischt! Du musst bis auf Weiteres auf einem Bein hüpfen.",
+    "moduleC_positive": "Positiv:",
+    "moduleC_positive_example": "Stark durch einen Schluck aus dem Bach! Deine nächste Probe gelingt automatisch.",
+    "moduleC_fail": "Scheitern mit Fortschritt:",
+    "moduleC_fail_desc": "Ein Fehlschlag stoppt nie die Geschichte! Er macht sie nur interessanter."
+  },
+  "inspiration": {
+    "title": "Ideen-Generator",
+    "subtitle": "Wählt eure Umgebung und holt euch spontane Ideen für magische Verwandlungen.",
+    "forest": "🌳 Wald",
+    "neighborhood": "🏡 Quartier",
+    "city": "🏙️ Stadt",
+    "oldtown": "🏰 Altstadt",
+    "youFind": "Du findest:",
+    "maybeIts": "...vielleicht ist es"
+  },
+  "quest": {
+    "title": "Quest-Generator",
+    "subtitle": "Keine Idee für heute? Lasst euch eine Sammel-Quest erstellen!",
+    "selectEnv": "Wählt eine Umgebung:",
+    "forest": "Wald",
+    "neighborhood": "Quartier",
+    "city": "Stadt",
+    "oldtown": "Altstadt",
+    "generate": "Quest erstellen",
+    "hint_title": "Hinweis:",
+    "hint_desc": "Das Erstellen einer Quest leitet euch direkt zur Gruppen-Übersicht weiter, wo die Quest gespeichert wird."
+  },
+  "footer": {
+    "support": "☕ Unterstütze das Projekt",
+    "github": "⭐ GitHub",
+    "version": "Trailkin v3.1 — Open Source (MIT License)",
+    "madeWith": "Made with 💚 for outdoor adventures"
+  },
+  "modals": {
+    "newGroupTitle": "Name der neuen Gruppe",
+    "newGroupDefault": "Neue Gruppe",
+    "renameGroupTitle": "Neuer Name für die Gruppe",
+    "newItemTitle": "Neuer Gegenstand",
+    "newItemForChar": "Neues Item für",
+    "cancel": "Abbrechen",
+    "ok": "OK"
+  },
+  "errors": {
+    "cannotDeleteLastGroup": "Du kannst die letzte Gruppe nicht löschen!"
+  }
+}
