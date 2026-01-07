@@ -1,10 +1,11 @@
 {
-  "name": "Abenteuer-Spaziergänger",
-  "short_name": "Wald-RPG",
+  "name": "Trailkin — Family Adventure Walks",
+  "short_name": "Trailkin",
+  "description": "Turn family walks into epic quests!",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#fffbeb",
-  "theme_color": "#059669",
+  "background_color": "#F5F0E6",
+  "theme_color": "#2D5A3D",
   "icons": [
     {
       "src": "./icons/icon-192.png",
