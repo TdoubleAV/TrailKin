@@ -106,15 +106,20 @@
 
         <nav
             class="sticky top-2 z-10 bg-white/70 dark:bg-stone-900/80 backdrop-blur-md rounded-xl shadow-md mb-8 p-2 flex justify-center items-center flex-wrap gap-2 transition-colors duration-300">
-            <a href="#schnellstart" class="nav-link active text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
+            <a href="#schnellstart" class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
+                :class="$store.game.currentTab === 'schnellstart' ? 'active bg-emerald-600 text-white' : 'text-stone-600 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-700'"
                 data-section="schnellstart">🚀 Start</a>
             <a href="#gruppe" class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
+                :class="$store.game.currentTab === 'gruppe' ? 'active bg-emerald-600 text-white' : 'text-stone-600 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-700'"
                 data-section="gruppe">🛡️ Gruppe</a>
             <a href="#regeln" class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
+                :class="$store.game.currentTab === 'regeln' ? 'active bg-emerald-600 text-white' : 'text-stone-600 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-700'"
                 data-section="regeln">📜 Regeln</a>
             <a href="#inspiration" class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
+                :class="$store.game.currentTab === 'inspiration' ? 'active bg-emerald-600 text-white' : 'text-stone-600 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-700'"
                 data-section="inspiration">💡 Ideen</a>
             <a href="#quest" class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
+                :class="$store.game.currentTab === 'quest' ? 'active bg-emerald-600 text-white' : 'text-stone-600 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-700'"
                 data-section="quest">🗺️ Quest</a>
         </nav>
 
