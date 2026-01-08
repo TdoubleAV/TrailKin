@@ -68,39 +68,36 @@ Think of it as a "boredom killer" for walks. Your kid doesn't want to go outside
 
 ## Quick Start
 
-### The Adventure in 60 Seconds
+### The Adventure in 3 Steps
+*(Based on our "Active Play" Philosophy: The world is your game board)*
 
-1. **Assign Roles** — One person is the **Guide** (Storyteller), others are **Explorers**. Your dog? A loyal companion with special sniffing powers!
-
-2. **Start a Quest** — Use the Quest Generator or pick a simple goal: *"Find 3 magical objects before we reach the park!"*
-
-3. **Use Your Surroundings** — A stick becomes a wizard staff, a puddle becomes a portal, a bench becomes a resting shrine.
-
-4. **Overcome Challenges** — When things get tricky, use Rock-Paper-Scissors or let the Explorer describe creatively how they succeed.
-
-5. **Have Fun!** — There are no wrong answers. The goal is to kill boredom and create memories.
+1.  **Assign Roles** — **Guide** (Storyteller) and **Explorers** (Kids). Your dog? A magical companion!
+2.  **Start a Quest** — "Find 3 magical objects" (Collection) or "Defeat the Troll" (Duel).
+3.  **Play "The Duel"** — No dice, just perception!
+    *   *Guide calls:* "Find something **Hard** that is **Round**!" (using the app's Essence Grid)
+    *   *Explorers:* Have 30 seconds to find a real object.
 
 ---
 
-## How to Play
+## How to Play (Rules v5.1)
 
-### Explorers
+### The Core Mechanic: Essence Duel
+Conflicts are resolved by finding real-world objects.
+*   **Guide** combines words from the **Essence Grid** (e.g., "Wooden + Shiny").
+*   **Explorers** search their surroundings.
 
-Each Explorer has:
-
+### Explorers & Resources
 | Stat | Description |
 |------|-------------|
-| **Energy (Puste)** | Stamina — Lose some when you fail challenges |
-| **Spirit (WIL)** | Willpower — Spend to activate special abilities |
-| **Backpack** | 3 slots for personal items |
+| **Energy (Puste)** | Stamina — Lose 1 on failure (Fail Forward: story continues!). |
+| **Courage (Mut)** | Spend 1 "Fantasy Spark" to reroll or invent a story detail. |
+| **Backpack** | 3 slots for real sticks, stones, and leaves. |
 
-### Adventure Modules
-
-The app includes optional rule modules to add spice:
-
-- **Module A: Challenges** — Rock-Paper-Scissors, "Odd or Even", or skill-based challenges (balance on a log!)
-- **Module B: Tension** — Progress clocks and real-world timers ("Find the artifact before we reach the bridge!")
-- **Module C: Consequences** — Fun status effects ("You are Itchy — hop on one foot until cured!")
+### Module F: The Animal Companion
+Turn dog commands into magic spells:
+*   **"Look"** = See invisible spirits
+*   **"Touch"** = Break magical seals
+*   **"Leave it"** = Disarm traps
 
 ---
 
