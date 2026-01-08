@@ -60,7 +60,7 @@ Think of it as a "boredom killer" for walks. Your kid doesn't want to go outside
 
 ## Demo
 
-**[Try Trailkin Live](https://YOUR_USERNAME.github.io/trailkin/)**
+**[Try Trailkin Live](https://TdoubleAV.github.io/trailkin/)**
 
 > *Replace with your actual GitHub Pages URL after deployment*
 
