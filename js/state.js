@@ -50,10 +50,10 @@ export function createDefaultGroup(name) {
         id: Date.now(),
         name: name,
         characters: [
-            { id: 1, name: 'Held 1', class: 'Krieger', hp: 3, maxHp: 3, mana: 0, inventory: [] }, // Added inventory
-            { id: 2, name: 'Bello', class: 'Arkaner Sucher', hp: 3, maxHp: 3, mana: 5, inventory: [] }
+            { id: 1, name: 'Entdecker 1', class: 'Abenteurer', hp: 3, maxHp: 3, mana: 0, inventory: [] },
+            { id: 2, name: 'Bello', class: 'Spürnase', hp: 3, maxHp: 3, mana: 5, inventory: [] }
         ],
-        inventory: [], // Changed to empty array for consistency with push() usage
+        inventory: [],
         currentQuest: null
     };
 }

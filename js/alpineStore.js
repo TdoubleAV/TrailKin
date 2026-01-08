@@ -215,7 +215,7 @@ export function initAlpineStore(Alpine) {
             if (!this.currentGroup) return;
             this.currentGroup.characters.push({
                 id: Date.now(),
-                name: 'Neuer Held',
+                name: 'Neuer Entdecker',
                 class: 'Abenteurer',
                 hp: 10,
                 maxHp: 10,
@@ -236,7 +236,7 @@ export function initAlpineStore(Alpine) {
             const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
             this.currentGroup.characters.push({
                 id: Date.now(),
-                name: 'Neuer Held',
+                name: 'Neuer Entdecker',
                 class: randomBg.name,
                 hp: 3,
                 maxHp: 3,
