@@ -17,44 +17,44 @@
     "themeToggle": "Theme wechseln"
   },
   "quickstart": {
-    "title": "Das Grundspiel in 60 Sekunden",
-    "subtitle": "Alles, was ihr für den Anfang braucht. Legt sofort los!",
+    "title": "Das Abenteuer in 60 Sekunden",
+    "subtitle": "Nie wieder Langeweile beim Spaziergang!",
     "step1_title": "1. Verteilt die Rollen",
-    "step1_desc": "Ein Spielleiter (SL) erzählt, die anderen sind Helden (Ritter, Zauberin) und der Hund ist der treue Begleiter.",
+    "step1_desc": "Ein Erzähler (Guide) führt an, die anderen sind Entdecker (Ritter, Zauberin) und der Hund ist der treue Begleiter.",
     "step2_title": "2. Definiert eine Quest",
     "step2_desc": "Am einfachsten: Eine Sammel-Quest. Findet 3 magische Gegenstände (z.B. eine 'Drachenschuppe' = spitzer Stein).",
     "step3_title": "3. Nutzt die Umgebung",
     "step3_desc": "Ein Ast wird zum Zauberstab, eine Pfütze zum Sumpfmonster. Alles ist Teil des Abenteuers!",
-    "step4_title": "4. Löst Proben durch Erzählen",
-    "step4_desc": "Wenn es schwierig wird, beschreibt der Held kreativ, wie er es schafft. Der SL entscheidet über den Erfolg.",
+    "step4_title": "4. Löst Aufgaben kreativ",
+    "step4_desc": "Wenn es schwierig wird, beschreibt der Entdecker kreativ, wie er es schafft. Der Erzähler entscheidet.",
     "important_title": "Das Wichtigste",
-    "important_desc": "Es gibt keine falschen Ideen! Das Ziel ist, gemeinsam eine lustige Geschichte zu erleben. Lasst eurer Fantasie freien Lauf."
+    "important_desc": "Es gibt keine falschen Ideen! Das Ziel ist, gemeinsam Spaß zu haben. Lasst eurer Fantasie freien Lauf."
   },
   "group": {
     "title": "Meine Gruppe",
-    "subtitle": "Verwaltet eure Helden und den treuen Begleiter.",
+    "subtitle": "Verwaltet eure Entdecker und Begleiter.",
     "newGroup": "+ Neu",
     "rename": "Gruppe umbenennen",
     "delete": "Gruppe löschen",
     "addEmpty": "+ Leer",
     "addRandom": "🎲 Würfeln",
-    "sharedInventory": "Gemeinsames Inventar"
+    "sharedInventory": "Gruppen-Rucksack"
   },
   "characters": {
-    "newHero": "Neuer Held",
-    "adventurer": "Abenteurer",
-    "deleteHero": "Held löschen",
-    "hpLabel": "HP (Puste)",
-    "willLabel": "Wille (WIL)",
-    "equipment": "Ausrüstung (3 Slots)"
+    "newHero": "Neuer Entdecker",
+    "adventurer": "Entdecker",
+    "deleteHero": "Entdecker löschen",
+    "hpLabel": "Energie (Puste)",
+    "willLabel": "Mut (WIL)",
+    "equipment": "Rucksack (3 Slots)"
   },
   "rules": {
-    "title": "Regelwerk & Module",
-    "subtitle": "Hier findet ihr die Details und optionale Regeln, um das Spiel spannender zu machen.",
-    "moduleA_title": "Modul A: Konflikt-Proben",
-    "moduleA_intro": "Nutzt diese, wenn der Ausgang einer Aktion vom Zufall oder Geschick abhängen soll.",
+    "title": "Abenteuer-Handbuch",
+    "subtitle": "Ideen, um den Spaziergang spannender zu machen.",
+    "moduleA_title": "Modul A: Herausforderungen",
+    "moduleA_intro": "Nutzt diese, wenn ihr den Zufall entscheiden lassen wollt.",
     "moduleA_rps": "Schere, Stein, Papier:",
-    "moduleA_rps_desc": "Held spielt gegen SL. Sieg = Aktion gelingt super. Niederlage = Aktion misslingt mit lustiger Konsequenz. Unentschieden = Teilerfolg.",
+    "moduleA_rps_desc": "Entdecker gegen Erzähler. Sieg = Super Erfolg. Niederlage = Lustiges Missgeschick. Unentschieden = Teilerfolg.",
     "moduleA_luck": "Glücks-Alternativen:",
     "moduleA_luck_desc": "Gerade oder Ungerade mit Fingern oder das Farben-Orakel (nächstes Auto).",
     "moduleA_skill": "Geschicklichkeits-Alternativen:",

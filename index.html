@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trailkin — Family Adventure Walks</title>
+    <title>Trailkin — Make Every Walk an Adventure for Kids</title>
+    <meta name="description"
+        content="Turn boring walks into magical adventures. Trailkin is a free, simple family adventure tool for hiking with kids. No screens needed during play.">
+    <meta name="keywords"
+        content="walking with kids, family hiking app, gamified walk, kids outdoor activity, scavenger hunt app, boredom buster outdoors">
     <link rel="manifest" href="./manifest.json">
     <link rel="apple-touch-icon" href="./icons/icon-192.png">
     <meta name="theme-color" content="#059669">
@@ -129,8 +133,9 @@
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg">
                             <h3 class="font-bold text-lg">1. Verteilt die Rollen</h3>
-                            <p class="text-sm text-stone-700 dark:text-stone-300 mt-1">Ein Spielleiter (SL) erzählt, die
-                                anderen sind Helden (Ritter, Zauberin) und der Hund ist der treue Begleiter.</p>
+                            <p class="text-sm text-stone-700 dark:text-stone-300 mt-1">Ein Erzähler (Guide) führt an,
+                                die
+                                anderen sind Entdecker (Ritter, Zauberin) und der Hund ist der treue Begleiter.</p>
                         </div>
                         <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg">
                             <h3 class="font-bold text-lg">2. Definiert eine Quest</h3>
@@ -144,16 +149,15 @@
                                 Pfütze zum Sumpfmonster. Alles ist Teil des Abenteuers!</p>
                         </div>
                         <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg">
-                            <h3 class="font-bold text-lg">4. Löst Proben durch Erzählen</h3>
+                            <h3 class="font-bold text-lg">4. Löst Aufgaben kreativ</h3>
                             <p class="text-sm text-stone-700 dark:text-stone-300 mt-1">Wenn es schwierig wird,
-                                beschreibt der Held kreativ, wie er es schafft. Der SL entscheidet über den Erfolg.</p>
+                                beschreibt der Entdecker kreativ, wie er es schafft. Der Erzähler entscheidet.</p>
                         </div>
                         <div
                             class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg col-span-1 md:col-span-2 lg:col-span-2">
                             <h3 class="font-bold text-lg">Das Wichtigste</h3>
                             <p class="text-sm text-stone-700 dark:text-stone-300 mt-1">Es gibt keine falschen Ideen! Das
-                                Ziel ist, gemeinsam eine lustige Geschichte zu erleben. Lasst eurer Fantasie freien
-                                Lauf.</p>
+                                Ziel ist, gemeinsam Spaß zu haben. Lasst eurer Fantasie freien Lauf.</p>
                         </div>
                     </div>
                 </div>
@@ -193,7 +197,8 @@
                         </div>
                     </div>
 
-                    <p class="text-stone-600 dark:text-stone-300 mb-4">Verwaltet eure Helden und den treuen Begleiter.
+                    <p class="text-stone-600 dark:text-stone-300 mb-4">Verwaltet eure Entdecker und den treuen
+                        Begleiter.
                     </p>
 
                     <!-- Charakter Liste -->
@@ -212,13 +217,14 @@
                                     </div>
                                     <button @click="removeChar(char.id)"
                                         class="text-red-400 hover:text-red-600 text-lg p-1 opacity-60 hover:opacity-100 transition-opacity"
-                                        title="Held löschen">❌</button>
+                                        title="Entdecker löschen">❌</button>
                                 </div>
 
                                 <div class="flex items-center gap-4 mt-3">
                                     <!-- HP -->
                                     <div class="flex-1">
-                                        <label class="text-xs font-bold text-red-700 dark:text-red-400 uppercase">HP
+                                        <label
+                                            class="text-xs font-bold text-red-700 dark:text-red-400 uppercase">Energie
                                             (Puste)</label>
                                         <div class="flex items-center gap-2 mt-1">
                                             <button @click="modStat(char.id, 'hp', -1)"
@@ -232,8 +238,7 @@
                                     </div>
                                     <!-- Mana/Wil -->
                                     <div class="flex-1">
-                                        <label
-                                            class="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase">Wille
+                                        <label class="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase">Mut
                                             (WIL)</label>
                                         <div class="flex items-center gap-2 mt-1">
                                             <button @click="modStat(char.id, 'mana', -1)"
@@ -351,18 +356,20 @@
             -->
             <section id="regeln" class="game-section space-y-6 fade-in" x-show="currentTab === 'regeln'">
                 <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
-                    <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">Regelwerk & Module</h2>
+                    <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">Abenteuer-Handbuch</h2>
                     <p class="text-stone-600 dark:text-stone-300 mb-6">Hier findet ihr die Details und optionale Regeln,
                         um das Spiel spannender zu machen.</p>
                     <details class="bg-amber-100/50 dark:bg-stone-700/30 p-4 rounded-lg mb-3 transition-colors">
                         <summary
                             class="font-semibold cursor-pointer flex justify-between items-center text-stone-800 dark:text-stone-200">
-                            Modul A: Konflikt-Proben <span class="arrow-down transition-transform duration-300">▼</span>
+                            Modul A: Herausforderungen <span
+                                class="arrow-down transition-transform duration-300">▼</span>
                         </summary>
                         <div
                             class="mt-4 text-stone-700 dark:text-stone-300 space-y-3 border-t border-amber-200 dark:border-stone-600 pt-3">
-                            <p>Nutzt diese, wenn der Ausgang einer Aktion vom Zufall oder Geschick abhängen soll.</p>
-                            <p><strong>Schere, Stein, Papier:</strong> Held spielt gegen SL. Sieg = Aktion gelingt
+                            <p>Nutzt diese, wenn ihr den Zufall entscheiden lassen wollt.</p>
+                            <p><strong>Schere, Stein, Papier:</strong> Entdecker spielt gegen Erzähler. Sieg = Aktion
+                                gelingt
                                 super. Niederlage = Aktion misslingt mit lustiger Konsequenz. Unentschieden =
                                 Teilerfolg.</p>
                             <p><strong>Glücks-Alternativen:</strong> "Gerade oder Ungerade" mit Fingern oder das
