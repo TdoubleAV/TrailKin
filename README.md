@@ -152,7 +152,7 @@ trailkin/
 
 ## Roadmap
 
-### Completed (v3.2)
+### Completed (v3.5)
 - [x] Core adventure mechanics
 - [x] Explorer and group management
 - [x] Quest/Inspiration generators
@@ -209,5 +209,5 @@ This project is licensed under the **MIT License**.
 
 <p align="center">
   Made with 💚 for outdoor adventures<br>
-  <strong>Trailkin v3.2</strong> — Your adventure starts at your doorstep
+  <strong>Trailkin v3.5</strong> — Your adventure starts at your doorstep
 </p>

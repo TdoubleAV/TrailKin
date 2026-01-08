@@ -60,6 +60,30 @@ Nutze diesen Workflow bei Reaktivitätsproblemen in Alpine.js Apps.
 2. Console auf Fehler prüfen (keine roten Meldungen)
 3. Alle Tabs durchklicken
 4. Ein Feature testen
+5. Navigation prüfen (Aktiver Tab hervorgehoben?)
+
+### Problem: Visuelles Feedback fehlt (z.B. aktiver Tab)
+
+**Prüfe:**
+- [ ] Werden CSS-Klassen reaktiv gebunden (`:class`)?
+- [ ] Wird auf den globalen Store verwiesen (`$store.game.currentTab`)?
+
+**Fix:**
+```html
+<!-- ❌ FALSCH -->
+<a class="nav-link active">...</a>
+
+<!-- ✅ RICHTIG -->
+<a :class="$store.game.currentTab === 'tab' ? 'active' : ''">...</a>
+```
+
+### Problem: Daten werden nicht angezeigt (z.B. Quest)
+
+**Prüfe:**
+- [ ] Stimmt die Datenstruktur im Store mit dem Template überein?
+- [ ] Beispiel: Erwartet Template ein Objekt `{ active: true }`, aber Store speichert ein Array `[]`?
+- [ ] Debug: `console.log(Alpine.store('game').meineDaten)`
+
 
 ## Vollständige Dokumentation
 

@@ -632,7 +632,7 @@
                 </a>
             </div>
             <p class="text-xs text-stone-500 dark:text-stone-400 mt-4">
-                Trailkin v3.1 — Open Source (MIT License)
+                Trailkin v3.5 — Open Source (MIT License)
             </p>
             <p class="text-xs mt-1 opacity-70">
                 Made with 💚 for outdoor adventures
@@ -655,16 +655,46 @@
                 class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-xl w-full max-w-sm mx-4">
                 <h3 x-text="$store.game.modal.title"
                     class="text-xl font-bold mb-4 text-emerald-800 dark:text-emerald-400"></h3>
-                <input x-model="$store.game.modal.value" x-ref="modalInput" @keydown.enter="$store.game.confirmModal()"
-                    @keydown.escape="$store.game.closeModal()"
-                    class="w-full p-2 border border-stone-300 dark:border-stone-600 rounded mb-4 bg-white dark:bg-stone-900 text-stone-900 dark:text-white outline-none focus:border-emerald-500"
-                    autocomplete="off" type="text">
-                <div class="flex justify-end gap-2">
-                    <button @click="$store.game.closeModal()"
-                        class="px-4 py-2 rounded text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-700 font-medium">Abbrechen</button>
-                    <button @click="$store.game.confirmModal()"
-                        class="px-4 py-2 rounded bg-emerald-600 text-white hover:bg-emerald-700 font-bold shadow-sm">OK</button>
-                </div>
+
+                <!-- Input Type -->
+                <template x-if="$store.game.modal.type === 'input'">
+                    <div>
+                        <input x-model="$store.game.modal.value" x-ref="modalInput"
+                            @keydown.enter="$store.game.confirmModal()" @keydown.escape="$store.game.closeModal()"
+                            class="w-full p-2 border border-stone-300 dark:border-stone-600 rounded mb-4 bg-white dark:bg-stone-900 text-stone-900 dark:text-white outline-none focus:border-emerald-500"
+                            autocomplete="off" type="text" placeholder="Eingabe...">
+                        <div class="flex justify-end gap-2">
+                            <button @click="$store.game.closeModal()"
+                                class="px-4 py-2 rounded text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-700 font-medium">Abbrechen</button>
+                            <button @click="$store.game.confirmModal()"
+                                class="px-4 py-2 rounded bg-emerald-600 text-white hover:bg-emerald-700 font-bold shadow-sm">OK</button>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Selection Type -->
+                <template x-if="$store.game.modal.type === 'selection'">
+                    <div>
+                        <div class="grid grid-cols-1 gap-2 mb-4 max-h-[60vh] overflow-y-auto">
+                            <template x-for="opt in $store.game.modal.options" :key="opt.value">
+                                <button @click="$store.game.modal.callback(opt.value); $store.game.closeModal()"
+                                    class="flex items-center gap-3 w-full p-3 rounded-lg border border-stone-200 dark:border-stone-700 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 hover:border-emerald-300 transition-colors text-left">
+                                    <span class="text-2xl" x-text="opt.emoji || '🔹'"></span>
+                                    <span class="font-bold text-stone-800 dark:text-stone-200"
+                                        x-text="opt.label"></span>
+                                </button>
+                            </template>
+                            <div x-show="$store.game.modal.options.length === 0"
+                                class="text-center text-stone-500 italic p-4">
+                                Keine Auswahl verfügbar.
+                            </div>
+                        </div>
+                        <div class="flex justify-end">
+                            <button @click="$store.game.closeModal()"
+                                class="px-4 py-2 rounded text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-700 font-medium">Schließen</button>
+                        </div>
+                    </div>
+                </template>
             </div>
         </div>
     </div>

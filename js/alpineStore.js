@@ -59,8 +59,10 @@ export function initAlpineStore(Alpine) {
         // --- Global Components ---
         modal: {
             open: false,
+            type: 'input',
             title: '',
             value: '',
+            options: [],
             callback: null
         },
 
@@ -138,16 +140,25 @@ export function initAlpineStore(Alpine) {
         },
 
         // --- Modal System (Single Source of Truth) ---
+        // --- Modal System ---
         showModal(title, defaultValue, callback) {
+            this.modal.type = 'input';
             this.modal.title = title;
             this.modal.value = defaultValue || '';
             this.modal.callback = callback;
             this.modal.open = true;
-            // Focus input next tick
             setTimeout(() => {
                 const input = document.querySelector('[x-ref="modalInput"]');
                 if (input) input.focus();
             }, 50);
+        },
+
+        showSelectionModal(title, options, callback) {
+            this.modal.type = 'selection';
+            this.modal.title = title;
+            this.modal.options = options;
+            this.modal.callback = callback;
+            this.modal.open = true;
         },
 
         closeModal() {
@@ -365,15 +376,16 @@ export function initAlpineStore(Alpine) {
                 return;
             }
 
-            // Use custom modal for consistency
-            const options = available.map(s => s.name).join(', ');
-            this.showModal(`Zustand wählen (${options})`, '', (choice) => {
-                if (!choice) return;
-                const selected = available.find(s => s.name.toLowerCase().includes(choice.toLowerCase()));
-                if (selected) {
-                    this.addStatus(charId, selected.id);
-                } else {
-                    alert('Zustand nicht gefunden!');
+            // Use custom selection modal
+            const statusOptions = available.map(s => ({
+                label: s.name,
+                value: s.id,
+                emoji: s.emoji
+            }));
+
+            this.showSelectionModal('Zustand wählen', statusOptions, (selectedId) => {
+                if (selectedId) {
+                    this.addStatus(charId, selectedId);
                 }
             });
         },
