@@ -3,24 +3,31 @@ import { initAlpineStore } from './alpineStore.js';
 // ========================================================================
 // ALPINE.JS INITIALIZATION
 // ========================================================================
-// We need to ensure the store is initialized BEFORE Alpine scans the DOM.
-// This supports both synchronous (CDN) and asynchronous loading patterns.
+// Register the store BEFORE Alpine starts processing the DOM.
+// This uses the 'alpine:init' event which fires before DOM processing.
 // ========================================================================
 
-try {
-    if (window.Alpine) {
-        // Scenario 1: Alpine is already loaded (e.g. deferred script finished)
-        initAlpineStore(window.Alpine);
-        window.Alpine.store('game').loadGame();
-    } else {
-        // Scenario 2: Alpine is not yet loaded. Wait for the event.
-        document.addEventListener('alpine:init', () => {
-            initAlpineStore(window.Alpine);
-            window.Alpine.store('game').loadGame();
-        });
-    }
-} catch (e) {
-    console.error("Alpine initialization failed:", e);
+// Guard against multiple initializations
+let storeInitialized = false;
+
+function initStore(Alpine) {
+    if (storeInitialized) return;
+    storeInitialized = true;
+
+    initAlpineStore(Alpine);
+    Alpine.store('game').loadGame();
+    console.log('Trailkin store initialized');
+}
+
+// Always add the event listener first (synchronously)
+document.addEventListener('alpine:init', () => {
+    initStore(window.Alpine);
+});
+
+// If Alpine is already available (shouldn't happen with defer, but just in case)
+if (window.Alpine && window.Alpine.store && !storeInitialized) {
+    // Alpine might already be past init, try to register anyway
+    initStore(window.Alpine);
 }
 
 // ========================================================================
@@ -30,12 +37,14 @@ try {
 // Handle Browser Back/Forward buttons and external hash changes
 window.addEventListener('hashchange', () => {
     const tab = window.location.hash.substring(1);
-    if (tab && window.Alpine) {
+    if (tab && window.Alpine && window.Alpine.store('game')) {
         window.Alpine.store('game').currentTab = tab;
     }
 });
 
 // Initial Generator Call (ensure store is ready)
 document.addEventListener('alpine:initialized', () => {
-    Alpine.store('game').generateInspiration('wald');
+    if (Alpine.store('game')) {
+        Alpine.store('game').generateInspiration('wald');
+    }
 });

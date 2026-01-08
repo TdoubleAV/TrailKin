@@ -1,12 +1,11 @@
-```
 /**
  * @fileoverview Alpine.js store for game state management
  * Provides reactive data binding for the entire application
  */
 
 import { createDefaultGroup, appState, saveGame, getCurrentGroup } from './state.js';
-import { runRouter } from './router.js';
 import { inspirationData, characterBackgrounds } from './data/inspiration.js';
+import { statusesData } from './data/statuses.js';
 
 /**
  * Shuffles an array in place using Fisher-Yates algorithm
@@ -32,11 +31,11 @@ export function initAlpineStore(Alpine) {
         // ========================================================================
         // STATE MANAGEMENT
         // ========================================================================
-        
+
         // --- Core Data ---
         groups: [], // List of all adventure groups
         activeGroupId: null, // ID of the currently selected group
-        
+
         // --- UI State ---
         theme: localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
         currentTab: 'regeln', // Controls which section is visible (routing)
@@ -46,6 +45,16 @@ export function initAlpineStore(Alpine) {
             inspiration: null, // Holds the result of the "Ideen-Generator" { item: '', fantasy: '' }
             lastEnv: null
         },
+
+        // --- SSP Helper State ---
+        ssp: {
+            result: null, // 'win', 'draw', 'lose'
+            playerChoice: null,
+            gmChoice: null
+        },
+
+        // --- Available Statuses (from data) ---
+        availableStatuses: statusesData.statuses || [],
 
         // --- Global Components ---
         modal: {
@@ -176,10 +185,10 @@ export function initAlpineStore(Alpine) {
 
             this.currentGroup.currentQuest = items;
             this.saveGame();
-            
+
             // Switch to group view
             window.location.hash = '#gruppe';
-            runRouter();
+            this.currentTab = 'gruppe';
         },
 
         // --- Group Management (Create, Rename, Delete) ---
@@ -220,7 +229,8 @@ export function initAlpineStore(Alpine) {
                 hp: 10,
                 maxHp: 10,
                 mana: 0,
-                inventory: []
+                inventory: [],
+                statuses: []
             });
             this.saveGame();
         },
@@ -241,7 +251,8 @@ export function initAlpineStore(Alpine) {
                 hp: 3,
                 maxHp: 3,
                 mana: 0,
-                inventory: [randomBg.item + ' (' + randomBg.name + ')']
+                inventory: [randomBg.item + ' (' + randomBg.name + ')'],
+                statuses: []
             });
             this.saveGame();
         },
@@ -300,12 +311,97 @@ export function initAlpineStore(Alpine) {
         removeItem(index) {
             if (!this.currentGroup) return;
             this.currentGroup.inventory.splice(index, 1);
-            // Don't filter here as we want to maintain slot positions? 
-            // Original logic just spliced, so slots shift. My UI loop is generic.
-            // If I splice, indices shift. 
-            // My UI renders inventory[i]. If it shifts, it's fine.
             this.saveGame();
+        },
+
+        // --- Status Management ---
+        addStatus(charId, statusId) {
+            if (!this.currentGroup) return;
+            const char = this.currentGroup.characters.find(c => c.id === charId);
+            if (!char) return;
+            if (!char.statuses) char.statuses = [];
+
+            const statusDef = this.availableStatuses.find(s => s.id === statusId);
+            if (!statusDef) return;
+
+            // Don't add duplicate statuses
+            if (char.statuses.some(s => s.id === statusId)) return;
+
+            char.statuses.push({
+                id: statusDef.id,
+                name: statusDef.name,
+                emoji: statusDef.emoji,
+                effect: statusDef.effect,
+                cure: statusDef.cure,
+                type: statusDef.type
+            });
+            this.saveGame();
+        },
+
+        removeStatus(charId, statusId) {
+            if (!this.currentGroup) return;
+            const char = this.currentGroup.characters.find(c => c.id === charId);
+            if (!char || !char.statuses) return;
+
+            char.statuses = char.statuses.filter(s => s.id !== statusId);
+            this.saveGame();
+        },
+
+        showAddStatusModal(charId) {
+            const char = this.currentGroup?.characters.find(c => c.id === charId);
+            if (!char) return;
+
+            // Get available statuses not already on character
+            const existing = (char.statuses || []).map(s => s.id);
+            const available = this.availableStatuses.filter(s => !existing.includes(s.id));
+
+            if (available.length === 0) {
+                alert('Alle Zustände sind bereits aktiv!');
+                return;
+            }
+
+            // Simple selection - just pick the first available for now (can be enhanced with proper UI)
+            const options = available.map(s => s.emoji + ' ' + s.name).join('\n');
+            const choice = prompt('Wähle einen Zustand:\n' + options);
+            if (choice) {
+                const selected = available.find(s => choice.includes(s.name));
+                if (selected) {
+                    this.addStatus(charId, selected.id);
+                }
+            }
+        },
+
+        // --- SSP Helper ---
+        playSSP(playerChoice) {
+            const choices = ['rock', 'paper', 'scissors'];
+            const gmChoice = choices[Math.floor(Math.random() * choices.length)];
+
+            this.ssp.playerChoice = playerChoice;
+            this.ssp.gmChoice = gmChoice;
+
+            // Determine result
+            if (playerChoice === gmChoice) {
+                this.ssp.result = 'draw';
+            } else if (
+                (playerChoice === 'rock' && gmChoice === 'scissors') ||
+                (playerChoice === 'paper' && gmChoice === 'rock') ||
+                (playerChoice === 'scissors' && gmChoice === 'paper')
+            ) {
+                this.ssp.result = 'win';
+            } else {
+                this.ssp.result = 'lose';
+            }
+        },
+
+        resetSSP() {
+            this.ssp.result = null;
+            this.ssp.playerChoice = null;
+            this.ssp.gmChoice = null;
+        },
+
+        getSSPEmoji(choice) {
+            const emojis = { rock: '🪨', paper: '📄', scissors: '✂️' };
+            return emojis[choice] || '';
         }
     });
 }
-```

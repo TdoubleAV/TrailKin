@@ -84,6 +84,8 @@
         }
     </style>
 
+    <!-- App Module (must load before Alpine to register stores) -->
+    <script type="module" src="js/main.js"></script>
     <!-- Alpine.js for reactive UI -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
 </head>
@@ -124,7 +126,8 @@
                 Purpose: Brief introduction to the game rules for new players.
                 Visibility: Shown when currentTab is 'schnellstart' (default).
             -->
-            <section id="schnellstart" class="game-section space-y-8 fade-in" x-show="currentTab === 'schnellstart'">
+            <section id="schnellstart" class="game-section space-y-8 fade-in"
+                x-show="$store.game.currentTab === 'schnellstart'">
                 <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
                     <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">Das Grundspiel in 60
                         Sekunden</h2>
@@ -170,9 +173,9 @@
                 Purpose: Main dashboard. Manage characters, inventory, and groups.
                 Directives: 
                     - x-data="$store.game": Links this section to global game store.
-                    - x-show="currentTab === 'gruppe'": Routing.
+                    - x-show="$store.game.currentTab === 'gruppe'": Routing.
             -->
-            <section id="gruppe" class="game-section fade-in" x-show="currentTab === 'gruppe'" x-data="$store.game">
+            <section id="gruppe" class="game-section fade-in" x-show="$store.game.currentTab === 'gruppe'">
                 <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg mb-6 transition-colors">
 
                     <!-- Gruppen-Auswahl -->
@@ -307,6 +310,40 @@
                                         </template>
                                     </div>
                                 </div>
+
+                                <!-- Status Effects -->
+                                <div class="mt-4 pt-3 border-t border-emerald-100 dark:border-emerald-800">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <label
+                                            class="text-xs font-bold text-stone-500 dark:text-stone-400 uppercase">Zustände</label>
+                                        <button @click="showAddStatusModal(char.id)"
+                                            class="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-2 py-1 rounded hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-colors">
+                                            + Zustand
+                                        </button>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2">
+                                        <template x-for="status in (char.statuses || [])" :key="status.id">
+                                            <div class="relative group">
+                                                <span
+                                                    class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium"
+                                                    :class="{
+                                                        'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300': status.type === 'negative',
+                                                        'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300': status.type === 'positive',
+                                                        'bg-gray-100 dark:bg-gray-700/30 text-gray-700 dark:text-gray-300': status.type === 'neutral'
+                                                    }" :title="status.effect + ' | Heilung: ' + status.cure">
+                                                    <span x-text="status.emoji"></span>
+                                                    <span x-text="status.name"></span>
+                                                </span>
+                                                <button @click="removeStatus(char.id, status.id)"
+                                                    class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center lg:opacity-0 lg:group-hover:opacity-100 transition-opacity text-[10px]">×</button>
+                                            </div>
+                                        </template>
+                                        <template x-if="!char.statuses || char.statuses.length === 0">
+                                            <span class="text-xs text-stone-400 dark:text-stone-500 italic">Keine
+                                                Zustände</span>
+                                        </template>
+                                    </div>
+                                </div>
                             </div>
                         </template>
                     </div>
@@ -354,7 +391,7 @@
                 Purpose: Detailed reference for game mechanics and optional modules.
                 Visibility: 'regeln' tab.
             -->
-            <section id="regeln" class="game-section space-y-6 fade-in" x-show="currentTab === 'regeln'">
+            <section id="regeln" class="game-section space-y-6 fade-in" x-show="$store.game.currentTab === 'regeln'">
                 <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
                     <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">Abenteuer-Handbuch</h2>
                     <p class="text-stone-600 dark:text-stone-300 mb-6">Hier findet ihr die Details und optionale Regeln,
@@ -411,6 +448,60 @@
                         </div>
                     </details>
                 </div>
+
+                <!-- SSP Probe Helper -->
+                <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
+                    <h3 class="text-xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">⚔️ Proben-Helfer (SSP)
+                    </h3>
+                    <p class="text-stone-600 dark:text-stone-300 mb-4">Klicke auf deine Wahl. Der Erzähler-Wurf wird
+                        zufällig ermittelt.</p>
+
+                    <div class="flex justify-center gap-4 mb-6">
+                        <button @click="$store.game.playSSP('rock')"
+                            class="w-20 h-20 text-4xl bg-stone-100 dark:bg-stone-700 hover:bg-stone-200 dark:hover:bg-stone-600 rounded-xl shadow-md hover:scale-105 transition-all"
+                            :class="{'ring-4 ring-emerald-500': $store.game.ssp.playerChoice === 'rock'}"
+                            title="Stein">🪨</button>
+                        <button @click="$store.game.playSSP('paper')"
+                            class="w-20 h-20 text-4xl bg-stone-100 dark:bg-stone-700 hover:bg-stone-200 dark:hover:bg-stone-600 rounded-xl shadow-md hover:scale-105 transition-all"
+                            :class="{'ring-4 ring-emerald-500': $store.game.ssp.playerChoice === 'paper'}"
+                            title="Papier">📄</button>
+                        <button @click="$store.game.playSSP('scissors')"
+                            class="w-20 h-20 text-4xl bg-stone-100 dark:bg-stone-700 hover:bg-stone-200 dark:hover:bg-stone-600 rounded-xl shadow-md hover:scale-105 transition-all"
+                            :class="{'ring-4 ring-emerald-500': $store.game.ssp.playerChoice === 'scissors'}"
+                            title="Schere">✂️</button>
+                    </div>
+
+                    <!-- Result Display -->
+                    <template x-if="$store.game.ssp.result">
+                        <div class="text-center p-4 rounded-lg fade-in" :class="{
+                                'bg-green-100 dark:bg-green-900/30': $store.game.ssp.result === 'win',
+                                'bg-yellow-100 dark:bg-yellow-900/30': $store.game.ssp.result === 'draw',
+                                'bg-red-100 dark:bg-red-900/30': $store.game.ssp.result === 'lose'
+                            }">
+                            <div class="flex justify-center items-center gap-4 mb-2">
+                                <span class="text-3xl"
+                                    x-text="$store.game.getSSPEmoji($store.game.ssp.playerChoice)"></span>
+                                <span class="text-xl font-bold text-stone-500">vs</span>
+                                <span class="text-3xl"
+                                    x-text="$store.game.getSSPEmoji($store.game.ssp.gmChoice)"></span>
+                            </div>
+                            <p class="text-lg font-bold" :class="{
+                                    'text-green-700 dark:text-green-400': $store.game.ssp.result === 'win',
+                                    'text-yellow-700 dark:text-yellow-400': $store.game.ssp.result === 'draw',
+                                    'text-red-700 dark:text-red-400': $store.game.ssp.result === 'lose'
+                                }">
+                                <span x-show="$store.game.ssp.result === 'win'">🎉 Voller Erfolg!</span>
+                                <span x-show="$store.game.ssp.result === 'draw'">⚖️ Teilerfolg (mit Haken)</span>
+                                <span x-show="$store.game.ssp.result === 'lose'">💥 Misserfolg (lustige
+                                    Konsequenz!)</span>
+                            </p>
+                            <button @click="$store.game.resetSSP()"
+                                class="mt-3 text-sm text-stone-500 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 underline">
+                                Neue Probe
+                            </button>
+                        </div>
+                    </template>
+                </div>
             </section>
 
             <!-- 
@@ -419,7 +510,7 @@
                 ========================================================================
                 Purpose: Randomly generate items and fantasy associations based on environment.
             -->
-            <section id="inspiration" class="game-section fade-in" x-show="currentTab === 'inspiration'">
+            <section id="inspiration" class="game-section fade-in" x-show="$store.game.currentTab === 'inspiration'">
                 <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
                     <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">Ideen-Generator</h2>
                     <p class="text-stone-600 dark:text-stone-300 mb-6">Wählt eure Umgebung und holt euch spontane Ideen
@@ -465,7 +556,8 @@
                 Purpose: Create full fetch quests and assign them to the current group.
                 State: Uses local 'env' state for the dropdown.
             -->
-            <section id="quest" class="game-section fade-in" x-show="currentTab === 'quest'" x-data="{ env: 'wald' }">
+            <section id="quest" class="game-section fade-in" x-show="$store.game.currentTab === 'quest'"
+                x-data="{ env: 'wald' }">
                 <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
                     <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">Quest-Generator</h2>
                     <p class="text-stone-600 dark:text-stone-300 mb-6">Keine Idee für heute? Lasst euch eine
@@ -514,8 +606,6 @@
     </div>
 
 
-    <!-- ES Modules -->
-    <script type="module" src="js/main.js"></script>
     <!-- Alpine.js Reactive Modal -->
     <div x-data="$store.game">
         <div x-show="modal.open" x-transition:enter="transition ease-out duration-200"
