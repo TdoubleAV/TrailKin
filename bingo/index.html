@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trailkin Such-Bingo Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Font for better look -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .bingo-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2px;
+            background-color: #064e3b;
+            /* Emerald 900 border */
+            border: 4px solid #064e3b;
+        }
+
+        .bingo-cell {
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            padding: 4px;
+            text-align: center;
+            font-size: 0.8rem;
+            line-height: 1.2;
+        }
+
+        .bingo-center {
+            background-color: #d1fae5;
+            /* Emerald 100 */
+            font-weight: bold;
+            color: #064e3b;
+        }
+
+        /* A4 Size Preview Scaled Down */
+        #preview-container {
+            width: 210mm;
+            height: 297mm;
+            transform: scale(0.5);
+            /* Scale for screen view */
+            transform-origin: top center;
+            background: white;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            position: relative;
+        }
+
+        @media (max-width: 600px) {
+            #preview-container {
+                transform: scale(0.3);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-stone-100 min-h-screen p-8 text-stone-800">
+
+    <div class="max-w-4xl mx-auto text-center mb-8">
+        <h1 class="text-4xl font-extrabold text-emerald-800 mb-2">Trailkin Such-Bingo</h1>
+        <p class="text-stone-600 mb-6">Erstelle dein eigenes Abenteuer-Bingo für den nächsten Spaziergang.</p>
+
+        <div class="flex justify-center gap-4 flex-wrap bg-white p-4 rounded-xl shadow-sm inline-flex">
+            <div>
+                <label class="block text-xs font-bold text-stone-500 uppercase mb-1">Umgebung</label>
+                <select id="env-select" class="border border-stone-300 rounded px-3 py-2 bg-stone-50">
+                    <option value="wald">Wald</option>
+                    <option value="stadt">Stadt</option>
+                    <option value="quartier">Quartier</option>
+                    <option value="altstadt">Altstadt</option>
+                </select>
+            </div>
+            <div class="flex items-end gap-2">
+                <button onclick="generateBingo()"
+                    class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2 rounded transition-colors">
+                    🔄 Neu Mischen
+                </button>
+                <button onclick="downloadPDF()"
+                    class="bg-pink-600 hover:bg-pink-700 text-white font-bold px-4 py-2 rounded transition-colors flex items-center gap-2">
+                    📄 PDF Downloaden
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Printable Area (A4 dimensions) -->
+    <div id="preview-wrapper" class="w-full relative mx-auto mb-20 origin-top">
+        <div id="print-area" class="bg-white text-stone-900 shadow-2xl relative flex flex-col items-center"
+            style="width: 210mm; min-height: 297mm; padding: 20mm; margin: 0 auto; transform-origin: top center;">
+
+            <!-- Header -->
+            <div class="w-full flex justify-between items-end border-b-4 border-emerald-600 pb-4 mb-8">
+                <div>
+                    <h2 class="text-5xl font-extrabold text-emerald-800 uppercase tracking-tight">TRAILKIN</h2>
+                    <p class="text-xl text-emerald-600 font-bold tracking-widest">FAMILY ADVENTURE BINGO</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-lg font-bold text-stone-400 uppercase">Zone</div>
+                    <div id="card-zone" class="text-3xl font-bold text-stone-800">WALD</div>
+                </div>
+            </div>
+
+            <!-- Instructions -->
+            <p class="text-xl text-center mb-8 max-w-lg text-stone-600">
+                Finde 5 Gegenstände in einer Reihe (waagrecht, senkrecht oder diagonal) und rufe laut
+                <strong>"BINGO!"</strong>
+            </p>
+
+            <!-- Grid -->
+            <div id="bingo-grid" class="bingo-grid w-full aspect-square mb-8">
+                <!-- Cells generated by JS -->
+            </div>
+
+            <!-- Footer -->
+            <div class="mt-auto w-full text-center border-t-2 border-stone-100 pt-4">
+                <p class="text-stone-500 font-bold">www.trailkin.com</p>
+                <p class="text-sm text-stone-400 mt-1">Mach jeden Spaziergang zum Abenteuer.</p>
+            </div>
+
+            <!-- Decorative Elements -->
+            <div class="absolute top-10 right-10 opacity-10 text-9xl">🌲</div>
+            <div class="absolute bottom-10 left-10 opacity-10 text-9xl">🔍</div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { inspirationData } from '../js/data/inspiration.js';
+
+        // Make functions global for HTML onclick
+        window.generateBingo = generateBingo;
+        window.downloadPDF = downloadPDF;
+
+        function getRandomItems(array, count) {
+            const shuffled = [...array].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+
+        function generateBingo() {
+            const env = document.getElementById('env-select').value;
+            const data = inspirationData[env] || inspirationData['wald'];
+
+            // Need 24 items (center is free/joker)
+            const items = getRandomItems(data, 24);
+
+            const grid = document.getElementById('bingo-grid');
+            grid.innerHTML = '';
+
+            const zoneLabel = document.getElementById('card-zone');
+            zoneLabel.textContent = env.toUpperCase();
+
+            // Insert center "FREE" at index 12
+            items.splice(12, 0, { item: "★ TRAILKIN JOKER ★", fantasy: "Freies Feld!" });
+
+            items.forEach((entry, index) => {
+                const cell = document.createElement('div');
+                cell.className = 'bingo-cell group relative overflow-hidden';
+                if (index === 12) cell.className += ' bingo-center';
+
+                // Item Name
+                const span = document.createElement('span');
+                span.className = 'font-bold z-10';
+                span.innerText = entry.item;
+                cell.appendChild(span);
+
+                // Fantasy Name (Small subtitle)
+                if (index !== 12) {
+                    const sub = document.createElement('span');
+                    sub.className = 'text-[10px] text-stone-400 mt-1 z-10';
+                    // Take first fantasy item
+                    sub.innerText = entry.fantasy.split(',')[0];
+                    cell.appendChild(sub);
+                }
+
+                grid.appendChild(cell);
+            });
+        }
+
+        async function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const element = document.getElementById('print-area');
+            const env = document.getElementById('env-select').value;
+
+            // Visual feedback
+            const btn = document.querySelector('button[onclick="downloadPDF()"]');
+            const originalText = btn.innerText;
+            btn.innerText = "⏳ Generiere...";
+
+            try {
+                // Use html2canvas to capture the exact CSS look including the grid borders
+                const canvas = await html2canvas(element, {
+                    scale: 2, // High res
+                    useCORS: true
+                });
+
+                const imgData = canvas.toDataURL('image/jpeg', 1.0);
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = pdf.internal.pageSize.getHeight();
+
+                pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+                pdf.save(`trailkin-bingo-${env}.pdf`);
+
+            } catch (err) {
+                console.error(err);
+                alert("Fehler beim Erstellen des PDFs.");
+            } finally {
+                btn.innerText = originalText;
+            }
+        }
+
+        // Init
+        // Simple scale fix for preview
+        const wrapper = document.getElementById('preview-wrapper');
+        const content = document.getElementById('print-area');
+
+        function fitPreview() {
+            // Get the available width from the parent container (body/div)
+            // We use document.body.clientWidth - (padding) or just wrapper.parentElement.clientWidth
+            const parentWidth = Math.min(window.innerWidth - 40, 800); // Max width limit for niceness
+
+            // Calculate scale to fit. 
+            // content.offsetWidth is fixed at 210mm (~794px)
+            const scale = Math.min(parentWidth / content.offsetWidth, 1);
+
+            content.style.transform = `scale(${scale})`;
+
+            // Critical: Adjust wrapper height because transform doesn't affect flow
+            wrapper.style.height = `${content.offsetHeight * scale}px`;
+            wrapper.style.width = `${content.offsetWidth * scale}px`;
+        }
+        window.addEventListener('resize', fitPreview);
+
+        // Load initial
+        generateBingo();
+        // Wait a tick for layout then fit
+        setTimeout(fitPreview, 100);
+
+    </script>
+</body>
+
+</html>
