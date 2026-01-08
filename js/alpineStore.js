@@ -183,7 +183,12 @@ export function initAlpineStore(Alpine) {
                 fantasy: item.fantasy
             }));
 
-            this.currentGroup.currentQuest = items;
+            this.currentGroup.quest = {
+                env: env,
+                items: items,
+                active: true,
+                date: new Date().toLocaleDateString()
+            };
             this.saveGame();
 
             // Switch to group view
@@ -360,15 +365,17 @@ export function initAlpineStore(Alpine) {
                 return;
             }
 
-            // Simple selection - just pick the first available for now (can be enhanced with proper UI)
-            const options = available.map(s => s.emoji + ' ' + s.name).join('\n');
-            const choice = prompt('Wähle einen Zustand:\n' + options);
-            if (choice) {
-                const selected = available.find(s => choice.includes(s.name));
+            // Use custom modal for consistency
+            const options = available.map(s => s.name).join(', ');
+            this.showModal(`Zustand wählen (${options})`, '', (choice) => {
+                if (!choice) return;
+                const selected = available.find(s => s.name.toLowerCase().includes(choice.toLowerCase()));
                 if (selected) {
                     this.addStatus(charId, selected.id);
+                } else {
+                    alert('Zustand nicht gefunden!');
                 }
-            }
+            });
         },
 
         // --- SSP Helper ---

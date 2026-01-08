@@ -1,0 +1,24 @@
+<!-- Active Quest Display -->
+<template x-if="currentGroup?.quest?.active">
+    <div
+        class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4 mb-6 shadow-sm relative">
+        <h3 class="text-lg font-bold text-blue-800 dark:text-blue-300 mb-2 capitalize">
+            🗺️ Aktuelle Quest: <span x-text="currentGroup.quest.env"></span>
+        </h3>
+        <div class="grid gap-2">
+            <template x-for="(item, idx) in currentGroup.quest.items" :key="idx">
+                <div class="flex items-start gap-2 text-sm text-stone-700 dark:text-stone-300">
+                    <span class="font-bold">•</span>
+                    <span>
+                        <span class="font-semibold" x-text="item.item"></span>
+                        <span class="opacity-75" x-text="' — ' + item.fantasy"></span>
+                    </span>
+                </div>
+            </template>
+        </div>
+        <button @click="currentGroup.quest.active = false; saveGame()"
+            class="absolute top-2 right-2 text-xs bg-blue-100 dark:bg-blue-800 hover:bg-blue-200 dark:hover:bg-blue-700 text-blue-800 dark:text-blue-200 px-2 py-1 rounded transition-colors">
+            Beenden
+        </button>
+    </div>
+</template>

@@ -178,6 +178,30 @@
             <section id="gruppe" class="game-section fade-in" x-show="$store.game.currentTab === 'gruppe'">
                 <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg mb-6 transition-colors">
 
+                    <!-- Active Quest Display -->
+                    <template x-if="currentGroup?.quest?.active">
+                        <div
+                            class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4 mb-6 shadow-sm relative">
+                            <h3 class="text-lg font-bold text-blue-800 dark:text-blue-300 mb-2 capitalize">
+                                ��️ Aktuelle Quest: <span x-text="currentGroup.quest.env"></span>
+                            </h3>
+                            <div class="grid gap-2">
+                                <template x-for="(item, idx) in currentGroup.quest.items" :key="idx">
+                                    <div class="flex items-start gap-2 text-sm text-stone-700 dark:text-stone-300">
+                                        <span class="font-bold">•</span>
+                                        <span>
+                                            <span class="font-semibold" x-text="item.item"></span>
+                                            <span class="opacity-75" x-text="' — ' + item.fantasy"></span>
+                                        </span>
+                                    </div>
+                                </template>
+                            </div>
+                            <button @click="currentGroup.quest.active = false; saveGame()"
+                                class="absolute top-2 right-2 text-xs bg-blue-100 dark:bg-blue-800 hover:bg-blue-200 dark:hover:bg-blue-700 text-blue-800 dark:text-blue-200 px-2 py-1 rounded transition-colors">
+                                Beenden
+                            </button>
+                        </div>
+                    </template>
                     <!-- Gruppen-Auswahl -->
                     <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
                         <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400">Meine Gruppe</h2>
@@ -613,26 +637,27 @@
 
 
     <!-- Alpine.js Reactive Modal -->
-    <div x-data="$store.game">
-        <div x-show="modal.open" x-transition:enter="transition ease-out duration-200"
+    <div x-data>
+        <div x-show="$store.game.modal.open" x-transition:enter="transition ease-out duration-200"
             x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
             x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100"
-            x-transition:leave-end="opacity-0" @click.self="closeModal()"
+            x-transition:leave-end="opacity-0" @click.self="$store.game.closeModal()"
             class="fixed inset-0 bg-black/50 flex items-center justify-center z-50" style="display: none;">
-            <div x-show="modal.open" x-transition:enter="transition ease-out duration-200"
+            <div x-show="$store.game.modal.open" x-transition:enter="transition ease-out duration-200"
                 x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
                 x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 scale-100"
                 x-transition:leave-end="opacity-0 scale-95" @click.stop
                 class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-xl w-full max-w-sm mx-4">
-                <h3 x-text="modal.title" class="text-xl font-bold mb-4 text-emerald-800 dark:text-emerald-400"></h3>
-                <input x-model="modal.value" x-ref="modalInput" @keydown.enter="confirmModal()"
-                    @keydown.escape="closeModal()"
+                <h3 x-text="$store.game.modal.title"
+                    class="text-xl font-bold mb-4 text-emerald-800 dark:text-emerald-400"></h3>
+                <input x-model="$store.game.modal.value" x-ref="modalInput" @keydown.enter="$store.game.confirmModal()"
+                    @keydown.escape="$store.game.closeModal()"
                     class="w-full p-2 border border-stone-300 dark:border-stone-600 rounded mb-4 bg-white dark:bg-stone-900 text-stone-900 dark:text-white outline-none focus:border-emerald-500"
                     autocomplete="off" type="text">
                 <div class="flex justify-end gap-2">
-                    <button @click="closeModal()"
+                    <button @click="$store.game.closeModal()"
                         class="px-4 py-2 rounded text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-700 font-medium">Abbrechen</button>
-                    <button @click="confirmModal()"
+                    <button @click="$store.game.confirmModal()"
                         class="px-4 py-2 rounded bg-emerald-600 text-white hover:bg-emerald-700 font-bold shadow-sm">OK</button>
                 </div>
             </div>
