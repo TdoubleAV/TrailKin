@@ -94,36 +94,48 @@
 
     <div class="container mx-auto max-w-4xl p-4 md:p-8" x-data="$store.game">
         <header class="text-center mb-8 relative">
-            <button @click="toggleTheme()"
-                class="absolute right-0 top-0 text-2xl p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
-                title="Theme wechseln">
-                <span id="theme-icon" x-text="theme === 'dark' ? '☀️' : '🌙'">🌙</span>
-            </button>
-            <h1 class="text-4xl md:text-5xl font-bold text-emerald-800 dark:text-emerald-400">Trailkin
-            </h1>
-            <p class="text-stone-600 dark:text-stone-400 mt-2">Dein Abenteuer beginnt vor der Haustür</p>
+            <!-- Theme & Language Controls -->
+            <div class="absolute right-0 top-0 flex items-center gap-1">
+                <!-- Language Toggle -->
+                <template x-for="lang in $store.i18n.languageOptions" :key="lang.code">
+                    <button @click="$store.i18n.setLanguage(lang.code)"
+                        class="text-xl p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-all"
+                        :class="$store.i18n.current === lang.code ? 'opacity-100 scale-110' : 'opacity-40 hover:opacity-70'"
+                        :title="lang.name" x-text="lang.flag">
+                    </button>
+                </template>
+                <!-- Theme Toggle -->
+                <button @click="toggleTheme()"
+                    class="text-2xl p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+                    :title="$t('header.themeToggle')">
+                    <span id="theme-icon" x-text="theme === 'dark' ? '☀️' : '🌙'">🌙</span>
+                </button>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-emerald-800 dark:text-emerald-400"
+                x-text="$t('header.title')"></h1>
+            <p class="text-stone-600 dark:text-stone-400 mt-2" x-text="$t('header.tagline')"></p>
         </header>
 
         <nav
             class="sticky top-2 z-10 bg-white/70 dark:bg-stone-900/80 backdrop-blur-md rounded-xl shadow-md mb-8 p-2 flex justify-center items-center flex-wrap gap-2 transition-colors duration-300">
             <a href="#schnellstart" class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
                 :class="$store.game.currentTab === 'schnellstart' ? 'active bg-emerald-600 text-white' : 'text-stone-600 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-700'"
-                data-section="schnellstart">🚀 Start</a>
+                data-section="schnellstart" x-text="$t('nav.start')"></a>
             <a href="#gruppe" class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
                 :class="$store.game.currentTab === 'gruppe' ? 'active bg-emerald-600 text-white' : 'text-stone-600 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-700'"
-                data-section="gruppe">🛡️ Gruppe</a>
+                data-section="gruppe" x-text="$t('nav.group')"></a>
             <a href="#regeln" class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
                 :class="$store.game.currentTab === 'regeln' ? 'active bg-emerald-600 text-white' : 'text-stone-600 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-700'"
-                data-section="regeln">📜 Regeln</a>
+                data-section="regeln" x-text="$t('nav.rules')"></a>
             <a href="#inspiration" class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
                 :class="$store.game.currentTab === 'inspiration' ? 'active bg-emerald-600 text-white' : 'text-stone-600 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-700'"
-                data-section="inspiration">💡 Ideen</a>
+                data-section="inspiration" x-text="$t('nav.ideas')"></a>
             <a href="#quest" class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
                 :class="$store.game.currentTab === 'quest' ? 'active bg-emerald-600 text-white' : 'text-stone-600 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-700'"
-                data-section="quest">🗺️ Quest</a>
+                data-section="quest" x-text="$t('nav.quest')"></a>
             <a href="#bingo" class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
                 :class="$store.game.currentTab === 'bingo' ? 'active bg-emerald-600 text-white' : 'text-stone-600 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-700'"
-                data-section="bingo">🎲 Bingo</a>
+                data-section="bingo" x-text="$t('nav.bingo')"></a>
         </nav>
 
         <main>
@@ -137,38 +149,35 @@
             <section id="schnellstart" class="game-section space-y-8 fade-in"
                 x-show="$store.game.currentTab === 'schnellstart'">
                 <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
-                    <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">Das Grundspiel in 60
-                        Sekunden</h2>
-                    <p class="text-stone-600 dark:text-stone-300 mb-6">Alles, was ihr für den Anfang braucht. Legt
-                        sofort los!</p>
+                    <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4"
+                        x-text="$t('quickstart.title')"></h2>
+                    <p class="text-stone-600 dark:text-stone-300 mb-6" x-text="$t('quickstart.subtitle')"></p>
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg">
-                            <h3 class="font-bold text-lg">1. Verteilt die Rollen</h3>
-                            <p class="text-sm text-stone-700 dark:text-stone-300 mt-1">Ein Erzähler (Guide) führt an,
-                                die
-                                anderen sind Entdecker (Ritter, Zauberin) und der Hund ist der treue Begleiter.</p>
+                            <h3 class="font-bold text-lg" x-text="$t('quickstart.step1_title')"></h3>
+                            <p class="text-sm text-stone-700 dark:text-stone-300 mt-1"
+                                x-text="$t('quickstart.step1_desc')"></p>
                         </div>
                         <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg">
-                            <h3 class="font-bold text-lg">2. Definiert eine Quest</h3>
-                            <p class="text-sm text-stone-700 dark:text-stone-300 mt-1">Am einfachsten: Eine
-                                Sammel-Quest. Findet 3 magische Gegenstände (z.B. eine 'Drachenschuppe' = spitzer
-                                Stein).</p>
+                            <h3 class="font-bold text-lg" x-text="$t('quickstart.step2_title')"></h3>
+                            <p class="text-sm text-stone-700 dark:text-stone-300 mt-1"
+                                x-text="$t('quickstart.step2_desc')"></p>
                         </div>
                         <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg">
-                            <h3 class="font-bold text-lg">3. Nutzt die Umgebung</h3>
-                            <p class="text-sm text-stone-700 dark:text-stone-300 mt-1">Ein Ast wird zum Zauberstab, eine
-                                Pfütze zum Sumpfmonster. Alles ist Teil des Abenteuers!</p>
+                            <h3 class="font-bold text-lg" x-text="$t('quickstart.step3_title')"></h3>
+                            <p class="text-sm text-stone-700 dark:text-stone-300 mt-1"
+                                x-text="$t('quickstart.step3_desc')"></p>
                         </div>
                         <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg">
-                            <h3 class="font-bold text-lg">4. Löst Aufgaben kreativ</h3>
-                            <p class="text-sm text-stone-700 dark:text-stone-300 mt-1">Wenn es schwierig wird,
-                                beschreibt der Entdecker kreativ, wie er es schafft. Der Erzähler entscheidet.</p>
+                            <h3 class="font-bold text-lg" x-text="$t('quickstart.step4_title')"></h3>
+                            <p class="text-sm text-stone-700 dark:text-stone-300 mt-1"
+                                x-text="$t('quickstart.step4_desc')"></p>
                         </div>
                         <div
                             class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg col-span-1 md:col-span-2 lg:col-span-2">
-                            <h3 class="font-bold text-lg">Das Wichtigste</h3>
-                            <p class="text-sm text-stone-700 dark:text-stone-300 mt-1">Es gibt keine falschen Ideen! Das
-                                Ziel ist, gemeinsam Spaß zu haben. Lasst eurer Fantasie freien Lauf.</p>
+                            <h3 class="font-bold text-lg" x-text="$t('quickstart.important_title')"></h3>
+                            <p class="text-sm text-stone-700 dark:text-stone-300 mt-1"
+                                x-text="$t('quickstart.important_desc')"></p>
                         </div>
                     </div>
                 </div>
@@ -213,7 +222,8 @@
                     </template>
                     <!-- Gruppen-Auswahl -->
                     <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
-                        <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400">Meine Gruppe</h2>
+                        <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400"
+                            x-text="$t('group.title')"></h2>
                         <div class="flex items-center gap-2">
                             <select x-model.number="activeGroupId" @change="saveGame()"
                                 class="bg-white dark:bg-stone-900 border border-stone-300 dark:border-stone-600 rounded-lg px-3 py-2 text-sm outline-none">
@@ -223,19 +233,17 @@
                             </select>
                             <button @click="createGroup()"
                                 class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-3 py-2 rounded-lg text-sm"
-                                title="Neue Gruppe">+ Neu</button>
+                                :title="$t('group.newGroup')" x-text="$t('group.newGroup')"></button>
                             <button @click="renameGroup()"
                                 class="bg-amber-500 hover:bg-amber-600 text-white font-bold px-3 py-2 rounded-lg text-sm"
-                                title="Gruppe umbenennen">✏️</button>
+                                :title="$t('group.rename')">✏️</button>
                             <button @click="deleteGroup()"
                                 class="bg-red-500 hover:bg-red-600 text-white font-bold px-3 py-2 rounded-lg text-sm"
-                                title="Gruppe löschen">🗑️</button>
+                                :title="$t('group.delete')">🗑️</button>
                         </div>
                     </div>
 
-                    <p class="text-stone-600 dark:text-stone-300 mb-4">Verwaltet eure Entdecker und den treuen
-                        Begleiter.
-                    </p>
+                    <p class="text-stone-600 dark:text-stone-300 mb-4" x-text="$t('group.subtitle')"></p>
 
                     <!-- Charakter Liste -->
                     <!-- Charakter Liste -->
