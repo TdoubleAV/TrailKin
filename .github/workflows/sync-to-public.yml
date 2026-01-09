@@ -1,0 +1,38 @@
+name: Sync to Public Repo
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Remove Private Files
+        run: |
+          # Liste der Dateien und Ordner, die NICHT öffentlich sein sollen
+          rm -f task.md
+          rm -f docs/monetization_tasks.md
+          rm -f docs/business_*.md
+          rm -rf docs/archive
+          rm -rf docs/to_update
+          rm -rf .system_generated
+          
+          # Hier weitere Dateien hinzufügen, falls nötig
+          echo "Private files removed."
+
+      - name: Push to Public Repo
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source-directory: '.'
+          destination-github-username: 'TdoubleAV'
+          destination-repository-name: 'trailkin'
+          user-name: 'trailkin-sync-bot'
+          user-email: 'sync@trailkin.local'
+          target-branch: master

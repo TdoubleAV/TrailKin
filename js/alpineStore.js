@@ -4,7 +4,7 @@
  */
 
 import { createDefaultGroup, appState, saveGame, getCurrentGroup } from './state.js';
-import { inspirationData, characterBackgrounds } from './data/inspiration.js';
+import { inspirationData, characterBackgrounds } from './data/inspirations.js';
 import { statusesData } from './data/statuses.js';
 
 /**
@@ -174,10 +174,24 @@ export function initAlpineStore(Alpine) {
         },
 
         // --- Generator Logic ---
+        openInspirationModal() {
+            const envOptions = [
+                { label: 'Wald', value: 'wald', emoji: '🌳' },
+                { label: 'Quartier', value: 'quartier', emoji: '🏡' },
+                { label: 'Stadt', value: 'stadt', emoji: '🏙️' },
+                { label: 'Altstadt', value: 'altstadt', emoji: '🏰' }
+            ];
+
+            this.showSelectionModal('Umgebung wählen', envOptions, (env) => {
+                if (env) this.generateInspiration(env);
+            });
+        },
+
         generateInspiration(env) {
             const data = inspirationData[env] || [];
             if (data.length === 0) return;
             const item = data[Math.floor(Math.random() * data.length)];
+
             this.quest.inspiration = item;
             this.quest.lastEnv = env;
         },

@@ -114,7 +114,7 @@ Visit the [live demo](#demo) — that's it! The app works entirely in your brows
 ### Option 3: Run Locally
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/trailkin.git
+git clone https://github.com/TdoubleAV/trailkin.git
 cd trailkin
 python -m http.server 8000
 # Open http://localhost:8000
@@ -124,7 +124,7 @@ python -m http.server 8000
 1. Fork this repository
 2. Go to Settings > Pages
 3. Set Source to "Deploy from a branch" > main > /root
-4. Your site is live at `https://YOUR_USERNAME.github.io/trailkin/`
+4. Your site is live at `https://TdoubleAV.github.io/trailkin/`
 
 ---
 
@@ -155,7 +155,6 @@ trailkin/
 - [x] Quest/Inspiration generators
 - [x] PWA offline support
 - [x] Dark mode
-- [x] Rebranding to "Family Adventure Tool"
 
 ### Coming Soon
 - [ ] Full English language support (UI toggle)

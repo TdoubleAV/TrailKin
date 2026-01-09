@@ -544,19 +544,11 @@
                     <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">Ideen-Generator</h2>
                     <p class="text-stone-600 dark:text-stone-300 mb-6">Wählt eure Umgebung und holt euch spontane Ideen
                         für magische Verwandlungen.</p>
-                    <div class="flex flex-wrap gap-3 mb-6">
-                        <button @click="$store.game.generateInspiration('wald')"
-                            class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-lg">🌳
-                            Wald</button>
-                        <button @click="$store.game.generateInspiration('quartier')"
-                            class="bg-stone-400 hover:bg-stone-500 text-white font-semibold px-4 py-2 rounded-lg">🏡
-                            Quartier</button>
-                        <button @click="$store.game.generateInspiration('stadt')"
-                            class="bg-stone-400 hover:bg-stone-500 text-white font-semibold px-4 py-2 rounded-lg">🏙️
-                            Stadt</button>
-                        <button @click="$store.game.generateInspiration('altstadt')"
-                            class="bg-stone-400 hover:bg-stone-500 text-white font-semibold px-4 py-2 rounded-lg">🏰
-                            Altstadt</button>
+                    <div class="flex flex-wrap gap-3 mb-6 justify-center">
+                        <button @click="$store.game.openInspirationModal()"
+                            class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg transform hover:scale-105 transition-all">
+                            ✨ Neue Idee zaubern
+                        </button>
                     </div>
 
                     <div id="inspiration-output" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
