@@ -118,9 +118,8 @@
   },
   "selectEnv": "Umgebung wählen",
   "cancel": "Abbrechen",
-  "ok": "OK"
-},
-"errors": {
-  "cannotDeleteLastGroup": "Du kannst die letzte Gruppe nicht löschen!"
-}
+  "ok": "OK",
+  "errors": {
+    "cannotDeleteLastGroup": "Du kannst die letzte Gruppe nicht löschen!"
+  }
 }
