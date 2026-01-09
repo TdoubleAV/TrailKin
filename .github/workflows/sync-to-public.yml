@@ -23,18 +23,21 @@ jobs:
           echo "Private files removed."
 
       - name: Push to Public Repo
+        env:
+          PAT: ${{ secrets.API_TOKEN_GITHUB }}
         run: |
-          # Configure git
-          git config user.name "GitHub Actions Bot"
-          git config user.email "actions@github.com"
-          
           # Remove .git and reinitialize for clean push
           rm -rf .git
           git init
+          
+          # Configure git AFTER init
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          
           git add -A
           git commit -m "Sync from internal repo"
           
           # Push using the token
-          git remote add public https://${{ secrets.API_TOKEN_GITHUB }}@github.com/TdoubleAV/TrailKin.git
+          git remote add public https://${PAT}@github.com/TdoubleAV/TrailKin.git
           git branch -M master
           git push -f public master
