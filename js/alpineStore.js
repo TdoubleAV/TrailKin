@@ -176,13 +176,13 @@ export function initAlpineStore(Alpine) {
         // --- Generator Logic ---
         openInspirationModal() {
             const envOptions = [
-                { label: 'Wald', value: 'wald', emoji: '🌳' },
-                { label: 'Quartier', value: 'quartier', emoji: '🏡' },
-                { label: 'Stadt', value: 'stadt', emoji: '🏙️' },
-                { label: 'Altstadt', value: 'altstadt', emoji: '🏰' }
+                { label: this.t('inspiration.forest'), value: 'wald', emoji: '🌳' },
+                { label: this.t('inspiration.neighborhood'), value: 'quartier', emoji: '🏡' },
+                { label: this.t('inspiration.city'), value: 'stadt', emoji: '🏙️' },
+                { label: this.t('inspiration.oldtown'), value: 'altstadt', emoji: '🏰' }
             ];
 
-            this.showSelectionModal('Umgebung wählen', envOptions, (env) => {
+            this.showSelectionModal(this.t('modals.selectEnv'), envOptions, (env) => {
                 if (env) this.generateInspiration(env);
             });
         },

@@ -82,7 +82,10 @@
     "forest": "🌳 Forest",
     "neighborhood": "🏡 Neighborhood",
     "city": "🏙️ City",
+    "city": "🏙️ City",
     "oldtown": "🏰 Old Town",
+    "magicButton": "✨ Conjure New Idea",
+    "selectEnv": "Select Environment",
     "youFind": "You find:",
     "maybeIts": "...maybe it's"
   },
@@ -104,16 +107,18 @@
     "version": "Trailkin v3.5 — Open Source (MIT License)",
     "madeWith": "Made with 💚 for outdoor adventures"
   },
-  "modals": {
-    "newGroupTitle": "Name of the new group",
-    "newGroupDefault": "New Group",
-    "renameGroupTitle": "New name for the group",
-    "newItemTitle": "New item",
-    "newItemForChar": "New item for",
-    "cancel": "Cancel",
-    "ok": "OK"
-  },
-  "errors": {
-    "cannotDeleteLastGroup": "You cannot delete the last group!"
-  }
+},
+"modals": {
+  "newGroupTitle": "Name of the new group",
+  "newGroupDefault": "New Group",
+  "renameGroupTitle": "New name for the group",
+  "newItemTitle": "New item",
+  "newItemForChar": "New item for",
+  "selectEnv": "Select Environment",
+  "cancel": "Cancel",
+  "ok": "OK"
+},
+"errors": {
+  "cannotDeleteLastGroup": "You cannot delete the last group!"
+}
 }

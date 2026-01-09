@@ -1,4 +1,4 @@
-const CACHE_NAME = 'wald-rpg-v3.1';
+const CACHE_NAME = 'trailkin-v3.1';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
@@ -6,7 +6,7 @@ const ASSETS_TO_CACHE = [
     './js/main.js',
     './js/alpineStore.js',
     './js/state.js',
-    './js/data/inspiration.js',
+    './js/data/inspirations.js',
     // External Resources
     'https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js',
     'https://cdn.tailwindcss.com'
