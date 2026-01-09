@@ -182,7 +182,7 @@ No build step required — it's just HTML, CSS, and vanilla JS with Alpine.js!
 If Trailkin brings joy to your family walks, consider supporting its development:
 
 <p align="center">
-  <a href="https://ko-fi.com/abenteuer">
+  <a href="https://ko-fi.com/tdoubleav">
     <img src="https://img.shields.io/badge/Ko--fi-Support%20Me-ff5e5b?logo=ko-fi" alt="Ko-fi">
   </a>
 </p>
