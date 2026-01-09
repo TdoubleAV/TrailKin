@@ -44,9 +44,5 @@ window.addEventListener('hashchange', () => {
     }
 });
 
-// Initial Generator Call (ensure store is ready)
-document.addEventListener('alpine:initialized', () => {
-    if (Alpine.store('game')) {
-        Alpine.store('game').generateInspiration('wald');
-    }
-});
+// Note: No longer auto-generating initial inspiration
+// Users now start with empty list and add ideas manually

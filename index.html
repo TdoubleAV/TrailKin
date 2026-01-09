@@ -545,31 +545,64 @@
             <section id="inspiration" class="game-section fade-in" x-show="$store.game.currentTab === 'inspiration'">
                 <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
                     <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">Ideen-Generator</h2>
-                    <p class="text-stone-600 dark:text-stone-300 mb-6">Wählt eure Umgebung und holt euch spontane Ideen
-                        für magische Verwandlungen.</p>
-                    <div class="flex flex-wrap gap-3 mb-6 justify-center">
-                        <button @click="$store.game.openInspirationModal()"
-                            class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg transform hover:scale-105 transition-all"
+                    <p class="text-stone-600 dark:text-stone-300 mb-6">Wählt eure Umgebung und sammelt Ideen für
+                        magische Verwandlungen. Löscht was nicht passt oder würfelt neu!</p>
+
+                    <!-- Controls -->
+                    <div class="flex flex-wrap gap-3 mb-6 justify-center items-center">
+                        <select x-model="$store.game.quest.lastEnv"
+                            class="bg-white dark:bg-stone-900 border border-stone-300 dark:border-stone-600 rounded-lg px-3 py-2 outline-none text-sm">
+                            <option value="wald" x-text="$store.game.t('inspiration.forest')"></option>
+                            <option value="quartier" x-text="$store.game.t('inspiration.neighborhood')"></option>
+                            <option value="stadt" x-text="$store.game.t('inspiration.city')"></option>
+                            <option value="altstadt" x-text="$store.game.t('inspiration.oldtown')"></option>
+                        </select>
+                        <button @click="$store.game.addInspiration()"
+                            class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold text-lg px-6 py-3 rounded-full shadow-lg transform hover:scale-105 transition-all"
                             x-text="$store.game.t('inspiration.magicButton')">
+                        </button>
+                        <button @click="$store.game.clearInspirations()"
+                            x-show="$store.game.quest.inspirations.length > 0"
+                            class="text-stone-400 hover:text-red-500 text-sm underline transition-colors">
+                            🗑️ Alle löschen
                         </button>
                     </div>
 
+                    <!-- Ideas Grid -->
                     <div id="inspiration-output" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <template x-if="$store.game.quest.inspiration">
+                        <template x-for="idea in $store.game.quest.inspirations" :key="idea.id">
                             <div
-                                class="fade-in bg-stone-50 dark:bg-stone-900 border-l-4 border-emerald-500 p-3 rounded">
+                                class="fade-in bg-stone-50 dark:bg-stone-900 border-l-4 border-emerald-500 p-4 rounded-lg relative group">
+                                <!-- Action buttons -->
+                                <div
+                                    class="absolute top-2 right-2 flex gap-1 opacity-60 group-hover:opacity-100 transition-opacity">
+                                    <button @click="$store.game.rerollInspiration(idea.id)"
+                                        class="w-7 h-7 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-amber-800 flex items-center justify-center transition-colors"
+                                        title="Neu würfeln">🔄</button>
+                                    <button @click="$store.game.removeInspiration(idea.id)"
+                                        class="w-7 h-7 rounded-full bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300 hover:bg-red-200 dark:hover:bg-red-800 flex items-center justify-center transition-colors"
+                                        title="Löschen">×</button>
+                                </div>
+                                <!-- Content -->
                                 <div
                                     class="text-sm font-bold text-stone-500 dark:text-stone-400 uppercase tracking-wider mb-1">
                                     Du findest:</div>
-                                <div class="text-xl font-bold text-emerald-800 dark:text-emerald-400 mb-1"
-                                    x-text="'&quot;' + $store.game.quest.inspiration.item + '&quot;'"></div>
+                                <div class="text-xl font-bold text-emerald-800 dark:text-emerald-400 mb-1 pr-16"
+                                    x-text="'\"' + idea.item + ' \"'"></div>
                                 <div class="text-sm text-stone-600 dark:text-stone-300 italic">...vielleicht ist es
-                                    <span class="text-emerald-600 dark:text-emerald-500"
-                                        x-text="$store.game.quest.inspiration.fantasy"></span>?
+                                    <span class="text-emerald-600 dark:text-emerald-500" x-text="idea.fantasy"></span>?
                                 </div>
                             </div>
                         </template>
                     </div>
+
+                    <!-- Empty State -->
+                    <template x-if="$store.game.quest.inspirations.length === 0">
+                        <div class="text-center py-12 text-stone-400 dark:text-stone-500">
+                            <div class="text-6xl mb-4 opacity-20">✨</div>
+                            <p>Wähle eine Umgebung und klicke auf den Button, um Ideen zu sammeln!</p>
+                        </div>
+                    </template>
                 </div>
             </section>
 

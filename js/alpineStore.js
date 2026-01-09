@@ -42,8 +42,8 @@ export function initAlpineStore(Alpine) {
 
         // --- Generator State ---
         quest: {
-            inspiration: null, // Holds the result of the "Ideen-Generator" { item: '', fantasy: '' }
-            lastEnv: null
+            inspirations: [], // Array of inspiration objects { id, item, fantasy }
+            lastEnv: 'wald'
         },
 
         // --- Bingo State ---
@@ -194,18 +194,57 @@ export function initAlpineStore(Alpine) {
                 { label: this.t('inspiration.oldtown'), value: 'altstadt', emoji: '🏰' }
             ];
 
-            this.showSelectionModal(this.t('modals.selectEnv'), envOptions, (env) => {
-                if (env) this.generateInspiration(env);
+            this.showSelectionModal(this.t('selectEnv'), envOptions, (env) => {
+                if (env) {
+                    this.quest.lastEnv = env;
+                    this.addInspiration(env);
+                }
             });
         },
 
-        generateInspiration(env) {
-            const data = inspirationData[env] || [];
+        // Add a new inspiration to the list
+        addInspiration(env) {
+            const data = inspirationData[env || this.quest.lastEnv] || [];
             if (data.length === 0) return;
-            const item = data[Math.floor(Math.random() * data.length)];
 
-            this.quest.inspiration = item;
+            const item = data[Math.floor(Math.random() * data.length)];
+            this.quest.inspirations.push({
+                id: Date.now() + Math.random(),
+                item: item.item,
+                fantasy: item.fantasy
+            });
+        },
+
+        // Remove a specific inspiration by id
+        removeInspiration(id) {
+            this.quest.inspirations = this.quest.inspirations.filter(i => i.id !== id);
+        },
+
+        // Re-roll a specific inspiration (replace with new random one)
+        rerollInspiration(id) {
+            const data = inspirationData[this.quest.lastEnv] || [];
+            if (data.length === 0) return;
+
+            const index = this.quest.inspirations.findIndex(i => i.id === id);
+            if (index === -1) return;
+
+            const newItem = data[Math.floor(Math.random() * data.length)];
+            this.quest.inspirations[index] = {
+                id: Date.now() + Math.random(),
+                item: newItem.item,
+                fantasy: newItem.fantasy
+            };
+        },
+
+        // Clear all inspirations
+        clearInspirations() {
+            this.quest.inspirations = [];
+        },
+
+        // Legacy single-item support (for backwards compatibility)
+        generateInspiration(env) {
             this.quest.lastEnv = env;
+            this.addInspiration(env);
         },
 
         generateQuest(env) {
