@@ -15,15 +15,11 @@ jobs:
 
       - name: Remove Private Files
         run: |
-          # Liste der Dateien und Ordner, die NICHT öffentlich sein sollen
+          # Gesamter docs-Ordner ist privat
+          rm -rf docs || true
           rm -f task.md || true
-          rm -f docs/monetization_tasks.md || true
-          rm -f docs/business_*.md || true
-          rm -rf docs/archive || true
-          rm -rf docs/to_update || true
           rm -rf .system_generated || true
           rm -rf .agent || true
-          # Wichtig: .github wird NICHT gelöscht, damit der Workflow selbst synchronisiert wird
           
           echo "Private files removed."
 
