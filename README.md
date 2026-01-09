@@ -60,9 +60,7 @@ Think of it as a "boredom killer" for walks. Your kid doesn't want to go outside
 
 ## Demo
 
-**[Try Trailkin Live](https://TdoubleAV.github.io/trailkin/)**
-
-> *Replace with your actual GitHub Pages URL after deployment*
+**[Try Trailkin Live](https://tdoubleav.github.io/TrailKin/)**
 
 ---
 
@@ -124,7 +122,7 @@ python -m http.server 8000
 1. Fork this repository
 2. Go to Settings > Pages
 3. Set Source to "Deploy from a branch" > main > /root
-4. Your site is live at `https://TdoubleAV.github.io/trailkin/`
+4. Your site is live at `https://tdoubleav.github.io/TrailKin/`
 
 ---
 
