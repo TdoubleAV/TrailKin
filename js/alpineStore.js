@@ -210,8 +210,8 @@ export function initAlpineStore(Alpine) {
             const item = data[Math.floor(Math.random() * data.length)];
             this.quest.inspirations.push({
                 id: Date.now() + Math.random(),
-                item: item.item,
-                fantasy: item.fantasy
+                itemKey: item.itemKey,
+                fantasyKey: item.fantasyKey
             });
         },
 
@@ -231,8 +231,8 @@ export function initAlpineStore(Alpine) {
             const newItem = data[Math.floor(Math.random() * data.length)];
             this.quest.inspirations[index] = {
                 id: Date.now() + Math.random(),
-                item: newItem.item,
-                fantasy: newItem.fantasy
+                itemKey: newItem.itemKey,
+                fantasyKey: newItem.fantasyKey
             };
         },
 
@@ -255,8 +255,8 @@ export function initAlpineStore(Alpine) {
 
             const shuffled = shuffleArray([...data]);
             const items = shuffled.slice(0, 3).map(item => ({
-                item: item.item,
-                fantasy: item.fantasy
+                itemKey: item.itemKey,
+                fantasyKey: item.fantasyKey
             }));
 
             this.currentGroup.quest = {
@@ -282,8 +282,8 @@ export function initAlpineStore(Alpine) {
 
             const shuffled = shuffleArray([...data]);
             this.bingo.grid = shuffled.slice(0, size * size).map(item => ({
-                item: item.item,
-                fantasy: item.fantasy,
+                itemKey: item.itemKey,
+                fantasyKey: item.fantasyKey,
                 found: false
             }));
         },

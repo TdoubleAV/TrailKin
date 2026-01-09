@@ -87,7 +87,689 @@
     "magicButton": "✨ Conjure New Idea",
     "selectEnv": "Select Environment",
     "youFind": "You find:",
-    "maybeIts": "...maybe it's"
+    "maybeIts": "...maybe it's",
+    "data": {
+      "wald": {
+        "spitzer_stein": {
+          "item": "Sharp Stone",
+          "fantasy": "Dragon Scale, Arrowhead, Shard of a Magic Crystal"
+        },
+        "runder_kiesel": {
+          "item": "Round Pebble",
+          "fantasy": "Goblin Gold, Petrified Troll Eye"
+        },
+        "ast_klein": {
+          "item": "Stick (small)",
+          "fantasy": "Magic Wand, Dagger, Key"
+        },
+        "tannenzapfen": {
+          "item": "Pinecone",
+          "fantasy": "Dragon Egg in Stasis, 'Crunch Grenade'"
+        },
+        "eichel": {
+          "item": "Acorn / Chestnut",
+          "fantasy": "Jewel of the Squirrel King, Dwarf Helmet, Energy Capsule"
+        },
+        "moos": {
+          "item": "Moss",
+          "fantasy": "Beard of the Tree Spirit, Fairy Carpet, Bandages"
+        },
+        "feder": {
+          "item": "Feather",
+          "fantasy": "Griffin Feather, Quill for Invisible Ink"
+        },
+        "blatt_besonders": {
+          "item": "Leaf (special)",
+          "fantasy": "Elf Letter, Invisibility Cloak (imaginary), Fairy Wings"
+        },
+        "rinde": {
+          "item": "Bark",
+          "fantasy": "Shield, Treasure Map, Skin of an Ent"
+        },
+        "blume": {
+          "item": "Flower",
+          "fantasy": "Potion Ingredient, Sleeping Fairy, Sun Shard"
+        },
+        "wurzel": {
+          "item": "Root",
+          "fantasy": "Snake Amulet, Magic Rod, Goblin Tripwire"
+        },
+        "erde_sand": {
+          "item": "Soil / Sand (in container)",
+          "fantasy": "Fairy Dust, Gunpowder"
+        },
+        "baumstumpf": {
+          "item": "Tree Stump",
+          "fantasy": "Dwarf Table, Druid Altar, Fairy Dance Floor"
+        },
+        "pilz": {
+          "item": "Mushroom",
+          "fantasy": "Gnome Stool, Poison Warning, Magic Umbrella"
+        },
+        "ameise": {
+          "item": "Ant",
+          "fantasy": "Soldier of the Earth Army, Scout"
+        },
+        "spinnennetz": {
+          "item": "Spiderweb",
+          "fantasy": "Dreamcatcher, Trap of a Giant Spider, Fairy Hammock"
+        },
+        "hohler_baum": {
+          "item": "Hollow Tree",
+          "fantasy": "Portal to the Underworld, Ranger Hidout"
+        },
+        "kleeblatt": {
+          "item": "Clover",
+          "fantasy": "Lucky Charm, Key to the Fairy World"
+        },
+        "farn": {
+          "item": "Fern",
+          "fantasy": "Dinosaur Plant, Fan of the Wind"
+        },
+        "kaefer": {
+          "item": "Beetle",
+          "fantasy": "Armored Transport, Jewel on Legs"
+        },
+        "vogelgesang": {
+          "item": "Birdsong",
+          "fantasy": "Secret Elf Message, Warning Call of the Guardians"
+        },
+        "sonnenstrahl": {
+          "item": "Sunbeam through Leaves",
+          "fantasy": "Path of Enlightenment, Blessing of the Sun God"
+        },
+        "bach": {
+          "item": "Stream / Puddle",
+          "fantasy": "Mirror of Truth, Potion of Life, Ocean for Ants"
+        },
+        "grosser_stein": {
+          "item": "Big Rock",
+          "fantasy": "Sleeping Troll, Seat of the Council, Meteorite"
+        },
+        "beere": {
+          "item": "Berry (do not eat!)",
+          "fantasy": "Explosive Orb, Poison Bait, Ruby"
+        },
+        "loewenzahn": {
+          "item": "Dandelion",
+          "fantasy": "Sun Shard, Wish Distributor"
+        },
+        "schneckenhaus": {
+          "item": "Snail Shell",
+          "fantasy": "Mobile Fortress, Helmet for Tom Thumb, Spiral Amulet"
+        },
+        "harz": {
+          "item": "Resin",
+          "fantasy": "Amber, Blood of the Tree, Magic Glue"
+        },
+        "vogelnest": {
+          "item": "Bird Nest (high up)",
+          "fantasy": "Watchtower of the Skies, Magpie Treasury"
+        },
+        "baum_umgestuerzt": {
+          "item": "Fallen Tree",
+          "fantasy": "Bridge over the Abyss, Fallen Giant"
+        },
+        "wildspur": {
+          "item": "Wild Track",
+          "fantasy": "Path of the Beast, Sign of the Werewolf"
+        },
+        "holzscheit": {
+          "item": "Log",
+          "fantasy": "Fuel for Dragon Breath, Giant Toothpick"
+        },
+        "nadeln": {
+          "item": "Soft Needles",
+          "fantasy": "Bed of the Forest Fairy, Green Fur"
+        },
+        "kletterpflanze": {
+          "item": "Climbing Plant",
+          "fantasy": "Green Snake, Gnome Ladder"
+        },
+        "blatt_haufen": {
+          "item": "Pile of Leaves",
+          "fantasy": "Hiding Place of the Wood Sprite, Dragon Nest"
+        },
+        "knospe": {
+          "item": "Bud",
+          "fantasy": "Dragon Egg (small), Fresh Energy"
+        },
+        "biene": {
+          "item": "Bee",
+          "fantasy": "Honey Collector of the Queen, Golden Messenger"
+        },
+        "schmetterling": {
+          "item": "Butterfly",
+          "fantasy": "Enchanted Fairy, Colorful Messenger"
+        },
+        "gluehwuermchen": {
+          "item": "Firefly (evening)",
+          "fantasy": "Will-o'-the-wisp, Fairy with Lantern"
+        },
+        "grashuepfer": {
+          "item": "Grasshopper",
+          "fantasy": "Jumping Knight, Messenger of Summer"
+        },
+        "blatt_bunt": {
+          "item": "Colorful Leaf (Red/Yellow)",
+          "fantasy": "Fire Rune, Gold Coin of Nature"
+        },
+        "nuss": {
+          "item": "Nut",
+          "fantasy": "Locked Chest, Brain Food"
+        },
+        "kuerbis": {
+          "item": "Pumpkin (field)",
+          "fantasy": "Head of the Headless Horseman, Giant Bomb"
+        },
+        "eiszapfen": {
+          "item": "Icicle",
+          "fantasy": "Crystal Dagger, Tooth of the Frost Giant"
+        },
+        "spur_schnee": {
+          "item": "Track in Mud/Snow",
+          "fantasy": "Clue to the Monster, Path of the Predecessor"
+        },
+        "ast_kahl": {
+          "item": "Bare Branch",
+          "fantasy": "Bone Hand, Skeleton Finger"
+        },
+        "raureif": {
+          "item": "Hoarfrost",
+          "fantasy": "Diamond Dust, Breath of the Ice Dragon"
+        },
+        "stechpalme": {
+          "item": "Holly/Conifer",
+          "fantasy": "The Invincible, Guardian of Winter"
+        }
+      },
+      "stadt": {
+        "muenze": {
+          "item": "Coin / Cent",
+          "fantasy": "Gold Doubloon, Amulet, Bribe Money"
+        },
+        "kronkorken": {
+          "item": "Bottle Cap",
+          "fantasy": "Shield for Mice, Medal, Currency of the Future"
+        },
+        "gummiband": {
+          "item": "Rubber Band",
+          "fantasy": "Shackles, Bowstring, Worm"
+        },
+        "schnur": {
+          "item": "Piece of String",
+          "fantasy": "Climbing Rope, Lasso, Ariadne's Thread"
+        },
+        "glitzerpapier": {
+          "item": "Glitter Paper",
+          "fantasy": "Magic Scroll, Mirror, Shard of a Portal"
+        },
+        "stein_weg": {
+          "item": "Stone (from path)",
+          "fantasy": "Meteorite, 'Talking Stone', Projectile"
+        },
+        "stoeckchen": {
+          "item": "Small Stick",
+          "fantasy": "Lockpick, Magic Wand, Pointer"
+        },
+        "knopf": {
+          "item": "Lost Button",
+          "fantasy": "Turtle Shell, Eye of a Golem, Magic Seal"
+        },
+        "ampel_rot": {
+          "item": "Red Light",
+          "fantasy": "Eye of the Watcher (Sauron), Force Field Lock"
+        },
+        "ampel_gruen": {
+          "item": "Green Light",
+          "fantasy": "Permission of the King, Force Field Open"
+        },
+        "kanaldeckel": {
+          "item": "Manhole Cover",
+          "fantasy": "Entrance to the Dungeon, Shield of the Titan, Pizza Delivery"
+        },
+        "statue": {
+          "item": "Statue",
+          "fantasy": "Petrified Hero, Guardian of Time"
+        },
+        "taube": {
+          "item": "Pigeon",
+          "fantasy": "Spy of the Wizard, Messenger, Winged Rat"
+        },
+        "bank": {
+          "item": "Bench",
+          "fantasy": "Resting Place of Adventurers, Throne"
+        },
+        "laterne": {
+          "item": "Street Lamp",
+          "fantasy": "Beacon, Warding Circle against Shadows"
+        },
+        "muelleimer": {
+          "item": "Trash Can",
+          "fantasy": "Maw of the Glutton, Mimic (Beware!)"
+        },
+        "schaufensterpuppe": {
+          "item": "Mannequin",
+          "fantasy": "Trapped Soul, Golem in Stasis"
+        },
+        "bus_bahn": {
+          "item": "Bus / Train",
+          "fantasy": "Iron Worm, Transporter of the Guild"
+        },
+        "fahrrad": {
+          "item": "Bicycle",
+          "fantasy": "Steel Steed, Fast Mount"
+        },
+        "zebrastreifen": {
+          "item": "Crosswalk",
+          "fantasy": "Magic Bridge, Path of Safety"
+        },
+        "hochhaus": {
+          "item": "Skyscraper",
+          "fantasy": "Tower of the Mage, Mountain of Glass"
+        },
+        "baustelle": {
+          "item": "Construction Site",
+          "fantasy": "Chaos Zone, Workshop of the Dwarves"
+        },
+        "kran": {
+          "item": "Crane",
+          "fantasy": "Gigantic Mechanical Arm, Dragon Neck"
+        },
+        "graffiti": {
+          "item": "Graffiti",
+          "fantasy": "Ancient Runes, Sign of the Rebels, Cave Painting"
+        },
+        "hund": {
+          "item": "Dog on Leash",
+          "fantasy": "Tamed Beast, Companion of Another Hero"
+        },
+        "handschuh": {
+          "item": "Lost Glove",
+          "fantasy": "Severed Hand, Ghost Shell"
+        },
+        "zeitungsbox": {
+          "item": "Newspaper Box",
+          "fantasy": "Oracle of News, Box of Wisdom"
+        },
+        "springbrunnen": {
+          "item": "Fountain",
+          "fantasy": "Fountain of Youth, Water Elemental"
+        },
+        "treppe": {
+          "item": "Stairs",
+          "fantasy": "Steps to Destiny, Mountain Path"
+        },
+        "schild_verkehr": {
+          "item": "Sign (Traffic)",
+          "fantasy": "Tablet of Law, Warning of Dragons"
+        },
+        "uhr": {
+          "item": "Clock (Public)",
+          "fantasy": "Eye of Time, Countdown"
+        },
+        "gitterzaun": {
+          "item": "Chain Link Fence",
+          "fantasy": "Cage Wall, Net of Steel"
+        },
+        "auto_rot": {
+          "item": "Car (Red)",
+          "fantasy": "Fire Chariot"
+        },
+        "auto_blau": {
+          "item": "Car (Blue)",
+          "fantasy": "Water Glider"
+        },
+        "regenschirm": {
+          "item": "Umbrella",
+          "fantasy": "Shield against Heaven's Wrath, Mushroom Substitute"
+        },
+        "plakatwand": {
+          "item": "Billboard",
+          "fantasy": "Proclamation of the King, Wanted Poster"
+        },
+        "baeckerei": {
+          "item": "Bakery",
+          "fantasy": "Supply Station, Source of Life (Bread)"
+        },
+        "kiosk": {
+          "item": "Kiosk",
+          "fantasy": "Merchant of Small Treasures, Information Exchange"
+        },
+        "polizeiauto": {
+          "item": "Police Car",
+          "fantasy": "Guard of the City, Blue Knights"
+        },
+        "feuerwehr": {
+          "item": "Fire Truck",
+          "fantasy": "Dragon Hunter, Water Mage"
+        }
+      },
+      "quartier": {
+        "katze": {
+          "item": "Cat",
+          "fantasy": "Guardian of the Street, Spy of the Witch, Mini-Tiger"
+        },
+        "gartenzwerg": {
+          "item": "Garden Gnome",
+          "fantasy": "Petrified Gnome, Guardian of the Front Yard"
+        },
+        "briefkasten": {
+          "item": "Mailbox",
+          "fantasy": "Maw of the News Monster, Treasure Chest"
+        },
+        "zaun": {
+          "item": "Fence",
+          "fantasy": "Barricade against Orcs, Border to the Neighbor Realm"
+        },
+        "blumentopf": {
+          "item": "Flower Pot",
+          "fantasy": "Alchemy Cauldron, Helmet of a Giant"
+        },
+        "giesskanne": {
+          "item": "Watering Can",
+          "fantasy": "Rainmaker, Trunk Animal"
+        },
+        "fussabtreter": {
+          "item": "Doormat",
+          "fantasy": "Trap, Welcome Rune"
+        },
+        "vogelhaus": {
+          "item": "Birdhouse",
+          "fantasy": "Castle in the Air, Tavern for Winged Ones"
+        },
+        "garage": {
+          "item": "Garage",
+          "fantasy": "Cave of the Metal Beast, Armory"
+        },
+        "fahne": {
+          "item": "Flag",
+          "fantasy": "Banner of the Castle, Wind Indicator"
+        },
+        "schaukel": {
+          "item": "Swing",
+          "fantasy": "Catapult (inactive), Pendulum of Time"
+        },
+        "sandkasten": {
+          "item": "Sandbox",
+          "fantasy": "Desert of Doom, Excavation Site"
+        },
+        "rutsche": {
+          "item": "Slide",
+          "fantasy": "Fast Travel Portal, Dragon Tongue"
+        },
+        "trampolin": {
+          "item": "Trampoline",
+          "fantasy": "Jump Pad to Cloud City, Net Trap"
+        },
+        "grill": {
+          "item": "Grill",
+          "fantasy": "Forge Fire, Altar of Carnal Desire"
+        },
+        "liegestuhl": {
+          "item": "Deckchair",
+          "fantasy": "Throne of Relaxation"
+        },
+        "hecke": {
+          "item": "Hedge",
+          "fantasy": "Labyrinth Wall, Hiding Place"
+        },
+        "muelltonne": {
+          "item": "Trash Can",
+          "fantasy": "Goblin City Entrance, Storage Room"
+        },
+        "fahrradklingel": {
+          "item": "Bicycle Bell",
+          "fantasy": "Alarm Bell, Sonic Weapon"
+        },
+        "kreide": {
+          "item": "Chalk Drawing",
+          "fantasy": "Magic Warding Circle, Portal Marker"
+        },
+        "paketbote": {
+          "item": "Delivery Driver",
+          "fantasy": "Royal Courier, Supplier of Rare Artifacts"
+        },
+        "nachbar": {
+          "item": "Neighbor",
+          "fantasy": "Villager, NPC (Quest Giver?)"
+        },
+        "hundebellen": {
+          "item": "Dog Barking",
+          "fantasy": "Warning Call of Beasts, Alarm Siren"
+        },
+        "rasenmaeher": {
+          "item": "Lawnmower",
+          "fantasy": "Grass Eater, Noise Monster"
+        },
+        "solarleuchte": {
+          "item": "Solar Light",
+          "fantasy": "Light Seed, Star on the Ground"
+        },
+        "skateboard": {
+          "item": "Skateboard/Scooter",
+          "fantasy": "Ground Glider, Fast Shoe"
+        },
+        "hupfspiel": {
+          "item": "Hopscotch (Chalk)",
+          "fantasy": "Ritual Pattern, Path of Trial"
+        },
+        "fussballtor": {
+          "item": "Soccer Goal (small)",
+          "fantasy": "Net of the Catcher, Gate to the Arena"
+        },
+        "basketballkorb": {
+          "item": "Basketball Hoop",
+          "fantasy": "Ring of Fire, High Goal"
+        },
+        "vogeltränke": {
+          "item": "Bird Bath",
+          "fantasy": "Lake of the Dwarves, Healing Spring"
+        },
+        "insektenhotel": {
+          "item": "Insect Hotel",
+          "fantasy": "Barracks of the Flight Unit, Apartment Building"
+        },
+        "windrad": {
+          "item": "Pinwheel",
+          "fantasy": "Energy Collector, Hypnosis Device"
+        },
+        "wohnwagen": {
+          "item": "Caravan",
+          "fantasy": "Mobile House, Wagon of the Traveling Merchant"
+        },
+        "anhaenger": {
+          "item": "Trailer",
+          "fantasy": "Pack Mule, Box on Wheels"
+        },
+        "kompost": {
+          "item": "Compost Heap",
+          "fantasy": "Alchemy Lab (long fermentation), Hill of Worms"
+        },
+        "waescheleine": {
+          "item": "Clothesline",
+          "fantasy": "Flag Decoration, Ghost Parade"
+        },
+        "garage_offen": {
+          "item": "Garage Open",
+          "fantasy": "Maw of the Cave, Invitation to Loot"
+        },
+        "doppel_muell": {
+          "item": "Double Trash Can",
+          "fantasy": "Twin Towers of Waste, Guardian of the Alley"
+        },
+        "rosenbogen": {
+          "item": "Rose Arch",
+          "fantasy": "Gate of Thorns, Portal of Love"
+        },
+        "gartenhaus": {
+          "item": "Garden Shed",
+          "fantasy": "Hermit's Hut, Secret Hideout"
+        }
+      },
+      "altstadt": {
+        "kopfsteinpflaster": {
+          "item": "Cobblestones",
+          "fantasy": "Back of the Dragon, Scale Armor on the Ground"
+        },
+        "brunnen": {
+          "item": "Fountain/Well",
+          "fantasy": "Well of Wisdom, Portal to the Deep"
+        },
+        "kirchturm": {
+          "item": "Church Tower",
+          "fantasy": "Lookout of the Griffin Riders, Mage Tower"
+        },
+        "glockenschlag": {
+          "item": "Bell Toll",
+          "fantasy": "Voice of the Titans, Time Signal"
+        },
+        "gasse_eng": {
+          "item": "Narrow Alley",
+          "fantasy": "Canyon of Shadows, Thieves' Path"
+        },
+        "schild_alt": {
+          "item": "Old Sign (Inn)",
+          "fantasy": "Crest of a Guild, Hanging Oracle"
+        },
+        "fachwerkhaus": {
+          "item": "Half-Timbered House",
+          "fantasy": "House of Woodworms, Skeleton House"
+        },
+        "tor_bogen": {
+          "item": "Gate / Arch",
+          "fantasy": "Portal to Another Time, Dragon's Maw"
+        },
+        "statue_hist": {
+          "item": "Statue (Historical)",
+          "fantasy": "Petrified King, Memorial"
+        },
+        "mauer": {
+          "item": "Wall",
+          "fantasy": "Fortress Rampart, Border of Civilization"
+        },
+        "fensterladen": {
+          "item": "Shutter",
+          "fantasy": "Eyelid of the House, Shield"
+        },
+        "blumenkasten": {
+          "item": "Flower Box",
+          "fantasy": "Hanging Gardens, Life Giver"
+        },
+        "laterne_alt": {
+          "item": "Street Lamp (Old)",
+          "fantasy": "Gas Light, Will-o'-the-wisp Cage"
+        },
+        "wappen": {
+          "item": "Coat of Arms",
+          "fantasy": "Secret Code, Family Seal"
+        },
+        "holztor": {
+          "item": "Heavy Wooden Gate",
+          "fantasy": "Dungeon Entrance, Giant Door"
+        },
+        "turmuhr": {
+          "item": "Tower Clock",
+          "fantasy": "Eye of Chronos, Wheel of Fortune"
+        },
+        "wasserspeier": {
+          "item": "Gargoyle",
+          "fantasy": "Petrified Demon, Guardian"
+        },
+        "marktplatz": {
+          "item": "Marketplace",
+          "fantasy": "Gathering Place, Arena"
+        },
+        "rathaus": {
+          "item": "Town Hall",
+          "fantasy": "Palace of the Ruler, Guild House"
+        },
+        "baeckerei_duft": {
+          "item": "Bakery (Smell)",
+          "fantasy": "Alchemy Lab (Potions/Bread)"
+        },
+        "buchladen": {
+          "item": "Bookstore",
+          "fantasy": "Library of Knowledge, Scroll Warehouse"
+        },
+        "antiquitaeten": {
+          "item": "Antique Shop",
+          "fantasy": "Shop of Cursed Items, Treasury"
+        },
+        "taube_dach": {
+          "item": "Pigeon on Roof",
+          "fantasy": "Guardian, Spy"
+        },
+        "efeu": {
+          "item": "Ivy on Wall",
+          "fantasy": "Green Beard, Nature Armor"
+        },
+        "kellerfenster": {
+          "item": "Basement Window",
+          "fantasy": "View into the Dungeon, Hiding Place"
+        },
+        "torbogen": {
+          "item": "Archway",
+          "fantasy": "Portal of Heroes, Mouth of the City"
+        },
+        "zelt_ma": {
+          "item": "Medieval Tent",
+          "fantasy": "Army Camp, Merchant Stall"
+        },
+        "gitter_schmied": {
+          "item": "Wrought Iron Grate",
+          "fantasy": "Net of Steel, Prison Wall"
+        },
+        "sonnenuhr": {
+          "item": "Sundial",
+          "fantasy": "Shadow Pointer, Ancient Computer"
+        },
+        "wappen_haus": {
+          "item": "Coat of Arms on House",
+          "fantasy": "Sign of Protection, Magic Rune"
+        },
+        "ritter": {
+          "item": "Knight Figure",
+          "fantasy": "Golem Guardian, Armor without Spirit"
+        },
+        "burggraben": {
+          "item": "Moat (Remains)",
+          "fantasy": "Old River, Swamp of Memory"
+        },
+        "stadtmauer_turm": {
+          "item": "City Wall Tower",
+          "fantasy": "Lookout, Sniper Nest"
+        },
+        "pforte_klein": {
+          "item": "Small Gate",
+          "fantasy": "Hobbit Entrance, Thieves' Entry"
+        },
+        "zunftzeichen": {
+          "item": "Guild Sign (Pretzel/Scissors)",
+          "fantasy": "Golden Idol, Sign of Power"
+        },
+        "klingel_messing": {
+          "item": "Brass Bell",
+          "fantasy": "Call Button for Servants, Golden Button"
+        },
+        "buntglas": {
+          "item": "Stained Glass Window",
+          "fantasy": "Kaleidoscope Shield, Holy Light"
+        },
+        "fahne_turm": {
+          "item": "Flag on Tower",
+          "fantasy": "Signal to Dragon Riders, Pride of the City"
+        },
+        "museum": {
+          "item": "Museum",
+          "fantasy": "Hall of Ancestors, Storage of Knowledge"
+        },
+        "eisdiele": {
+          "item": "Ice Cream Parlor",
+          "fantasy": "Temple of Frost, Sweet Seduction"
+        }
+      }
+    }
   },
   "quest": {
     "title": "Quest Generator",
