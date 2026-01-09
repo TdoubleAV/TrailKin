@@ -3,6 +3,7 @@ name: Sync to Public Repo
 on:
   push:
     branches: [ master ]
+  workflow_dispatch:  # Allow manual trigger
 
 jobs:
   sync:
@@ -15,14 +16,15 @@ jobs:
       - name: Remove Private Files
         run: |
           # Liste der Dateien und Ordner, die NICHT öffentlich sein sollen
-          rm -f task.md
-          rm -f docs/monetization_tasks.md
-          rm -f docs/business_*.md
-          rm -rf docs/archive
-          rm -rf docs/to_update
-          rm -rf .system_generated
+          rm -f task.md || true
+          rm -f docs/monetization_tasks.md || true
+          rm -f docs/business_*.md || true
+          rm -rf docs/archive || true
+          rm -rf docs/to_update || true
+          rm -rf .system_generated || true
+          rm -rf .agent || true
+          # Wichtig: .github wird NICHT gelöscht, damit der Workflow selbst synchronisiert wird
           
-          # Hier weitere Dateien hinzufügen, falls nötig
           echo "Private files removed."
 
       - name: Push to Public Repo
@@ -32,7 +34,8 @@ jobs:
         with:
           source-directory: '.'
           destination-github-username: 'TdoubleAV'
-          destination-repository-name: 'trailkin'
-          user-name: 'trailkin-sync-bot'
-          user-email: 'sync@trailkin.local'
+          destination-repository-name: 'TrailKin'
+          user-name: 'github-actions[bot]'
+          user-email: 'github-actions[bot]@users.noreply.github.com'
           target-branch: master
+          create-target-branch-if-needed: true
