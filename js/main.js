@@ -1,4 +1,5 @@
 import { initAlpineStore } from './alpineStore.js';
+import { initI18nStore } from './i18n/index.js';
 
 // ========================================================================
 // ALPINE.JS INITIALIZATION
@@ -14,6 +15,7 @@ function initStore(Alpine) {
     if (storeInitialized) return;
     storeInitialized = true;
 
+    initI18nStore(Alpine);  // Initialize i18n first
     initAlpineStore(Alpine);
     Alpine.store('game').loadGame();
     console.log('Trailkin store initialized');

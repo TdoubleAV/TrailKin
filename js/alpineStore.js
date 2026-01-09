@@ -86,6 +86,11 @@ export function initAlpineStore(Alpine) {
         // ACTIONS
         // ========================================================================
 
+        // --- Translation Helper (delegates to i18n store) ---
+        t(key) {
+            return Alpine.store('i18n')?.t(key) ?? `[${key}]`;
+        },
+
         // --- Routing & Theme Management ---
         setTab(tab) {
             this.currentTab = tab;
