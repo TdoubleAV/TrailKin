@@ -3,35 +3,38 @@ name: Sync to Public Repo
 on:
   push:
     branches: [ master ]
-  workflow_dispatch:  # Allow manual trigger
+  workflow_dispatch:
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout source repo
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Remove Private Files
         run: |
-          # Gesamter docs-Ordner ist privat
           rm -rf docs || true
           rm -f task.md || true
           rm -rf .system_generated || true
           rm -rf .agent || true
-          
           echo "Private files removed."
 
       - name: Push to Public Repo
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        with:
-          source-directory: '.'
-          destination-github-username: 'TdoubleAV'
-          destination-repository-name: 'TrailKin'
-          user-name: 'github-actions[bot]'
-          user-email: 'github-actions[bot]@users.noreply.github.com'
-          target-branch: master
-          create-target-branch-if-needed: true
+        run: |
+          # Configure git
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          
+          # Remove .git and reinitialize for clean push
+          rm -rf .git
+          git init
+          git add -A
+          git commit -m "Sync from internal repo"
+          
+          # Push using the token
+          git remote add public https://${{ secrets.API_TOKEN_GITHUB }}@github.com/TdoubleAV/TrailKin.git
+          git branch -M master
+          git push -f public master
