@@ -38,7 +38,7 @@ export function initAlpineStore(Alpine) {
 
         // --- UI State ---
         theme: localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
-        currentTab: 'regeln', // Controls which section is visible (routing)
+        currentTab: 'schnellstart', // Controls which section is visible (routing)
 
         // --- Generator State ---
         quest: {
