@@ -9,7 +9,8 @@
     "group": "🛡️ Group",
     "rules": "📜 Rules",
     "ideas": "💡 Ideas",
-    "quest": "🗺️ Quest"
+    "quest": "🗺️ Quest",
+    "bingo": "🎲 Bingo"
   },
   "header": {
     "title": "Trailkin",
@@ -82,7 +83,6 @@
     "forest": "🌳 Forest",
     "neighborhood": "🏡 Neighborhood",
     "city": "🏙️ City",
-    "city": "🏙️ City",
     "oldtown": "🏰 Old Town",
     "magicButton": "✨ Conjure New Idea",
     "selectEnv": "Select Environment",
@@ -101,24 +101,32 @@
     "hint_title": "Note:",
     "hint_desc": "Creating a quest will redirect you to the group overview, where the quest is saved."
   },
+  "bingo": {
+    "title": "Walking Bingo",
+    "subtitle": "Generate a Bingo card for your walk. Print it or play on your phone!",
+    "size": "Size:",
+    "size3": "3x3 (Kids)",
+    "size4": "4x4 (Pro)",
+    "generate": "Create Bingo",
+    "print": "🖨️ Print"
+  },
   "footer": {
     "support": "☕ Support this project",
     "github": "⭐ GitHub",
     "version": "Trailkin v3.5 — Open Source (MIT License)",
     "madeWith": "Made with 💚 for outdoor adventures"
   },
-},
-"modals": {
-  "newGroupTitle": "Name of the new group",
-  "newGroupDefault": "New Group",
-  "renameGroupTitle": "New name for the group",
-  "newItemTitle": "New item",
-  "newItemForChar": "New item for",
-  "selectEnv": "Select Environment",
-  "cancel": "Cancel",
-  "ok": "OK"
-},
-"errors": {
-  "cannotDeleteLastGroup": "You cannot delete the last group!"
-}
+  "modals": {
+    "newGroupTitle": "Name of the new group",
+    "newGroupDefault": "New Group",
+    "renameGroupTitle": "New name for the group",
+    "newItemTitle": "New item",
+    "newItemForChar": "New item for",
+    "selectEnv": "Select Environment",
+    "cancel": "Cancel",
+    "ok": "OK"
+  },
+  "errors": {
+    "cannotDeleteLastGroup": "You cannot delete the last group!"
+  }
 }

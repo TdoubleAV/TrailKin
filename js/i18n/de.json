@@ -9,7 +9,8 @@
     "group": "🛡️ Gruppe",
     "rules": "📜 Regeln",
     "ideas": "💡 Ideen",
-    "quest": "🗺️ Quest"
+    "quest": "🗺️ Quest",
+    "bingo": "🎲 Bingo"
   },
   "header": {
     "title": "Trailkin",
@@ -82,7 +83,6 @@
     "forest": "🌳 Wald",
     "neighborhood": "🏡 Quartier",
     "city": "🏙️ Stadt",
-    "city": "🏙️ Stadt",
     "oldtown": "🏰 Altstadt",
     "magicButton": "✨ Neue Idee zaubern",
     "selectEnv": "Umgebung wählen",
@@ -101,19 +101,21 @@
     "hint_title": "Hinweis:",
     "hint_desc": "Das Erstellen einer Quest leitet euch direkt zur Gruppen-Übersicht weiter, wo die Quest gespeichert wird."
   },
+  "bingo": {
+    "title": "Walking Bingo",
+    "subtitle": "Generiert eine Bingo-Karte für den Spaziergang. Druckt sie aus oder spielt am Handy!",
+    "size": "Größe:",
+    "size3": "3x3 (Kids)",
+    "size4": "4x4 (Profi)",
+    "generate": "Bingo erstellen",
+    "print": "🖨️ Drucken"
+  },
   "footer": {
     "support": "☕ Unterstütze das Projekt",
     "github": "⭐ GitHub",
     "version": "Trailkin v3.5 — Open Source (MIT License)",
     "madeWith": "Made with 💚 for outdoor adventures"
   },
-},
-"modals": {
-  "newGroupTitle": "Name der neuen Gruppe",
-  "newGroupDefault": "Neue Gruppe",
-  "renameGroupTitle": "Neuer Name für die Gruppe",
-  "newItemTitle": "Neuer Gegenstand",
-  "newItemForChar": "Neues Item für",
   "selectEnv": "Umgebung wählen",
   "cancel": "Abbrechen",
   "ok": "OK"

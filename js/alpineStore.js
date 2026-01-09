@@ -46,6 +46,13 @@ export function initAlpineStore(Alpine) {
             lastEnv: null
         },
 
+        // --- Bingo State ---
+        bingo: {
+            grid: [],
+            env: 'wald',
+            size: 3 // 3x3 or 4x4
+        },
+
         // --- SSP Helper State ---
         ssp: {
             result: null, // 'win', 'draw', 'lose'
@@ -219,6 +226,28 @@ export function initAlpineStore(Alpine) {
             // Switch to group view
             window.location.hash = '#gruppe';
             this.currentTab = 'gruppe';
+        },
+
+        // --- Bingo Logic ---
+        generateBingo(env, size) {
+            const data = inspirationData[env] || [];
+            if (data.length < size * size) return; // Should not happen with our large lists
+
+            this.bingo.env = env;
+            this.bingo.size = parseInt(size);
+
+            const shuffled = shuffleArray([...data]);
+            this.bingo.grid = shuffled.slice(0, size * size).map(item => ({
+                item: item.item,
+                fantasy: item.fantasy,
+                found: false
+            }));
+        },
+
+        toggleBingoCheck(index) {
+            if (this.bingo.grid[index]) {
+                this.bingo.grid[index].found = !this.bingo.grid[index].found;
+            }
         },
 
         // --- Group Management (Create, Rename, Delete) ---

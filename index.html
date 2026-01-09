@@ -121,6 +121,9 @@
             <a href="#quest" class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
                 :class="$store.game.currentTab === 'quest' ? 'active bg-emerald-600 text-white' : 'text-stone-600 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-700'"
                 data-section="quest">🗺️ Quest</a>
+            <a href="#bingo" class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
+                :class="$store.game.currentTab === 'bingo' ? 'active bg-emerald-600 text-white' : 'text-stone-600 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-700'"
+                data-section="bingo">🎲 Bingo</a>
         </nav>
 
         <main>
@@ -598,8 +601,110 @@
                     </div>
                     <div class="bg-amber-100/50 dark:bg-stone-700/30 p-6 rounded-lg transition-colors">
                         <h3 class="font-bold text-lg text-emerald-800 dark:text-emerald-400">Hinweis:</h3>
-                        <p class="text-stone-600 dark:text-stone-400 italic">Das Erstellen einer Quest leitet euch
-                            direkt zur Gruppen-Übersicht weiter, wo die Quest gespeichert wird.</p>
+                        <p class="text-stone-700 dark:text-stone-300">Das Erstellen einer Quest leitet euch direkt zur
+                            Gruppen-Übersicht weiter, wo die Quest gespeichert wird.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 
+                ========================================================================
+                SECTION 6: BINGO GENERATOR
+                ========================================================================
+                Purpose: Interactive 3x3 or 4x4 Bingo for walks. Printable.
+            -->
+            <section id="bingo" class="game-section fade-in" x-show="$store.game.currentTab === 'bingo'">
+                <div
+                    class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors print:shadow-none print:p-0">
+                    <!-- Config Controls (Hidden on Print) -->
+                    <div class="print:hidden mb-8">
+                        <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4"
+                            x-text="$store.game.t('bingo.title')"></h2>
+                        <p class="text-stone-600 dark:text-stone-300 mb-6" x-text="$store.game.t('bingo.subtitle')"></p>
+
+                        <div class="flex flex-wrap items-center gap-4 bg-stone-100 dark:bg-stone-700/50 p-4 rounded-xl">
+                            <!-- Env Selector -->
+                            <select x-model="$store.game.bingo.env"
+                                class="bg-white dark:bg-stone-900 border border-stone-300 dark:border-stone-600 rounded-lg px-3 py-2 outline-none">
+                                <option value="wald" x-text="$store.game.t('inspiration.forest')"></option>
+                                <option value="quartier" x-text="$store.game.t('inspiration.neighborhood')"></option>
+                                <option value="stadt" x-text="$store.game.t('inspiration.city')"></option>
+                                <option value="altstadt" x-text="$store.game.t('inspiration.oldtown')"></option>
+                            </select>
+
+                            <!-- Size Selector -->
+                            <div
+                                class="flex items-center gap-2 bg-white dark:bg-stone-900 rounded-lg p-1 border border-stone-300 dark:border-stone-600">
+                                <button @click="$store.game.bingo.size = 3"
+                                    class="px-3 py-1 rounded text-sm font-bold transition-colors"
+                                    :class="$store.game.bingo.size === 3 ? 'bg-emerald-600 text-white shadow-sm' : 'text-stone-500 hover:text-stone-700'">3x3</button>
+                                <button @click="$store.game.bingo.size = 4"
+                                    class="px-3 py-1 rounded text-sm font-bold transition-colors"
+                                    :class="$store.game.bingo.size === 4 ? 'bg-emerald-600 text-white shadow-sm' : 'text-stone-500 hover:text-stone-700'">4x4</button>
+                            </div>
+
+                            <button @click="$store.game.generateBingo($store.game.bingo.env, $store.game.bingo.size)"
+                                class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-2 rounded-lg shadow-sm"
+                                x-text="$store.game.t('bingo.generate')">
+                            </button>
+
+                            <button onclick="window.print()"
+                                class="bg-white dark:bg-stone-700/50 border border-stone-300 dark:border-stone-600 text-stone-700 dark:text-stone-200 font-semibold px-4 py-2 rounded-lg hover:bg-stone-50 transition-colors ml-auto"
+                                x-show="$store.game.bingo.grid.length > 0">
+                                🖨️
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Bingo Header (Print Only) -->
+                    <div class="hidden print:block text-center mb-8">
+                        <h1 class="text-4xl font-bold text-emerald-800 mb-2">Trailkin Bingo</h1>
+                        <p class="text-stone-600 italic">Dein Abenteuer beginnt vor der Haustür.</p>
+                    </div>
+
+                    <!-- The Grid -->
+                    <template x-if="$store.game.bingo.grid.length > 0">
+                        <div class="grid gap-4 print:gap-4 w-full max-w-2xl mx-auto"
+                            :class="$store.game.bingo.size === 3 ? 'grid-cols-3' : 'grid-cols-4'">
+                            <template x-for="(cell, index) in $store.game.bingo.grid" :key="index">
+                                <div @click="$store.game.toggleBingoCheck(index)"
+                                    class="aspect-square border-2 rounded-xl p-2 flex flex-col items-center justify-center text-center cursor-pointer relative overflow-hidden transition-all duration-200 group print:border-stone-800"
+                                    :class="cell.found ? 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-500 dark:border-emerald-600' : 'bg-white dark:bg-stone-800 border-stone-200 dark:border-stone-700 hover:border-emerald-300 dark:hover:border-emerald-700'">
+
+                                    <!-- Checkmark (Screen Only) -->
+                                    <div x-show="cell.found"
+                                        class="print:hidden absolute inset-0 flex items-center justify-center bg-emerald-500/10 z-0">
+                                        <span class="text-6xl text-emerald-600/20 font-bold rotate-12">✓</span>
+                                    </div>
+
+                                    <!-- Content -->
+                                    <div class="relative z-10 w-full">
+                                        <div class="font-bold text-stone-800 dark:text-stone-100 text-sm md:text-lg mb-1 leading-tight break-words"
+                                            x-text="cell.item"></div>
+                                        <div class="text-[10px] md:text-xs text-stone-500 dark:text-stone-400 italic leading-tight hidden sm:block print:block"
+                                            x-text="cell.fantasy"></div>
+                                    </div>
+
+                                    <!-- Corner Circle (Print Only for checking off) -->
+                                    <div
+                                        class="hidden print:block absolute bottom-2 right-2 w-4 h-4 border border-stone-400 rounded-full">
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+
+                    <!-- Empty State -->
+                    <template x-if="$store.game.bingo.grid.length === 0">
+                        <div class="text-center py-12 text-stone-400 dark:text-stone-500 print:hidden">
+                            <div class="text-6xl mb-4 opacity-20">🎲</div>
+                            <p>Wähle eine Umgebung und klicke auf "Bingo erstellen".</p>
+                        </div>
+                    </template>
+
+                    <!-- Print Footer -->
+                    <div class="hidden print:block text-center mt-12 text-xs text-stone-400">
+                        trailkin.pages.dev • Open Source Family Adventure
                     </div>
                 </div>
             </section>
