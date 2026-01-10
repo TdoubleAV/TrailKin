@@ -62,11 +62,6 @@ export function initAlpineStore(Alpine) {
 
         // --- Essenz-Raster State ---
         essenzNumbers: [], // Selected numbers for duel (max 2)
-        essenzRaster: {
-            A: ['', 'Steinern', 'Hölzern', 'Pflanzlich', 'Feucht', 'Natürlich', 'Künstlich', 'Tierisch', 'Gebaut', 'Erdig', 'Magisch'],
-            B: ['', 'Hart / Fest', 'Weich / Biegsam', 'Rau / Kratzig', 'Glatt / Rutschig', 'Rund / Gebogen', 'Eckig / Kantig', 'Spitz / Scharf', 'Flach / Dünn', 'Massiv / Schwer', 'Gerade / Lang'],
-            C: ['', 'Kaputt', 'Glänzend', 'Dunkel', 'Hell', 'Grün / Braun', 'Bunt / Grell', 'Trocken', 'Alt', 'Winzig', 'Beweglich']
-        },
 
         // --- Available Statuses (from data) ---
         availableStatuses: statusesData.statuses || [],
@@ -97,6 +92,12 @@ export function initAlpineStore(Alpine) {
         // --- Translation Helper (delegates to i18n store) ---
         t(key) {
             return Alpine.store('i18n')?.t(key) ?? `[${key}]`;
+        },
+
+        // --- Analytics Consent Management ---
+        resetAnalyticsConsent() {
+            localStorage.removeItem('plausible_consent');
+            location.reload(); // Re-show modal
         },
 
         // --- Routing & Theme Management ---
@@ -547,14 +548,15 @@ export function initAlpineStore(Alpine) {
 
         getEssenzWord(num, column) {
             if (num < 1 || num > 10) return '';
-            // Try to get translated grid, fallback to hardcoded
+            // Get translated grid
             const gridKey = `essenz.grid${column}`;
             const grid = this.t(gridKey);
-            // If translation returns an array, use it; otherwise fallback
+
+            // If translation returns an array, use it
             if (Array.isArray(grid) && grid.length > num) {
                 return grid[num];
             }
-            return this.essenzRaster[column]?.[num] || '';
+            return `[${gridKey} #${num}]`;
         }
     });
 }

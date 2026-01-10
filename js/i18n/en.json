@@ -815,7 +815,7 @@
     "colC": "C (Appearance)",
     "gridA": [
       "",
-      "Stone-like",
+      "Stony",
       "Wooden",
       "Plant-based",
       "Moist",
@@ -956,10 +956,18 @@
       "cure": "Complete action"
     }
   },
+  "analytics": {
+    "title": "📊 Website Analytics",
+    "description": "We use Plausible Analytics to understand how Trailkin is used. This helps us improve the app.",
+    "privacy_note": "✅ No cookies | ✅ No personal data | ✅ GDPR compliant | ✅ EU servers",
+    "accept": "Allow Statistics",
+    "reject": "No, thanks"
+  },
   "footer": {
+    "analytics_settings": "⚙️ Analytics Settings",
     "support": "☕ Support this project",
     "github": "⭐ GitHub",
-    "version": "Trailkin v3.5 — Open Source (MIT License)",
+    "version": "Trailkin v3.2 — Open Source (MIT License)",
     "madeWith": "Made with 💚 for outdoor adventures"
   },
   "modals": {

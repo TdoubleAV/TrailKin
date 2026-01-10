@@ -956,10 +956,18 @@
       "cure": "Aktion ausführen"
     }
   },
+  "analytics": {
+    "title": "📊 Website-Analysen",
+    "description": "Wir nutzen Plausible Analytics, um zu verstehen, wie Trailkin genutzt wird. Dies hilft uns, die App zu verbessern.",
+    "privacy_note": "✅ Keine Cookies | ✅ Keine persönlichen Daten | ✅ GDPR-konform | ✅ EU-Server",
+    "accept": "Statistiken erlauben",
+    "reject": "Nein, danke"
+  },
   "footer": {
+    "analytics_settings": "⚙️ Analytics-Einstellungen",
     "support": "☕ Unterstütze das Projekt",
     "github": "⭐ GitHub",
-    "version": "Trailkin v3.5 — Open Source (MIT License)",
+    "version": "Trailkin v3.2 — Open Source (MIT License)",
     "madeWith": "Made with 💚 for outdoor adventures"
   },
   "modals": {
