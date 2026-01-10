@@ -89,6 +89,30 @@ export function initI18nStore(Alpine, translationData) {
             }
 
             return value ?? `[${key}]`;
+        },
+
+        /**
+         * Reactively update translations after async load
+         * @param {Object} newData - New translation data { de: {...}, en: {...} }
+         */
+        updateTranslations(newData) {
+            if (!newData || !newData.de || !newData.en) {
+                console.warn('i18n: Invalid translation data for update');
+                return;
+            }
+
+            // Update global reference
+            translationData = newData;
+            window.TRAILKIN_TRANSLATIONS = newData;
+
+            // Trigger reactivity by toggling language
+            const current = this.current;
+            this.current = current === 'de' ? 'en' : 'de';
+            this.$nextTick(() => {
+                this.current = current;
+            });
+
+            console.log('✅ i18n: Translations updated');
         }
     });
 
