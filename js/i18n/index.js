@@ -108,9 +108,9 @@ export function initI18nStore(Alpine, translationData) {
             // Trigger reactivity by toggling language
             const current = this.current;
             this.current = current === 'de' ? 'en' : 'de';
-            this.$nextTick(() => {
+            setTimeout(() => {
                 this.current = current;
-            });
+            }, 0);
 
             console.log('✅ i18n: Translations updated');
         }
