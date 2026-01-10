@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="version" content="3.1.1">
     <title>Trailkin — Make Every Walk an Adventure for Kids</title>
     <meta name="description"
-        content="Turn boring walks into magical adventures. Trailkin is a free, simple family adventure tool for hiking with kids. No screens needed during play.">
+        content="Transform family walks into fantasy adventures. Free, open-source progressive web app for outdoor role-playing with kids.">
     <meta name="keywords"
         content="walking with kids, family hiking app, gamified walk, kids outdoor activity, scavenger hunt app, boredom buster outdoors">
     <link rel="manifest" href="./manifest.json">
@@ -578,72 +579,18 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-stone-700 dark:text-stone-300">
-                                    <tr>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold">1</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Steinern</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Hart / Fest</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Kaputt</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold">2</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Hölzern</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Weich / Biegsam
-                                        </td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Glänzend</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold">3</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Pflanzlich</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Rau / Kratzig</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Dunkel</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold">4</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Feucht</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Glatt / Rutschig
-                                        </td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Hell</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold">5</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Natürlich</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Rund / Gebogen
-                                        </td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Grün / Braun</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold">6</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Künstlich</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Eckig / Kantig
-                                        </td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Bunt / Grell</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold">7</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Tierisch</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Spitz / Scharf
-                                        </td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Trocken</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold">8</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Gebaut</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Flach / Dünn</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Alt</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold">9</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Erdig</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Massiv / Schwer
-                                        </td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Winzig</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold">10</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Magisch</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Gerade / Lang</td>
-                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Beweglich</td>
-                                    </tr>
+                                    <template x-for="i in 10" :key="i">
+                                        <tr class="hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+                                            <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold"
+                                                x-text="i"></td>
+                                            <td class="p-2 border border-stone-300 dark:border-stone-600"
+                                                x-text="$store.game.getEssenzWord(i, 'A')"></td>
+                                            <td class="p-2 border border-stone-300 dark:border-stone-600"
+                                                x-text="$store.game.getEssenzWord(i, 'B')"></td>
+                                            <td class="p-2 border border-stone-300 dark:border-stone-600"
+                                                x-text="$store.game.getEssenzWord(i, 'C')"></td>
+                                        </tr>
+                                    </template>
                                 </tbody>
                             </table>
                         </div>
