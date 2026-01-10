@@ -60,6 +60,14 @@ export function initAlpineStore(Alpine) {
             gmChoice: null
         },
 
+        // --- Essenz-Raster State ---
+        essenzNumbers: [], // Selected numbers for duel (max 2)
+        essenzRaster: {
+            A: ['', 'Steinern', 'Hölzern', 'Pflanzlich', 'Feucht', 'Natürlich', 'Künstlich', 'Tierisch', 'Gebaut', 'Erdig', 'Magisch'],
+            B: ['', 'Hart / Fest', 'Weich / Biegsam', 'Rau / Kratzig', 'Glatt / Rutschig', 'Rund / Gebogen', 'Eckig / Kantig', 'Spitz / Scharf', 'Flach / Dünn', 'Massiv / Schwer', 'Gerade / Lang'],
+            C: ['', 'Kaputt', 'Glänzend', 'Dunkel', 'Hell', 'Grün / Braun', 'Bunt / Grell', 'Trocken', 'Alt', 'Winzig', 'Beweglich']
+        },
+
         // --- Available Statuses (from data) ---
         availableStatuses: statusesData.statuses || [],
 
@@ -296,7 +304,7 @@ export function initAlpineStore(Alpine) {
 
         // --- Group Management (Create, Rename, Delete) ---
         createGroup() {
-            this.showModal('Name der neuen Gruppe', 'Neue Gruppe', (name) => {
+            this.showModal(this.t('modals.newGroupTitle'), this.t('modals.newGroupDefault'), (name) => {
                 const newGroup = createDefaultGroup(name);
                 this.groups.push(newGroup);
                 this.activeGroupId = newGroup.id;
@@ -306,7 +314,7 @@ export function initAlpineStore(Alpine) {
 
         renameGroup() {
             if (!this.currentGroup) return;
-            this.showModal('Neuer Name für die Gruppe', this.currentGroup.name, (newName) => {
+            this.showModal(this.t('modals.renameGroupTitle'), this.currentGroup.name, (newName) => {
                 this.currentGroup.name = newName;
                 this.saveGame();
             });
@@ -314,7 +322,7 @@ export function initAlpineStore(Alpine) {
 
         deleteGroup() {
             if (this.groups.length <= 1) {
-                alert('Du kannst die letzte Gruppe nicht löschen!');
+                alert(this.t('errors.cannotDeleteLastGroup'));
                 return;
             }
             this.groups = this.groups.filter(g => g.id !== this.activeGroupId);
@@ -327,8 +335,8 @@ export function initAlpineStore(Alpine) {
             if (!this.currentGroup) return;
             this.currentGroup.characters.push({
                 id: Date.now(),
-                name: 'Neuer Entdecker',
-                class: 'Abenteurer',
+                name: this.t('characters.newHero'),
+                class: this.t('characters.adventurer'),
                 hp: 10,
                 maxHp: 10,
                 mana: 0,
@@ -347,14 +355,16 @@ export function initAlpineStore(Alpine) {
             }
 
             const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+            const bgName = this.t(randomBg.nameKey);
+            const bgItem = this.t(randomBg.itemKey);
             this.currentGroup.characters.push({
                 id: Date.now(),
-                name: 'Neuer Entdecker',
-                class: randomBg.name,
+                name: this.t('characters.newHero'),
+                class: bgName,
                 hp: 3,
                 maxHp: 3,
                 mana: 0,
-                inventory: [randomBg.item + ' (' + randomBg.name + ')'],
+                inventory: [bgItem + ' (' + bgName + ')'],
                 statuses: []
             });
             this.saveGame();
@@ -393,7 +403,7 @@ export function initAlpineStore(Alpine) {
                 if (!char.inventory) char.inventory = [];
                 if (char.inventory.length >= 3) return;
 
-                this.showModal('Neues Item für ' + char.name, '', (newItem) => {
+                this.showModal(this.t('modals.newItemForChar') + ' ' + char.name, '', (newItem) => {
                     char.inventory.push(newItem);
                     this.saveGame();
                 });
@@ -405,7 +415,7 @@ export function initAlpineStore(Alpine) {
             if (!this.currentGroup) return;
             if (this.currentGroup.inventory.length >= 12) return;
 
-            this.showModal('Neuer Gegenstand', '', (itemName) => {
+            this.showModal(this.t('modals.newItemTitle'), '', (itemName) => {
                 this.currentGroup.inventory.push(itemName);
                 this.saveGame();
             });
@@ -432,10 +442,10 @@ export function initAlpineStore(Alpine) {
 
             char.statuses.push({
                 id: statusDef.id,
-                name: statusDef.name,
+                name: this.t(`statuses.${statusDef.id}.name`),
                 emoji: statusDef.emoji,
-                effect: statusDef.effect,
-                cure: statusDef.cure,
+                effect: this.t(`statuses.${statusDef.id}.effect`),
+                cure: this.t(`statuses.${statusDef.id}.cure`),
                 type: statusDef.type
             });
             this.saveGame();
@@ -459,18 +469,18 @@ export function initAlpineStore(Alpine) {
             const available = this.availableStatuses.filter(s => !existing.includes(s.id));
 
             if (available.length === 0) {
-                alert('Alle Zustände sind bereits aktiv!');
+                alert(this.t('errors.allStatusesActive'));
                 return;
             }
 
-            // Use custom selection modal
+            // Use custom selection modal with translated status names
             const statusOptions = available.map(s => ({
-                label: s.name,
+                label: this.t(`statuses.${s.id}.name`),
                 value: s.id,
                 emoji: s.emoji
             }));
 
-            this.showSelectionModal('Zustand wählen', statusOptions, (selectedId) => {
+            this.showSelectionModal(this.t('modals.selectStatus'), statusOptions, (selectedId) => {
                 if (selectedId) {
                     this.addStatus(charId, selectedId);
                 }
@@ -508,6 +518,43 @@ export function initAlpineStore(Alpine) {
         getSSPEmoji(choice) {
             const emojis = { rock: '🪨', paper: '📄', scissors: '✂️' };
             return emojis[choice] || '';
+        },
+
+        // --- Essenz-Raster Methods ---
+        selectEssenzNumber(n) {
+            const idx = this.essenzNumbers.indexOf(n);
+            if (idx > -1) {
+                // Deselect if already selected
+                this.essenzNumbers.splice(idx, 1);
+            } else if (this.essenzNumbers.length < 2) {
+                // Select if we have room
+                this.essenzNumbers.push(n);
+            } else {
+                // Replace oldest selection
+                this.essenzNumbers.shift();
+                this.essenzNumbers.push(n);
+            }
+        },
+
+        randomEssenzNumbers() {
+            const n1 = Math.floor(Math.random() * 10) + 1;
+            let n2 = Math.floor(Math.random() * 10) + 1;
+            while (n2 === n1) {
+                n2 = Math.floor(Math.random() * 10) + 1;
+            }
+            this.essenzNumbers = [n1, n2];
+        },
+
+        getEssenzWord(num, column) {
+            if (num < 1 || num > 10) return '';
+            // Try to get translated grid, fallback to hardcoded
+            const gridKey = `essenz.grid${column}`;
+            const grid = this.t(gridKey);
+            // If translation returns an array, use it; otherwise fallback
+            if (Array.isArray(grid) && grid.length > num) {
+                return grid[num];
+            }
+            return this.essenzRaster[column]?.[num] || '';
         }
     });
 }

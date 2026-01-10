@@ -39,7 +39,12 @@
     "delete": "Delete group",
     "addEmpty": "+ Empty",
     "addRandom": "🎲 Random",
-    "sharedInventory": "Team Backpack"
+    "sharedInventory": "Team Backpack",
+    "activeQuest": "🗺️ Active Quest:",
+    "endQuest": "End",
+    "statuses": "Statuses",
+    "addStatus": "+ Status",
+    "noStatuses": "No statuses"
   },
   "characters": {
     "newHero": "New Explorer",
@@ -88,6 +93,8 @@
     "selectEnv": "Select Environment",
     "youFind": "You find:",
     "maybeIts": "...maybe it's",
+    "clearAll": "Clear all",
+    "emptyState": "Choose an environment and click the button to collect ideas!",
     "data": {
       "wald": {
         "spitzer_stein": {
@@ -790,7 +797,164 @@
     "size3": "3x3 (Kids)",
     "size4": "4x4 (Pro)",
     "generate": "Create Bingo",
-    "print": "🖨️ Print"
+    "print": "🖨️ Print",
+    "emptyState": "Select an environment and click \"Create Bingo\"."
+  },
+  "essenz": {
+    "title": "⚔️ Essence Duel (Core Mechanic)",
+    "description": "Conflicts are resolved by searching. Both call a number (1-10), then the Guide combines the terms.",
+    "selectNumbers": "Select two numbers:",
+    "random": "🎲 Random",
+    "searchQuery": "Search Query:",
+    "findTemplate": "\"Find something {0} that is {1}!\"",
+    "selectPrompt": "Select 2 numbers...",
+    "referenceTitle": "📊 Essence Grid (Reference)",
+    "colNum": "#",
+    "colA": "A (Material)",
+    "colB": "B (Texture)",
+    "colC": "C (Appearance)",
+    "gridA": [
+      "",
+      "Stone-like",
+      "Wooden",
+      "Plant-based",
+      "Moist",
+      "Natural",
+      "Artificial",
+      "Animal-like",
+      "Man-made",
+      "Earthy",
+      "Magical"
+    ],
+    "gridB": [
+      "",
+      "Hard / Solid",
+      "Soft / Flexible",
+      "Rough / Scratchy",
+      "Smooth / Slippery",
+      "Round / Curved",
+      "Angular / Edged",
+      "Pointy / Sharp",
+      "Flat / Thin",
+      "Solid / Heavy",
+      "Straight / Long"
+    ],
+    "gridC": [
+      "",
+      "Broken",
+      "Shiny",
+      "Dark",
+      "Bright",
+      "Green / Brown",
+      "Colorful / Vivid",
+      "Dry",
+      "Old",
+      "Tiny",
+      "Moving"
+    ]
+  },
+  "characterBackgrounds": {
+    "waldlaeufer": {
+      "name": "Ranger",
+      "item": "Bow"
+    },
+    "kraeuterkundiger": {
+      "name": "Herbalist",
+      "item": "Healing Potion"
+    },
+    "dieb": {
+      "name": "Rogue",
+      "item": "Lockpick"
+    },
+    "ritter": {
+      "name": "Knight",
+      "item": "Shield"
+    },
+    "magier": {
+      "name": "Wizard",
+      "item": "Magic Wand"
+    },
+    "barde": {
+      "name": "Bard",
+      "item": "Lute"
+    },
+    "haendler": {
+      "name": "Merchant",
+      "item": "Coin Purse"
+    },
+    "schmied": {
+      "name": "Blacksmith",
+      "item": "Hammer"
+    },
+    "gaukler": {
+      "name": "Jester",
+      "item": "Juggling Balls"
+    },
+    "alchemist": {
+      "name": "Alchemist",
+      "item": "Test Tube"
+    },
+    "bestienjaeger": {
+      "name": "Monster Hunter",
+      "item": "Net"
+    },
+    "entdecker": {
+      "name": "Explorer",
+      "item": "Compass"
+    }
+  },
+  "ssp": {
+    "title": "⚔️ Challenge Helper (RPS)",
+    "instructions": "Click your choice. The Guide's throw is determined randomly.",
+    "rock": "Rock",
+    "paper": "Paper",
+    "scissors": "Scissors",
+    "win": "🎉 Full Success!",
+    "draw": "⚖️ Partial Success (with a catch)",
+    "lose": "💥 Failure (funny consequence!)",
+    "newChallenge": "New Challenge"
+  },
+  "statuses": {
+    "itchy": {
+      "name": "Itchy",
+      "effect": "Hop on one leg",
+      "cure": "Find a healing leaf (daisy)"
+    },
+    "strong": {
+      "name": "Strong",
+      "effect": "Next challenge succeeds automatically",
+      "cure": "Used up after one challenge"
+    },
+    "invisible": {
+      "name": "Invisible",
+      "effect": "You may not speak for 2 minutes",
+      "cure": "Time runs out"
+    },
+    "cursed": {
+      "name": "Cursed",
+      "effect": "Lose all tie challenges",
+      "cure": "Find a special stone"
+    },
+    "lucky": {
+      "name": "Lucky",
+      "effect": "Win all tie challenges",
+      "cure": "Used up after one challenge"
+    },
+    "tired": {
+      "name": "Tired",
+      "effect": "Run 10 steps to recover",
+      "cure": "Complete a movement action"
+    },
+    "brave": {
+      "name": "Brave",
+      "effect": "+1 Spirit for next action",
+      "cure": "Used up after one action"
+    },
+    "wet": {
+      "name": "Soaking Wet",
+      "effect": "Shake yourself like a dog",
+      "cure": "Complete action"
+    }
   },
   "footer": {
     "support": "☕ Support this project",
@@ -805,10 +969,15 @@
     "newItemTitle": "New item",
     "newItemForChar": "New item for",
     "selectEnv": "Select Environment",
+    "selectStatus": "Select Status",
+    "inputPlaceholder": "Enter...",
+    "noOptions": "No selection available.",
     "cancel": "Cancel",
-    "ok": "OK"
+    "ok": "OK",
+    "close": "Close"
   },
   "errors": {
-    "cannotDeleteLastGroup": "You cannot delete the last group!"
+    "cannotDeleteLastGroup": "You cannot delete the last group!",
+    "allStatusesActive": "All status effects are already active!"
   }
 }

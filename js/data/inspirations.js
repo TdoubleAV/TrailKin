@@ -196,25 +196,27 @@ export const inspirationData = {
 
 /**
  * @typedef {Object} CharacterBackground
- * @property {string} name - Background/class name
- * @property {string} item - Starting item for this background
+ * @property {string} id - Unique identifier (slug)
+ * @property {string} nameKey - Translation key for background name
+ * @property {string} itemKey - Translation key for starting item
  */
 
 /**
  * Available character backgrounds with starting items
+ * Uses i18n key references for multilingual support
  * @type {CharacterBackground[]}
  */
 export const characterBackgrounds = [
-    { name: "Waldläufer", item: "Bogen" },
-    { name: "Kräuterkundiger", item: "Heiltrank" },
-    { name: "Dieb", item: "Dietrich" },
-    { name: "Ritter", item: "Schild" },
-    { name: "Magier", item: "Zauberstab" },
-    { name: "Barde", item: "Laute" },
-    { name: "Händler", item: "Münzbeutel" },
-    { name: "Schmied", item: "Hammer" },
-    { name: "Gaukler", item: "Jonglierbälle" },
-    { name: "Alchemist", item: "Reagenzglas" },
-    { name: "Bestienjäger", item: "Netz" },
-    { name: "Entdecker", item: "Kompass" }
+    { id: "waldlaeufer", nameKey: "characterBackgrounds.waldlaeufer.name", itemKey: "characterBackgrounds.waldlaeufer.item" },
+    { id: "kraeuterkundiger", nameKey: "characterBackgrounds.kraeuterkundiger.name", itemKey: "characterBackgrounds.kraeuterkundiger.item" },
+    { id: "dieb", nameKey: "characterBackgrounds.dieb.name", itemKey: "characterBackgrounds.dieb.item" },
+    { id: "ritter", nameKey: "characterBackgrounds.ritter.name", itemKey: "characterBackgrounds.ritter.item" },
+    { id: "magier", nameKey: "characterBackgrounds.magier.name", itemKey: "characterBackgrounds.magier.item" },
+    { id: "barde", nameKey: "characterBackgrounds.barde.name", itemKey: "characterBackgrounds.barde.item" },
+    { id: "haendler", nameKey: "characterBackgrounds.haendler.name", itemKey: "characterBackgrounds.haendler.item" },
+    { id: "schmied", nameKey: "characterBackgrounds.schmied.name", itemKey: "characterBackgrounds.schmied.item" },
+    { id: "gaukler", nameKey: "characterBackgrounds.gaukler.name", itemKey: "characterBackgrounds.gaukler.item" },
+    { id: "alchemist", nameKey: "characterBackgrounds.alchemist.name", itemKey: "characterBackgrounds.alchemist.item" },
+    { id: "bestienjaeger", nameKey: "characterBackgrounds.bestienjaeger.name", itemKey: "characterBackgrounds.bestienjaeger.item" },
+    { id: "entdecker", nameKey: "characterBackgrounds.entdecker.name", itemKey: "characterBackgrounds.entdecker.item" }
 ];

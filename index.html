@@ -200,7 +200,8 @@
                         <div
                             class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4 mb-6 shadow-sm relative">
                             <h3 class="text-lg font-bold text-blue-800 dark:text-blue-300 mb-2 capitalize">
-                                ��️ Aktuelle Quest: <span x-text="currentGroup.quest.env"></span>
+                                <span x-text="$t('group.activeQuest')"></span> <span
+                                    x-text="currentGroup.quest.env"></span>
                             </h3>
                             <div class="grid gap-2">
                                 <template x-for="(item, idx) in currentGroup.quest.items" :key="idx">
@@ -215,8 +216,8 @@
                                 </template>
                             </div>
                             <button @click="currentGroup.quest.active = false; saveGame()"
-                                class="absolute top-2 right-2 text-xs bg-blue-100 dark:bg-blue-800 hover:bg-blue-200 dark:hover:bg-blue-700 text-blue-800 dark:text-blue-200 px-2 py-1 rounded transition-colors">
-                                Beenden
+                                class="absolute top-2 right-2 text-xs bg-blue-100 dark:bg-blue-800 hover:bg-blue-200 dark:hover:bg-blue-700 text-blue-800 dark:text-blue-200 px-2 py-1 rounded transition-colors"
+                                x-text="$t('group.endQuest')">
                             </button>
                         </div>
                     </template>
@@ -261,15 +262,14 @@
                                     </div>
                                     <button @click="removeChar(char.id)"
                                         class="text-red-400 hover:text-red-600 text-lg p-1 opacity-60 hover:opacity-100 transition-opacity"
-                                        title="Entdecker löschen">❌</button>
+                                        :title="$t('characters.deleteHero')">❌</button>
                                 </div>
 
                                 <div class="flex items-center gap-4 mt-3">
                                     <!-- HP -->
                                     <div class="flex-1">
-                                        <label
-                                            class="text-xs font-bold text-red-700 dark:text-red-400 uppercase">Energie
-                                            (Puste)</label>
+                                        <label class="text-xs font-bold text-red-700 dark:text-red-400 uppercase"
+                                            x-text="$t('characters.hpLabel')"></label>
                                         <div class="flex items-center gap-2 mt-1">
                                             <button @click="modStat(char.id, 'hp', -1)"
                                                 class="w-8 h-8 rounded-full bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300 font-bold hover:bg-red-200 dark:hover:bg-red-800 transition-colors">-</button>
@@ -282,8 +282,8 @@
                                     </div>
                                     <!-- Mana/Wil -->
                                     <div class="flex-1">
-                                        <label class="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase">Mut
-                                            (WIL)</label>
+                                        <label class="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase"
+                                            x-text="$t('characters.willLabel')"></label>
                                         <div class="flex items-center gap-2 mt-1">
                                             <button @click="modStat(char.id, 'mana', -1)"
                                                 class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-bold hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors">-</button>
@@ -299,8 +299,8 @@
                                 <!-- Personal Slots -->
                                 <div class="mt-4 pt-3 border-t border-emerald-100 dark:border-emerald-800">
                                     <label
-                                        class="text-xs font-bold text-stone-500 dark:text-stone-400 uppercase mb-2 block">Ausrüstung
-                                        (3 Slots)</label>
+                                        class="text-xs font-bold text-stone-500 dark:text-stone-400 uppercase mb-2 block"
+                                        x-text="$t('characters.equipment')"></label>
                                     <div class="grid grid-cols-3 gap-2">
                                         <!-- Slot 1 -->
                                         <template x-if="char.inventory && char.inventory[0]">
@@ -355,11 +355,11 @@
                                 <!-- Status Effects -->
                                 <div class="mt-4 pt-3 border-t border-emerald-100 dark:border-emerald-800">
                                     <div class="flex justify-between items-center mb-2">
-                                        <label
-                                            class="text-xs font-bold text-stone-500 dark:text-stone-400 uppercase">Zustände</label>
+                                        <label class="text-xs font-bold text-stone-500 dark:text-stone-400 uppercase"
+                                            x-text="$t('group.statuses')"></label>
                                         <button @click="showAddStatusModal(char.id)"
-                                            class="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-2 py-1 rounded hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-colors">
-                                            + Zustand
+                                            class="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-2 py-1 rounded hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-colors"
+                                            x-text="$t('group.addStatus')">
                                         </button>
                                     </div>
                                     <div class="flex flex-wrap gap-2">
@@ -380,8 +380,8 @@
                                             </div>
                                         </template>
                                         <template x-if="!char.statuses || char.statuses.length === 0">
-                                            <span class="text-xs text-stone-400 dark:text-stone-500 italic">Keine
-                                                Zustände</span>
+                                            <span class="text-xs text-stone-400 dark:text-stone-500 italic"
+                                                x-text="$t('group.noStatuses')"></span>
                                         </template>
                                     </div>
                                 </div>
@@ -392,14 +392,14 @@
                     <div class="grid grid-cols-2 gap-4 mt-4">
                         <button @click="addCharacter()"
                             class="bg-stone-200 dark:bg-stone-700 hover:bg-stone-300 dark:hover:bg-stone-600 text-stone-700 dark:text-stone-200 font-bold py-3 px-4 rounded-lg border-2 border-dashed border-stone-400 dark:border-stone-500 transition-colors">
-                            + Leer</button>
+                            <span x-text="$t('group.addEmpty')"></span></button>
                         <button @click="generateRandomChar()"
                             class="bg-purple-100 dark:bg-purple-900/30 hover:bg-purple-200 dark:hover:bg-purple-900/50 text-purple-800 dark:text-purple-300 font-bold py-3 px-4 rounded-lg border-2 border-dashed border-purple-300 dark:border-purple-700 transition-colors">
-                            🎲 Würfeln</button>
+                            <span x-text="$t('group.addRandom')"></span></button>
                     </div>
 
-                    <h3 class="text-xl font-bold text-emerald-800 dark:text-emerald-400 mt-8 mb-4">Gemeinsames Inventar
-                    </h3>
+                    <h3 class="text-xl font-bold text-emerald-800 dark:text-emerald-400 mt-8 mb-4"
+                        x-text="$t('group.sharedInventory')"></h3>
                     <div id="inventory-list" class="grid grid-cols-3 md:grid-cols-4 gap-2 mb-4">
                         <template x-for="i in 12" :key="i">
                             <div class="contents">
@@ -434,82 +434,242 @@
             -->
             <section id="regeln" class="game-section space-y-6 fade-in" x-show="$store.game.currentTab === 'regeln'">
                 <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
-                    <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">Abenteuer-Handbuch</h2>
-                    <p class="text-stone-600 dark:text-stone-300 mb-6">Hier findet ihr die Details und optionale Regeln,
-                        um das Spiel spannender zu machen.</p>
+                    <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4"
+                        x-text="$t('rules.title')"></h2>
+                    <p class="text-stone-600 dark:text-stone-300 mb-6" x-text="$t('rules.subtitle')"></p>
                     <details class="bg-amber-100/50 dark:bg-stone-700/30 p-4 rounded-lg mb-3 transition-colors">
                         <summary
                             class="font-semibold cursor-pointer flex justify-between items-center text-stone-800 dark:text-stone-200">
-                            Modul A: Herausforderungen <span
-                                class="arrow-down transition-transform duration-300">▼</span>
+                            <span x-text="$t('rules.moduleA_title')"></span>
+                            <span class="arrow-down transition-transform duration-300">▼</span>
                         </summary>
                         <div
                             class="mt-4 text-stone-700 dark:text-stone-300 space-y-3 border-t border-amber-200 dark:border-stone-600 pt-3">
-                            <p>Nutzt diese, wenn ihr den Zufall entscheiden lassen wollt.</p>
-                            <p><strong>Schere, Stein, Papier:</strong> Entdecker spielt gegen Erzähler. Sieg = Aktion
-                                gelingt
-                                super. Niederlage = Aktion misslingt mit lustiger Konsequenz. Unentschieden =
-                                Teilerfolg.</p>
-                            <p><strong>Glücks-Alternativen:</strong> "Gerade oder Ungerade" mit Fingern oder das
-                                "Farben-Orakel" (nächstes Auto).</p>
-                            <p><strong>Geschicklichkeits-Alternativen:</strong> Eine Strecke balancieren oder einen
-                                Tannenzapfen auf ein Ziel werfen.</p>
+                            <p x-text="$t('rules.moduleA_intro')"></p>
+                            <p><strong x-text="$t('rules.moduleA_rps')"></strong> <span
+                                    x-text="$t('rules.moduleA_rps_desc')"></span></p>
+                            <p><strong x-text="$t('rules.moduleA_luck')"></strong> <span
+                                    x-text="$t('rules.moduleA_luck_desc')"></span></p>
+                            <p><strong x-text="$t('rules.moduleA_skill')"></strong> <span
+                                    x-text="$t('rules.moduleA_skill_desc')"></span></p>
                         </div>
                     </details>
                     <details class="bg-amber-100/50 dark:bg-stone-700/30 p-4 rounded-lg mb-3 transition-colors">
                         <summary
                             class="font-semibold cursor-pointer flex justify-between items-center text-stone-800 dark:text-stone-200">
-                            Modul B: Spannungs-Mechaniken <span
-                                class="arrow-down transition-transform duration-300">▼</span>
+                            <span x-text="$t('rules.moduleB_title')"></span>
+                            <span class="arrow-down transition-transform duration-300">▼</span>
                         </summary>
                         <div
                             class="mt-4 text-stone-700 dark:text-stone-300 space-y-3 border-t border-amber-200 dark:border-stone-600 pt-3">
-                            <p><strong>Fortschritts-Uhr:</strong> Legt ein echtes Ziel als Timer fest.
-                                <br><em>Zeitdruck:</em> "Wir müssen X finden, bevor wir die Brücke erreichen!"
-                                <br><em>Anhäufung:</em> "Bei jedem Fehlschlag ist der böse Magier einen Schritt näher!"
+                            <p>
+                                <strong x-text="$t('rules.moduleB_clock')"></strong> <span
+                                    x-text="$t('rules.moduleB_clock_desc')"></span>
+                                <br><em x-text="$t('rules.moduleB_pressure')"></em> "<span
+                                    x-text="$t('rules.moduleB_pressure_example')"></span>"
+                                <br><em x-text="$t('rules.moduleB_accumulation')"></em> "<span
+                                    x-text="$t('rules.moduleB_accumulation_example')"></span>"
                             </p>
                         </div>
                     </details>
                     <details class="bg-amber-100/50 dark:bg-stone-700/30 p-4 rounded-lg transition-colors">
                         <summary
                             class="font-semibold cursor-pointer flex justify-between items-center text-stone-800 dark:text-stone-200">
-                            Modul C: Konsequenz-Mechaniken <span
-                                class="arrow-down transition-transform duration-300">▼</span>
+                            <span x-text="$t('rules.moduleC_title')"></span>
+                            <span class="arrow-down transition-transform duration-300">▼</span>
                         </summary>
                         <div
                             class="mt-4 text-stone-700 dark:text-stone-300 space-y-3 border-t border-amber-200 dark:border-stone-600 pt-3">
-                            <p><strong>Zustände:</strong> Ein Fehlschlag gibt einen lustigen Zustand.
-                                <br><em>Negativ:</em> "'Juckreiz' erwischt! Du musst bis auf Weiteres auf einem Bein
-                                hüpfen." <br><em>Positiv:</em> "'Stark' durch einen Schluck aus dem Bach! Deine nächste
-                                Probe gelingt automatisch."
+                            <p>
+                                <strong x-text="$t('rules.moduleC_states')"></strong> <span
+                                    x-text="$t('rules.moduleC_states_desc')"></span>
+                                <br><em x-text="$t('rules.moduleC_negative')"></em> "<span
+                                    x-text="$t('rules.moduleC_negative_example')"></span>"
+                                <br><em x-text="$t('rules.moduleC_positive')"></em> "<span
+                                    x-text="$t('rules.moduleC_positive_example')"></span>"
                             </p>
-                            <p><strong>Scheitern mit Fortschritt:</strong> Ein Fehlschlag stoppt nie die Geschichte! Er
-                                macht sie nur interessanter. Statt "Du schaffst es nicht", sag lieber "Du schaffst es,
-                                aber das laute Platschen weckt den Kobold!".</p>
+                            <p>
+                                <strong x-text="$t('rules.moduleC_fail')"></strong> <span
+                                    x-text="$t('rules.moduleC_fail_desc')"></span>
+                            </p>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Essenz-Raster (Duel System) -->
+                <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
+                    <h3 class="text-xl font-bold text-emerald-700 dark:text-emerald-400 mb-4"
+                        x-text="$t('essenz.title')"></h3>
+                    <p class="text-stone-600 dark:text-stone-300 mb-4" x-text="$t('essenz.description')"></p>
+
+                    <div class="grid md:grid-cols-2 gap-4 mb-6">
+                        <!-- Number Selection -->
+                        <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg">
+                            <p class="font-semibold text-stone-700 dark:text-stone-300 mb-3 text-center"
+                                x-text="$t('essenz.selectNumbers')"></p>
+                            <!-- Row 1: 1-5 -->
+                            <div class="flex justify-center gap-3 mb-3">
+                                <template x-for="n in [1,2,3,4,5]" :key="n">
+                                    <button @click="$store.game.selectEssenzNumber(n)"
+                                        class="w-12 h-12 rounded-full font-bold text-lg transition-all transform hover:scale-110 shadow-md"
+                                        :class="{
+                                            'bg-emerald-600 text-white ring-4 ring-emerald-300 scale-110': $store.game.essenzNumbers.includes(n),
+                                            'bg-white dark:bg-stone-700 text-stone-700 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-600': !$store.game.essenzNumbers.includes(n)
+                                        }" x-text="n"></button>
+                                </template>
+                            </div>
+                            <!-- Row 2: 6-10 -->
+                            <div class="flex justify-center gap-3">
+                                <template x-for="n in [6,7,8,9,10]" :key="n">
+                                    <button @click="$store.game.selectEssenzNumber(n)"
+                                        class="w-12 h-12 rounded-full font-bold text-lg transition-all transform hover:scale-110 shadow-md"
+                                        :class="{
+                                            'bg-emerald-600 text-white ring-4 ring-emerald-300 scale-110': $store.game.essenzNumbers.includes(n),
+                                            'bg-white dark:bg-stone-700 text-stone-700 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-600': !$store.game.essenzNumbers.includes(n)
+                                        }" x-text="n"></button>
+                                </template>
+                            </div>
+                            <div class="text-center mt-4">
+                                <button @click="$store.game.randomEssenzNumbers()"
+                                    class="text-sm bg-stone-200 dark:bg-stone-700 px-4 py-2 rounded-full hover:bg-stone-300 dark:hover:bg-stone-600 transition-all hover:scale-105 shadow"
+                                    x-text="$t('essenz.random')">
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Result Display -->
+                        <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg">
+                            <p class="font-semibold text-stone-700 dark:text-stone-300 mb-2"
+                                x-text="$t('essenz.searchQuery')"></p>
+                            <template x-if="$store.game.essenzNumbers.length === 2">
+                                <div class="text-lg font-bold text-emerald-700 dark:text-emerald-400">
+                                    "<span
+                                        x-text="$store.i18n.currentLang === 'en' ? 'Find something' : 'Findet etwas'"></span>
+                                    <span x-text="$store.game.getEssenzWord($store.game.essenzNumbers[0], 'A')"></span>
+                                    <span x-text="$store.i18n.currentLang === 'en' ? 'that is' : ', das'"></span>
+                                    <span x-text="$store.game.getEssenzWord($store.game.essenzNumbers[1], 'B')"></span>
+                                    <span x-text="$store.i18n.currentLang === 'en' ? '!' : 'ist!'"></span>"
+                                </div>
+                            </template>
+                            <template x-if="$store.game.essenzNumbers.length < 2">
+                                <p class="text-stone-500 dark:text-stone-400 italic" x-text="$t('essenz.selectPrompt')">
+                                </p>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- Essenz-Raster Table -->
+                    <details class="bg-stone-100 dark:bg-stone-700/30 p-4 rounded-lg">
+                        <summary
+                            class="font-semibold cursor-pointer flex justify-between items-center text-stone-800 dark:text-stone-200">
+                            <span x-text="$t('essenz.referenceTitle')"></span>
+                            <span class="arrow-down transition-transform duration-300">▼</span>
+                        </summary>
+                        <div class="mt-4 overflow-x-auto">
+                            <table class="w-full text-sm border-collapse">
+                                <thead>
+                                    <tr class="bg-emerald-100 dark:bg-emerald-900/30">
+                                        <th class="p-2 text-left border border-stone-300 dark:border-stone-600">#</th>
+                                        <th class="p-2 text-left border border-stone-300 dark:border-stone-600">A
+                                            (Material)</th>
+                                        <th class="p-2 text-left border border-stone-300 dark:border-stone-600">B
+                                            (Beschaffenheit)</th>
+                                        <th class="p-2 text-left border border-stone-300 dark:border-stone-600">C
+                                            (Optik)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-stone-700 dark:text-stone-300">
+                                    <tr>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold">1</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Steinern</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Hart / Fest</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Kaputt</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold">2</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Hölzern</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Weich / Biegsam
+                                        </td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Glänzend</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold">3</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Pflanzlich</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Rau / Kratzig</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Dunkel</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold">4</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Feucht</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Glatt / Rutschig
+                                        </td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Hell</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold">5</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Natürlich</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Rund / Gebogen
+                                        </td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Grün / Braun</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold">6</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Künstlich</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Eckig / Kantig
+                                        </td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Bunt / Grell</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold">7</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Tierisch</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Spitz / Scharf
+                                        </td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Trocken</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold">8</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Gebaut</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Flach / Dünn</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Alt</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold">9</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Erdig</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Massiv / Schwer
+                                        </td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Winzig</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold">10</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Magisch</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Gerade / Lang</td>
+                                        <td class="p-2 border border-stone-300 dark:border-stone-600">Beweglich</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </details>
                 </div>
 
                 <!-- SSP Probe Helper -->
                 <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
-                    <h3 class="text-xl font-bold text-emerald-700 dark:text-emerald-400 mb-4">⚔️ Proben-Helfer (SSP)
+                    <h3 class="text-xl font-bold text-emerald-700 dark:text-emerald-400 mb-4" x-text="$t('ssp.title')">
                     </h3>
-                    <p class="text-stone-600 dark:text-stone-300 mb-4">Klicke auf deine Wahl. Der Erzähler-Wurf wird
-                        zufällig ermittelt.</p>
+                    <p class="text-stone-600 dark:text-stone-300 mb-4" x-text="$t('ssp.instructions')"></p>
 
                     <div class="flex justify-center gap-4 mb-6">
                         <button @click="$store.game.playSSP('rock')"
                             class="w-20 h-20 text-4xl bg-stone-100 dark:bg-stone-700 hover:bg-stone-200 dark:hover:bg-stone-600 rounded-xl shadow-md hover:scale-105 transition-all"
                             :class="{'ring-4 ring-emerald-500': $store.game.ssp.playerChoice === 'rock'}"
-                            title="Stein">🪨</button>
+                            :title="$t('ssp.rock')">🪨</button>
                         <button @click="$store.game.playSSP('paper')"
                             class="w-20 h-20 text-4xl bg-stone-100 dark:bg-stone-700 hover:bg-stone-200 dark:hover:bg-stone-600 rounded-xl shadow-md hover:scale-105 transition-all"
                             :class="{'ring-4 ring-emerald-500': $store.game.ssp.playerChoice === 'paper'}"
-                            title="Papier">📄</button>
+                            :title="$t('ssp.paper')">📄</button>
                         <button @click="$store.game.playSSP('scissors')"
                             class="w-20 h-20 text-4xl bg-stone-100 dark:bg-stone-700 hover:bg-stone-200 dark:hover:bg-stone-600 rounded-xl shadow-md hover:scale-105 transition-all"
                             :class="{'ring-4 ring-emerald-500': $store.game.ssp.playerChoice === 'scissors'}"
-                            title="Schere">✂️</button>
+                            :title="$t('ssp.scissors')">✂️</button>
                     </div>
 
                     <!-- Result Display -->
@@ -531,14 +691,13 @@
                                     'text-yellow-700 dark:text-yellow-400': $store.game.ssp.result === 'draw',
                                     'text-red-700 dark:text-red-400': $store.game.ssp.result === 'lose'
                                 }">
-                                <span x-show="$store.game.ssp.result === 'win'">🎉 Voller Erfolg!</span>
-                                <span x-show="$store.game.ssp.result === 'draw'">⚖️ Teilerfolg (mit Haken)</span>
-                                <span x-show="$store.game.ssp.result === 'lose'">💥 Misserfolg (lustige
-                                    Konsequenz!)</span>
+                                <span x-show="$store.game.ssp.result === 'win'" x-text="$t('ssp.win')"></span>
+                                <span x-show="$store.game.ssp.result === 'draw'" x-text="$t('ssp.draw')"></span>
+                                <span x-show="$store.game.ssp.result === 'lose'" x-text="$t('ssp.lose')"></span>
                             </p>
                             <button @click="$store.game.resetSSP()"
-                                class="mt-3 text-sm text-stone-500 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 underline">
-                                Neue Probe
+                                class="mt-3 text-sm text-stone-500 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 underline"
+                                x-text="$t('ssp.newChallenge')">
                             </button>
                         </div>
                     </template>
@@ -572,8 +731,8 @@
                         </button>
                         <button @click="$store.game.clearInspirations()"
                             x-show="$store.game.quest.inspirations.length > 0"
-                            class="text-stone-400 hover:text-red-500 text-sm underline transition-colors">
-                            🗑️ Alle löschen
+                            class="text-stone-400 hover:text-red-500 text-sm underline transition-colors"
+                            x-text="'🗑️ ' + $t('inspiration.clearAll')">
                         </button>
                     </div>
 
@@ -593,12 +752,12 @@
                                         title="Löschen">×</button>
                                 </div>
                                 <!-- Content -->
-                                <div
-                                    class="text-sm font-bold text-stone-500 dark:text-stone-400 uppercase tracking-wider mb-1">
-                                    Du findest:</div>
+                                <div class="text-sm font-bold text-stone-500 dark:text-stone-400 uppercase tracking-wider mb-1"
+                                    x-text="$t('inspiration.youFind')"></div>
                                 <div class="text-xl font-bold text-emerald-800 dark:text-emerald-400 mb-1 pr-16"
                                     x-text="'&quot;' + $store.game.t(idea.itemKey) + '&quot;'"></div>
-                                <div class="text-sm text-stone-600 dark:text-stone-300 italic">...vielleicht ist es
+                                <div class="text-sm text-stone-600 dark:text-stone-300 italic">
+                                    <span x-text="$t('inspiration.maybeIts')"></span>
                                     <span class="text-emerald-600 dark:text-emerald-500"
                                         x-text="$store.game.t(idea.fantasyKey)"></span>?
                                 </div>
@@ -610,7 +769,7 @@
                     <template x-if="$store.game.quest.inspirations.length === 0">
                         <div class="text-center py-12 text-stone-400 dark:text-stone-500">
                             <div class="text-6xl mb-4 opacity-20">✨</div>
-                            <p>Wähle eine Umgebung und klicke auf den Button, um Ideen zu sammeln!</p>
+                            <p x-text="$t('inspiration.emptyState')"></p>
                         </div>
                     </template>
                 </div>
@@ -798,12 +957,14 @@
                         <input x-model="$store.game.modal.value" x-ref="modalInput"
                             @keydown.enter="$store.game.confirmModal()" @keydown.escape="$store.game.closeModal()"
                             class="w-full p-2 border border-stone-300 dark:border-stone-600 rounded mb-4 bg-white dark:bg-stone-900 text-stone-900 dark:text-white outline-none focus:border-emerald-500"
-                            autocomplete="off" type="text" placeholder="Eingabe...">
+                            autocomplete="off" type="text" :placeholder="$t('modals.inputPlaceholder')">
                         <div class="flex justify-end gap-2">
                             <button @click="$store.game.closeModal()"
-                                class="px-4 py-2 rounded text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-700 font-medium">Abbrechen</button>
+                                class="px-4 py-2 rounded text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-700 font-medium"
+                                x-text="$t('modals.cancel')"></button>
                             <button @click="$store.game.confirmModal()"
-                                class="px-4 py-2 rounded bg-emerald-600 text-white hover:bg-emerald-700 font-bold shadow-sm">OK</button>
+                                class="px-4 py-2 rounded bg-emerald-600 text-white hover:bg-emerald-700 font-bold shadow-sm"
+                                x-text="$t('modals.ok')"></button>
                         </div>
                     </div>
                 </template>
@@ -821,13 +982,13 @@
                                 </button>
                             </template>
                             <div x-show="$store.game.modal.options.length === 0"
-                                class="text-center text-stone-500 italic p-4">
-                                Keine Auswahl verfügbar.
+                                class="text-center text-stone-500 italic p-4" x-text="$t('modals.noOptions')">
                             </div>
                         </div>
                         <div class="flex justify-end">
                             <button @click="$store.game.closeModal()"
-                                class="px-4 py-2 rounded text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-700 font-medium">Schließen</button>
+                                class="px-4 py-2 rounded text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-700 font-medium"
+                                x-text="$t('modals.close')"></button>
                         </div>
                     </div>
                 </template>

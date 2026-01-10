@@ -39,7 +39,12 @@
     "delete": "Gruppe löschen",
     "addEmpty": "+ Leer",
     "addRandom": "🎲 Würfeln",
-    "sharedInventory": "Gruppen-Rucksack"
+    "sharedInventory": "Gruppen-Rucksack",
+    "activeQuest": "🗺️ Aktuelle Quest:",
+    "endQuest": "Beenden",
+    "statuses": "Zustände",
+    "addStatus": "+ Zustand",
+    "noStatuses": "Keine Zustände"
   },
   "characters": {
     "newHero": "Neuer Entdecker",
@@ -88,6 +93,8 @@
     "selectEnv": "Umgebung wählen",
     "youFind": "Du findest:",
     "maybeIts": "...vielleicht ist es",
+    "clearAll": "Alle löschen",
+    "emptyState": "Wähle eine Umgebung und klicke auf den Button, um Ideen zu sammeln!",
     "data": {
       "wald": {
         "spitzer_stein": {
@@ -790,7 +797,164 @@
     "size3": "3x3 (Kids)",
     "size4": "4x4 (Profi)",
     "generate": "Bingo erstellen",
-    "print": "🖨️ Drucken"
+    "print": "🖨️ Drucken",
+    "emptyState": "Wähle eine Umgebung und klicke auf \"Bingo erstellen\"."
+  },
+  "essenz": {
+    "title": "⚔️ Essenz-Duell (Kern-Mechanik)",
+    "description": "Konflikte werden durch Suchen gelöst. Beide rufen eine Zahl (1-10), dann kombiniert der Erzähler die Begriffe.",
+    "selectNumbers": "Wähle zwei Zahlen:",
+    "random": "🎲 Zufällig",
+    "searchQuery": "Suchanfrage:",
+    "findTemplate": "\"Findet etwas {0}, das {1} ist!\"",
+    "selectPrompt": "Wähle 2 Zahlen...",
+    "referenceTitle": "📊 Essenz-Raster (Referenz)",
+    "colNum": "#",
+    "colA": "A (Material)",
+    "colB": "B (Beschaffenheit)",
+    "colC": "C (Optik)",
+    "gridA": [
+      "",
+      "Steinern",
+      "Hölzern",
+      "Pflanzlich",
+      "Feucht",
+      "Natürlich",
+      "Künstlich",
+      "Tierisch",
+      "Gebaut",
+      "Erdig",
+      "Magisch"
+    ],
+    "gridB": [
+      "",
+      "Hart / Fest",
+      "Weich / Biegsam",
+      "Rau / Kratzig",
+      "Glatt / Rutschig",
+      "Rund / Gebogen",
+      "Eckig / Kantig",
+      "Spitz / Scharf",
+      "Flach / Dünn",
+      "Massiv / Schwer",
+      "Gerade / Lang"
+    ],
+    "gridC": [
+      "",
+      "Kaputt",
+      "Glänzend",
+      "Dunkel",
+      "Hell",
+      "Grün / Braun",
+      "Bunt / Grell",
+      "Trocken",
+      "Alt",
+      "Winzig",
+      "Beweglich"
+    ]
+  },
+  "characterBackgrounds": {
+    "waldlaeufer": {
+      "name": "Waldläufer",
+      "item": "Bogen"
+    },
+    "kraeuterkundiger": {
+      "name": "Kräuterkundiger",
+      "item": "Heiltrank"
+    },
+    "dieb": {
+      "name": "Dieb",
+      "item": "Dietrich"
+    },
+    "ritter": {
+      "name": "Ritter",
+      "item": "Schild"
+    },
+    "magier": {
+      "name": "Magier",
+      "item": "Zauberstab"
+    },
+    "barde": {
+      "name": "Barde",
+      "item": "Laute"
+    },
+    "haendler": {
+      "name": "Händler",
+      "item": "Münzbeutel"
+    },
+    "schmied": {
+      "name": "Schmied",
+      "item": "Hammer"
+    },
+    "gaukler": {
+      "name": "Gaukler",
+      "item": "Jonglierbälle"
+    },
+    "alchemist": {
+      "name": "Alchemist",
+      "item": "Reagenzglas"
+    },
+    "bestienjaeger": {
+      "name": "Bestienjäger",
+      "item": "Netz"
+    },
+    "entdecker": {
+      "name": "Entdecker",
+      "item": "Kompass"
+    }
+  },
+  "ssp": {
+    "title": "⚔️ Proben-Helfer (SSP)",
+    "instructions": "Klicke auf deine Wahl. Der Erzähler-Wurf wird zufällig ermittelt.",
+    "rock": "Stein",
+    "paper": "Papier",
+    "scissors": "Schere",
+    "win": "🎉 Voller Erfolg!",
+    "draw": "⚖️ Teilerfolg (mit Haken)",
+    "lose": "💥 Misserfolg (lustige Konsequenz!)",
+    "newChallenge": "Neue Probe"
+  },
+  "statuses": {
+    "itchy": {
+      "name": "Juckreiz",
+      "effect": "Hüpfe auf einem Bein",
+      "cure": "Finde ein Heilblatt (Gänseblümchen)"
+    },
+    "strong": {
+      "name": "Stark",
+      "effect": "Nächste Probe gelingt automatisch",
+      "cure": "Verbraucht sich nach einer Probe"
+    },
+    "invisible": {
+      "name": "Unsichtbar",
+      "effect": "Du darfst 2 Min nicht sprechen",
+      "cure": "Zeit läuft ab"
+    },
+    "cursed": {
+      "name": "Verflucht",
+      "effect": "Verliere alle Unentschieden-Proben",
+      "cure": "Finde einen besonderen Stein"
+    },
+    "lucky": {
+      "name": "Glückskind",
+      "effect": "Gewinne alle Unentschieden-Proben",
+      "cure": "Verbraucht sich nach einer Probe"
+    },
+    "tired": {
+      "name": "Müde",
+      "effect": "Renne 10 Schritte zur Erholung",
+      "cure": "Bewegungs-Aktion ausführen"
+    },
+    "brave": {
+      "name": "Mutig",
+      "effect": "+1 Mut für die nächste Aktion",
+      "cure": "Verbraucht sich nach einer Aktion"
+    },
+    "wet": {
+      "name": "Pitschnass",
+      "effect": "Schüttle dich wie ein Hund",
+      "cure": "Aktion ausführen"
+    }
   },
   "footer": {
     "support": "☕ Unterstütze das Projekt",
@@ -798,10 +962,22 @@
     "version": "Trailkin v3.5 — Open Source (MIT License)",
     "madeWith": "Made with 💚 for outdoor adventures"
   },
-  "selectEnv": "Umgebung wählen",
-  "cancel": "Abbrechen",
-  "ok": "OK",
+  "modals": {
+    "newGroupTitle": "Name der neuen Gruppe",
+    "newGroupDefault": "Neue Gruppe",
+    "renameGroupTitle": "Neuer Name für die Gruppe",
+    "newItemTitle": "Neues Item",
+    "newItemForChar": "Neues Item für",
+    "selectEnv": "Umgebung wählen",
+    "selectStatus": "Zustand wählen",
+    "inputPlaceholder": "Eingabe...",
+    "noOptions": "Keine Auswahl verfügbar.",
+    "cancel": "Abbrechen",
+    "ok": "OK",
+    "close": "Schließen"
+  },
   "errors": {
-    "cannotDeleteLastGroup": "Du kannst die letzte Gruppe nicht löschen!"
+    "cannotDeleteLastGroup": "Du kannst die letzte Gruppe nicht löschen!",
+    "allStatusesActive": "Alle Zustände sind bereits aktiv!"
   }
 }
