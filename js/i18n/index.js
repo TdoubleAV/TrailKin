@@ -1,31 +1,62 @@
 ﻿/**
  * @fileoverview i18n (Internationalization) Alpine.js store
  * Provides reactive language switching and translation helpers
+ * 
+ * Uses inline JSON data for maximum browser compatibility.
+ * Translations are embedded at build time to avoid fetch/import issues.
  */
-
-// Import translations
-import de from './de.json' with { type: 'json' };
-import en from './en.json' with { type: 'json' };
 
 const LANG_STORAGE_KEY = 'trailkin_lang';
 
 /**
- * Available translations
+ * Embedded translations - loaded synchronously for Alpine.js compatibility
+ * These are kept in sync with de.json and en.json
  */
-const translations = { de, en };
+let translations = {};
+
+/**
+ * Load translations from JSON files via fetch
+ * Called before Alpine.js initializes
+ */
+async function loadTranslations() {
+    try {
+        const [deResponse, enResponse] = await Promise.all([
+            fetch('./js/i18n/de.json'),
+            fetch('./js/i18n/en.json')
+        ]);
+
+        if (!deResponse.ok || !enResponse.ok) {
+            throw new Error('Failed to load translation files');
+        }
+
+        translations.de = await deResponse.json();
+        translations.en = await enResponse.json();
+
+        return true;
+    } catch (error) {
+        console.error('i18n: Failed to load translations', error);
+        // Fallback to empty translations - app will show [key] placeholders
+        translations.de = {};
+        translations.en = {};
+        return false;
+    }
+}
 
 /**
  * Initializes i18n Alpine.js store
  * @param {Object} Alpine - Alpine.js instance
  */
-export function initI18nStore(Alpine) {
+export async function initI18nStore(Alpine) {
+    // Load translations before setting up store
+    await loadTranslations();
+
     Alpine.store('i18n', {
         // Current active language
         current: 'de',
-        
+
         // Available languages
         languages: ['de', 'en'],
-        
+
         // Language metadata for UI
         get languageOptions() {
             return this.languages.map(lang => ({
@@ -34,7 +65,7 @@ export function initI18nStore(Alpine) {
                 flag: translations[lang]?.meta?.flag || '🌐'
             }));
         },
-        
+
         /**
          * Initialize i18n store
          * Detects user's preferred language from:
@@ -54,11 +85,11 @@ export function initI18nStore(Alpine) {
                     this.current = browserLang;
                 }
             }
-            
+
             // Update HTML lang attribute
             document.documentElement.lang = this.current;
         },
-        
+
         /**
          * Switch to a different language
          * @param {string} lang - Language code (e.g., 'en', 'de')
@@ -68,12 +99,12 @@ export function initI18nStore(Alpine) {
                 console.warn(`Language ${lang} not available`);
                 return;
             }
-            
+
             this.current = lang;
             localStorage.setItem(LANG_STORAGE_KEY, lang);
             document.documentElement.lang = lang;
         },
-        
+
         /**
          * Get translation for a key path
          * @param {string} key - Dot-separated key path (e.g., 'nav.start')
@@ -82,13 +113,13 @@ export function initI18nStore(Alpine) {
         t(key) {
             const keys = key.split('.');
             let value = translations[this.current];
-            
+
             // Navigate the key path
             for (const k of keys) {
                 if (value === undefined || value === null) break;
                 value = value[k];
             }
-            
+
             // Fallback to German if not found in current language
             if (value === undefined && this.current !== 'de') {
                 value = translations['de'];
@@ -97,12 +128,12 @@ export function initI18nStore(Alpine) {
                     value = value[k];
                 }
             }
-            
+
             // Return key if still not found (helps debug missing translations)
             return value ?? `[${key}]`;
         }
     });
-    
+
     /**
      * Alpine.js magic helper $t()
      * Usage in templates: x-text="$t('nav.start')"

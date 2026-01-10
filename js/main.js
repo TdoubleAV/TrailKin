@@ -11,19 +11,19 @@ import { initI18nStore } from './i18n/index.js';
 // Guard against multiple initializations
 let storeInitialized = false;
 
-function initStore(Alpine) {
+async function initStore(Alpine) {
     if (storeInitialized) return;
     storeInitialized = true;
 
-    initI18nStore(Alpine);  // Initialize i18n first
+    await initI18nStore(Alpine);  // Initialize i18n first (loads translations)
     initAlpineStore(Alpine);
     Alpine.store('game').loadGame();
     console.log('Trailkin store initialized');
 }
 
 // Always add the event listener first (synchronously)
-document.addEventListener('alpine:init', () => {
-    initStore(window.Alpine);
+document.addEventListener('alpine:init', async () => {
+    await initStore(window.Alpine);
 });
 
 // If Alpine is already available (shouldn't happen with defer, but just in case)
