@@ -2,47 +2,71 @@ import { initAlpineStore } from './alpineStore.js';
 import { initI18nStore } from './i18n/index.js';
 
 // ========================================================================
-// ALPINE.JS INITIALIZATION
+// SEQUENTIAL LOADER PATTERN
 // ========================================================================
-// Register the store BEFORE Alpine starts processing the DOM.
-// This uses the 'alpine:init' event which fires before DOM processing.
+// 1. Fetch data (translations, config)
+// 2. Initialize stores
+// 3. Inject Alpine.js (starts the app)
 // ========================================================================
 
-// Guard against multiple initializations
-let storeInitialized = false;
+const ALPINE_URL = 'https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js';
 
-async function initStore(Alpine) {
-    if (storeInitialized) return;
-    storeInitialized = true;
+async function bootstrap() {
+    console.log('🚀 Bootstrapping Trailkin...');
 
-    await initI18nStore(Alpine);  // Initialize i18n first (loads translations)
-    initAlpineStore(Alpine);
-    Alpine.store('game').loadGame();
-    console.log('Trailkin store initialized');
+    // 1. Fetch Translations
+    let translations = { de: null, en: null };
+    try {
+        const basePath = window.location.pathname.includes('/TrailKin/') ? '/TrailKin' : '';
+        const [de, en] = await Promise.all([
+            fetch(`${basePath}/js/i18n/de.json`).then(r => r.json()),
+            fetch(`${basePath}/js/i18n/en.json`).then(r => r.json())
+        ]);
+        translations = { de, en };
+        console.log('✅ Translations loaded');
+    } catch (error) {
+        console.error('❌ Failed to load translations:', error);
+        // Fallback
+        translations = {
+            de: { meta: { name: 'Deutsch', flag: '🇩🇪' } },
+            en: { meta: { name: 'English', flag: '🇬🇧' } }
+        };
+    }
+
+    // 2. Setup Alpine initialization hook
+    document.addEventListener('alpine:init', () => {
+        const Alpine = window.Alpine;
+
+        // Init i18n store with loaded data
+        initI18nStore(Alpine, translations);
+
+        // Init main game store
+        initAlpineStore(Alpine);
+        Alpine.store('game').loadGame();
+
+        console.log('✅ Alpine stores initialized');
+    });
+
+    // 3. Inject Alpine.js Script
+    // This ensures Alpine loads ONLY after we are ready to handle alpine:init
+    const script = document.createElement('script');
+    script.src = ALPINE_URL;
+    script.defer = true;
+    script.onerror = () => console.error('❌ Failed to load Alpine.js');
+    document.head.appendChild(script);
+    console.log('⏳ Injecting Alpine.js...');
 }
 
-// Always add the event listener first (synchronously)
-document.addEventListener('alpine:init', async () => {
-    await initStore(window.Alpine);
-});
-
-// If Alpine is already available (shouldn't happen with defer, but just in case)
-if (window.Alpine && window.Alpine.store && !storeInitialized) {
-    // Alpine might already be past init, try to register anyway
-    initStore(window.Alpine);
-}
+// Start the sequence
+bootstrap();
 
 // ========================================================================
 // GLOBAL EVENT LISTENERS
 // ========================================================================
 
-// Handle Browser Back/Forward buttons and external hash changes
 window.addEventListener('hashchange', () => {
     const tab = window.location.hash.substring(1);
     if (tab && window.Alpine && window.Alpine.store('game')) {
         window.Alpine.store('game').currentTab = tab;
     }
 });
-
-// Note: No longer auto-generating initial inspiration
-// Users now start with empty list and add ideas manually
