@@ -44,6 +44,7 @@ export function initAlpineStore(Alpine) {
         currentTab: 'spiel', // Default is now Play/Adventure
         prepareTab: 'quest', // Initial sub-tab for Generator
         helpTab: 'quickstart', // Initial sub-tab for Regelwerk
+        generatorEnv: 'wald', // Shared environment for all generator tools
         eduTheme: 'random', // Selected narrative theme for educational quests
 
         // --- Module System State ---

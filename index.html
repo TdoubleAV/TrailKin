@@ -646,6 +646,25 @@
                     <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4"
                         x-text="$t('prepare.title')"></h2>
 
+                    <!-- Global Environment Selector -->
+                    <div class="bg-stone-50 dark:bg-stone-900 p-4 rounded-xl mb-4">
+                        <label
+                            class="block text-xs font-bold text-stone-500 dark:text-stone-400 uppercase tracking-wider mb-2"
+                            x-text="$t('quest.selectEnv')"></label>
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            <template
+                                x-for="env in ['wald', 'quartier', 'stadt', 'altstadt', 'strand', 'gebirge', 'winter']"
+                                :key="env">
+                                <button @click="$store.game.generatorEnv = env"
+                                    class="px-3 py-1.5 rounded-full border transition-all text-xs font-medium"
+                                    :class="$store.game.generatorEnv === env 
+                                        ? 'bg-emerald-600 border-emerald-600 text-white shadow-md' 
+                                        : 'bg-white dark:bg-stone-800 border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-300 hover:border-emerald-500'"
+                                    x-text="$t('quest.' + env)"></button>
+                            </template>
+                        </div>
+                    </div>
+
                     <!-- Sub-Navigation (Segmented Control) -->
                     <div class="flex gap-1 mb-6 bg-stone-100 dark:bg-stone-900 p-1 rounded-xl">
                         <button @click="$store.game.prepareTab = 'quest'"
@@ -661,6 +680,7 @@
                             :class="$store.game.prepareTab === 'bingo' ? 'bg-emerald-600 text-white shadow-md' : 'text-stone-500 hover:text-stone-700 dark:hover:text-stone-300'"
                             x-text="$t('prepare.bingo')"></button>
                     </div>
+
 
                     <!-- INNER: Quest Builder -->
                     <div x-show="$store.game.prepareTab === 'quest'" x-transition:enter="fade-in">
@@ -688,24 +708,6 @@
                                 </div>
                             </div>
 
-                            <!-- STEP 2: ENVIRONMENT -->
-                            <div class="mb-8">
-                                <label
-                                    class="block text-sm font-bold text-stone-500 dark:text-stone-400 uppercase tracking-wider mb-4"
-                                    x-text="$t('quest.selectEnv')"></label>
-                                <div class="flex flex-wrap gap-2">
-                                    <template
-                                        x-for="env in ['wald', 'quartier', 'stadt', 'altstadt', 'strand', 'gebirge', 'winter']"
-                                        :key="env">
-                                        <button @click="$store.game.quest.builder.env = env"
-                                            class="px-3 py-2 rounded-full border transition-all text-xs font-medium"
-                                            :class="$store.game.quest.builder.env === env 
-                                                            ? 'bg-emerald-600 border-emerald-600 text-white shadow-md' 
-                                                            : 'bg-white dark:bg-stone-900 border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-300 hover:border-emerald-500'"
-                                            x-text="$t('quest.' + env)"></button>
-                                    </template>
-                                </div>
-                            </div>
 
                             <!-- STEP 3: COMPLEXITY -->
                             <div class="mb-8">
@@ -757,8 +759,8 @@
                             <div class="pt-4 border-t border-stone-100 dark:border-stone-700">
                                 <button
                                     @click="$store.game.quest.builder.educational 
-                                               ? $store.game.generateEducationalQuest($store.game.quest.builder.env, $store.game.quest.builder.learningGoal)
-                                               : $store.game.generateQuestV2($store.game.quest.builder.scenario, $store.game.quest.builder.env, $store.game.quest.builder.complexity)"
+                                               ? $store.game.generateEducationalQuest($store.game.generatorEnv, $store.game.quest.builder.learningGoal)
+                                               : $store.game.generateQuestV2($store.game.quest.builder.scenario, $store.game.generatorEnv, $store.game.quest.builder.complexity)"
                                     class="w-full bg-gradient-to-r from-emerald-600 to-teal-700 text-white font-bold py-4 rounded-xl shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2">
                                     <span x-text="$store.game.quest.builder.educational ? '🎓' : '✨'"></span>
                                     <span x-text="$t('quest.generate')"></span>
@@ -774,18 +776,7 @@
                                 x-text="$t('inspiration.subtitle')"></p>
 
                             <div class="flex flex-wrap gap-2 items-center justify-center mb-6">
-                                <select x-model="$store.game.quest.lastEnv"
-                                    class="bg-white dark:bg-stone-900 border border-stone-300 dark:border-stone-600 rounded-lg px-3 py-2 text-sm">
-                                    <option value="wald" x-text="$store.game.t('inspiration.forest')"></option>
-                                    <option value="quartier" x-text="$store.game.t('inspiration.neighborhood')">
-                                    </option>
-                                    <option value="stadt" x-text="$store.game.t('inspiration.city')"></option>
-                                    <option value="altstadt" x-text="$store.game.t('inspiration.oldtown')"></option>
-                                    <option value="strand" x-text="$store.game.t('inspiration.beach')"></option>
-                                    <option value="gebirge" x-text="$store.game.t('inspiration.mountains')"></option>
-                                    <option value="winter" x-text="$store.game.t('inspiration.winter')"></option>
-                                </select>
-                                <button @click="$store.game.addInspiration()"
+                                <button @click="$store.game.addInspiration($store.game.generatorEnv)"
                                     class="bg-emerald-600 text-white font-bold px-6 py-2 rounded-full shadow-md hover:bg-emerald-700 transition-all"
                                     x-text="$store.game.t('inspiration.magicButton')"></button>
                                 <button @click="$store.game.clearInspirations()"
@@ -825,24 +816,14 @@
                             </p>
 
                             <div class="flex flex-wrap gap-2 items-center justify-center mb-6">
-                                <select x-model="$store.game.bingo.env"
-                                    class="bg-white dark:bg-stone-900 border border-stone-300 dark:border-stone-600 rounded-lg px-3 py-2 text-sm">
-                                    <option value="wald" x-text="$store.game.t('inspiration.forest')"></option>
-                                    <option value="quartier" x-text="$store.game.t('inspiration.neighborhood')">
-                                    </option>
-                                    <option value="stadt" x-text="$store.game.t('inspiration.city')"></option>
-                                    <option value="altstadt" x-text="$store.game.t('inspiration.oldtown')"></option>
-                                    <option value="strand" x-text="$store.game.t('inspiration.beach')"></option>
-                                    <option value="gebirge" x-text="$store.game.t('inspiration.mountains')"></option>
-                                    <option value="winter" x-text="$store.game.t('inspiration.winter')"></option>
-                                </select>
-                                <button @click="$store.game.generateBingo($store.game.bingo.env, 3)"
+                                <button @click="$store.game.generateBingo($store.game.generatorEnv, 3)"
                                     class="bg-emerald-600 text-white font-bold px-6 py-2 rounded-lg shadow-md hover:bg-emerald-700 transition-all"
                                     x-text="$t('bingo.generate')"></button>
                                 <button onclick="window.print()"
                                     class="p-2 border rounded-lg bg-white dark:bg-stone-800"
                                     x-show="$store.game.bingo.grid.length > 0">🖨️</button>
                             </div>
+
 
                             <template x-if="$store.game.bingo.grid.length > 0">
                                 <div class="grid grid-cols-3 gap-2 mx-auto max-w-xs">
