@@ -41,7 +41,7 @@ export function initAlpineStore(Alpine) {
 
         // --- UI State ---
         theme: localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
-        currentTab: 'spiel', // Default is now Play/Adventure
+        currentTab: 'adventure', // Default is now Play/Adventure
         prepareTab: 'quest', // Initial sub-tab for Generator
         helpTab: 'quickstart', // Initial sub-tab for Regelwerk
         generatorEnv: 'wald', // Shared environment for all generator tools
@@ -131,8 +131,8 @@ export function initAlpineStore(Alpine) {
             window.scrollTo(0, 0); // Reset scroll on tab change
 
             // Reset sub-tabs if needed
-            if (tab === 'prepare' && !this.prepareTab) this.prepareTab = 'quest';
-            if (tab === 'help' && !this.helpTab) this.helpTab = 'quickstart';
+            if (tab === 'generator' && !this.prepareTab) this.prepareTab = 'quest';
+            if (tab === 'rules' && !this.helpTab) this.helpTab = 'quickstart';
         },
 
         toggleTheme() {
@@ -158,12 +158,15 @@ export function initAlpineStore(Alpine) {
             if (hash) {
                 // Map old hashes to new ones if necessary, or just use as is
                 const map = {
-                    'gruppe': 'spiel',
-                    'schnellstart': 'hilfe',
-                    'regeln': 'hilfe',
-                    'inspiration': 'vorbereiten',
-                    'quest': 'vorbereiten',
-                    'bingo': 'vorbereiten'
+                    'spiel': 'adventure',
+                    'vorbereiten': 'generator',
+                    'hilfe': 'rules',
+                    'gruppe': 'adventure',
+                    'schnellstart': 'rules',
+                    'regeln': 'rules',
+                    'inspiration': 'generator',
+                    'quest': 'generator',
+                    'bingo': 'generator'
                 };
                 this.currentTab = map[hash] || hash;
 
