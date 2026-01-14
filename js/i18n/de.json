@@ -24,7 +24,71 @@
     "start": "Kampf starten"
   },
   "consequences": {
-    "title": "Konsequenz"
+    "title": "Konsequenz",
+    "actions": [
+      {
+        "id": "time",
+        "name": "Zeit",
+        "desc": "Es dauert länger"
+      },
+      {
+        "id": "noise",
+        "name": "Lärm",
+        "desc": "Jemand hört es"
+      },
+      {
+        "id": "loss",
+        "name": "Verlust",
+        "desc": "Etwas geht kaputt"
+      },
+      {
+        "id": "discovered",
+        "name": "Entdeckt",
+        "desc": "Jemand sieht dich"
+      },
+      {
+        "id": "detour",
+        "name": "Umweg",
+        "desc": "Der Weg ist blockiert"
+      },
+      {
+        "id": "help",
+        "name": "Hilfe",
+        "desc": "Du brauchst Unterstützung"
+      }
+    ],
+    "flavors": [
+      {
+        "id": "funny",
+        "name": "Lustig",
+        "desc": "Alle müssen lachen"
+      },
+      {
+        "id": "exciting",
+        "name": "Spannend",
+        "desc": "Das Herz klopft"
+      },
+      {
+        "id": "scary",
+        "name": "Gruselig",
+        "desc": "Ein kalter Schauer"
+      },
+      {
+        "id": "annoying",
+        "name": "Ärgerlich",
+        "desc": "Das nervt richtig"
+      },
+      {
+        "id": "surprising",
+        "name": "Überraschend",
+        "desc": "Damit hat keiner gerechnet"
+      },
+      {
+        "id": "dramatic",
+        "name": "Dramatisch",
+        "desc": "Wie im Film"
+      }
+    ]
   },
   "header": {
     "title": "Trailkin",
@@ -1046,73 +1110,6 @@
             "Der Pfad führt durch gefährliches Terrain. Bereitet euch auf eine harte Prüfung eurer Sinne vor."
           ]
         }
-      },
-      "consequences": {
-        "title": "Konsequenz",
-        "actions": [
-          {
-            "id": "time",
-            "name": "Zeit",
-            "desc": "Es dauert länger"
-          },
-          {
-            "id": "noise",
-            "name": "Lärm",
-            "desc": "Jemand hört es"
-          },
-          {
-            "id": "loss",
-            "name": "Verlust",
-            "desc": "Etwas geht kaputt"
-          },
-          {
-            "id": "discovered",
-            "name": "Entdeckt",
-            "desc": "Jemand sieht dich"
-          },
-          {
-            "id": "detour",
-            "name": "Umweg",
-            "desc": "Der Weg ist blockiert"
-          },
-          {
-            "id": "help",
-            "name": "Hilfe",
-            "desc": "Du brauchst Unterstützung"
-          }
-        ],
-        "flavors": [
-          {
-            "id": "funny",
-            "name": "Lustig",
-            "desc": "Alle müssen lachen"
-          },
-          {
-            "id": "exciting",
-            "name": "Spannend",
-            "desc": "Das Herz klopft"
-          },
-          {
-            "id": "scary",
-            "name": "Gruselig",
-            "desc": "Ein kalter Schauer"
-          },
-          {
-            "id": "annoying",
-            "name": "Ärgerlich",
-            "desc": "Das nervt richtig"
-          },
-          {
-            "id": "surprising",
-            "name": "Überraschend",
-            "desc": "Damit hat keiner gerechnet"
-          },
-          {
-            "id": "dramatic",
-            "name": "Dramatisch",
-            "desc": "Wie im Film"
-          }
-        ]
       },
       "spark": {
         "buttonTitle": "Erzähl-Funke (für GM)",

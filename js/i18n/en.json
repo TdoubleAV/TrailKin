@@ -1,4 +1,4 @@
-﻿{
+{
   "meta": {
     "language": "en",
     "name": "English",
@@ -24,7 +24,71 @@
     "start": "Start Combat"
   },
   "consequences": {
-    "title": "Consequence"
+    "title": "Consequence",
+    "actions": [
+      {
+        "id": "time",
+        "name": "Time",
+        "desc": "It takes longer"
+      },
+      {
+        "id": "noise",
+        "name": "Noise",
+        "desc": "Someone hears it"
+      },
+      {
+        "id": "loss",
+        "name": "Loss",
+        "desc": "Something breaks"
+      },
+      {
+        "id": "discovered",
+        "name": "Discovered",
+        "desc": "Someone sees you"
+      },
+      {
+        "id": "detour",
+        "name": "Detour",
+        "desc": "The path is blocked"
+      },
+      {
+        "id": "help",
+        "name": "Help",
+        "desc": "You need support"
+      }
+    ],
+    "flavors": [
+      {
+        "id": "funny",
+        "name": "Funny",
+        "desc": "Everyone laughs"
+      },
+      {
+        "id": "exciting",
+        "name": "Exciting",
+        "desc": "Heart pounding"
+      },
+      {
+        "id": "scary",
+        "name": "Scary",
+        "desc": "A cold shiver"
+      },
+      {
+        "id": "annoying",
+        "name": "Annoying",
+        "desc": "That is annoying"
+      },
+      {
+        "id": "surprising",
+        "name": "Surprising",
+        "desc": "No one expected that"
+      },
+      {
+        "id": "dramatic",
+        "name": "Dramatic",
+        "desc": "Like in a movie"
+      }
+    ]
   },
   "header": {
     "title": "Trailkin",
@@ -245,73 +309,6 @@
             "The path leads through dangerous territory. Prepare for a harsh test of your senses."
           ]
         }
-      },
-      "consequences": {
-        "title": "Consequence",
-        "actions": [
-          {
-            "id": "time",
-            "name": "Time",
-            "desc": "It takes longer"
-          },
-          {
-            "id": "noise",
-            "name": "Noise",
-            "desc": "Someone hears it"
-          },
-          {
-            "id": "loss",
-            "name": "Loss",
-            "desc": "Something breaks"
-          },
-          {
-            "id": "discovered",
-            "name": "Discovered",
-            "desc": "Someone sees you"
-          },
-          {
-            "id": "detour",
-            "name": "Detour",
-            "desc": "The path is blocked"
-          },
-          {
-            "id": "help",
-            "name": "Help",
-            "desc": "You need support"
-          }
-        ],
-        "flavors": [
-          {
-            "id": "funny",
-            "name": "Funny",
-            "desc": "Everyone laughs"
-          },
-          {
-            "id": "exciting",
-            "name": "Exciting",
-            "desc": "Heart pounding"
-          },
-          {
-            "id": "scary",
-            "name": "Scary",
-            "desc": "A cold shiver"
-          },
-          {
-            "id": "annoying",
-            "name": "Annoying",
-            "desc": "That is annoying"
-          },
-          {
-            "id": "surprising",
-            "name": "Surprising",
-            "desc": "No one expected that"
-          },
-          {
-            "id": "dramatic",
-            "name": "Dramatic",
-            "desc": "Like in a movie"
-          }
-        ]
       },
       "spark": {
         "buttonTitle": "Narrative Spark (for GM)",

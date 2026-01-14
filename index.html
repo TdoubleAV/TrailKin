@@ -218,9 +218,9 @@
             </button>
 
             <!-- Konsequenzen FAB -->
-            <button @click="$store.game.modal = { open: true, type: 'consequences', title: $t('rules.moduleA_title') }"
+            <button @click="$store.game.generateFailForward()"
                 class="w-14 h-14 bg-amber-600 hover:bg-amber-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110 opacity-90 hover:opacity-100"
-                :title="$t('rules.moduleA_title')">
+                :title="$t('consequences.title')">
                 <span class="text-2xl">⚠️</span>
             </button>
         </div>
