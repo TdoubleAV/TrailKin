@@ -1,0 +1,24 @@
+#!/bin/bash
+# pre-commit hook for Trailkin
+# Copy this file to .git/hooks/pre-commit and make it executable
+
+echo "🔎 Running pre-commit checks..."
+
+# JSON validation (if jq is available)
+if command -v jq &> /dev/null; then
+    if [ -f "./scripts/validate-json.sh" ]; then
+        ./scripts/validate-json.sh || exit 1
+    fi
+else
+    echo "⚠️ jq not installed - skipping JSON validation"
+fi
+
+# ESLint (if npx is available)
+if command -v npx &> /dev/null; then
+    npx eslint js/*.js --quiet || exit 1
+else
+    echo "⚠️ npx not installed - skipping ESLint"
+fi
+
+echo "✅ Pre-commit checks passed!"
+exit 0

@@ -1,0 +1,1500 @@
+{
+  "meta": {
+    "language": "de",
+    "name": "Deutsch",
+    "flag": "🇩🇪"
+  },
+  "nav": {
+    "play": "🎮 Abenteuer",
+    "prepare": "⚡ Generator",
+    "help": "📚 Regelwerk"
+  },
+  "prepare": {
+    "title": "Generator",
+    "quest": "Neue Quest",
+    "inspiration": "Ideen",
+    "bingo": "Bingo-Karte"
+  },
+  "help": {
+    "title": "Regelwerk",
+    "quickstart": "Schnellstart",
+    "rules": "Module & Mechaniken"
+  },
+  "combat": {
+    "start": "Kampf starten"
+  },
+  "consequences": {
+    "title": "Konsequenz"
+  },
+  "header": {
+    "title": "Trailkin",
+    "tagline": "Dein Abenteuer beginnt vor der Haustür",
+    "themeToggle": "Theme wechseln"
+  },
+  "quickstart": {
+    "title": "Das Abenteuer in 60 Sekunden",
+    "subtitle": "Nie wieder Langeweile beim Spaziergang!",
+    "loop_title": "Der Trailkin Abenteuer-Loop",
+    "loop_desc": "So funktioniert jede Quest:",
+    "step1_title": "1. Rollen",
+    "step1_desc": "Einer leitet (Erzähler), die anderen spielen (Entdecker).",
+    "step2_title": "2. Ziel",
+    "step2_desc": "Was wollen wir heute finden? (z.B. 3 magische Steine)",
+    "step3_title": "3. Spielen",
+    "step3_desc": "Kind sagt was es tut → Erzähler entscheidet ob es klappt.",
+    "step4_title": "4. Fertig!",
+    "step4_desc": "Der Rest sind optionale Extras.",
+    "important_title": "Das Wichtigste",
+    "important_desc": "Es gibt keine falschen Ideen! Das Ziel ist, gemeinsam Spaß zu haben."
+  },
+  "group": {
+    "title": "Meine Gruppe",
+    "subtitle": "Verwaltet eure Entdecker und Begleiter.",
+    "newGroup": "+ Neu",
+    "rename": "Gruppe umbenennen",
+    "delete": "Gruppe löschen",
+    "addEmpty": "+ Leer",
+    "addRandom": "🎲 Würfeln",
+    "sharedInventory": "Schatzkammer",
+    "activeQuest": "🗺️ Aktuelle Quest:",
+    "endQuest": "Beenden",
+    "statuses": "Zustände",
+    "addStatus": "+ Zustand",
+    "noStatuses": "Keine Zustände"
+  },
+  "characters": {
+    "newHero": "Neuer Entdecker",
+    "adventurer": "Entdecker",
+    "deleteHero": "Entdecker löschen",
+    "hpLabel": "Mumm ⚡",
+    "equipment": "Schatzkammer (3 Slots)"
+  },
+  "settings": {
+    "title": "Module & Einstellungen",
+    "modules_intro": "Wähle aus, welche Regeln ihr nutzen wollt:",
+    "moduleA_label": "Modul A: Herausforderungen",
+    "moduleB_label": "Modul B: Spannungs-Mechaniken",
+    "moduleC_label": "Modul C: Fail Forward",
+    "moduleE_label": "Modul E: Zustände",
+    "moduleF_label": "Modul: Fellnase (Hund)"
+  },
+  "rules": {
+    "title": "Abenteuer-Handbuch",
+    "subtitle": "Ideen, um den Spaziergang spannender zu machen.",
+    "diagram_title": "Der Trailkin Abenteuer-Loop",
+    "loop": {
+      "step1": "Kind: Absicht",
+      "step2": "SL: Wie?",
+      "step3": "Ergebnis",
+      "works": "Klappt!",
+      "risky": "Riskant?",
+      "how": "Wie löst du es?",
+      "luck": "Glück",
+      "search": "Suchen",
+      "skill": "Geschick",
+      "success": "Erfolg",
+      "fail": "Fail Forward",
+      "continue": "Weiter"
+    },
+    "moduleA_title": "Herausforderungen",
+    "moduleA_intro": "Nutzt diese, wenn ihr den Zufall entscheiden lassen wollt.",
+    "moduleA_rps": "Schere, Stein, Papier:",
+    "moduleA_rps_desc": "Entdecker gegen Erzähler. Sieg = Super Erfolg. Niederlage = Lustiges Missgeschick. Unentschieden = Teilerfolg.",
+    "moduleA_luck": "Glücks-Alternativen:",
+    "moduleA_luck_desc": "Gerade oder Ungerade mit Fingern oder das Farben-Orakel (nächstes Auto).",
+    "moduleA_skill": "Geschicklichkeits-Alternativen:",
+    "moduleA_skill_desc": "Eine Strecke balancieren oder einen Tannenzapfen auf ein Ziel werfen.",
+    "moduleB_title": "Spannung",
+    "moduleB_clock": "Fortschritts-Uhr:",
+    "moduleB_clock_desc": "Legt ein echtes Ziel als Timer fest.",
+    "moduleB_pressure": "Zeitdruck:",
+    "moduleB_pressure_example": "Wir müssen X finden, bevor wir die Brücke erreichen!",
+    "moduleB_accumulation": "Anhäufung:",
+    "moduleB_accumulation_example": "Bei jedem Fehlschlag ist der böse Magier einen Schritt näher!",
+    "moduleC_title": "Tierischer Begleiter",
+    "moduleC_intro": "Der Hund ist kein NPC, sondern ein magischer Verbündeter. Nutze echte Kommandos als Zaubersprüche:",
+    "moduleC_cmd_look": "\"Schau\" (Blickkontakt):",
+    "moduleC_cmd_look_desc": "Geister-Sicht – Held kann Unsichtbares sehen",
+    "moduleC_cmd_touch": "\"Touch\" (Hand-Stups):",
+    "moduleC_cmd_touch_desc": "Siegel brechen – Öffnet magische Tore/Truhen",
+    "moduleC_cmd_search": "\"Such\" (Schnüffeln):",
+    "moduleC_cmd_search_desc": "Fährtenleser – Findet versteckte Hinweise",
+    "moduleC_cmd_sit": "\"Sitz/Bleib\":",
+    "moduleC_cmd_sit_desc": "Wächter-Modus – Beschützt Gruppe vor Gefahr",
+    "moduleC_cmd_leave": "\"Lass es\":",
+    "moduleC_cmd_leave_desc": "Falle entschärfen – Ignoriert verfluchte Köder",
+    "moduleD_title": "Kampf",
+    "moduleD_intro": "Kämpfe werden mit dem Essenz-Raster gelöst (Best-of-3).",
+    "moduleD_step1": "1. Monster erscheint → \"Findet den Schwachpunkt!\"",
+    "moduleD_step2": "2. Zahlen rufen (1-10), SL kombiniert Begriffe.",
+    "moduleD_step3": "3. Suchen (Zeit entscheidet SL). Treffer = Runde gewonnen.",
+    "moduleD_step4": "4. Wer 2 Runden gewinnt, siegt!",
+    "moduleD_loss": "Bei Niederlage:",
+    "moduleD_loss_desc": "Konsequenz-Raster + Mumm-Verlust. Aber: Monster töten NIE!",
+    "principle_fail_forward": "⚡ Fail Forward (Spielprinzip)",
+    "principle_fail_forward_intro": "Misserfolg stoppt nie die Geschichte! Er macht sie nur interessanter.",
+    "principle_fail_forward_example": "Tür klemmt → Tür geht auf, aber der Wächter wacht auf.",
+    "moduleF_cmd_leave_desc": "Falle entschärfen – Ignoriert verfluchte Köder",
+    "consequence_title": "⚡ Konsequenz-Raster",
+    "consequence_subtitle": "Was passiert bei einem Fehlschlag?",
+    "consequence_what": "Was passiert?",
+    "consequence_how": "Wie fühlt es sich an?",
+    "consequence_condition": "Zustand (optional)",
+    "consequence_random": "🎲 Zufällig",
+    "consequence_result": "Ergebnis",
+    "consequence_what_1": "Zeit – Es dauert länger",
+    "consequence_what_2": "Lärm – Jemand hört es",
+    "consequence_what_3": "Verlust – Etwas geht kaputt",
+    "consequence_what_4": "Entdeckt – Jemand sieht dich",
+    "consequence_what_5": "Umweg – Der Weg ist blockiert",
+    "consequence_what_6": "Hilfe – Du brauchst Unterstützung",
+    "consequence_how_1": "Lustig",
+    "consequence_how_2": "Spannend",
+    "consequence_how_3": "Gruselig",
+    "consequence_how_4": "Ärgerlich",
+    "consequence_how_5": "Überraschend",
+    "consequence_how_6": "Dramatisch",
+    "consequence_condition_1": "Schluckauf",
+    "consequence_condition_2": "Müde",
+    "consequence_condition_3": "Juckreiz",
+    "consequence_condition_4": "Stumm",
+    "consequence_condition_5": "Langsam",
+    "consequence_condition_6": "Hungrig",
+    "regeneration_title": "💪 Mumm regenerieren",
+    "regeneration_subtitle": "So bekommst du Mumm zurück:",
+    "regeneration_quick": "Schnell (+1 Mumm)",
+    "regeneration_pause": "Pause (+1 Mumm)",
+    "regeneration_quest": "Nächste Quest (Alle Mumm!)",
+    "regeneration_breathe": "10 tiefe Atemzüge",
+    "regeneration_see": "5 Dinge benennen, die du siehst",
+    "regeneration_hear": "3 Geräusche hören und benennen",
+    "regeneration_laugh": "Jemanden zum Lachen bringen",
+    "regeneration_compliment": "Jemandem ein Kompliment geben",
+    "regeneration_jump": "10 Hampelmänner oder wie ein Frosch hüpfen",
+    "regeneration_spell": "Einen Zauberspruch erfinden",
+    "regeneration_snack": "5 Min Pause mit Snack/Wasser"
+  },
+  "inspiration": {
+    "title": "Ideen-Generator",
+    "subtitle": "Wählt eure Umgebung und holt euch spontane Ideen für magische Verwandlungen.",
+    "forest": "🌳 Wald",
+    "neighborhood": "🏡 Quartier",
+    "city": "🏙️ Stadt",
+    "oldtown": "🏰 Altstadt",
+    "beach": "🏖️ Strand",
+    "mountains": "⛰️ Gebirge",
+    "winter": "❄️ Winter",
+    "magicButton": "✨ Neue Idee zaubern",
+    "selectEnv": "Umgebung wählen",
+    "youFind": "Du findest:",
+    "maybeIts": "...vielleicht ist es",
+    "clearAll": "Alle löschen",
+    "emptyState": "Wähle eine Umgebung und klicke auf den Button, um Ideen zu sammeln!",
+    "data": {
+      "wald": {
+        "spitzer_stein": {
+          "item": "Spitzer Stein",
+          "fantasy": "Drachenschuppe, Pfeilspitze, Splitter eines magischen Kristalls"
+        },
+        "runder_kiesel": {
+          "item": "Runder Kieselstein",
+          "fantasy": "Kobold-Gold, versteinertes Troll-Auge"
+        },
+        "ast_klein": {
+          "item": "Ast (klein)",
+          "fantasy": "Zauberstab, Dolch, Schlüssel"
+        },
+        "tannenzapfen": {
+          "item": "Tannenzapfen",
+          "fantasy": "Drachen-Ei in Stasis, 'Knirsch-Granate'"
+        },
+        "eichel": {
+          "item": "Eichel / Kastanie",
+          "fantasy": "Juwel des Eichhörnchen-Königs, Zwergen-Helm, Energie-Kapsel"
+        },
+        "moos": {
+          "item": "Moos",
+          "fantasy": "Bart des Baumgeistes, Elfen-Teppich, Verbandszeug"
+        },
+        "feder": {
+          "item": "Feder",
+          "fantasy": "Feder eines Greifen, Schreibfeder für unsichtbare Tinte"
+        },
+        "blatt_besonders": {
+          "item": "Blatt (besonders)",
+          "fantasy": "Elfen-Brief, Tarnumhang (imaginär), Feen-Flügel"
+        },
+        "rinde": {
+          "item": "Rinde",
+          "fantasy": "Schild, Schatzkarte, Haut eines Ents"
+        },
+        "blume": {
+          "item": "Blume",
+          "fantasy": "Heiltrank-Zutat, Fee im Schlaf, Sonnensplitter"
+        },
+        "wurzel": {
+          "item": "Wurzel",
+          "fantasy": "Schlangen-Amulett, Zauber-Rute, Stolperfalle der Goblins"
+        },
+        "erde_sand": {
+          "item": "Erde / Sand (in Dose)",
+          "fantasy": "Feenstaub, Schießpulver"
+        },
+        "baumstumpf": {
+          "item": "Baumstumpf",
+          "fantasy": "Tisch der Zwerge, Altar der Druiden, Feen-Tanzplatz"
+        },
+        "pilz": {
+          "item": "Pilz",
+          "fantasy": "Hocker für Wichtel, Gift-Warnung, Magischer Regenschirm"
+        },
+        "ameise": {
+          "item": "Ameise",
+          "fantasy": "Soldat der Erdarmee, Kundschafter"
+        },
+        "spinnennetz": {
+          "item": "Spinnennetz",
+          "fantasy": "Traumfänger, Netzfalle einer Riesenspinne, Feen-Hängematte"
+        },
+        "hohler_baum": {
+          "item": "Hohler Baum",
+          "fantasy": "Portal in die Unterwelt, Versteck eines Waldläufers"
+        },
+        "kleeblatt": {
+          "item": "Kleeblatt",
+          "fantasy": "Glücksbringer, Schlüssel zur Feenwelt"
+        },
+        "farn": {
+          "item": "Farn",
+          "fantasy": "Dinosaurier-Pflanze, Wedel des Windes"
+        },
+        "kaefer": {
+          "item": "Käfer",
+          "fantasy": "Gepanzerter Transporter, Juwel auf Beinen"
+        },
+        "vogelgesang": {
+          "item": "Vogelgesang",
+          "fantasy": "Geheime Botschaft der Elfen, Warnruf der Wächter"
+        },
+        "sonnenstrahl": {
+          "item": "Sonnenstrahl durch Blätter",
+          "fantasy": "Pfad der Erleuchtung, Segen des Lichtgottes"
+        },
+        "bach": {
+          "item": "Bach / Pfütze",
+          "fantasy": "Spiegel der Wahrheit, Trank des Lebens, Ozean für Ameisen"
+        },
+        "grosser_stein": {
+          "item": "Großer Stein",
+          "fantasy": "Schlafender Troll, Sitz des Rates, Meteorit"
+        },
+        "beere": {
+          "item": "Beere (nicht essen!)",
+          "fantasy": "Explosive Kugel, Giftköder, Rubine"
+        },
+        "loewenzahn": {
+          "item": "Löwenzahn",
+          "fantasy": "Sonnensplitter, Wunsch-Verteiler (Pusteblume)"
+        },
+        "schneckenhaus": {
+          "item": "Schneckenhaus",
+          "fantasy": "Mobile Festung, Helm für Däumling, Spiral-Amulett"
+        },
+        "harz": {
+          "item": "Harz",
+          "fantasy": "Bernstein, Blut des Baumes, Magischer Kleber"
+        },
+        "vogelnest": {
+          "item": "Vogelnest (oben)",
+          "fantasy": "Wachturm der Lüfte, Schatzkammer der Elstern"
+        },
+        "baum_umgestuerzt": {
+          "item": "Umgestürzter Baum",
+          "fantasy": "Brücke über den Abgrund, Gefallener Riese"
+        },
+        "wildspur": {
+          "item": "Wildspur",
+          "fantasy": "Pfad der Bestie, Zeichen des Werwolfs"
+        },
+        "holzscheit": {
+          "item": "Holzscheit",
+          "fantasy": "Brennstoff für den Drachenatem, Riesen-Zahnstocher"
+        },
+        "nadeln": {
+          "item": "Weiche Nadeln",
+          "fantasy": "Bett der Waldfee, Grünes Fell"
+        },
+        "kletterpflanze": {
+          "item": "Kletterpflanze",
+          "fantasy": "Grüne Schlange, Leiter der Wichtel"
+        },
+        "blatt_haufen": {
+          "item": "Haufen Blätter",
+          "fantasy": "Versteck des Waldschrats, Drachennest"
+        },
+        "knospe": {
+          "item": "Knospe",
+          "fantasy": "Drachen-Ei (klein), Frische Energie"
+        },
+        "biene": {
+          "item": "Biene",
+          "fantasy": "Honig-Sammlerin der Königin, Goldener Bote"
+        },
+        "schmetterling": {
+          "item": "Schmetterling",
+          "fantasy": "Verzauberte Fee, Bunter Bote"
+        },
+        "gluehwuermchen": {
+          "item": "Glühwürmchen (abends)",
+          "fantasy": "Irrlicht, Fee mit Laterne"
+        },
+        "grashuepfer": {
+          "item": "Grashüpfer",
+          "fantasy": "Spring-Ryter, Bote des Sommers"
+        },
+        "blatt_bunt": {
+          "item": "Buntes Blatt (Rot/Gelb)",
+          "fantasy": "Feuer-Rune, Goldmünze der Natur"
+        },
+        "nuss": {
+          "item": "Nuss",
+          "fantasy": "Verschlossene Truhe, Gehirn-Nahrung"
+        },
+        "kuerbis": {
+          "item": "Kürbis (Feld)",
+          "fantasy": "Kopf des Kopflosen Reiters, Riesen-Bombe"
+        },
+        "eiszapfen": {
+          "item": "Eiszapfen",
+          "fantasy": "Kristall-Dolch, Zahn des Frostriesen"
+        },
+        "spur_schnee": {
+          "item": "Spur im Matsch/Schnee",
+          "fantasy": "Hinweis auf das Monster, Pfad des Vorgängers"
+        },
+        "ast_kahl": {
+          "item": "Kahler Ast",
+          "fantasy": "Knochenhand, Skelett-Finger"
+        },
+        "raureif": {
+          "item": "Raureif",
+          "fantasy": "Diamant-Staub, Hauch des Eisdrachen"
+        },
+        "stechpalme": {
+          "item": "Stechpalme/Nadelbaum",
+          "fantasy": "Der Unbesiegbare, Wächter des Winters"
+        }
+      },
+      "stadt": {
+        "muenze": {
+          "item": "Münze / Centstück",
+          "fantasy": "Golddublone, Amulett, Bestechungsgeld"
+        },
+        "kronkorken": {
+          "item": "Kronkorken",
+          "fantasy": "Schild für Mäuse, Medaille, Währung der Zukunft"
+        },
+        "gummiband": {
+          "item": "Gummiband",
+          "fantasy": "Fesseln, Bogensehne, Wurm"
+        },
+        "schnur": {
+          "item": "Stück Schnur",
+          "fantasy": "Kletterseil, Lasso, Ariadne-Faden"
+        },
+        "glitzerpapier": {
+          "item": "Glitzerpapier",
+          "fantasy": "Magische Schriftrolle, Spiegel, Scherbe eines Portals"
+        },
+        "stein_weg": {
+          "item": "Stein (vom Weg)",
+          "fantasy": "Meteorit, 'Sprechender Stein', Wurfgeschoss"
+        },
+        "stoeckchen": {
+          "item": "Stöckchen",
+          "fantasy": "Dietrich, Zauberstab, Zeigestab"
+        },
+        "knopf": {
+          "item": "Verlorener Knopf",
+          "fantasy": "Schildkröten-Panzer, Auge eines Golems, Magischer Siegel"
+        },
+        "ampel_rot": {
+          "item": "Rote Ampel",
+          "fantasy": "Das Auge des Wächters (Sauron), Kraftfeld-Sperre"
+        },
+        "ampel_gruen": {
+          "item": "Grüne Ampel",
+          "fantasy": "Erlaubnis des Königs, Kraftfeld offen"
+        },
+        "kanaldeckel": {
+          "item": "Kanaldeckel",
+          "fantasy": "Eingang zum Dungeon, Schild des Titanen, Pizza-Lieferung"
+        },
+        "statue": {
+          "item": "Statue",
+          "fantasy": "Versteinerter Held, Wächter der Zeit"
+        },
+        "taube": {
+          "item": "Taube",
+          "fantasy": "Spion des Zauberers, Bote, Geflügelte Ratte"
+        },
+        "bank": {
+          "item": "Bank",
+          "fantasy": "Rastplatz der Abenteurer, Thron"
+        },
+        "laterne": {
+          "item": "Laterne",
+          "fantasy": "Leuchtfeuer, Bannkreis gegen Schatten"
+        },
+        "muelleimer": {
+          "item": "Mülleimer",
+          "fantasy": "Schlund des Nimmersatt, Mimic (Vorsicht!)"
+        },
+        "schaufensterpuppe": {
+          "item": "Schaufenster-Puppe",
+          "fantasy": "Gefangene Seele, Golem in Stasis"
+        },
+        "bus_bahn": {
+          "item": "Bus / Bahn",
+          "fantasy": "Eiserner Wurm, Transporter der Gilde"
+        },
+        "fahrrad": {
+          "item": "Fahrrad",
+          "fantasy": "Stahlross, Schnelles Reittier"
+        },
+        "zebrastreifen": {
+          "item": "Zebrastreifen",
+          "fantasy": "Magische Brücke, Pfad der Sicherheit"
+        },
+        "hochhaus": {
+          "item": "Wolkenkratzer / Hochhaus",
+          "fantasy": "Turm des Magiers, Berg aus Glas"
+        },
+        "baustelle": {
+          "item": "Baustelle",
+          "fantasy": "Chaos-Zone, Werkstatt der Zwerge"
+        },
+        "kran": {
+          "item": "Kran",
+          "fantasy": "Gigantischer mechanischer Arm, Drachenhals"
+        },
+        "graffiti": {
+          "item": "Graffiti",
+          "fantasy": "Alte Runen, Zeichen der Rebellen, Höhlenmalerei"
+        },
+        "hund": {
+          "item": "Hund an Leine",
+          "fantasy": "Gezähmte Bestie, Begleiter eines anderen Helden"
+        },
+        "handschuh": {
+          "item": "Verlorener Handschuh",
+          "fantasy": "Abgefallene Hand, Geist-Hülle"
+        },
+        "zeitungsbox": {
+          "item": "Zeitungsbox",
+          "fantasy": "Orakel der Neuigkeiten, Kasten der Weisheit"
+        },
+        "springbrunnen": {
+          "item": "Springbrunnen",
+          "fantasy": "Quelle der Jugend, Wasser-Elementar"
+        },
+        "treppe": {
+          "item": "Treppe",
+          "fantasy": "Stufen zum Schicksal, Bergpfad"
+        },
+        "schild_verkehr": {
+          "item": "Schild (Verkehr)",
+          "fantasy": "Gesetzestafel, Warnung vor Drachen"
+        },
+        "uhr": {
+          "item": "Uhr (öffentlich)",
+          "fantasy": "Auge der Zeit, Countdown"
+        },
+        "gitterzaun": {
+          "item": "Gitterzaun",
+          "fantasy": "Käfigwand, Netz aus Stahl"
+        },
+        "auto_rot": {
+          "item": "Auto (rot)",
+          "fantasy": "Feuer-Streitwagen"
+        },
+        "auto_blau": {
+          "item": "Auto (blau)",
+          "fantasy": "Wasser-Gleiter"
+        },
+        "regenschirm": {
+          "item": "Regenschirm",
+          "fantasy": "Schild gegen den Himmelszorn, Pilz-Ersatz"
+        },
+        "plakatwand": {
+          "item": "Plakatwand",
+          "fantasy": "Verkündung des Königs, Fahndungsplakat"
+        },
+        "baeckerei": {
+          "item": "Bäckerei",
+          "fantasy": "Versorgungsstation, Quelle des Lebens (Brot)"
+        },
+        "kiosk": {
+          "item": "Kiosk",
+          "fantasy": "Händler der kleinen Schätze, Informationsbörse"
+        },
+        "polizeiauto": {
+          "item": "Polizeiauto",
+          "fantasy": "Wache der Stadt, Blaue Ritter"
+        },
+        "feuerwehr": {
+          "item": "Feuerwehr",
+          "fantasy": "Drachenjäger, Wasser-Magier"
+        }
+      },
+      "quartier": {
+        "katze": {
+          "item": "Katze",
+          "fantasy": "Wächter der Straße, Spion der Hexe, Mini-Tiger"
+        },
+        "gartenzwerg": {
+          "item": "Gartenzwerg",
+          "fantasy": "Versteinerter Gnom, Wächter des Vorgartens"
+        },
+        "briefkasten": {
+          "item": "Briefkasten",
+          "fantasy": "Maul des Nachrichten-Monsters, Schatzkiste"
+        },
+        "zaun": {
+          "item": "Zaun",
+          "fantasy": "Barrikade gegen Orks, Grenze zum Nachbarreich"
+        },
+        "blumentopf": {
+          "item": "Blumentopf",
+          "fantasy": "Alchemie-Kessel, Helm eines Riesen"
+        },
+        "giesskanne": {
+          "item": "Gießkanne",
+          "fantasy": "Regenmacher, Rüssel-Tier"
+        },
+        "fussabtreter": {
+          "item": "Fußabtreter",
+          "fantasy": "Falle, Willkommens-Rune"
+        },
+        "vogelhaus": {
+          "item": "Vogelhaus",
+          "fantasy": "Luftschloss, Taverne für Geflügelte"
+        },
+        "garage": {
+          "item": "Garage",
+          "fantasy": "Höhle des Metall-Tieres, Waffenkammer"
+        },
+        "fahne": {
+          "item": "Fahne",
+          "fantasy": "Banner der Burg, Wind-Anzeiger"
+        },
+        "schaukel": {
+          "item": "Schaukel",
+          "fantasy": "Katapult (inaktiv), Pendel der Zeit"
+        },
+        "sandkasten": {
+          "item": "Sandkasten",
+          "fantasy": "Wüste der Verdammnis, Ausgrabungsstätte"
+        },
+        "rutsche": {
+          "item": "Rutsche",
+          "fantasy": "Schnellreise-Portal, Drachenzunge"
+        },
+        "trampolin": {
+          "item": "Trampolin",
+          "fantasy": "Sprungfeld zur Wolkenstadt, Netzfalle"
+        },
+        "grill": {
+          "item": "Grill",
+          "fantasy": "Schmiedefeuer, Altar der Fleischeslust"
+        },
+        "liegestuhl": {
+          "item": "Liegestuhl",
+          "fantasy": "Thron der Entspannung"
+        },
+        "hecke": {
+          "item": "Hecke",
+          "fantasy": "Labyrinth-Wand, Versteck"
+        },
+        "muelltonne": {
+          "item": "Mülltonne",
+          "fantasy": "Goblinstadt-Eingang, Rumpelkammer"
+        },
+        "fahrradklingel": {
+          "item": "Fahrradklingel",
+          "fantasy": "Alarm-Glocke, Schall-Waffe"
+        },
+        "kreide": {
+          "item": "Kreidezeichnung",
+          "fantasy": "Magische Bannkreis, Portal-Markierung"
+        },
+        "paketbote": {
+          "item": "Paketbote",
+          "fantasy": "Königlicher Kurier, Lieferant seltener Artefakte"
+        },
+        "nachbar": {
+          "item": "Nachbar",
+          "fantasy": "Dorfbewohner, NPC (Questgeber?)"
+        },
+        "hundebellen": {
+          "item": "Hundebellen",
+          "fantasy": "Warnruf der Bestien, Alarmsirene"
+        },
+        "rasenmaeher": {
+          "item": "Rasenmäher",
+          "fantasy": "Gras-Fresser, Lärm-Monster"
+        },
+        "solarleuchte": {
+          "item": "Solarleuchte",
+          "fantasy": "Licht-Samen, Stern am Boden"
+        },
+        "skateboard": {
+          "item": "Skateboard/Roller",
+          "fantasy": "Boden-Gleiter, Schneller Schuh"
+        },
+        "hupfspiel": {
+          "item": "Hupfspiel (Kreide)",
+          "fantasy": "Ritual-Muster, Pfad der Prüfung"
+        },
+        "fussballtor": {
+          "item": "Fußballtor (klein)",
+          "fantasy": "Netz des Fängers, Tor zur Arena"
+        },
+        "basketballkorb": {
+          "item": "Basketballkorb",
+          "fantasy": "Ring des Feuers, Hohes Ziel"
+        },
+        "vogeltränke": {
+          "item": "Vogeltränke",
+          "fantasy": "See der Zwerge, Heilquelle"
+        },
+        "insektenhotel": {
+          "item": "Insektenhotel",
+          "fantasy": "Kaserne der Flug-Einheit, Mehrfamilienhaus"
+        },
+        "windrad": {
+          "item": "Windrad",
+          "fantasy": "Energie-Sammler, Hypnose-Gerät"
+        },
+        "wohnwagen": {
+          "item": "Wohnwagen",
+          "fantasy": "Mobiles Haus, Wagen des fahrenden Händlers"
+        },
+        "anhaenger": {
+          "item": "Anhänger",
+          "fantasy": "Lastesel, Kiste auf Rädern"
+        },
+        "kompost": {
+          "item": "Komposthaufen",
+          "fantasy": "Alchemie-Labor (lange Gärung), Hügel der Würmer"
+        },
+        "waescheleine": {
+          "item": "Wäscheleine",
+          "fantasy": "Fahnenschmuck, Geister-Parade"
+        },
+        "garage_offen": {
+          "item": "Garage offen",
+          "fantasy": "Maul der Höhle, Einladung zum Plündern"
+        },
+        "doppel_muell": {
+          "item": "Doppel-Mülltonne",
+          "fantasy": "Zwillingstürme des Abfalls, Wächter der Gasse"
+        },
+        "rosenbogen": {
+          "item": "Rosenbogen",
+          "fantasy": "Pforte der Dornen, Portal der Liebe"
+        },
+        "gartenhaus": {
+          "item": "Gartenhaus",
+          "fantasy": "Hütte des Eremiten, Geheimversteck"
+        }
+      },
+      "altstadt": {
+        "kopfsteinpflaster": {
+          "item": "Kopfsteinpflaster",
+          "fantasy": "Rücken des Drachen, Schuppenpanzer am Boden"
+        },
+        "brunnen": {
+          "item": "Brunnen",
+          "fantasy": "Quelle der Weisheit, Portal in die Tiefe"
+        },
+        "kirchturm": {
+          "item": "Kirchturm",
+          "fantasy": "Aussichtspost der Greifenreiter, Magierturm"
+        },
+        "glockenschlag": {
+          "item": "Glockenschlag",
+          "fantasy": "Stimme der Titanen, Zeit-Signal"
+        },
+        "gasse_eng": {
+          "item": "Enger Gasse",
+          "fantasy": "Schlucht der Schatten, Diebespfad"
+        },
+        "schild_alt": {
+          "item": "Altes Schild (Wirtshaus)",
+          "fantasy": "Wappen einer Gilde, Hängendes Orakel"
+        },
+        "fachwerkhaus": {
+          "item": "Fachwerkhaus",
+          "fantasy": "Haus der Holzwürmer, Skelett-Haus"
+        },
+        "tor_bogen": {
+          "item": "Tor / Bogen",
+          "fantasy": "Portal in eine andere Zeit, Drachenmaul"
+        },
+        "statue_hist": {
+          "item": "Statue (historisch)",
+          "fantasy": "Versteinerter König, Gedenkstätte"
+        },
+        "mauer": {
+          "item": "Mauer",
+          "fantasy": "Festungswall, Grenze der Zivilisation"
+        },
+        "fensterladen": {
+          "item": "Fensterladen",
+          "fantasy": "Augenlid des Hauses, Schild"
+        },
+        "blumenkasten": {
+          "item": "Blumenkasten",
+          "fantasy": "Hängende Gärten, Lebensspender"
+        },
+        "laterne_alt": {
+          "item": "Laterne (alt)",
+          "fantasy": "Gaslicht, Irrlicht-Käfig"
+        },
+        "wappen": {
+          "item": "Wappen",
+          "fantasy": "Geheimcode, Familien-Siegel"
+        },
+        "holztor": {
+          "item": "Schweres Holztor",
+          "fantasy": "Dungeon-Eingang, Riesen-Tür"
+        },
+        "turmuhr": {
+          "item": "Turmuhr",
+          "fantasy": "Auge des Chronos, Schicksalsrad"
+        },
+        "wasserspeier": {
+          "item": "Wasserspeier",
+          "fantasy": "Versteinerter Dämon, Wächter"
+        },
+        "marktplatz": {
+          "item": "Marktplatz",
+          "fantasy": "Versammlungsort, Arena"
+        },
+        "rathaus": {
+          "item": "Rathaus",
+          "fantasy": "Palast des Herrschers, Gildenhaus"
+        },
+        "baeckerei_duft": {
+          "item": "Bäckerei (Duft)",
+          "fantasy": "Alchemie-Labor (Heiltränke/Brot)"
+        },
+        "buchladen": {
+          "item": "Buchladen",
+          "fantasy": "Bibliothek des Wissens, Schriftrollen-Lager"
+        },
+        "antiquitaeten": {
+          "item": "Antiquitäten",
+          "fantasy": "Laden der verfluchten Gegenstände, Schatzkammer"
+        },
+        "taube_dach": {
+          "item": "Taube auf Dach",
+          "fantasy": "Wächter, Spion"
+        },
+        "efeu": {
+          "item": "Efeu an Wand",
+          "fantasy": "Grüner Bart, Natur-Rüstung"
+        },
+        "kellerfenster": {
+          "item": "Kellerfenster",
+          "fantasy": "Blick in den Kerker, Versteck"
+        },
+        "torbogen": {
+          "item": "Torbogen",
+          "fantasy": "Portal der Helden, Mund der Stadt"
+        },
+        "zelt_ma": {
+          "item": "Mittelalterliches Zelt",
+          "fantasy": "Feldlager der Armee, Händler-Stand"
+        },
+        "gitter_schmied": {
+          "item": "Schmiedeeisernes Gitter",
+          "fantasy": "Netz aus Stahl, Gefängniswand"
+        },
+        "sonnenuhr": {
+          "item": "Sonnenuhr",
+          "fantasy": "Schatten-Zeiger, Antiker Computer"
+        },
+        "wappen_haus": {
+          "item": "Wappen am Haus",
+          "fantasy": "Zeichen des Schutzes, Magische Rune"
+        },
+        "ritter": {
+          "item": "Ritter-Figur",
+          "fantasy": "Golemwächter, Rüstung ohne Geist"
+        },
+        "burggraben": {
+          "item": "Burggraben (Rest)",
+          "fantasy": "Alter Fluss, Sumpf der Erinnerung"
+        },
+        "stadtmauer_turm": {
+          "item": "Stadtmauer-Turm",
+          "fantasy": "Ausguck, Sniper-Nest"
+        },
+        "pforte_klein": {
+          "item": "Kleine Pforte",
+          "fantasy": "Hobbit-Eingang, Diebe-Einstieg"
+        },
+        "zunftzeichen": {
+          "item": "Zunftzeichen (Brezl/Schere)",
+          "fantasy": "Goldenes Idol, Zeichen der Macht"
+        },
+        "klingel_messing": {
+          "item": "Messing-Klingel",
+          "fantasy": "Rufknopf für Diener, Goldener Knopf"
+        },
+        "buntglas": {
+          "item": "Buntglas-Fenster",
+          "fantasy": "Kaleidoskop-Schild, Heiliges Licht"
+        },
+        "fahne_turm": {
+          "item": "Fahne am Turm",
+          "fantasy": "Signal an die Drachenreiter, Stolz der Stadt"
+        },
+        "museum": {
+          "item": "Museum",
+          "fantasy": "Halle der Ahnen, Speicher des Wissens"
+        },
+        "eisdiele": {
+          "item": "Eisdiele",
+          "fantasy": "Tempel des Frosts, Süße Verführung"
+        }
+      },
+      "strand": {
+        "muschel": {
+          "item": "Muschel",
+          "fantasy": "Botschaft der Nixe, Schildkrötenpanzer, Schatzkiste der Tiefe"
+        },
+        "sandburg": {
+          "item": "Sandburg",
+          "fantasy": "Festung der Krabbenmenschen, Schlafender Riese, Sandmagier-Turm"
+        },
+        "seetang": {
+          "item": "Seetang",
+          "fantasy": "Meereshaar, Fessel der Tiefe, Magisches Tau"
+        },
+        "treibholz": {
+          "item": "Treibholz",
+          "fantasy": "Speer des Poseidon, Überrest eines Geisterschiffs, Magischer Stab"
+        },
+        "stein_glanz": {
+          "item": "Glänzender Stein",
+          "fantasy": "Auge des Kraken, Perle der Vernunft, Sirenen-Lockvogel"
+        },
+        "krabbe": {
+          "item": "Krabbe",
+          "fantasy": "Gepanzerter Wächter, Scherenschneidermeister"
+        },
+        "moewe": {
+          "item": "Möwe",
+          "fantasy": "Spion der Lüfte, Bote der Gezeiten"
+        },
+        "wellen": {
+          "item": "Wellen",
+          "fantasy": "Stimme des Ozeans, Zorn des Meeresgottes"
+        }
+      },
+      "gebirge": {
+        "bergklee": {
+          "item": "Bergklee",
+          "fantasy": "Elixier der Höhenluft, Zwergenbrot, Glücksbote des Gipfels"
+        },
+        "edelweiss": {
+          "item": "Edelweiß",
+          "fantasy": "Stern des Gipfels, Frost-Amulett, Unsterbliche Blume"
+        },
+        "hoehle": {
+          "item": "Höhleneingang",
+          "fantasy": "Tor zum Unterreich, Bärenhort, Echo-Kammer"
+        },
+        "echo": {
+          "item": "Echo",
+          "fantasy": "Stimme der Ahnen, Warnung des Bergs, Unsichtbarer Begleiter"
+        },
+        "gipfelkreuz": {
+          "item": "Gipfelkreuz",
+          "fantasy": "Leuchtfeuer der Hoffnung, Landmarke der Götter, Donner-Ableiter"
+        },
+        "stein_lose": {
+          "item": "Loser Stein",
+          "fantasy": "Trommel der Steinriesen, Bergrutsch-Auslöser"
+        },
+        "adler": {
+          "item": "Adler",
+          "fantasy": "Hüter der Wolken, Fluggerät der Geister"
+        },
+        "wolke_tief": {
+          "item": "Tiefe Wolke/Nebel",
+          "fantasy": "Atem der Berge, Verborgener Pfad"
+        }
+      },
+      "winter": {
+        "schneeball": {
+          "item": "Schneeball",
+          "fantasy": "Frostbombe, Gefrorene Zeit, Kristallkugel"
+        },
+        "eiszapfen_groß": {
+          "item": "Großer Eiszapfen",
+          "fantasy": "Kristalldolch, Zahn des Frostriesen, Magischer Splitter"
+        },
+        "fährte_schnee": {
+          "item": "Fährte im Schnee",
+          "fantasy": "Spur des Yeti, Pfad des Verschollenen, Zeichen des Winters"
+        },
+        "see_gefroren": {
+          "item": "Gefrorener See",
+          "fantasy": "Spiegel der Seelen, Arena des Eiskönigs, Fenster ins Tiefe"
+        },
+        "mistel": {
+          "item": "Mistelzweig",
+          "fantasy": "Kuss des Winters, Heiliges Kraut, Zauber-Parasit"
+        },
+        "schneemann": {
+          "item": "Schneemann",
+          "fantasy": "Eisgolem (schlafend), Wächter des Frosts"
+        },
+        "schlitten": {
+          "item": "Schlitten",
+          "fantasy": "Donner-Gleiter, Frost-Wagen"
+        },
+        "tannenzweig_schnee": {
+          "item": "Tannenzweig mit Schnee",
+          "fantasy": "Pelz des Waldes, Winter-Zepter"
+        }
+      }
+    }
+  },
+  "quest": {
+    "title": "Quest-Generator",
+    "subtitle": "Keine Idee für heute? Lasst euch eine Sammel-Quest erstellen!",
+    "selectEnv": "Wählt eine Umgebung:",
+    "wald": "Wald",
+    "quartier": "Quartier",
+    "stadt": "Stadt",
+    "altstadt": "Altstadt",
+    "strand": "Strand",
+    "gebirge": "Gebirge",
+    "winter": "Winter",
+    "generate": "Quest erstellen",
+    "v2": {
+      "selectScenario": "Szenario wählen:",
+      "selectComplexity": "Dauer/Komplexität:",
+      "complexity": {
+        "easy": "Kurzer Spaziergang (1 Phase)",
+        "medium": "Abenteuer (2 Phasen)",
+        "hard": "Epos (3 Phasen)"
+      },
+      "educationalMode": "🎓 Lern-Quest",
+      "educationalHint": "Integrierte Lernziele (LP21)",
+      "selectLearningGoal": "Wähle ein Lernziel:",
+      "selectTheme": "Wähle eine Geschichte:",
+      "goals": {
+        "nature": "🌿 Natur",
+        "observation": "🔍 Beobachtung",
+        "mindfulness": "🧘 Achtsamkeit",
+        "orientation": "🧭 Orientierung"
+      },
+      "scenarios": {
+        "educational": {
+          "name": "Lern-Quest",
+          "emoji": "🎓"
+        },
+        "exploration": {
+          "name": "Entdeckung",
+          "emoji": "🗺️",
+          "hooks": [
+            "Ein wichtiges Artefakt der Trailkin wurde hier vermutet. Wir müssen die Spuren genau untersuchen, bevor die Sonne untergeht.",
+            "Die alten Chroniken berichten von einem verborgenen Hort in der Nähe. Eure Intuition führt euch direkt dorthin.",
+            "Ein seltsames Leuchten wurde hier gesichtet. Es könnte der Ursprung der Legende sein, nach der wir suchen."
+          ]
+        },
+        "rescue": {
+          "name": "Rettung",
+          "emoji": "🆘",
+          "hooks": [
+            "Ein kleiner Gefährte hat sich hier verirrt! Wir müssen ihn finden, bevor es dunkel wird und die Waldgeister erwachen.",
+            "Hilferufe drangen aus dieser Richtung zu uns durch. Jemand braucht dringend eure Unterstützung!",
+            "Ein wertvoller Botenvogel wurde zuletzt hier gesehen. Bringt ihn sicher zurück zur Gilde."
+          ]
+        },
+        "mystery": {
+          "name": "Geheimnis",
+          "emoji": "🔍",
+          "hooks": [
+            "Ein ungelöstes Rätsel um diesen Ort beschäftigt das Dorf seit Generationen. Heute ist der Tag, an dem ihr es lüftet.",
+            "Seltsame Geräusche dringen nachts von hier herüber. Findet heraus, was dort vor sich geht!",
+            "Ein verschlüsselter Brief deutet auf ein Geheimnis an diesem Ort hin. Seid wachsam, ihr seid nicht allein."
+          ]
+        },
+        "combat": {
+          "name": "Herausforderung",
+          "emoji": "⚔️",
+          "hooks": [
+            "Ein mächtiger Wächter versperrt den Weg. Nur die Tapfersten können ihn passieren.",
+            "Räuber haben sich hier eingenistet und bedrohen die Reisenden. Vertreibt sie mit List oder Kraft!",
+            "Der Pfad führt durch gefährliches Terrain. Bereitet euch auf eine harte Prüfung eurer Sinne vor."
+          ]
+        }
+      },
+      "consequences": {
+        "title": "Konsequenz",
+        "actions": [
+          {
+            "id": "time",
+            "name": "Zeit",
+            "desc": "Es dauert länger"
+          },
+          {
+            "id": "noise",
+            "name": "Lärm",
+            "desc": "Jemand hört es"
+          },
+          {
+            "id": "loss",
+            "name": "Verlust",
+            "desc": "Etwas geht kaputt"
+          },
+          {
+            "id": "discovered",
+            "name": "Entdeckt",
+            "desc": "Jemand sieht dich"
+          },
+          {
+            "id": "detour",
+            "name": "Umweg",
+            "desc": "Der Weg ist blockiert"
+          },
+          {
+            "id": "help",
+            "name": "Hilfe",
+            "desc": "Du brauchst Unterstützung"
+          }
+        ],
+        "flavors": [
+          {
+            "id": "funny",
+            "name": "Lustig",
+            "desc": "Alle müssen lachen"
+          },
+          {
+            "id": "exciting",
+            "name": "Spannend",
+            "desc": "Das Herz klopft"
+          },
+          {
+            "id": "scary",
+            "name": "Gruselig",
+            "desc": "Ein kalter Schauer"
+          },
+          {
+            "id": "annoying",
+            "name": "Ärgerlich",
+            "desc": "Das nervt richtig"
+          },
+          {
+            "id": "surprising",
+            "name": "Überraschend",
+            "desc": "Damit hat keiner gerechnet"
+          },
+          {
+            "id": "dramatic",
+            "name": "Dramatisch",
+            "desc": "Wie im Film"
+          }
+        ]
+      },
+      "spark": {
+        "buttonTitle": "Erzähl-Funke (für GM)",
+        "sensoryTitle": "Deine Sinne verraten dir...",
+        "oracleTitle": "Das Orakel sagt..."
+      },
+      "dogHooks": [
+        "Bello spürt, dass hier Gefahr droht.",
+        "Seht mal, wie er schnüffelt – er hat etwas entdeckt!",
+        "Der Wächter bleibt stehen. Er hat etwas im Gebüsch gehört.",
+        "Rex wedelt aufgeregt. Er kennt diesen Ort!"
+      ],
+      "themes": {
+        "random": "Zufällig",
+        "fantasy": "Fantasy",
+        "adventure": "Abenteuer",
+        "detective": "Detektiv",
+        "guardian": "Naturwächter",
+        "scifi": "Sci-Fi",
+        "survival": "Überleben"
+      },
+      "complications": {
+        "wald": [
+          {
+            "type": "Wächter",
+            "description": "Ein neugieriges Eichhörnchen beobachtet euch – seid leise!"
+          },
+          {
+            "type": "Weg",
+            "description": "Dichtes Unterholz versperrt den Pfad. Findet einen Umweg."
+          },
+          {
+            "type": "Wetter",
+            "description": "Dichter Nebel zieht auf und hüllt die Bäume in Weiß."
+          },
+          {
+            "type": "Natur",
+            "description": "Ein umgestürzter Baum dient als Brücke – Vorsicht, rutschig!"
+          },
+          {
+            "type": "Spur",
+            "description": "Ihr kreuzt eine frische Wildspur. Wer ist hier wohl gelaufen?"
+          }
+        ],
+        "quartier": [
+          {
+            "type": "Begegnung",
+            "description": "Ein Nachbar winkt euch zu – grüßt freundlich!"
+          },
+          {
+            "type": "Hindernis",
+            "description": "Eine Baustelle versperrt den Gehweg. Weicht sicher aus."
+          },
+          {
+            "type": "Fund",
+            "description": "Jemand hat ein buntes Kreidebild gemalt – bewundert es kurz."
+          },
+          {
+            "type": "Verkehr",
+            "description": "Ein Müllauto blockiert die Straße. Wartet geduldig."
+          },
+          {
+            "type": "Geräusch",
+            "description": "Irgendwo bellt ein Hund – könnt ihr ihn sehen?"
+          }
+        ],
+        "stadt": [
+          {
+            "type": "Trubel",
+            "description": "Es ist Markttag! Bahnt euch einen Weg durch die Menge."
+          },
+          {
+            "type": "Navigation",
+            "description": "Ein Straßenschild ist verdeckt. Orientiert euch neu."
+          },
+          {
+            "type": "Entdeckung",
+            "description": "Ein Straßenkünstler zeigt seine Kunst – bleibt kurz stehen."
+          },
+          {
+            "type": "Ereignis",
+            "description": "Die Kirchturmuhr schlägt – wie oft zählt ihr?"
+          },
+          {
+            "type": "Abkürzung",
+            "description": "Eine schmale Gasse bietet einen neuen Weg."
+          }
+        ],
+        "altstadt": [
+          {
+            "type": "Geschichte",
+            "description": "Ein altes Wappen an der Mauer erzählt von vergangener Zeit."
+          },
+          {
+            "type": "Architektur",
+            "description": "Das Kopfsteinpflaster ist hier besonders uneben – Vorsicht!"
+          },
+          {
+            "type": "Legende",
+            "description": "Ein Wasserspeier scheint euch zuzublinzeln."
+          },
+          {
+            "type": "Geheimnis",
+            "description": "Ein verborgener Hinterhof lädt zum Staunen ein."
+          },
+          {
+            "type": "Relikt",
+            "description": "Ein schieberkerkerartiger Kellerabgang sieht schaurig aus."
+          }
+        ],
+        "strand": [
+          {
+            "type": "Gezeiten",
+            "description": "Das Wasser kommt näher! Zieht euch etwas zurück."
+          },
+          {
+            "type": "Wind",
+            "description": "Eine starke Brise weht euch Sand ins Gesicht."
+          },
+          {
+            "type": "Strandgut",
+            "description": "Eine angespülte Flasche? Ist da etwa eine Nachricht drin?"
+          },
+          {
+            "type": "Vögel",
+            "description": "Eine Schar frecher Möwen hat es auf euren Proviant abgesehen."
+          },
+          {
+            "type": "Terrain",
+            "description": "Der weiche Sand macht das Laufen anstrengend."
+          }
+        ],
+        "gebirge": [
+          {
+            "type": "Echo",
+            "description": "Ruft laut – hört ihr das Echo der Felswand?"
+          },
+          {
+            "type": "Steigung",
+            "description": "Der Pfad wird steil. Atmet einmal tief durch."
+          },
+          {
+            "type": "Aussicht",
+            "description": "Die Wolken hängen tief unter euch – ein magischer Anblick."
+          },
+          {
+            "type": "Fauna",
+            "description": "Ein Greifvogel kreist hoch über euren Köpfen."
+          },
+          {
+            "type": "Gestein",
+            "description": "Loses Geröll macht den Abstieg knifflig."
+          }
+        ],
+        "winter": [
+          {
+            "type": "Kälte",
+            "description": "Der Frost beißt in die Nase – reibt euch die Wangen warm!"
+          },
+          {
+            "type": "Glatteis",
+            "description": "Der Boden ist spiegelglatt. Macht vorsichtige Pinguinschritte."
+          },
+          {
+            "type": "Schnee",
+            "description": "Frischer Neuschnee dämpft jedes Geräusch."
+          },
+          {
+            "type": "Dämmerung",
+            "description": "Die Sonne geht früh unter – schaltet eure Laternen an."
+          },
+          {
+            "type": "Tierspur",
+            "description": "Im Schnee sieht man Abdrücke von kleinen Pfoten."
+          }
+        ]
+      },
+      "nodeTypes": {
+        "search": "Suche nach: {0}",
+        "challenge": "Herausforderung: {0}",
+        "interaction": "Interaktion: {0}"
+      }
+    },
+    "hint_title": "Hinweis:",
+    "hint_desc": "Das Erstellen einer Quest leitet euch direkt zur Gruppen-Übersicht weiter, wo die Quest gespeichert wird."
+  },
+  "bingo": {
+    "title": "Walking Bingo",
+    "subtitle": "Generiert eine Bingo-Karte für den Spaziergang. Druckt sie aus oder spielt am Handy!",
+    "size": "Größe:",
+    "size3": "3x3 (Kids)",
+    "size4": "4x4 (Profi)",
+    "generate": "Bingo erstellen",
+    "print": "🖨️ Drucken",
+    "emptyState": "Wähle eine Umgebung und klicke auf \"Bingo erstellen\"."
+  },
+  "essenz": {
+    "title": "👁️ Essenz-Raster",
+    "description": "Konflikte werden durch Suchen gelöst. Beide rufen eine Zahl (1-10), dann kombiniert der Erzähler die Begriffe.",
+    "selectNumbers": "Wähle zwei Zahlen:",
+    "random": "🎲 Zufällig",
+    "searchQuery": "Suchanfrage:",
+    "findTemplate": "\"Findet etwas {0}, das {1} ist!\"",
+    "selectPrompt": "Wähle 2 Zahlen...",
+    "referenceTitle": "📊 Essenz-Raster (Referenz)",
+    "colNum": "#",
+    "colA": "A (Material)",
+    "colB": "B (Beschaffenheit)",
+    "colC": "C (Optik)",
+    "gridA": [
+      "",
+      "Steinern",
+      "Hölzern",
+      "Pflanzlich",
+      "Feucht",
+      "Natürlich",
+      "Künstlich",
+      "Tierisch",
+      "Gebaut",
+      "Erdig",
+      "Magisch"
+    ],
+    "gridB": [
+      "",
+      "Hart / Fest",
+      "Weich / Biegsam",
+      "Rau / Kratzig",
+      "Glatt / Rutschig",
+      "Rund / Gebogen",
+      "Eckig / Kantig",
+      "Spitz / Scharf",
+      "Flach / Dünn",
+      "Massiv / Schwer",
+      "Gerade / Lang"
+    ],
+    "gridC": [
+      "",
+      "Kaputt",
+      "Glänzend",
+      "Dunkel",
+      "Hell",
+      "Grün / Braun",
+      "Bunt / Grell",
+      "Trocken",
+      "Alt",
+      "Winzig",
+      "Beweglich"
+    ]
+  },
+  "characterBackgrounds": {
+    "waldlaeufer": {
+      "name": "Waldläufer",
+      "item": "Bogen"
+    },
+    "kraeuterkundiger": {
+      "name": "Kräuterkundiger",
+      "item": "Heiltrank"
+    },
+    "dieb": {
+      "name": "Dieb",
+      "item": "Dietrich"
+    },
+    "ritter": {
+      "name": "Ritter",
+      "item": "Schild"
+    },
+    "magier": {
+      "name": "Magier",
+      "item": "Zauberstab"
+    },
+    "barde": {
+      "name": "Barde",
+      "item": "Laute"
+    },
+    "haendler": {
+      "name": "Händler",
+      "item": "Münzbeutel"
+    },
+    "schmied": {
+      "name": "Schmied",
+      "item": "Hammer"
+    },
+    "gaukler": {
+      "name": "Gaukler",
+      "item": "Jonglierbälle"
+    },
+    "alchemist": {
+      "name": "Alchemist",
+      "item": "Reagenzglas"
+    },
+    "bestienjaeger": {
+      "name": "Bestienjäger",
+      "item": "Netz"
+    },
+    "entdecker": {
+      "name": "Entdecker",
+      "item": "Kompass"
+    }
+  },
+  "ssp": {
+    "title": "⚔️ Proben-Helfer (SSP)",
+    "instructions": "Klicke auf deine Wahl. Der Erzähler-Wurf wird zufällig ermittelt.",
+    "rock": "Stein",
+    "paper": "Papier",
+    "scissors": "Schere",
+    "win": "🎉 Voller Erfolg!",
+    "draw": "⚖️ Teilerfolg (mit Haken)",
+    "lose": "💥 Misserfolg (lustige Konsequenz!)",
+    "newChallenge": "Neue Probe"
+  },
+  "statuses": {
+    "itchy": {
+      "name": "Juckreiz",
+      "effect": "Hüpfe auf einem Bein",
+      "cure": "Finde ein Heilblatt (Gänseblümchen)"
+    },
+    "strong": {
+      "name": "Stark",
+      "effect": "Nächste Probe gelingt automatisch",
+      "cure": "Verbraucht sich nach einer Probe"
+    },
+    "invisible": {
+      "name": "Unsichtbar",
+      "effect": "Du darfst 2 Min nicht sprechen",
+      "cure": "Zeit läuft ab"
+    },
+    "cursed": {
+      "name": "Verflucht",
+      "effect": "Verliere alle Unentschieden-Proben",
+      "cure": "Finde einen besonderen Stein"
+    },
+    "lucky": {
+      "name": "Glückskind",
+      "effect": "Gewinne alle Unentschieden-Proben",
+      "cure": "Verbraucht sich nach einer Probe"
+    },
+    "tired": {
+      "name": "Müde",
+      "effect": "Renne 10 Schritte zur Erholung",
+      "cure": "Bewegungs-Aktion ausführen"
+    },
+    "brave": {
+      "name": "Mutig",
+      "effect": "+1 Mut für die nächste Aktion",
+      "cure": "Verbraucht sich nach einer Aktion"
+    },
+    "wet": {
+      "name": "Pitschnass",
+      "effect": "Schüttle dich wie ein Hund",
+      "cure": "Aktion ausführen"
+    }
+  },
+  "analytics": {
+    "title": "📊 Website-Analysen",
+    "description": "Wir nutzen Umami Analytics, um zu verstehen, wie Trailkin genutzt wird. Dies hilft uns, die App zu verbessern.",
+    "privacy_note": "✅ Keine Cookies | ✅ Keine persönlichen Daten | ✅ GDPR-konform | ✅ Open Source",
+    "accept": "Statistiken erlauben",
+    "reject": "Nein, danke"
+  },
+  "footer": {
+    "analytics_settings": "⚙️ Analytics-Einstellungen",
+    "support": "☕ Unterstütze das Projekt",
+    "github": "⭐ GitHub",
+    "version": "Trailkin v3.2 — Open Source (MIT License)",
+    "madeWith": "Made with 💚 for outdoor adventures"
+  },
+  "modals": {
+    "newGroupTitle": "Name der neuen Gruppe",
+    "newGroupDefault": "Neue Gruppe",
+    "renameGroupTitle": "Neuer Name für die Gruppe",
+    "newItemTitle": "Neues Item",
+    "newItemForChar": "Neues Item für",
+    "selectEnv": "Umgebung wählen",
+    "selectStatus": "Zustand wählen",
+    "inputPlaceholder": "Eingabe...",
+    "noOptions": "Keine Auswahl verfügbar.",
+    "cancel": "Abbrechen",
+    "ok": "OK",
+    "close": "Schließen"
+  },
+  "errors": {
+    "cannotDeleteLastGroup": "Du kannst die letzte Gruppe nicht löschen!",
+    "allStatusesActive": "Alle Zustände sind bereits aktiv!"
+  }
+}

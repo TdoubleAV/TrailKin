@@ -1,0 +1,1384 @@
+﻿{
+  "meta": {
+    "language": "en",
+    "name": "English",
+    "flag": "🇬🇧"
+  },
+  "nav": {
+    "play": "🎮 Adventure",
+    "prepare": "⚡ Generator",
+    "help": "📚 Rules"
+  },
+  "prepare": {
+    "title": "Generator",
+    "quest": "New Quest",
+    "inspiration": "Ideas",
+    "bingo": "Bingo Card"
+  },
+  "help": {
+    "title": "Rules & Guide",
+    "quickstart": "Quick Start",
+    "rules": "Modules & Mechanics"
+  },
+  "combat": {
+    "start": "Start Combat"
+  },
+  "consequences": {
+    "title": "Consequence"
+  },
+  "header": {
+    "title": "Trailkin",
+    "tagline": "Your adventure starts at your doorstep",
+    "themeToggle": "Toggle theme"
+  },
+  "quickstart": {
+    "title": "The Adventure in 60 Seconds",
+    "subtitle": "Boredom begone! Turn your walk into a story.",
+    "loop_title": "The Trailkin Adventure Loop",
+    "loop_desc": "This is how every quest works:",
+    "step1_title": "1. Roles",
+    "step1_desc": "One leads (Guide), the others play (Explorers).",
+    "step2_title": "2. Goal",
+    "step2_desc": "What do we want to find today? (e.g., 3 magic stones)",
+    "step3_title": "3. Play",
+    "step3_desc": "Child says what they do → Guide decides if it works.",
+    "step4_title": "4. Done!",
+    "step4_desc": "The rest are optional extras.",
+    "important_title": "The Most Important Thing",
+    "important_desc": "There are no wrong ideas! The goal is to have fun together."
+  },
+  "group": {
+    "title": "My Group",
+    "subtitle": "Manage your explorers and companions.",
+    "newGroup": "+ New",
+    "rename": "Rename group",
+    "delete": "Delete group",
+    "addEmpty": "+ Empty",
+    "addRandom": "🎲 Random",
+    "sharedInventory": "Treasury",
+    "activeQuest": "🗺️ Active Quest:",
+    "endQuest": "End",
+    "statuses": "Statuses",
+    "addStatus": "+ Status",
+    "noStatuses": "No statuses"
+  },
+  "characters": {
+    "newHero": "New Explorer",
+    "adventurer": "Explorer",
+    "deleteHero": "Delete explorer",
+    "hpLabel": "Grit ⚡",
+    "equipment": "Treasury (3 Slots)"
+  },
+  "settings": {
+    "title": "Modules & Settings",
+    "modules_intro": "Choose which rules you want to use:",
+    "moduleA_label": "Module A: Challenges",
+    "moduleB_label": "Module B: Tension Mechanics",
+    "moduleC_label": "Module C: Fail Forward",
+    "moduleE_label": "Module E: Conditions",
+    "moduleF_label": "Module: Dog Integration"
+  },
+  "rules": {
+    "title": "Adventure Guide",
+    "subtitle": "Ideas to make the walk more exciting.",
+    "diagram_title": "The Trailkin Adventure Loop",
+    "loop": {
+      "step1": "Child: Intention",
+      "step2": "Guide: How?",
+      "step3": "Result",
+      "works": "It works!",
+      "risky": "Risky?",
+      "how": "How do you solve it?",
+      "luck": "Luck",
+      "search": "Search",
+      "skill": "Skill",
+      "success": "Success",
+      "fail": "Fail Forward",
+      "continue": "Continue"
+    },
+    "moduleA_title": "Challenges",
+    "moduleA_intro": "Use these when you want to leave things to chance.",
+    "moduleA_rps": "Rock, Paper, Scissors:",
+    "moduleA_rps_desc": "Explorer vs Guide. Win = Great success. Loss = Funny mishap. Tie = Partial success.",
+    "moduleA_luck": "Luck Alternatives:",
+    "moduleA_luck_desc": "Odds or Evens with fingers or the Color Oracle (next car that passes).",
+    "moduleA_skill": "Skill Alternatives:",
+    "moduleA_skill_desc": "Balance across a stretch or throw a pinecone at a target.",
+    "moduleB_title": "Tension",
+    "moduleB_clock": "Progress Clock:",
+    "moduleB_clock_desc": "Set a real-world goal as a timer.",
+    "moduleB_pressure": "Time Pressure:",
+    "moduleB_pressure_example": "We must find X before we reach the bridge!",
+    "moduleB_accumulation": "Accumulation:",
+    "moduleB_accumulation_example": "With each failure, the evil wizard gets one step closer!",
+    "moduleC_title": "Animal Companion",
+    "moduleC_intro": "The dog is not an NPC, but a magical ally. Use real commands as spells:",
+    "moduleC_cmd_look": "\"Look\" (Eye contact):",
+    "moduleC_cmd_look_desc": "Ghost Sight – Hero can see invisible things",
+    "moduleC_cmd_touch": "\"Touch\" (Hand nudge):",
+    "moduleC_cmd_touch_desc": "Break Seal – Opens magical doors/chests",
+    "moduleC_cmd_search": "\"Search\" (Sniffing):",
+    "moduleC_cmd_search_desc": "Tracker – Finds hidden clues",
+    "moduleC_cmd_sit": "\"Sit/Stay\":",
+    "moduleC_cmd_sit_desc": "Guardian Mode – Protects group from danger",
+    "moduleC_cmd_leave": "\"Leave it\":",
+    "moduleC_cmd_leave_desc": "Disarm Trap – Ignores cursed bait",
+    "moduleD_title": "Combat",
+    "moduleD_intro": "Combats are resolved using the Essence Grid (Best-of-3).",
+    "moduleD_step1": "1. Monster appears → \"Find the weak point!\"",
+    "moduleD_step2": "2. Call numbers (1-10), Guide combines terms.",
+    "moduleD_step3": "3. Search (Guide decides time). Success = Round won.",
+    "moduleD_step4": "4. First to win 2 rounds wins!",
+    "moduleD_loss": "Upon defeat:",
+    "moduleD_loss_desc": "Consequence Grid + Resolve Grit loss. But: Monsters NEVER kill!",
+    "principle_fail_forward": "⚡ Fail Forward (Core Principle)",
+    "principle_fail_forward_intro": "Failure never stops the story! It just makes it more interesting.",
+    "principle_fail_forward_example": "Door is stuck → Door opens, but the guard wakes up.",
+    "moduleF_cmd_leave_desc": "Disarm Trap – Ignores cursed bait",
+    "consequence_title": "⚡ Consequence Grid",
+    "consequence_subtitle": "What happens when you fail?",
+    "consequence_what": "What happens?",
+    "consequence_how": "How does it feel?",
+    "consequence_condition": "Condition (optional)",
+    "consequence_random": "🎲 Random",
+    "consequence_result": "Result",
+    "consequence_what_1": "Time – It takes longer",
+    "consequence_what_2": "Noise – Someone hears it",
+    "consequence_what_3": "Loss – Something breaks",
+    "consequence_what_4": "Spotted – Someone sees you",
+    "consequence_what_5": "Detour – The path is blocked",
+    "consequence_what_6": "Help – You need assistance",
+    "consequence_how_1": "Funny",
+    "consequence_how_2": "Exciting",
+    "consequence_how_3": "Spooky",
+    "consequence_how_4": "Annoying",
+    "consequence_how_5": "Surprising",
+    "consequence_how_6": "Dramatic",
+    "consequence_condition_1": "Hiccups",
+    "consequence_condition_2": "Tired",
+    "consequence_condition_3": "Itchy",
+    "consequence_condition_4": "Mute",
+    "consequence_condition_5": "Slow",
+    "consequence_condition_6": "Hungry",
+    "regeneration_title": "💪 Recover Grit",
+    "regeneration_subtitle": "How to get your Grit back:",
+    "regeneration_quick": "Quick (+1 Grit)",
+    "regeneration_pause": "Break (+1 Grit)",
+    "regeneration_quest": "Next Quest (All Grit!)",
+    "regeneration_breathe": "10 deep breaths",
+    "regeneration_see": "Name 5 things you can see",
+    "regeneration_hear": "Listen to and name 3 sounds",
+    "regeneration_laugh": "Make someone laugh",
+    "regeneration_compliment": "Give someone a compliment",
+    "regeneration_jump": "10 jumping jacks or hop like a frog",
+    "regeneration_spell": "Invent a magic spell",
+    "regeneration_snack": "5 min break with snack/water"
+  },
+  "quest": {
+    "title": "Quest Generator",
+    "subtitle": "No ideas for today? Let's create a collection quest!",
+    "selectEnv": "Select an environment:",
+    "wald": "Forest",
+    "quartier": "Neighborhood",
+    "stadt": "City",
+    "altstadt": "Old Town",
+    "strand": "Beach",
+    "gebirge": "Mountains",
+    "winter": "Winter",
+    "generate": "Create Quest",
+    "v2": {
+      "selectScenario": "Select Scenario:",
+      "selectComplexity": "Duration/Complexity:",
+      "complexity": {
+        "easy": "Short Walk (1 Phase)",
+        "medium": "Adventure (2 Phases)",
+        "hard": "Epic (3 Phases)"
+      },
+      "educationalMode": "🎓 Learning Quest",
+      "educationalHint": "Integrated Learning Goals (LP21)",
+      "selectLearningGoal": "Choose a learning goal:",
+      "selectTheme": "Choose a story theme:",
+      "goals": {
+        "nature": "🌿 Nature",
+        "observation": "🔍 Observation",
+        "mindfulness": "🧘 Mindfulness",
+        "orientation": "🧭 Orientation"
+      },
+      "scenarios": {
+        "educational": {
+          "name": "Learning Quest",
+          "emoji": "🎓"
+        },
+        "exploration": {
+          "name": "Exploration",
+          "emoji": "🗺️",
+          "hooks": [
+            "An ancient Trailkin artifact is rumored to be here. We must search for signs before the sun sets.",
+            "Old chronicles speak of a hidden cache nearby. Your intuition leads you straight there.",
+            "A strange glow was spotted here. It could be the source of the legend we're searching for."
+          ]
+        },
+        "rescue": {
+          "name": "Rescue",
+          "emoji": "🆘",
+          "hooks": [
+            "A small companion got lost here! We must find them before dark sets in and the forest spirits wake.",
+            "Cries for help were heard from this direction. Someone urgently needs your support!",
+            "A precious messenger bird was last seen here. Bring it safely back to the guild."
+          ]
+        },
+        "mystery": {
+          "name": "Mystery",
+          "emoji": "🔍",
+          "hooks": [
+            "An unsolved mystery about this place has troubled the village for generations. Today is the day you solve it.",
+            "Strange noises echo from here at night. Find out what's really happening there!",
+            "A coded letter points to a secret hidden within this spot. Be careful, you are not alone."
+          ]
+        },
+        "combat": {
+          "name": "Challenge",
+          "emoji": "⚔️",
+          "hooks": [
+            "A powerful guardian blocks the path. Only the bravest can hope to pass.",
+            "Bandits have settled here, threatening all travelers. Drive them away with cunning or force!",
+            "The path leads through dangerous territory. Prepare for a harsh test of your senses."
+          ]
+        }
+      },
+      "consequences": {
+        "title": "Consequence",
+        "actions": [
+          {
+            "id": "time",
+            "name": "Time",
+            "desc": "It takes longer"
+          },
+          {
+            "id": "noise",
+            "name": "Noise",
+            "desc": "Someone hears it"
+          },
+          {
+            "id": "loss",
+            "name": "Loss",
+            "desc": "Something breaks"
+          },
+          {
+            "id": "discovered",
+            "name": "Discovered",
+            "desc": "Someone sees you"
+          },
+          {
+            "id": "detour",
+            "name": "Detour",
+            "desc": "The path is blocked"
+          },
+          {
+            "id": "help",
+            "name": "Help",
+            "desc": "You need support"
+          }
+        ],
+        "flavors": [
+          {
+            "id": "funny",
+            "name": "Funny",
+            "desc": "Everyone laughs"
+          },
+          {
+            "id": "exciting",
+            "name": "Exciting",
+            "desc": "Heart pounding"
+          },
+          {
+            "id": "scary",
+            "name": "Scary",
+            "desc": "A cold shiver"
+          },
+          {
+            "id": "annoying",
+            "name": "Annoying",
+            "desc": "That is annoying"
+          },
+          {
+            "id": "surprising",
+            "name": "Surprising",
+            "desc": "No one expected that"
+          },
+          {
+            "id": "dramatic",
+            "name": "Dramatic",
+            "desc": "Like in a movie"
+          }
+        ]
+      },
+      "spark": {
+        "buttonTitle": "Narrative Spark (for GM)",
+        "sensoryTitle": "Your senses tell you...",
+        "oracleTitle": "The Oracle says..."
+      },
+      "dogHooks": [
+        "The companion senses danger ahead.",
+        "Look how they're sniffing – they've found something!",
+        "The guardian stops. They heard something in the bushes.",
+        "The tracker is wagging their tail. They know this place!"
+      ],
+      "themes": {
+        "random": "Random",
+        "fantasy": "Fantasy",
+        "adventure": "Adventure",
+        "detective": "Detective",
+        "guardian": "Guardian",
+        "scifi": "Sci-Fi",
+        "survival": "Survival"
+      },
+      "complications": {
+        "wald": [
+          {
+            "type": "Guardian",
+            "description": "A curious squirrel is watching you – keep quiet!"
+          },
+          {
+            "type": "Path",
+            "description": "Dense undergrowth blocks the path. Find a detour."
+          },
+          {
+            "type": "Weather",
+            "description": "Thick fog descends, shrouding the trees in white."
+          },
+          {
+            "type": "Nature",
+            "description": "A fallen tree serves as a bridge – careful, it's slippery!"
+          },
+          {
+            "type": "Track",
+            "description": "You cross a fresh animal track. Who might have walked here?"
+          }
+        ],
+        "quartier": [
+          {
+            "type": "Encounter",
+            "description": "A neighbor waves at you – say hello!"
+          },
+          {
+            "type": "Obstacle",
+            "description": "A construction site blocks the sidewalk. Navigate safely around it."
+          },
+          {
+            "type": "Discovery",
+            "description": "Someone drew a colorful chalk picture – admire it briefly."
+          },
+          {
+            "type": "Traffic",
+            "description": "A garbage truck blocks the street. Wait patiently."
+          },
+          {
+            "type": "Sound",
+            "description": "A dog is barking somewhere – can you see it?"
+          }
+        ],
+        "stadt": [
+          {
+            "type": "Bustle",
+            "description": "It's market day! Forge a path through the crowd."
+          },
+          {
+            "type": "Navigation",
+            "description": "A street sign is obscured. Reorient yourselves."
+          },
+          {
+            "type": "Discovery",
+            "description": "A street performer is showing their art – stop for a moment."
+          },
+          {
+            "type": "Event",
+            "description": "The church clock strikes – how many times do you count?"
+          },
+          {
+            "type": "Shortcut",
+            "description": "A narrow alley offers a new path."
+          }
+        ],
+        "altstadt": [
+          {
+            "type": "History",
+            "description": "An old crest on the wall tells of past times."
+          },
+          {
+            "type": "Architecture",
+            "description": "The cobblestone is particularly uneven here – watch your step!"
+          },
+          {
+            "type": "Legend",
+            "description": "A gargoyle seems to wink at you."
+          },
+          {
+            "type": "Secret",
+            "description": "A hidden courtyard invites you to wonder."
+          },
+          {
+            "type": "Relic",
+            "description": "A dungeon-like cellar entrance looks eerie."
+          }
+        ],
+        "strand": [
+          {
+            "type": "Tide",
+            "description": "The water is coming closer! Retreat a bit."
+          },
+          {
+            "type": "Wind",
+            "description": "A strong breeze blows sand in your face."
+          },
+          {
+            "type": "Flotsam",
+            "description": "A washed-up bottle? Is there a message inside?"
+          },
+          {
+            "type": "Birds",
+            "description": "A flock of cheeky seagulls has their eye on your provisions."
+          },
+          {
+            "type": "Terrain",
+            "description": "The soft sand makes walking tiring."
+          }
+        ],
+        "gebirge": [
+          {
+            "type": "Echo",
+            "description": "Shout out loud – do you hear the echo from the rock face?"
+          },
+          {
+            "type": "Slope",
+            "description": "The path gets steep. Take a deep breath."
+          },
+          {
+            "type": "Vista",
+            "description": "The clouds hang low below you – a magical sight."
+          },
+          {
+            "type": "Fauna",
+            "description": "A bird of prey circles high above your heads."
+          },
+          {
+            "type": "Rocks",
+            "description": "Loose gravel makes the descent tricky."
+          }
+        ],
+        "winter": [
+          {
+            "type": "Cold",
+            "description": "The frost bites your nose – rub your cheeks warm!"
+          },
+          {
+            "type": "Ice",
+            "description": "The ground is slippery as glass. Take careful penguin steps."
+          },
+          {
+            "type": "Snow",
+            "description": "Fresh new snow muffles every sound."
+          },
+          {
+            "type": "Dusk",
+            "description": "The sun sets early – turn on your lanterns."
+          },
+          {
+            "type": "Tracks",
+            "description": "You can see paw prints of small animals in the snow."
+          }
+        ]
+      },
+      "nodeTypes": {
+        "search": "Search for: {0}",
+        "challenge": "Challenge: {0}",
+        "interaction": "Interaction: {0}"
+      }
+    },
+    "hint_title": "Note:",
+    "hint_desc": "Creating a quest will take you directly to the Group Overview, where the quest is saved."
+  },
+  "bingo": {
+    "title": "Walking Bingo",
+    "subtitle": "Generate a bingo card for your walk. Print it out or play on your phone!",
+    "size": "Size:",
+    "size3": "3x3 (Kids)",
+    "size4": "4x4 (Pro)",
+    "generate": "Create Bingo",
+    "print": "🖨️ Print",
+    "emptyState": "Select an environment and click \"Create Bingo\"."
+  },
+  "essenz": {
+    "title": "👁️ Essence Grid",
+    "description": "Conflicts are resolved by searching. Both call a number (1-10), then the Guide combines the terms.",
+    "selectNumbers": "Choose two numbers:",
+    "random": "🎲 Random",
+    "searchQuery": "Search Query:",
+    "findTemplate": "\"Find something {0} that is {1}!\"",
+    "selectPrompt": "Choose 2 numbers...",
+    "referenceTitle": "📊 Essence Grid (Reference)",
+    "colNum": "#",
+    "colA": "A (Material)",
+    "colB": "B (Texture)",
+    "colC": "C (Look)",
+    "gridA": [
+      "",
+      "Stony",
+      "Wooden",
+      "Plant-based",
+      "Damp",
+      "Metallic",
+      "Soft",
+      "Rough",
+      "Smooth",
+      "Shiny",
+      "Ancient"
+    ],
+    "gridB": [
+      "",
+      "Tangled",
+      "Pointy",
+      "Flat",
+      "Round",
+      "Curved",
+      "Broken",
+      "Heavy",
+      "Light",
+      "Sticky",
+      "Fragile"
+    ],
+    "gridC": [
+      "",
+      "Green",
+      "Brown",
+      "Grey",
+      "White",
+      "Dark",
+      "Bright",
+      "Patterned",
+      "Plain",
+      "Dirty",
+      "Glowing"
+    ]
+  },
+  "inspiration": {
+    "title": "Idea Generator",
+    "subtitle": "Choose your environment and get spontaneous ideas for magical transformations.",
+    "forest": "🌳 Forest",
+    "neighborhood": "🏡 Neighborhood",
+    "city": "🏙️ City",
+    "oldtown": "🏰 Old Town",
+    "beach": "🏖️ Beach",
+    "mountains": "⛰️ Mountains",
+    "winter": "❄️ Winter",
+    "magicButton": "✨ Conjure New Idea",
+    "selectEnv": "Select Environment",
+    "youFind": "You find:",
+    "maybeIts": "...maybe it's",
+    "clearAll": "Clear all",
+    "emptyState": "Choose an environment and click the button to collect ideas!",
+    "data": {
+      "wald": {
+        "spitzer_stein": {
+          "item": "Sharp Stone",
+          "fantasy": "Dragon Scale, Arrowhead, Shard of a Magic Crystal"
+        },
+        "runder_kiesel": {
+          "item": "Round Pebble",
+          "fantasy": "Goblin Gold, Petrified Troll Eye"
+        },
+        "ast_klein": {
+          "item": "Stick (small)",
+          "fantasy": "Magic Wand, Dagger, Key"
+        },
+        "tannenzapfen": {
+          "item": "Pinecone",
+          "fantasy": "Dragon Egg in Stasis, 'Crunch Grenade'"
+        },
+        "eichel": {
+          "item": "Acorn / Chestnut",
+          "fantasy": "Jewel of the Squirrel King, Dwarf Helmet, Energy Capsule"
+        },
+        "moos": {
+          "item": "Moss",
+          "fantasy": "Beard of the Tree Spirit, Fairy Carpet, Bandages"
+        },
+        "feder": {
+          "item": "Feather",
+          "fantasy": "Griffin Feather, Quill for Invisible Ink"
+        },
+        "blatt_besonders": {
+          "item": "Leaf (special)",
+          "fantasy": "Elf Letter, Invisibility Cloak (imaginary), Fairy Wings"
+        },
+        "rinde": {
+          "item": "Bark",
+          "fantasy": "Shield, Treasure Map, Skin of an Ent"
+        },
+        "blume": {
+          "item": "Flower",
+          "fantasy": "Potion Ingredient, Sleeping Fairy, Sun Shard"
+        },
+        "wurzel": {
+          "item": "Root",
+          "fantasy": "Snake Amulet, Magic Rod, Goblin Tripwire"
+        },
+        "erde_sand": {
+          "item": "Soil / Sand (in container)",
+          "fantasy": "Fairy Dust, Gunpowder"
+        },
+        "baumstumpf": {
+          "item": "Tree Stump",
+          "fantasy": "Dwarf Table, Druid Altar, Fairy Dance Floor"
+        },
+        "pilz": {
+          "item": "Mushroom",
+          "fantasy": "Gnome Stool, Poison Warning, Magic Umbrella"
+        },
+        "ameise": {
+          "item": "Ant",
+          "fantasy": "Soldier of the Earth Army, Scout"
+        },
+        "spinnennetz": {
+          "item": "Spiderweb",
+          "fantasy": "Dreamcatcher, Trap of a Giant Spider, Fairy Hammock"
+        },
+        "hohler_baum": {
+          "item": "Hollow Tree",
+          "fantasy": "Portal to the Underworld, Ranger Hidout"
+        },
+        "kleeblatt": {
+          "item": "Clover",
+          "fantasy": "Lucky Charm, Key to the Fairy World"
+        },
+        "farn": {
+          "item": "Fern",
+          "fantasy": "Dinosaur Plant, Fan of the Wind"
+        },
+        "kaefer": {
+          "item": "Beetle",
+          "fantasy": "Armored Transport, Jewel on Legs"
+        },
+        "vogelgesang": {
+          "item": "Birdsong",
+          "fantasy": "Secret Elf Message, Warning Call of the Guardians"
+        },
+        "sonnenstrahl": {
+          "item": "Sunbeam through Leaves",
+          "fantasy": "Path of Enlightenment, Blessing of the Sun God"
+        },
+        "bach": {
+          "item": "Stream / Puddle",
+          "fantasy": "Mirror of Truth, Potion of Life, Ocean for Ants"
+        },
+        "grosser_stein": {
+          "item": "Big Rock",
+          "fantasy": "Sleeping Troll, Seat of the Council, Meteorite"
+        },
+        "beere": {
+          "item": "Berry (do not eat!)",
+          "fantasy": "Explosive Orb, Poison Bait, Ruby"
+        },
+        "loewenzahn": {
+          "item": "Dandelion",
+          "fantasy": "Sun Shard, Wish Distributor"
+        },
+        "schneckenhaus": {
+          "item": "Snail Shell",
+          "fantasy": "Mobile Fortress, Helmet for Tom Thumb, Spiral Amulet"
+        },
+        "harz": {
+          "item": "Resin",
+          "fantasy": "Amber, Blood of the Tree, Magic Glue"
+        },
+        "vogelnest": {
+          "item": "Bird Nest (high up)",
+          "fantasy": "Watchtower of the Skies, Magpie Treasury"
+        },
+        "baum_umgestuerzt": {
+          "item": "Fallen Tree",
+          "fantasy": "Bridge over the Abyss, Fallen Giant"
+        },
+        "wildspur": {
+          "item": "Wild Track",
+          "fantasy": "Path of the Beast, Sign of the Werewolf"
+        },
+        "holzscheit": {
+          "item": "Log",
+          "fantasy": "Fuel for Dragon Breath, Giant Toothpick"
+        },
+        "nadeln": {
+          "item": "Soft Needles",
+          "fantasy": "Bed of the Forest Fairy, Green Fur"
+        },
+        "kletterpflanze": {
+          "item": "Climbing Plant",
+          "fantasy": "Green Snake, Gnome Ladder"
+        },
+        "blatt_haufen": {
+          "item": "Pile of Leaves",
+          "fantasy": "Hiding Place of the Wood Sprite, Dragon Nest"
+        },
+        "knospe": {
+          "item": "Bud",
+          "fantasy": "Dragon Egg (small), Fresh Energy"
+        },
+        "biene": {
+          "item": "Bee",
+          "fantasy": "Honey Collector of the Queen, Golden Messenger"
+        },
+        "schmetterling": {
+          "item": "Butterfly",
+          "fantasy": "Enchanted Fairy, Colorful Messenger"
+        },
+        "gluehwuermchen": {
+          "item": "Firefly (evening)",
+          "fantasy": "Will-o'-the-wisp, Fairy with Lantern"
+        },
+        "grashuepfer": {
+          "item": "Grasshopper",
+          "fantasy": "Jumping Knight, Messenger of Summer"
+        },
+        "blatt_bunt": {
+          "item": "Colorful Leaf (Red/Yellow)",
+          "fantasy": "Fire Rune, Gold Coin of Nature"
+        },
+        "nuss": {
+          "item": "Nut",
+          "fantasy": "Locked Chest, Brain Food"
+        },
+        "kuerbis": {
+          "item": "Pumpkin (field)",
+          "fantasy": "Head of the Headless Horseman, Giant Bomb"
+        },
+        "eiszapfen": {
+          "item": "Icicle",
+          "fantasy": "Crystal Dagger, Tooth of the Frost Giant"
+        },
+        "spur_schnee": {
+          "item": "Track in Mud/Snow",
+          "fantasy": "Clue to the Monster, Path of the Predecessor"
+        },
+        "ast_kahl": {
+          "item": "Bare Branch",
+          "fantasy": "Bone Hand, Skeleton Finger"
+        },
+        "raureif": {
+          "item": "Hoarfrost",
+          "fantasy": "Diamond Dust, Breath of the Ice Dragon"
+        },
+        "stechpalme": {
+          "item": "Holly/Conifer",
+          "fantasy": "The Invincible, Guardian of Winter"
+        }
+      },
+      "stadt": {
+        "muenze": {
+          "item": "Coin / Cent",
+          "fantasy": "Gold Doubloon, Amulet, Bribe Money"
+        },
+        "kronkorken": {
+          "item": "Bottle Cap",
+          "fantasy": "Shield for Mice, Medal, Currency of the Future"
+        },
+        "gummiband": {
+          "item": "Rubber Band",
+          "fantasy": "Shackles, Bowstring, Worm"
+        },
+        "schnur": {
+          "item": "Piece of String",
+          "fantasy": "Climbing Rope, Lasso, Ariadne's Thread"
+        },
+        "glitzerpapier": {
+          "item": "Glitter Paper",
+          "fantasy": "Magic Scroll, Mirror, Shard of a Portal"
+        },
+        "stein_weg": {
+          "item": "Stone (from path)",
+          "fantasy": "Meteorite, 'Talking Stone', Projectile"
+        },
+        "stoeckchen": {
+          "item": "Small Stick",
+          "fantasy": "Lockpick, Magic Wand, Pointer"
+        },
+        "knopf": {
+          "item": "Lost Button",
+          "fantasy": "Turtle Shell, Eye of a Golem, Magic Seal"
+        },
+        "ampel_rot": {
+          "item": "Red Light",
+          "fantasy": "Eye of the Watcher (Sauron), Force Field Lock"
+        },
+        "ampel_gruen": {
+          "item": "Green Light",
+          "fantasy": "Permission of the King, Force Field Open"
+        },
+        "kanaldeckel": {
+          "item": "Manhole Cover",
+          "fantasy": "Entrance to the Dungeon, Shield of the Titan, Pizza Delivery"
+        },
+        "statue": {
+          "item": "Statue",
+          "fantasy": "Petrified Hero, Guardian of Time"
+        },
+        "taube": {
+          "item": "Pigeon",
+          "fantasy": "Spy of the Wizard, Messenger, Winged Rat"
+        },
+        "bank": {
+          "item": "Bench",
+          "fantasy": "Resting Place of Adventurers, Throne"
+        },
+        "laterne": {
+          "item": "Street Lamp",
+          "fantasy": "Beacon, Warding Circle against Shadows"
+        },
+        "muelleimer": {
+          "item": "Trash Can",
+          "fantasy": "Maw of the Glutton, Mimic (Beware!)"
+        },
+        "schaufensterpuppe": {
+          "item": "Mannequin",
+          "fantasy": "Trapped Soul, Golem in Stasis"
+        },
+        "bus_bahn": {
+          "item": "Bus / Train",
+          "fantasy": "Iron Worm, Transporter of the Guild"
+        },
+        "fahrrad": {
+          "item": "Bicycle",
+          "fantasy": "Steel Steed, Fast Mount"
+        },
+        "zebrastreifen": {
+          "item": "Crosswalk",
+          "fantasy": "Magic Bridge, Path of Safety"
+        },
+        "hochhaus": {
+          "item": "Skyscraper",
+          "fantasy": "Tower of the Mage, Mountain of Glass"
+        },
+        "baustelle": {
+          "item": "Construction Site",
+          "fantasy": "Chaos Zone, Workshop of the Dwarves"
+        },
+        "kran": {
+          "item": "Crane",
+          "fantasy": "Gigantic Mechanical Arm, Dragon Neck"
+        },
+        "graffiti": {
+          "item": "Graffiti",
+          "fantasy": "Ancient Runes, Sign of the Rebels, Cave Painting"
+        },
+        "hund": {
+          "item": "Dog on Leash",
+          "fantasy": "Tamed Beast, Companion of Another Hero"
+        },
+        "handschuh": {
+          "item": "Lost Glove",
+          "fantasy": "Severed Hand, Ghost Shell"
+        },
+        "zeitungsbox": {
+          "item": "Newspaper Box",
+          "fantasy": "Oracle of News, Box of Wisdom"
+        },
+        "springbrunnen": {
+          "item": "Fountain",
+          "fantasy": "Fountain of Youth, Water Elemental"
+        },
+        "treppe": {
+          "item": "Stairs",
+          "fantasy": "Steps to Destiny, Mountain Path"
+        },
+        "schild_verkehr": {
+          "item": "Sign (Traffic)",
+          "fantasy": "Tablet of Law, Warning of Dragons"
+        },
+        "uhr": {
+          "item": "Clock (Public)",
+          "fantasy": "Eye of Time, Countdown"
+        },
+        "gitterzaun": {
+          "item": "Chain Link Fence",
+          "fantasy": "Cage Wall, Net of Steel"
+        },
+        "auto_rot": {
+          "item": "Car (Red)",
+          "fantasy": "Fire Chariot"
+        },
+        "auto_blau": {
+          "item": "Car (Blue)",
+          "fantasy": "Water Glider"
+        },
+        "regenschirm": {
+          "item": "Umbrella",
+          "fantasy": "Shield against Heaven's Wrath, Mushroom Substitute"
+        },
+        "plakatwand": {
+          "item": "Billboard",
+          "fantasy": "Proclamation of the King, Wanted Poster"
+        },
+        "baeckerei": {
+          "item": "Bakery",
+          "fantasy": "Supply Station, Source of Life (Bread)"
+        },
+        "kiosk": {
+          "item": "Kiosk",
+          "fantasy": "Merchant of Small Treasures, Information Exchange"
+        },
+        "polizeiauto": {
+          "item": "Police Car",
+          "fantasy": "Guard of the City, Blue Knights"
+        },
+        "feuerwehr": {
+          "item": "Fire Truck",
+          "fantasy": "Dragon Hunter, Water Mage"
+        }
+      },
+      "quartier": {
+        "katze": {
+          "item": "Cat",
+          "fantasy": "Guardian of the Street, Spy of the Witch, Mini-Tiger"
+        },
+        "gartenzwerg": {
+          "item": "Garden Gnome",
+          "fantasy": "Petrified Gnome, Guardian of the Front Yard"
+        },
+        "briefkasten": {
+          "item": "Mailbox",
+          "fantasy": "Maw of the News Monster, Treasure Chest"
+        },
+        "zaun": {
+          "item": "Fence",
+          "fantasy": "Barricade against Orcs, Border to the Neighbor Realm"
+        },
+        "blumentopf": {
+          "item": "Flower Pot",
+          "fantasy": "Alchemy Cauldron, Helmet of a Giant"
+        },
+        "giesskanne": {
+          "item": "Watering Can",
+          "fantasy": "Rainmaker, Trunk Animal"
+        },
+        "fussabtreter": {
+          "item": "Doormat",
+          "fantasy": "Trap, Welcome Rune"
+        },
+        "vogelhaus": {
+          "item": "Birdhouse",
+          "fantasy": "Castle in the Air, Tavern for Winged Ones"
+        },
+        "garage": {
+          "item": "Garage",
+          "fantasy": "Cave of the Metal Beast, Armory"
+        },
+        "fahne": {
+          "item": "Flag",
+          "fantasy": "Banner of the Castle, Wind Indicator"
+        },
+        "schaukel": {
+          "item": "Swing",
+          "fantasy": "Catapult (inactive), Pendulum of Time"
+        },
+        "sandkasten": {
+          "item": "Sandbox",
+          "fantasy": "Desert of Doom, Excavation Site"
+        },
+        "rutsche": {
+          "item": "Slide",
+          "fantasy": "Fast Travel Portal, Dragon Tongue"
+        },
+        "trampolin": {
+          "item": "Trampoline",
+          "fantasy": "Jump Pad to Cloud City, Net Trap"
+        },
+        "grill": {
+          "item": "Grill",
+          "fantasy": "Forge Fire, Altar of Carnal Desire"
+        },
+        "liegestuhl": {
+          "item": "Deckchair",
+          "fantasy": "Throne of Relaxation"
+        },
+        "hecke": {
+          "item": "Hedge",
+          "fantasy": "Labyrinth Wall, Hiding Place"
+        },
+        "muelltonne": {
+          "item": "Trash Can",
+          "fantasy": "Goblin City Entrance, Storage Room"
+        },
+        "fahrradklingel": {
+          "item": "Bicycle Bell",
+          "fantasy": "Alarm Bell, Sonic Weapon"
+        },
+        "kreide": {
+          "item": "Chalk Drawing",
+          "fantasy": "Magic Warding Circle, Portal Marker"
+        },
+        "paketbote": {
+          "item": "Delivery Driver",
+          "fantasy": "Royal Courier, Supplier of Rare Artifacts"
+        },
+        "nachbar": {
+          "item": "Neighbor",
+          "fantasy": "Villager, NPC (Quest Giver?)"
+        },
+        "hundebellen": {
+          "item": "Dog Barking",
+          "fantasy": "Warning Call of Beasts, Alarm Siren"
+        },
+        "rasenmaeher": {
+          "item": "Lawnmower",
+          "fantasy": "Grass Eater, Noise Monster"
+        },
+        "solarleuchte": {
+          "item": "Solar Light",
+          "fantasy": "Light Seed, Star on the Ground"
+        },
+        "skateboard": {
+          "item": "Skateboard/Scooter",
+          "fantasy": "Ground Glider, Fast Shoe"
+        },
+        "hupfspiel": {
+          "item": "Hopscotch (Chalk)",
+          "fantasy": "Ritual Pattern, Path of Trial"
+        },
+        "fussballtor": {
+          "item": "Soccer Goal (small)",
+          "fantasy": "Net of the Catcher, Gate to the Arena"
+        },
+        "basketballkorb": {
+          "item": "Basketball Hoop",
+          "fantasy": "Ring of Fire, High Goal"
+        },
+        "vogeltränke": {
+          "item": "Bird Bath",
+          "fantasy": "Lake of the Dwarves, Healing Spring"
+        },
+        "insektenhotel": {
+          "item": "Insect Hotel",
+          "fantasy": "Barracks of the Flight Unit, Apartment Building"
+        },
+        "windrad": {
+          "item": "Pinwheel",
+          "fantasy": "Energy Collector, Hypnosis Device"
+        },
+        "wohnwagen": {
+          "item": "Caravan",
+          "fantasy": "Mobile House, Wagon of the Traveling Merchant"
+        },
+        "anhaenger": {
+          "item": "Trailer",
+          "fantasy": "Pack Mule, Box on Wheels"
+        },
+        "kompost": {
+          "item": "Compost Heap",
+          "fantasy": "Alchemy Lab (long fermentation), Hill of Worms"
+        },
+        "waescheleine": {
+          "item": "Clothesline",
+          "fantasy": "Flag Decoration, Ghost Parade"
+        },
+        "garage_offen": {
+          "item": "Garage Open",
+          "fantasy": "Maw of the Cave, Invitation to Loot"
+        },
+        "doppel_muell": {
+          "item": "Double Trash Can",
+          "fantasy": "Twin Towers of Waste, Guardian of the Alley"
+        },
+        "rosenbogen": {
+          "item": "Rose Arch",
+          "fantasy": "Gate of Thorns, Portal of Love"
+        },
+        "gartenhaus": {
+          "item": "Garden Shed",
+          "fantasy": "Hermit's Hut, Secret Hideout"
+        }
+      },
+      "altstadt": {
+        "kopfsteinpflaster": {
+          "item": "Cobblestones",
+          "fantasy": "Back of the Dragon, Scale Armor on the Ground"
+        },
+        "brunnen": {
+          "item": "Fountain/Well",
+          "fantasy": "Well of Wisdom, Portal to the Deep"
+        },
+        "kirchturm": {
+          "item": "Church Tower",
+          "fantasy": "Lookout of the Griffin Riders, Mage Tower"
+        },
+        "glockenschlag": {
+          "item": "Bell Toll",
+          "fantasy": "Voice of the Titans, Time Signal"
+        },
+        "gasse_eng": {
+          "item": "Narrow Alley",
+          "fantasy": "Canyon of Shadows, Thieves' Path"
+        },
+        "schild_alt": {
+          "item": "Old Sign (Inn)",
+          "fantasy": "Crest of a Guild, Hanging Oracle"
+        },
+        "fachwerkhaus": {
+          "item": "Half-Timbered House",
+          "fantasy": "House of Woodworms, Skeleton House"
+        },
+        "tor_bogen": {
+          "item": "Arched Gateway",
+          "fantasy": "Portal to the Past, Entrance to the Forbidden City"
+        },
+        "mauer_alt": {
+          "item": "Old Stone Wall",
+          "fantasy": "Remains of the Fortress, Sleeping Giant"
+        },
+        "museum": {
+          "item": "Museum",
+          "fantasy": "Hall of Ancestors, Store of Knowledge"
+        },
+        "eisdiele": {
+          "item": "Ice Cream Parlor",
+          "fantasy": "Temple of Frost, Sweet Seduction"
+        }
+      },
+      "strand": {
+        "muschel": {
+          "item": "Seashell",
+          "fantasy": "Mermaid's Message, Turtle Shell, Treasure Chest of the Deep"
+        },
+        "sandburg": {
+          "item": "Sandcastle",
+          "fantasy": "Fortress of the Crab People, Sleeping Giant, Sand Mage Tower"
+        },
+        "seetang": {
+          "item": "Seaweed",
+          "fantasy": "Sea Hair, Shackle of the Deep, Magic Rope"
+        },
+        "treibholz": {
+          "item": "Driftwood",
+          "fantasy": "Spear of Poseidon, Remnant of a Ghost Ship, Magic Staff"
+        },
+        "stein_glanz": {
+          "item": "Shiny Stone",
+          "fantasy": "Eye of the Kraken, Pearl of Wisdom, Siren Decoy"
+        },
+        "krabbe": {
+          "item": "Crab",
+          "fantasy": "Armored Guardian, Master Scissor-Cutter"
+        },
+        "moewe": {
+          "item": "Seagull",
+          "fantasy": "Spy of the Skies, Messenger of the Tides"
+        },
+        "wellen": {
+          "item": "Waves",
+          "fantasy": "Voice of the Ocean, Wrath of the Sea God"
+        }
+      },
+      "gebirge": {
+        "bergklee": {
+          "item": "Mountain Clover",
+          "fantasy": "Elixir of High Altitude, Dwarf Bread, Lucky Messenger of the Summit"
+        },
+        "edelweiss": {
+          "item": "Edelweiss",
+          "fantasy": "Star of the Summit, Frost Amulet, Immortal Flower"
+        },
+        "hoehle": {
+          "item": "Cave Entrance",
+          "fantasy": "Portal to the Underdark, Bear's Lair, Echo Chamber"
+        },
+        "echo": {
+          "item": "Echo",
+          "fantasy": "Voice of the Ancestors, Warning of the Mountain, Invisible Companion"
+        },
+        "gipfelkreuz": {
+          "item": "Summit Cross",
+          "fantasy": "Beacon of Hope, Landmark of the Gods, Lightning Rod"
+        },
+        "stein_lose": {
+          "item": "Loose Stone",
+          "fantasy": "Drum of the Stone Giants, Rockslide Trigger"
+        },
+        "adler": {
+          "item": "Eagle",
+          "fantasy": "Keeper of the Clouds, Flying Machine of the Spirits"
+        },
+        "wolke_tief": {
+          "item": "Low Cloud/Mist",
+          "fantasy": "Breath of the Mountains, Hidden Path"
+        }
+      },
+      "winter": {
+        "schneeball": {
+          "item": "Snowball",
+          "fantasy": "Frost Bomb, Frozen Time, Crystal Ball"
+        },
+        "eiszapfen_groß": {
+          "item": "Large Icicle",
+          "fantasy": "Crystal Dagger, Tooth of the Frost Giant, Magic Shard"
+        },
+        "fährte_schnee": {
+          "item": "Track in Snow",
+          "fantasy": "Trail of the Yeti, Path of the Lost, Sign of Winter"
+        },
+        "see_gefroren": {
+          "item": "Frozen Lake",
+          "fantasy": "Mirror of Souls, Arena of the Ice King, Window into the Deep"
+        },
+        "mistel": {
+          "item": "Mistletoe",
+          "fantasy": "Kiss of Winter, Sacred Herb, Magic Parasite"
+        },
+        "schneemann": {
+          "item": "Snowman",
+          "fantasy": "Ice Golem (sleeping), Guardian of the Frost"
+        },
+        "schlitten": {
+          "item": "Sled",
+          "fantasy": "Thunder-Glider, Frost-Wagon"
+        },
+        "tannenzweig_schnee": {
+          "item": "Pine Branch with Snow",
+          "fantasy": "Fur of the Forest, Winter Scepter"
+        }
+      }
+    }
+  },
+  "characterBackgrounds": {
+    "waldlaeufer": {
+      "name": "Ranger",
+      "item": "Bow"
+    },
+    "kraeuterkundiger": {
+      "name": "Herbalist",
+      "item": "Healing Potion"
+    },
+    "dieb": {
+      "name": "Rogue",
+      "item": "Lockpick"
+    },
+    "ritter": {
+      "name": "Knight",
+      "item": "Shield"
+    },
+    "magier": {
+      "name": "Wizard",
+      "item": "Magic Wand"
+    },
+    "barde": {
+      "name": "Bard",
+      "item": "Lute"
+    },
+    "haendler": {
+      "name": "Merchant",
+      "item": "Coin Purse"
+    },
+    "schmied": {
+      "name": "Blacksmith",
+      "item": "Hammer"
+    },
+    "gaukler": {
+      "name": "Jester",
+      "item": "Juggling Balls"
+    },
+    "alchemist": {
+      "name": "Alchemist",
+      "item": "Test Tube"
+    },
+    "bestienjaeger": {
+      "name": "Monster Hunter",
+      "item": "Net"
+    },
+    "entdecker": {
+      "name": "Explorer",
+      "item": "Compass"
+    }
+  },
+  "ssp": {
+    "title": "⚔️ Challenge Helper (RPS)",
+    "instructions": "Click your choice. The Guide's throw is determined randomly.",
+    "rock": "Rock",
+    "paper": "Paper",
+    "scissors": "Scissors",
+    "win": "🎉 Full Success!",
+    "draw": "⚖️ Partial Success (with a catch)",
+    "lose": "💥 Failure (funny consequence!)",
+    "newChallenge": "New Challenge"
+  },
+  "statuses": {
+    "itchy": {
+      "name": "Itchy",
+      "effect": "Hop on one leg",
+      "cure": "Find a healing leaf (daisy)"
+    },
+    "strong": {
+      "name": "Strong",
+      "effect": "Next challenge succeeds automatically",
+      "cure": "Used up after one challenge"
+    },
+    "invisible": {
+      "name": "Invisible",
+      "effect": "You may not speak for 2 minutes",
+      "cure": "Time runs out"
+    },
+    "cursed": {
+      "name": "Cursed",
+      "effect": "Lose all tie challenges",
+      "cure": "Find a special stone"
+    },
+    "lucky": {
+      "name": "Lucky",
+      "effect": "Win all tie challenges",
+      "cure": "Used up after one challenge"
+    },
+    "tired": {
+      "name": "Tired",
+      "effect": "Run 10 steps to recover",
+      "cure": "Complete a movement action"
+    },
+    "brave": {
+      "name": "Brave",
+      "effect": "+1 Spirit for next action",
+      "cure": "Used up after one action"
+    },
+    "wet": {
+      "name": "Soaking Wet",
+      "effect": "Shake yourself like a dog",
+      "cure": "Complete action"
+    }
+  },
+  "analytics": {
+    "title": "📊 Website Analytics",
+    "description": "We use Umami Analytics to understand how Trailkin is used. This helps us improve the app.",
+    "privacy_note": "✅ No cookies | ✅ No personal data | ✅ GDPR compliant | ✅ Open source",
+    "accept": "Allow Statistics",
+    "reject": "No, thanks"
+  },
+  "footer": {
+    "analytics_settings": "⚙️ Analytics Settings",
+    "support": "☕ Support this project",
+    "github": "⭐ GitHub",
+    "version": "Trailkin v3.2 — Open Source (MIT License)",
+    "madeWith": "Made with 💚 for outdoor adventures"
+  },
+  "modals": {
+    "newGroupTitle": "Name of the new group",
+    "newGroupDefault": "New Group",
+    "renameGroupTitle": "New name for the group",
+    "newItemTitle": "New item",
+    "newItemForChar": "New item for",
+    "selectEnv": "Select Environment",
+    "selectStatus": "Select Status",
+    "inputPlaceholder": "Enter...",
+    "noOptions": "No selection available.",
+    "cancel": "Cancel",
+    "ok": "OK",
+    "close": "Close"
+  },
+  "errors": {
+    "cannotDeleteLastGroup": "You cannot delete the last group!",
+    "allStatusesActive": "All status effects are already active!"
+  }
+}
