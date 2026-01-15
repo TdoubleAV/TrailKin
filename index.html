@@ -70,6 +70,26 @@
             pointer-events: none;
         }
 
+        @media (prefers-reduced-motion: reduce) {
+            .fab-container {
+                transition: none;
+            }
+
+            body {
+                transition: none !important;
+            }
+
+            .fade-in {
+                animation: none;
+            }
+
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
         body {
             font-family: 'Inter', sans-serif;
         }
@@ -89,7 +109,7 @@
         }
 
         .nav-link {
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .nav-link.active {
@@ -242,14 +262,14 @@
                     <button @click="$store.i18n.setLanguage(lang.code)"
                         class="text-xl p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-all"
                         :class="$store.i18n.current === lang.code ? 'opacity-100 scale-110' : 'opacity-40 hover:opacity-70'"
-                        :title="lang.name" x-text="lang.flag">
+                        :title="lang.name" :aria-label="lang.name" x-text="lang.flag">
                     </button>
                 </template>
                 <!-- Theme Toggle -->
                 <button @click="$store.game.toggleTheme()"
                     class="text-2xl p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
-                    :title="$t('header.themeToggle')">
-                    <span id="theme-icon"
+                    :title="$t('header.themeToggle')" :aria-label="$t('header.themeToggle')">
+                    <span id="theme-icon" aria-hidden="true"
                         x-text="$store.game.theme === 'dark' ? '🌙' : ($store.game.theme === 'nature' ? '🌿' : '☀️')">☀️</span>
                 </button>
             </div>
@@ -257,15 +277,18 @@
 
         <nav
             class="sticky top-2 z-10 bg-white/70 dark:bg-stone-900/80 backdrop-blur-md rounded-xl shadow-md mb-8 p-2 flex justify-center items-center flex-wrap gap-2 transition-colors duration-300">
-            <a href="#adventure" class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
+            <button type="button"
+                class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg cursor-pointer"
                 :class="$store.game.currentTab === 'adventure' ? 'active bg-emerald-600 text-white' : 'text-stone-600 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-700'"
-                @click.prevent="$store.game.setTab('adventure')" x-text="$t('nav.play')"></a>
-            <a href="#generator" class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
+                @click="$store.game.setTab('adventure')" x-text="$t('nav.play')"></button>
+            <button type="button"
+                class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg cursor-pointer"
                 :class="$store.game.currentTab === 'generator' ? 'active bg-emerald-600 text-white' : 'text-stone-600 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-700'"
-                @click.prevent="$store.game.setTab('generator')" x-text="$t('nav.prepare')"></a>
-            <a href="#rules" class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg"
+                @click="$store.game.setTab('generator')" x-text="$t('nav.prepare')"></button>
+            <button type="button"
+                class="nav-link text-sm md:text-base font-semibold px-4 py-2 rounded-lg cursor-pointer"
                 :class="$store.game.currentTab === 'rules' ? 'active bg-emerald-600 text-white' : 'text-stone-600 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-700'"
-                @click.prevent="$store.game.setTab('rules')" x-text="$t('nav.help')"></a>
+                @click="$store.game.setTab('rules')" x-text="$t('nav.help')"></button>
         </nav>
 
         <!-- FAB Container (Floating Action Buttons) -->
@@ -275,8 +298,15 @@
             <!-- Story Spark FAB -->
             <button @click="$store.game.generateSpark()"
                 class="w-14 h-14 bg-purple-600 hover:bg-purple-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110 opacity-90 hover:opacity-100"
-                :title="$t('inspiration.magicButton')">
-                <span class="text-2xl">🔮</span>
+                :title="$t('inspiration.magicButton')" :aria-label="$t('inspiration.magicButton')">
+                <span class="text-2xl" aria-hidden="true">🔮</span>
+            </button>
+
+            <!-- Consequence FAB -->
+            <button @click="$store.game.generateFailForward()"
+                class="w-14 h-14 bg-orange-500 hover:bg-orange-600 text-white rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110 opacity-90 hover:opacity-100"
+                :title="$t('consequences.title')" :aria-label="$t('consequences.title')">
+                <span class="text-2xl" aria-hidden="true">⚡</span>
             </button>
         </div>
 
@@ -300,7 +330,6 @@
                         <summary
                             class="cursor-pointer p-4 flex items-center justify-between hover:bg-amber-100 dark:hover:bg-amber-900/30 transition-colors">
                             <h3 class="text-xl font-bold text-amber-800 dark:text-amber-400 flex items-center gap-2">
-                                <span>📜</span>
                                 <span x-text="$t('journal.title')"></span>
                                 <span x-show="currentGroup?.journal?.length"
                                     class="text-sm font-normal bg-amber-200 dark:bg-amber-800 text-amber-700 dark:text-amber-300 px-2 py-0.5 rounded-full"
@@ -327,7 +356,7 @@
                                                 </div>
                                                 <button
                                                     @click="if(confirm($t('journal.deleteConfirm'))) deleteJournalEntry(entry.id)"
-                                                    class="text-red-400 hover:text-red-600 opacity-0 group-hover:opacity-100 transition-opacity text-sm">🗑️</button>
+                                                    class="text-red-500 hover:text-red-700 opacity-0 group-hover:opacity-100 transition-opacity font-bold text-lg">×</button>
                                             </div>
                                             <!-- Entry Content -->
                                             <div class="text-stone-700 dark:text-stone-300">
@@ -461,10 +490,10 @@
                                                 class="absolute top-1/2 -translate-y-1/2 right-2 flex gap-1 lg:opacity-0 lg:group-hover/node:opacity-100 transition-opacity">
                                                 <button @click.stop="$store.game.rerollNode(node.id)"
                                                     class="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-amber-800 flex items-center justify-center shadow-sm"
-                                                    title="Neu würfeln">🎲</button>
+                                                    title="Neu würfeln" aria-label="Neu würfeln">🎲</button>
                                                 <button @click.stop="$store.game.removeNode(node.id)"
                                                     class="w-8 h-8 rounded-full bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300 hover:bg-red-200 dark:hover:bg-red-800 flex items-center justify-center shadow-sm"
-                                                    title="Entfernen">×</button>
+                                                    title="Entfernen" aria-label="Entfernen">×</button>
                                             </div>
                                         </div>
                                     </template>
@@ -489,7 +518,7 @@
 
                             <button @click="currentGroup.quest.active = false; saveGame()"
                                 class="absolute top-2 right-2 w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-800 hover:bg-red-500 hover:text-white text-blue-800 dark:text-blue-200 flex items-center justify-center transition-all shadow-sm z-50"
-                                :title="$t('group.endQuest')">
+                                :title="$t('group.endQuest')" :aria-label="$t('group.endQuest')">
                                 ×
                             </button>
 
@@ -580,12 +609,6 @@
                             <button @click="deleteGroup()"
                                 class="bg-red-500 hover:bg-red-600 text-white font-bold px-3 py-2 rounded-lg text-sm"
                                 :title="$t('group.delete')">🗑️</button>
-                            <button @click="$store.game.generateFailForward()"
-                                class="bg-orange-500 hover:bg-orange-600 text-white font-bold px-3 py-2 rounded-lg text-sm flex items-center gap-1 shadow-sm"
-                                :title="$t('consequences.title')">
-                                <span>⚡</span>
-                                <span class="hidden sm:inline" x-text="$t('consequences.title')"></span>
-                            </button>
                         </div>
                     </div>
 
@@ -638,13 +661,16 @@
                                     <div class="flex justify-between items-start mb-2">
                                         <div class="w-full mr-2">
                                             <input type="text" x-model="char.name" @blur="saveGame()"
-                                                class="char-input font-bold text-lg bg-transparent border-b border-transparent focus:border-emerald-500 outline-none w-2/3 text-stone-800 dark:text-stone-200">
+                                                aria-label="Character Name"
+                                                class="char-input font-bold text-lg bg-transparent border-b border-transparent focus-visible:border-emerald-500 outline-none w-2/3 text-stone-800 dark:text-stone-200">
                                             <input type="text" x-model="char.class" @blur="saveGame()"
+                                                aria-label="Character Class"
                                                 class="char-input text-sm text-stone-500 dark:text-stone-400 bg-transparent block w-full mt-1">
                                         </div>
                                         <button @click="removeChar(char.id)"
                                             class="text-red-400 hover:text-red-600 text-lg p-1 opacity-60 hover:opacity-100 transition-opacity"
-                                            :title="$t('characters.deleteHero')">❌</button>
+                                            :title="$t('characters.deleteHero')"
+                                            :aria-label="$t('characters.deleteHero')">❌</button>
                                     </div>
 
                                     <div class="flex items-center gap-4 mt-3">
@@ -911,7 +937,7 @@
                         class="mb-6 p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
                         <label class="flex items-center gap-3 cursor-pointer group">
                             <input type="checkbox" x-model="$store.game.quest.builder.educational"
-                                class="w-5 h-5 rounded text-amber-600 focus:ring-amber-500 border-amber-300">
+                                class="w-5 h-5 rounded text-amber-600 focus-visible:ring-amber-500 border-amber-300">
                             <span class="font-bold text-amber-800 dark:text-amber-200"
                                 x-text="$store.game.t('quest.v2.educationalMode')"></span>
                         </label>
@@ -1044,7 +1070,7 @@
                     <div class="flex items-center space-x-3">
                         <input type="checkbox" x-model="$store.game.modules.A" @click.stop
                             @change="$store.game.saveGame()"
-                            class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 bg-white dark:bg-stone-800 border-stone-300 dark:border-stone-500">
+                            class="form-checkbox h-5 w-5 text-emerald-600 rounded focus-visible:ring-emerald-500 bg-white dark:bg-stone-800 border-stone-300 dark:border-stone-500">
                         <span x-text="$t('rules.moduleA_title')"></span>
                     </div>
                     <span class="arrow-down transition-transform duration-300">▼</span>
@@ -1070,7 +1096,7 @@
                     <div class="flex items-center space-x-3">
                         <input type="checkbox" x-model="$store.game.modules.B" @click.stop
                             @change="$store.game.saveGame()"
-                            class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 bg-white dark:bg-stone-800 border-stone-300 dark:border-stone-500">
+                            class="form-checkbox h-5 w-5 text-emerald-600 rounded focus-visible:ring-emerald-500 bg-white dark:bg-stone-800 border-stone-300 dark:border-stone-500">
                         <span x-text="$t('rules.moduleB_title')"></span>
                     </div>
                     <span class="arrow-down transition-transform duration-300">▼</span>
@@ -1097,7 +1123,7 @@
                     <div class="flex items-center space-x-3">
                         <input type="checkbox" x-model="$store.game.modules.dog" @click.stop
                             @change="$store.game.saveGame()"
-                            class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 bg-white dark:bg-stone-800 border-stone-300 dark:border-stone-500">
+                            class="form-checkbox h-5 w-5 text-emerald-600 rounded focus-visible:ring-emerald-500 bg-white dark:bg-stone-800 border-stone-300 dark:border-stone-500">
                         <span x-text="$t('settings.moduleF_label')"></span>
                     </div>
                     <span class="arrow-down transition-transform duration-300">▼</span>
@@ -1127,7 +1153,7 @@
                     <div class="flex items-center space-x-3">
                         <input type="checkbox" x-model="$store.game.modules.D" @click.stop
                             @change="$store.game.saveGame()"
-                            class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 bg-white dark:bg-stone-800 border-stone-300 dark:border-stone-500">
+                            class="form-checkbox h-5 w-5 text-emerald-600 rounded focus-visible:ring-emerald-500 bg-white dark:bg-stone-800 border-stone-300 dark:border-stone-500">
                         <span x-text="$t('rules.moduleD_title')"></span>
                     </div>
                     <span class="arrow-down transition-transform duration-300">▼</span>
@@ -1479,7 +1505,7 @@
                     <div>
                         <input x-model="$store.game.modal.value" x-ref="modalInput"
                             @keydown.enter="$store.game.confirmModal()" @keydown.escape="$store.game.closeModal()"
-                            class="w-full p-2 border border-stone-300 dark:border-stone-600 rounded mb-4 bg-white dark:bg-stone-900 text-stone-900 dark:text-white outline-none focus:border-emerald-500"
+                            class="w-full p-2 border border-stone-300 dark:border-stone-600 rounded mb-4 bg-white dark:bg-stone-900 text-stone-900 dark:text-white outline-none focus-visible:border-emerald-500"
                             autocomplete="off" type="text" :placeholder="$t('modals.inputPlaceholder')">
                         <div class="flex justify-end gap-2">
                             <button @click="$store.game.closeModal()"
@@ -1497,7 +1523,8 @@
                     <div>
                         <div class="grid grid-cols-1 gap-2 mb-4 max-h-[60vh] overflow-y-auto">
                             <template x-for="opt in $store.game.modal.options" :key="opt.value">
-                                <button @click="$store.game.modal.callback(opt.value); $store.game.closeModal()"
+                                <button
+                                    @click="if($store.game.modal.callback) { $store.game.modal.callback(opt.value); $store.game.closeModal(); }"
                                     class="flex items-center gap-3 w-full p-3 rounded-lg border border-stone-200 dark:border-stone-700 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 hover:border-emerald-300 transition-colors text-left">
                                     <span class="text-2xl" x-text="opt.emoji || '🔹'"></span>
                                     <span class="font-bold text-stone-800 dark:text-stone-200"
@@ -1527,7 +1554,6 @@
                         <div class="flex flex-col gap-2">
                             <button @click="$store.game.logConsequenceToJournal()"
                                 class="w-full px-4 py-3 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 font-bold shadow-md flex items-center justify-center gap-2">
-                                <span>📜</span>
                                 <span x-text="$t('journal.logToJournal')"></span>
                             </button>
                             <button @click="$store.game.closeModal()"
@@ -1548,7 +1574,6 @@
                         <div class="flex flex-col gap-2">
                             <button @click="$store.game.logSparkToJournal()"
                                 class="w-full px-4 py-3 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 font-bold shadow-md flex items-center justify-center gap-2">
-                                <span>📜</span>
                                 <span x-text="$t('journal.logToJournal')"></span>
                             </button>
                             <button @click="$store.game.closeModal()"

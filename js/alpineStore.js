@@ -261,9 +261,22 @@ export function initAlpineStore(Alpine) {
 
         confirmModal() {
             if (this.modal.value.trim() && this.modal.callback) {
-                this.modal.callback(this.modal.value.trim());
+                const callback = this.modal.callback;
+                const value = this.modal.value.trim();
+                // Don't close immediately - callback might open a new modal
+                // Store current modal type to check if it changed
+                const currentType = this.modal.type;
+
+                // Execute callback
+                callback(value);
+
+                // Only close if modal type unchanged (callback didn't open new modal)
+                if (this.modal.type === currentType) {
+                    this.closeModal();
+                }
+            } else {
+                this.closeModal();
             }
-            this.closeModal();
         },
 
         // --- Journal System ---
@@ -777,7 +790,11 @@ export function initAlpineStore(Alpine) {
 
         deleteGroup() {
             if (this.groups.length <= 1) {
-                alert(this.t('errors.cannotDeleteLastGroup'));
+                // Show error modal instead of alert
+                this.modal.type = 'info';
+                this.modal.title = '⚠️ ' + this.t('errors.cannotDeleteLastGroup');
+                this.modal.value = '';
+                this.modal.open = true;
                 return;
             }
             this.groups = this.groups.filter(g => g.id !== this.activeGroupId);
