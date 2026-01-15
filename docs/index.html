@@ -218,11 +218,13 @@
 
 <body class="bg-amber-50 text-slate-800" x-data="landingApp">
 
-    <!-- Unified Hero + Quickstart Wrapper -->
-    <div class="relative bg-emerald-900 text-white bg-cover bg-bottom"
-        style="background-image: url('assets/hero.png'); background-attachment: scroll;">
-        <!-- Overlay for readability -->
+    <!-- Fixed Background (Viewport Sized) to prevent Mobile Zoom -->
+    <div class="fixed inset-0 -z-50 bg-cover bg-bottom" style="background-image: url('assets/hero.png');">
         <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80"></div>
+    </div>
+
+    <!-- Unified Hero + Quickstart Wrapper -->
+    <div class="relative text-white">
 
         <!-- 1. Hero Content -->
         <section class="max-w-7xl mx-auto px-4 pt-24 pb-20 relative z-10 text-center">
