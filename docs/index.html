@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trailkin – Adventure Walks for Kids</title>
+
+    <!-- SEO Metadata -->
+    <meta name="description"
+        content="Turn family walks into fantasy role-playing adventures. Free, offline, and kid-safe app for outdoor fun.">
+    <meta name="keywords"
+        content="family walk, outdoor game, role-playing, kids app, parenting tool, Trailkin, hiking with kids">
+    <meta name="author" content="Trailkin Team">
+    <meta name="theme-color" content="#059669">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="Trailkin – Adventure Walks for Kids">
+    <meta property="og:description"
+        content="Transform your walks into epic quests. No preparation needed. Just 100% imagination.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tdoubleav.github.io/TrailKin/">
+    <meta property="og:image" content="https://tdoubleav.github.io/TrailKin/assets/hero.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Trailkin – Adventure Walks for Kids">
+    <meta name="twitter:description" content="Turn family walks into fantasy role-playing adventures.">
+    <meta name="twitter:image" content="https://tdoubleav.github.io/TrailKin/assets/hero.png">
+
+    <!-- JSON-LD Object -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Trailkin",
+      "url": "https://tdoubleav.github.io/TrailKin/",
+      "description": "Free progressive web app that turns family walks into tabletop-RPG style adventures.",
+      "applicationCategory": "Education",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "image": "https://tdoubleav.github.io/TrailKin/assets/hero.png"
+    }
+    </script>
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Mermaid JS -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'base', themeVariables: { fontFamily: 'Inter' } });
+
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: { 600: '#059669', 700: '#047857', 900: '#064e3b' },
+                        amber: { 50: '#fffbeb', 100: '#fef3c7' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <!-- Umami Analytics -->
+    <script defer src="https://cloud.umami.is/script.js"
+        data-website-id="88f6b389-dd53-4465-8b67-b5ed6e6c5fca"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+
+    <!-- Alpine.js (Custom Script MUST be before Alpine core script) -->
+    <script>
+        const translations = {
+            en: {
+                hero: {
+                    tagline: "v3.5 Now Available • Free & Open Source",
+                    title: "Make Every Walk<br/>An Adventure",
+                    subtitle: "Transform boring walks into epic quests. Trailkin is the <span class='font-bold'>imagination co-pilot</span> for parents and kids.",
+                    cta_play: "Start Adventure Now",
+                    cta_how: "How it Works",
+                    features_mini: "Works Offline • No Ads • No Login Required"
+                },
+                quickstart: {
+                    title: "60-Second Quickstart",
+                    subtitle: "The real world is your game board. Telling stories is the default. Mechanics only happen when things get risky.",
+                    step1: { title: "Heroes & Storyteller", desc: "You are the Game Master (GM). The kids are Heroes. A stick is a sword, the forest is a dungeon." },
+                    step2: { title: "The Mission", desc: "Define a goal: \"We track the Troll's Treasure\" (3 colorful stones) or \"Escape the Goblins\" (reach the car)." },
+                    step3: { title: "The Challenge", desc: "Risky move? Pick a Challenge: Rock-Paper-Scissors (vs GM), Luck (Coin Flip), or Skill (Throwing). Win = Glory. Fail = Funny Consequence!" }
+                },
+                mermaid: {
+                    title: "The Game Loop",
+                    action: "🏃 Hero Action",
+                    gm: "⚖️ GM Check",
+                    routine: "Routine",
+                    success: "✅ Success!",
+                    risky: "Risky",
+                    check: "🔥 Challenge",
+                    fail: "⚡ Funny Consequence",
+                    partial: "⚠️ Partial Success",
+                    twist: "(Story Continues)"
+                },
+                features: {
+                    headline: "Why Parents Love Trailkin",
+                    offline: { title: "100% Offline", desc: "Works in the deepest forest. No data usage, no tracking, pure nature." },
+                    infinite: { title: "Infinite Quests", desc: "Generates unique plots, items, and NPCs every time you tap 'New Quest'." },
+                    learning: { title: "Hidden Learning", desc: "Trains perception & resilience. Kids look at the ground for clues, not at a screen." }
+                },
+                footer: {
+                    support: "Support on Ko-fi",
+                    imprint: "Imprint"
+                }
+            },
+            de: {
+                hero: {
+                    tagline: "v3.5 Jetzt verfügbar • Kostenlos & Open Source",
+                    title: "Mach jeden Spaziergang<br/>zum Abenteuer",
+                    subtitle: "Verwandle langweilige Spaziergänge in epische Quests. Trailkin ist der <span class='font-bold'>Fantasie-Copilot</span> für Eltern und Kinder.",
+                    cta_play: "Abenteuer Starten",
+                    cta_how: "So funktioniert's",
+                    features_mini: "Funktioniert Offline • Keine Werbung • Kein Login"
+                },
+                quickstart: {
+                    title: "60-Sekunden Schnellstart",
+                    subtitle: "Die reale Welt ist das Spielbrett. Erzählen ist Standard. Würfel rollen nur, wenn es riskant wird.",
+                    step1: { title: "Helden & Erzähler", desc: "Du bist der Spielleiter. Die Kinder sind die Helden. Ein Stock ist ein Schwert, der Wald ist ein Dungeon." },
+                    step2: { title: "Die Mission", desc: "Startet mit einem Ziel: \"Wir suchen den Troll-Schatz\" (3 Steine) oder \"Wir entkommen den Goblins\" (Weg zum Auto)." },
+                    step3: { title: "Die Challenge", desc: "Riskant? Wählt eine Challenge: Schere-Stein-Papier (vs GM), Glück (Münzwurf) oder Skill (Werfen). Erfolg = Ruhm. Fehler = Lustige Konsequenz!" }
+                },
+                mermaid: {
+                    title: "Der Spiel-Loop",
+                    action: "🏃 Helden-Aktion",
+                    gm: "⚖️ Erzähler-Check",
+                    routine: "Routine",
+                    success: "✅ Erfolg!",
+                    risky: "Riskant",
+                    check: "🔥 Challenge",
+                    fail: "⚡ Lustige Konsequenz",
+                    partial: "⚠️ Teilerfolg",
+                    twist: "(Story geht weiter)"
+                },
+                features: {
+                    headline: "Warum Eltern Trailkin lieben",
+                    offline: { title: "100% Offline", desc: "Funktioniert im tiefsten Wald. Kein Datenverbrauch, kein Tracking, pures Naturerlebnis." },
+                    infinite: { title: "Unendliche Quests", desc: "Generiert jedes Mal einzigartige Plots, Gegenstände und NPCs." },
+                    learning: { title: "Verstecktes Lernen", desc: "Trainiert Wahrnehmung & Resilienz. Kinder suchen Hinweise am Boden, statt auf Screens zu starren." }
+                },
+                footer: {
+                    support: "Unterstütze auf Ko-fi",
+                    imprint: "Impressum"
+                }
+            }
+        };
+
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('i18n', {
+                current: localStorage.getItem('trailkin_lang') || (navigator.language.startsWith('de') ? 'de' : 'en'),
+                t(key) {
+                    const keys = key.split('.');
+                    let value = translations[this.current];
+                    for (const k of keys) value = value?.[k];
+                    return value || key;
+                },
+                toggle() {
+                    this.current = this.current === 'de' ? 'en' : 'de';
+                    localStorage.setItem('trailkin_lang', this.current);
+                    document.dispatchEvent(new CustomEvent('lang-change'));
+                }
+            });
+
+            Alpine.magic('t', () => key => Alpine.store('i18n').t(key));
+
+            // Initial render
+            setTimeout(renderMermaid, 500); // Wait for mermaid loaded
+        });
+
+        document.addEventListener('lang-change', renderMermaid);
+
+        function renderMermaid() {
+            const t = (key) => Alpine.store('i18n').t('mermaid.' + key);
+            const container = document.getElementById('mermaid-container');
+            if (!container || !window.mermaid) return;
+
+            const graph = `
+            graph TD
+                A(["${t('action')}"]) --> B{"${t('gm')}"}
+                B -->|"${t('routine')}"| C(["${t('success')}"])
+                B -->|"${t('risky')}"| D{"${t('check')}"}
+                D -->|Win| C
+                D -->|Fail| E["${t('fail')}"]
+                E -.-> F(["${t('partial')}"])
+
+                style A fill:#ecfdf5,stroke:#059669,stroke-width:2px;
+                style C fill:#dcfce7,stroke:#16a34a,stroke-width:2px,stroke-dasharray: 5 5;
+                style E fill:#fef3c7,stroke:#d97706,stroke-width:2px;
+                style D fill:#e0f2fe,stroke:#0284c7,stroke-width:2px;
+                style F fill:#fef08a,stroke:#ca8a04,stroke-width:2px,stroke-dasharray: 2 2;
+                linkStyle default stroke:#374151,stroke-width:2px;
+            `;
+
+            container.removeAttribute('data-processed');
+            // Check if mermaid.render is available (v10 updates)
+            mermaid.render('mermaid-svg-' + Date.now(), graph).then(({ svg }) => {
+                container.innerHTML = svg;
+            });
+        }
+    </script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="bg-amber-50 text-slate-800" x-data="landingApp">
+
+    <!-- Unified Hero + Quickstart Wrapper -->
+    <div class="relative bg-emerald-900 text-white bg-cover bg-bottom"
+        style="background-image: url('assets/hero.png'); background-attachment: scroll;">
+        <!-- Overlay for readability -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80"></div>
+
+        <!-- 1. Hero Content -->
+        <section class="max-w-7xl mx-auto px-4 pt-24 pb-20 relative z-10 text-center">
+            <!-- Lang Toggle (Floating) -->
+            <div class="absolute top-4 right-4 md:right-8">
+                <button @click="$store.i18n.toggle()"
+                    class="bg-black/50 hover:bg-black/70 text-white px-3 py-1 rounded-full text-sm font-semibold transition-colors border border-white/20 backdrop-blur-sm">
+                    <span x-text="$store.i18n.current === 'de' ? '🇺🇸 EN' : '🇩🇪 DE'"></span>
+                </button>
+            </div>
+
+            <span
+                class="inline-block py-1 px-3 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-100 text-sm font-semibold mb-6 animate-pulse backdrop-blur-sm"
+                x-text="$t('hero.tagline')">
+            </span>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight drop-shadow-xl text-white">
+                <span x-html="$t('hero.title')"></span>
+            </h1>
+            <p class="text-xl md:text-2xl text-emerald-100 max-w-2xl mx-auto mb-10 leading-relaxed drop-shadow-md font-medium"
+                x-html="$t('hero.subtitle')">
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                <a href="https://tdoubleav.github.io/TrailKin/app/" data-umami-event="Play Button Click"
+                    data-umami-event-location="Hero"
+                    class="bg-emerald-600 border border-emerald-400/50 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-emerald-500 hover:scale-105 transition-all flex items-center gap-2 backdrop-blur-sm">
+                    <span>🚀</span> <span x-text="$t('hero.cta_play')"></span>
+                </a>
+                <a href="#how-it-works"
+                    class="px-8 py-4 rounded-full font-semibold text-white border-2 border-white/30 hover:bg-white/10 transition-colors backdrop-blur-sm">
+                    <span x-text="$t('hero.cta_how')"></span> ↓
+                </a>
+            </div>
+
+            <div class="text-sm opacity-80 font-medium tracking-wide" x-text="$t('hero.features_mini')"></div>
+        </section>
+
+        <!-- 2. Quickstart Section (Integrated visually) -->
+        <section id="how-it-works" class="py-20 relative z-10 bg-transparent">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg"
+                        x-text="$t('quickstart.title')"></h2>
+                    <p class="text-lg text-emerald-100 max-w-2xl mx-auto drop-shadow-md"
+                        x-text="$t('quickstart.subtitle')"></p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+                    <!-- Mermaid Diagram -->
+                    <div
+                        class="bg-black/20 backdrop-blur-sm p-8 rounded-2xl border border-white/10 shadow-2xl h-full flex flex-col justify-center">
+                        <h3 class="text-center font-bold text-white text-sm uppercase tracking-wider mb-6 drop-shadow-md"
+                            x-text="$t('mermaid.title')"></h3>
+                        <div id="mermaid-container" class="flex justify-center items-center w-full">
+                            <!-- Mermaid renders here -->
+                        </div>
+                    </div>
+
+                    <!-- Text Steps -->
+                    <div
+                        class="space-y-8 bg-black/20 backdrop-blur-sm p-8 rounded-2xl border border-white/10 shadow-2xl h-full">
+                        <template x-for="(step, index) in [1, 2, 3]" :key="index">
+                            <div class="flex gap-4">
+                                <div class="w-10 h-10 rounded-full bg-emerald-600/80 text-white flex items-center justify-center font-bold flex-shrink-0 shadow-lg border border-emerald-400/50 backdrop-blur-sm"
+                                    x-text="step"></div>
+                                <div>
+                                    <h3 class="font-bold text-xl mb-1 text-white drop-shadow-sm"
+                                        x-text="$t(`quickstart.step${step}.title`)"></h3>
+                                    <p class="text-emerald-50/90 font-medium drop-shadow-sm leading-relaxed"
+                                        x-text="$t(`quickstart.step${step}.desc`)"></p>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Decorative Divider at the BOTTOM to reveal the next section -->
+        <div class="absolute bottom-0 left-0 w-full h-24 bg-white clip-path-slant z-20"></div>
+    </div>
+
+
+    <!-- Features Grid -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-16 text-slate-800" x-text="$t('features.headline')"></h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-6">
+                    <div class="text-5xl mb-4">📴</div>
+                    <h3 class="text-xl font-bold mb-2 text-slate-900" x-text="$t('features.offline.title')"></h3>
+                    <p class="text-slate-600" x-text="$t('features.offline.desc')"></p>
+                </div>
+                <div class="p-6">
+                    <div class="text-5xl mb-4">🧩</div>
+                    <h3 class="text-xl font-bold mb-2 text-slate-900" x-text="$t('features.infinite.title')"></h3>
+                    <p class="text-slate-600" x-text="$t('features.infinite.desc')"></p>
+                </div>
+                <div class="p-6">
+                    <div class="text-5xl mb-4">🧠</div>
+                    <h3 class="text-xl font-bold mb-2 text-slate-900" x-text="$t('features.learning.title')"></h3>
+                    <p class="text-slate-600" x-text="$t('features.learning.desc')"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 text-center">
+        <div class="container mx-auto px-4">
+            <p class="mb-4">&copy; 2026 Trailkin. Open Source (MIT).</p>
+            <div class="flex justify-center gap-6 text-sm">
+                <a href="https://github.com/TdoubleAV/TrailKin"
+                    class="hover:text-emerald-400 transition-colors">GitHub</a>
+                <a href="https://ko-fi.com/tdoubleav" class="hover:text-purple-400 transition-colors"
+                    x-text="$t('footer.support')"></a>
+                <a href="#" class="hover:text-emerald-400 transition-colors" x-text="$t('footer.imprint')"></a>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .clip-path-slant {
+            clip-path: polygon(0 100%, 100% 0, 100% 100%);
+        }
+    </style>
+
+
+</body>
+
+</html>
