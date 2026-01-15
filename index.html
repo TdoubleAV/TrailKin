@@ -112,6 +112,80 @@
                 transform: translateY(0);
             }
         }
+
+        /* Nature Theme Overrides */
+        .nature body {
+            background-color: #f4f1ea !important;
+            color: #3e3d32 !important;
+        }
+
+        .nature .bg-white,
+        .nature .bg-amber-50 {
+            background-color: #fdfbf7 !important;
+        }
+
+        .nature .bg-stone-800,
+        .nature .dark\:bg-stone-800 {
+            background-color: #e8e4d9 !important;
+        }
+
+        .nature .text-emerald-800,
+        .nature .text-emerald-700,
+        .nature .text-emerald-600 {
+            color: #2d5a27 !important;
+        }
+
+        .nature .bg-emerald-600 {
+            background-color: #2d5a27 !important;
+        }
+
+        .nature .bg-emerald-100 {
+            background-color: #e8f0e6 !important;
+        }
+
+        .nature .text-stone-600 {
+            color: #5d5c4d !important;
+        }
+
+        .nature .bg-amber-600,
+        .nature .bg-orange-500 {
+            background-color: #8d6e63 !important;
+            /* Earthy Brown */
+        }
+
+        .nature .bg-purple-600 {
+            background-color: #6d4c41 !important;
+        }
+
+        /* Apply nature filter to emojis or elements containing them */
+        .nature .w-14.h-14 span,
+        .nature .text-2xl,
+        .nature .text-3xl,
+        .nature .text-4xl,
+        .nature .text-5xl,
+        .nature .text-6xl {
+            filter: sepia(0.5) hue-rotate(40deg) saturate(1.5) contrast(0.9);
+        }
+
+        /* Navigation active state in nature */
+        .nature .nav-link.active {
+            background-color: #2d5a27 !important;
+            box-shadow: 0 4px 6px -1px rgba(45, 90, 39, 0.4) !important;
+        }
+
+        /* Card shadows */
+        .nature .shadow-lg {
+            box-shadow: 0 10px 15px -3px rgba(45, 90, 39, 0.1), 0 4px 6px -2px rgba(45, 90, 39, 0.05) !important;
+        }
+
+        /* Specific Nature Accents */
+        .nature .bg-amber-100 {
+            background-color: #e6dfc3 !important;
+        }
+
+        .nature .border-emerald-200 {
+            border-color: #a3b18a !important;
+        }
     </style>
 
     <!-- Umami Cloud Analytics (opt-in, GDPR-compliant) -->
@@ -139,40 +213,30 @@
 
 <body class="bg-amber-50 text-stone-800 dark:bg-stone-950 dark:text-stone-200 transition-colors duration-300">
 
-    <!-- Skeleton Loader - shown until Alpine initializes -->
-    <div id="app-loader" class="fixed inset-0 bg-amber-50 dark:bg-stone-950 z-50 transition-opacity duration-300">
-        <div class="container mx-auto max-w-4xl p-4 md:p-8">
-            <!-- Skeleton Header -->
-            <header class="text-center mb-8">
-                <div class="h-12 bg-emerald-200 dark:bg-emerald-900/50 rounded-lg w-64 mx-auto mb-4 animate-pulse">
+    <div id="app-loader" style="transition: opacity 0.3s ease; pointer-events: auto;"
+        class="fixed inset-0 bg-amber-50 dark:bg-stone-950 z-[100] flex items-center justify-center">
+        <div class="text-center">
+            <div class="relative w-24 h-24 mb-4 mx-auto">
+                <div class="absolute inset-0 border-4 border-stone-200 dark:border-stone-800 rounded-full"></div>
+                <div
+                    class="absolute inset-0 border-4 border-emerald-600 dark:border-emerald-500 rounded-full border-t-transparent animate-spin">
                 </div>
-                <div class="h-4 bg-stone-200 dark:bg-stone-700 rounded w-48 mx-auto animate-pulse"></div>
-            </header>
-            <!-- Skeleton Nav -->
-            <nav class="bg-white/70 dark:bg-stone-900/80 rounded-xl shadow-md mb-8 p-2 flex justify-center gap-2">
-                <div class="h-10 w-20 bg-stone-200 dark:bg-stone-700 rounded-lg animate-pulse"></div>
-                <div class="h-10 w-20 bg-stone-200 dark:bg-stone-700 rounded-lg animate-pulse"></div>
-                <div class="h-10 w-16 bg-stone-200 dark:bg-stone-700 rounded-lg animate-pulse"></div>
-                <div class="h-10 w-24 bg-stone-200 dark:bg-stone-700 rounded-lg animate-pulse"></div>
-            </nav>
-            <!-- Skeleton Content -->
-            <div class="bg-white dark:bg-stone-900 rounded-2xl shadow-lg p-6">
-                <div class="h-8 bg-stone-200 dark:bg-stone-700 rounded w-3/4 mb-4 animate-pulse"></div>
-                <div class="h-4 bg-stone-200 dark:bg-stone-700 rounded w-full mb-2 animate-pulse"></div>
-                <div class="h-4 bg-stone-200 dark:bg-stone-700 rounded w-5/6 mb-2 animate-pulse"></div>
-                <div class="h-4 bg-stone-200 dark:bg-stone-700 rounded w-4/6 animate-pulse"></div>
+                <div class="absolute inset-0 flex items-center justify-center text-4xl">🏕️</div>
             </div>
-            <!-- Loading indicator -->
-            <div class="flex justify-center mt-8">
-                <div class="text-4xl animate-bounce">🥾</div>
-            </div>
+            <div class="text-xl font-bold text-stone-700 dark:text-stone-300 animate-pulse">Trailkin</div>
+            <div class="flex justify-center mt-8 text-4xl animate-bounce">🥾</div>
         </div>
     </div>
 
     <div class="container mx-auto max-w-4xl p-4 md:p-8" x-data="$store.game" x-cloak>
-        <header class="text-center mb-8 relative">
-            <!-- Theme & Language Controls -->
-            <div class="absolute right-0 top-0 flex items-center gap-1">
+        <header class="text-center mb-8 md:relative">
+            <!-- Title & Tagline -->
+            <h1 class="text-4xl md:text-5xl font-bold text-emerald-800 dark:text-emerald-400"
+                x-text="$t('header.title')"></h1>
+            <p class="text-stone-600 dark:text-stone-400 mt-2" x-text="$t('header.tagline')"></p>
+
+            <!-- Theme & Language Controls: Centered below title on mobile, top-right on desktop -->
+            <div class="flex justify-center items-center gap-1 mt-4 md:absolute md:right-0 md:top-0 md:mt-0">
                 <!-- Language Toggle -->
                 <template x-for="lang in $store.i18n.languageOptions" :key="lang.code">
                     <button @click="$store.i18n.setLanguage(lang.code)"
@@ -182,15 +246,13 @@
                     </button>
                 </template>
                 <!-- Theme Toggle -->
-                <button @click="toggleTheme()"
+                <button @click="$store.game.toggleTheme()"
                     class="text-2xl p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
                     :title="$t('header.themeToggle')">
-                    <span id="theme-icon" x-text="theme === 'dark' ? '☀️' : '🌙'">🌙</span>
+                    <span id="theme-icon"
+                        x-text="$store.game.theme === 'dark' ? '🌙' : ($store.game.theme === 'nature' ? '🌿' : '☀️')">☀️</span>
                 </button>
             </div>
-            <h1 class="text-4xl md:text-5xl font-bold text-emerald-800 dark:text-emerald-400"
-                x-text="$t('header.title')"></h1>
-            <p class="text-stone-600 dark:text-stone-400 mt-2" x-text="$t('header.tagline')"></p>
         </header>
 
         <nav
@@ -211,17 +273,10 @@
             class="fab-container fixed bottom-20 right-4 flex flex-col gap-3 z-20">
 
             <!-- Story Spark FAB -->
-            <button @click="$store.game.generateSpark(false)"
+            <button @click="$store.game.generateSpark()"
                 class="w-14 h-14 bg-purple-600 hover:bg-purple-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110 opacity-90 hover:opacity-100"
                 :title="$t('inspiration.magicButton')">
                 <span class="text-2xl">🔮</span>
-            </button>
-
-            <!-- Konsequenzen FAB -->
-            <button @click="$store.game.generateFailForward()"
-                class="w-14 h-14 bg-amber-600 hover:bg-amber-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110 opacity-90 hover:opacity-100"
-                :title="$t('consequences.title')">
-                <span class="text-2xl">⚠️</span>
             </button>
         </div>
 
@@ -237,6 +292,88 @@
             -->
             <section id="adventure" class="game-section fade-in" x-show="$store.game.currentTab === 'adventure'">
                 <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg mb-6 transition-colors">
+
+                    <!-- Adventure Journal Section (Moved to Top) -->
+                    <details
+                        class="mb-6 bg-amber-50 dark:bg-amber-900/20 rounded-xl border border-amber-200 dark:border-amber-800 overflow-hidden"
+                        :open="currentGroup?.journal?.length > 0">
+                        <summary
+                            class="cursor-pointer p-4 flex items-center justify-between hover:bg-amber-100 dark:hover:bg-amber-900/30 transition-colors">
+                            <h3 class="text-xl font-bold text-amber-800 dark:text-amber-400 flex items-center gap-2">
+                                <span>📜</span>
+                                <span x-text="$t('journal.title')"></span>
+                                <span x-show="currentGroup?.journal?.length"
+                                    class="text-sm font-normal bg-amber-200 dark:bg-amber-800 text-amber-700 dark:text-amber-300 px-2 py-0.5 rounded-full"
+                                    x-text="currentGroup?.journal?.length || 0"></span>
+                            </h3>
+                            <span class="arrow-down text-amber-600 dark:text-amber-400 transition-transform">▼</span>
+                        </summary>
+                        <div class="p-4 pt-0">
+                            <!-- Journal Entries List -->
+                            <template x-if="currentGroup?.journal?.length > 0">
+                                <div class="space-y-3 max-h-[400px] overflow-y-auto">
+                                    <template x-for="entry in currentGroup.journal" :key="entry.id">
+                                        <div
+                                            class="bg-white dark:bg-stone-800 p-3 rounded-lg border border-amber-100 dark:border-amber-900 relative group">
+                                            <!-- Entry Header -->
+                                            <div class="flex items-center justify-between mb-2">
+                                                <div class="flex items-center gap-2 text-sm">
+                                                    <span class="text-lg"
+                                                        x-text="entry.type === 'consequence' ? '⚡' : entry.type === 'spark' ? '🔮' : entry.type === 'quest_start' ? '🏁' : entry.type === 'quest_end' ? '🏆' : '📝'"></span>
+                                                    <span class="font-bold text-amber-700 dark:text-amber-300"
+                                                        x-text="$t('journal.' + entry.type)"></span>
+                                                    <span class="text-stone-400 dark:text-stone-500 text-xs"
+                                                        x-text="formatJournalTime(entry.timestamp)"></span>
+                                                </div>
+                                                <button
+                                                    @click="if(confirm($t('journal.deleteConfirm'))) deleteJournalEntry(entry.id)"
+                                                    class="text-red-400 hover:text-red-600 opacity-0 group-hover:opacity-100 transition-opacity text-sm">🗑️</button>
+                                            </div>
+                                            <!-- Entry Content -->
+                                            <div class="text-stone-700 dark:text-stone-300">
+                                                <!-- Consequence Entry -->
+                                                <template x-if="entry.type === 'consequence'">
+                                                    <p>
+                                                        <span class="font-bold text-orange-600 dark:text-orange-400"
+                                                            x-text="entry.content?.action?.name + ': '"></span>
+                                                        <span x-text="entry.content?.action?.desc"></span>
+                                                        <span class="text-purple-600 dark:text-purple-400 ml-2"
+                                                            x-text="'(' + entry.content?.flavor?.name + ')'"></span>
+                                                    </p>
+                                                </template>
+                                                <!-- Spark Entry -->
+                                                <template x-if="entry.type === 'spark'">
+                                                    <p class="flex items-center gap-2">
+                                                        <span class="text-xl"
+                                                            x-text="entry.content?.icon || '🔮'"></span>
+                                                        <span class="font-medium text-purple-700 dark:text-purple-300"
+                                                            x-text="entry.content?.text"></span>
+                                                    </p>
+                                                </template>
+                                                <!-- Other Entry Types -->
+                                                <template x-if="entry.type !== 'consequence' && entry.type !== 'spark'">
+                                                    <p
+                                                        x-text="typeof entry.content === 'string' ? entry.content : JSON.stringify(entry.content)">
+                                                    </p>
+                                                </template>
+                                            </div>
+                                            <!-- Notes (if any) -->
+                                            <template x-if="entry.notes">
+                                                <p class="mt-2 text-sm italic text-stone-500 dark:text-stone-400 border-l-2 border-amber-300 pl-2"
+                                                    x-text="entry.notes"></p>
+                                            </template>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                            <!-- Empty State -->
+                            <template x-if="!currentGroup?.journal?.length">
+                                <div class="text-center text-stone-500 dark:text-stone-400 italic py-6">
+                                    <p x-text="$t('journal.empty')"></p>
+                                </div>
+                            </template>
+                        </div>
+                    </details>
 
                     <!-- Active Quest Display -->
                     <template x-if="currentGroup?.quest?.active">
@@ -348,19 +485,6 @@
                                         </div>
                                     </div>
                                 </template>
-                                <!-- Manual Complication Button (Bottom Left) -->
-                                <button @click="$store.game.addComplication()" class="absolute bottom-3 left-3 text-xl bg-amber-100 dark:bg-amber-900/40
-                                hover:bg-amber-200 dark:hover:bg-amber-800 text-amber-600 dark:text-amber-400 w-10 h-10
-                                flex items-center justify-center rounded-full transition-colors shadow-sm z-20"
-                                    title="Komplikation hinzufügen">
-                                    ⚠️
-                                </button>
-                                <!-- GM Spark Button (New) -->
-                                <button @click="$store.game.generateSpark()"
-                                    class="absolute bottom-3 left-14 text-xl bg-purple-100 dark:bg-purple-900/40 hover:bg-purple-200 dark:hover:bg-purple-800 text-purple-600 dark:text-purple-400 w-10 h-10 flex items-center justify-center rounded-full transition-colors shadow-sm z-20"
-                                    :title="$t('quest.v2.spark.buttonTitle')">
-                                    ✨
-                                </button>
                             </div>
 
                             <button @click="currentGroup.quest.active = false; saveGame()"
@@ -470,94 +594,133 @@
                     <!-- Charakter Liste -->
                     <div id="char-list" class="grid md:grid-cols-2 gap-4 mb-6">
                         <template x-for="char in currentGroup?.characters" :key="char.id">
-                            <div
-                                class="hero-card bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-900 p-4 rounded-lg relative transition-colors">
-                                <!-- Header: Name & Class & Delete -->
-                                <div class="flex justify-between items-start mb-2">
-                                    <div class="w-full mr-2">
-                                        <input type="text" x-model="char.name" @blur="saveGame()"
-                                            class="char-input font-bold text-lg bg-transparent border-b border-transparent focus:border-emerald-500 outline-none w-2/3 text-stone-800 dark:text-stone-200">
-                                        <input type="text" x-model="char.class" @blur="saveGame()"
-                                            class="char-input text-sm text-stone-500 dark:text-stone-400 bg-transparent block w-full mt-1">
-                                    </div>
-                                    <button @click="removeChar(char.id)"
-                                        class="text-red-400 hover:text-red-600 text-lg p-1 opacity-60 hover:opacity-100 transition-opacity"
-                                        :title="$t('characters.deleteHero')">❌</button>
-                                </div>
-
-                                <div class="flex items-center gap-4 mt-3">
-                                    <!-- HP -->
-                                    <div class="flex-1">
-                                        <button @click="$store.game.openRegenMenu(char.id)"
-                                            class="text-xs font-bold text-red-700 dark:text-red-400 uppercase hover:underline cursor-help"
-                                            title="Klicken für Regeneration">
-                                            <span x-text="$t('characters.hpLabel')"></span> ⚡
-                                        </button>
-                                        <div class="flex items-center gap-2 mt-1">
-                                            <button @click="modStat(char.id, 'hp', -1)"
-                                                class="w-8 h-8 rounded-full bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300 font-bold hover:bg-red-200 dark:hover:bg-red-800 transition-colors">-</button>
-                                            <span
-                                                class="font-mono text-xl w-6 text-center text-stone-800 dark:text-stone-200"
+                            <details
+                                class="hero-card bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-900 rounded-lg overflow-hidden transition-colors"
+                                x-data="{ isOpen: $el.open }" @toggle="isOpen = $el.open" :open="isOpen">
+                                <!-- Summary: Visible when collapsed, hidden/compact when expanded -->
+                                <summary
+                                    class="p-4 cursor-pointer hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition-colors list-none flex items-center justify-between">
+                                    <!-- Compact View (Collapsed) -->
+                                    <div class="flex items-center gap-4 flex-1" x-show="!isOpen">
+                                        <div class="flex-1">
+                                            <div class="font-bold text-lg text-stone-800 dark:text-stone-200"
+                                                x-text="char.name || 'Entdecker'"></div>
+                                            <div class="text-sm text-stone-500 dark:text-stone-400" x-text="char.class">
+                                            </div>
+                                            <!-- Status Icons in Collapsed View -->
+                                            <div class="flex gap-1 mt-1"
+                                                x-show="char.statuses && char.statuses.length > 0">
+                                                <template x-for="status in (char.statuses || [])" :key="status.id">
+                                                    <span class="text-xs cursor-help" x-text="status.emoji"
+                                                        :title="status.name"></span>
+                                                </template>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-xs text-red-700 dark:text-red-400 font-bold"
+                                                x-text="$t('characters.hpLabel')"></span>
+                                            <span class="font-mono text-xl text-stone-800 dark:text-stone-200"
                                                 x-text="char.hp"></span>
-                                            <button @click="modStat(char.id, 'hp', 1)"
-                                                class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 font-bold hover:bg-emerald-200 dark:hover:bg-emerald-800 transition-colors">+</button>
                                         </div>
                                     </div>
-                                </div>
+                                    <!-- Expanded Hint -->
+                                    <div x-show="isOpen"
+                                        class="text-sm font-bold text-emerald-700 dark:text-emerald-400 italic">
+                                        <span x-text="char.name || 'Abenteurer'"></span> bearbeiten...
+                                    </div>
+                                    <span class="text-emerald-600 dark:text-emerald-400 ml-2"
+                                        :class="isOpen ? 'rotate-180' : ''">▼</span>
+                                </summary>
 
-                                <!-- Personal Slots -->
-                                <div class="mt-4 pt-3 border-t border-emerald-100 dark:border-emerald-800">
-                                    <label
-                                        class="text-xs font-bold text-stone-500 dark:text-stone-400 uppercase mb-2 block"
-                                        x-text="$t('characters.equipment')"></label>
-                                    <div class="grid grid-cols-3 gap-2">
-                                        <!-- Slot 1 -->
-                                        <template x-if="char.inventory && char.inventory[0]">
-                                            <div
-                                                class="aspect-square bg-white dark:bg-stone-800 border border-emerald-500 rounded flex items-center justify-center p-1 relative group text-xs text-center overflow-hidden">
-                                                <span
-                                                    class="text-[10px] leading-tight break-words w-full h-full flex items-center justify-center"
-                                                    x-text="char.inventory[0]"></span>
-                                                <button @click="removeCharItem(char.id, 0)"
-                                                    class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center lg:opacity-0 lg:group-hover:opacity-100 transition-opacity text-[10px]">×</button>
-                                            </div>
-                                        </template>
-                                        <template x-if="!char.inventory || !char.inventory[0]">
-                                            <div class="aspect-square bg-transparent border border-dashed border-stone-300 dark:border-stone-600 rounded flex items-center justify-center text-stone-300 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5"
-                                                @click="addCharItem(char.id)">+</div>
-                                        </template>
+                                <!-- Details: Collapsible (Edit, HP Controls, Inventory, Statuses) -->
+                                <div class="p-4 pt-0">
+                                    <!-- Editable Name & Class in expanded view -->
+                                    <div class="flex justify-between items-start mb-2">
+                                        <div class="w-full mr-2">
+                                            <input type="text" x-model="char.name" @blur="saveGame()"
+                                                class="char-input font-bold text-lg bg-transparent border-b border-transparent focus:border-emerald-500 outline-none w-2/3 text-stone-800 dark:text-stone-200">
+                                            <input type="text" x-model="char.class" @blur="saveGame()"
+                                                class="char-input text-sm text-stone-500 dark:text-stone-400 bg-transparent block w-full mt-1">
+                                        </div>
+                                        <button @click="removeChar(char.id)"
+                                            class="text-red-400 hover:text-red-600 text-lg p-1 opacity-60 hover:opacity-100 transition-opacity"
+                                            :title="$t('characters.deleteHero')">❌</button>
+                                    </div>
 
-                                        <!-- Slot 2 -->
-                                        <template x-if="char.inventory && char.inventory[1]">
-                                            <div
-                                                class="aspect-square bg-white dark:bg-stone-800 border border-emerald-500 rounded flex items-center justify-center p-1 relative group text-xs text-center overflow-hidden">
+                                    <div class="flex items-center gap-4 mt-3">
+                                        <!-- HP -->
+                                        <div class="flex-1">
+                                            <button @click="$store.game.openRegenMenu(char.id)"
+                                                class="text-xs font-bold text-red-700 dark:text-red-400 uppercase hover:underline cursor-help"
+                                                title="Klicken für Regeneration">
+                                                <span x-text="$t('characters.hpLabel')"></span> ⚡
+                                            </button>
+                                            <div class="flex items-center gap-2 mt-1">
+                                                <button @click="modStat(char.id, 'hp', -1)"
+                                                    class="w-8 h-8 rounded-full bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300 font-bold hover:bg-red-200 dark:hover:bg-red-800 transition-colors">-</button>
                                                 <span
-                                                    class="text-[10px] leading-tight break-words w-full h-full flex items-center justify-center"
-                                                    x-text="char.inventory[1]"></span>
-                                                <button @click="removeCharItem(char.id, 1)"
-                                                    class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center lg:opacity-0 lg:group-hover:opacity-100 transition-opacity text-[10px]">×</button>
+                                                    class="font-mono text-xl w-6 text-center text-stone-800 dark:text-stone-200"
+                                                    x-text="char.hp"></span>
+                                                <button @click="modStat(char.id, 'hp', 1)"
+                                                    class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 font-bold hover:bg-emerald-200 dark:hover:bg-emerald-800 transition-colors">+</button>
                                             </div>
-                                        </template>
-                                        <template x-if="!char.inventory || !char.inventory[1]">
-                                            <div class="aspect-square bg-transparent border border-dashed border-stone-300 dark:border-stone-600 rounded flex items-center justify-center text-stone-300 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5"
-                                                @click="addCharItem(char.id)">+</div>
-                                        </template>
+                                        </div>
+                                    </div>
 
-                                        <!-- Slot 3 -->
-                                        <template x-if="char.inventory && char.inventory[2]">
-                                            <div
-                                                class="aspect-square bg-white dark:bg-stone-800 border border-emerald-500 rounded flex items-center justify-center p-1 relative group text-xs text-center overflow-hidden">
-                                                <span
-                                                    class="text-[10px] leading-tight break-words w-full h-full flex items-center justify-center"
-                                                    x-text="char.inventory[2]"></span>
-                                                <button @click="removeCharItem(char.id, 2)"
-                                                    class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center lg:opacity-0 lg:group-hover:opacity-100 transition-opacity text-[10px]">×</button>
-                                            </div>
-                                        </template>
-                                        <template x-if="!char.inventory || !char.inventory[2]">
-                                            <div class="aspect-square bg-transparent border border-dashed border-stone-300 dark:border-stone-600 rounded flex items-center justify-center text-stone-300 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5"
-                                                @click="addCharItem(char.id)">+</div>
-                                        </template>
+                                    <!-- Personal Slots -->
+                                    <div class="mt-4 pt-3 border-t border-emerald-100 dark:border-emerald-800">
+                                        <label
+                                            class="text-xs font-bold text-stone-500 dark:text-stone-400 uppercase mb-2 block"
+                                            x-text="$t('characters.equipment')"></label>
+                                        <div class="grid grid-cols-3 gap-2">
+                                            <!-- Slot 1 -->
+                                            <template x-if="char.inventory && char.inventory[0]">
+                                                <div
+                                                    class="aspect-square bg-white dark:bg-stone-800 border border-emerald-500 rounded flex items-center justify-center p-1 relative group text-xs text-center overflow-hidden">
+                                                    <span
+                                                        class="text-[10px] leading-tight break-words w-full h-full flex items-center justify-center"
+                                                        x-text="char.inventory[0]"></span>
+                                                    <button @click="removeCharItem(char.id, 0)"
+                                                        class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center lg:opacity-0 lg:group-hover:opacity-100 transition-opacity text-[10px]">×</button>
+                                                </div>
+                                            </template>
+                                            <template x-if="!char.inventory || !char.inventory[0]">
+                                                <div class="aspect-square bg-transparent border border-dashed border-stone-300 dark:border-stone-600 rounded flex items-center justify-center text-stone-300 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5"
+                                                    @click="addCharItem(char.id)">+</div>
+                                            </template>
+
+                                            <!-- Slot 2 -->
+                                            <template x-if="char.inventory && char.inventory[1]">
+                                                <div
+                                                    class="aspect-square bg-white dark:bg-stone-800 border border-emerald-500 rounded flex items-center justify-center p-1 relative group text-xs text-center overflow-hidden">
+                                                    <span
+                                                        class="text-[10px] leading-tight break-words w-full h-full flex items-center justify-center"
+                                                        x-text="char.inventory[1]"></span>
+                                                    <button @click="removeCharItem(char.id, 1)"
+                                                        class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center lg:opacity-0 lg:group-hover:opacity-100 transition-opacity text-[10px]">×</button>
+                                                </div>
+                                            </template>
+                                            <template x-if="!char.inventory || !char.inventory[1]">
+                                                <div class="aspect-square bg-transparent border border-dashed border-stone-300 dark:border-stone-600 rounded flex items-center justify-center text-stone-300 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5"
+                                                    @click="addCharItem(char.id)">+</div>
+                                            </template>
+
+                                            <!-- Slot 3 -->
+                                            <template x-if="char.inventory && char.inventory[2]">
+                                                <div
+                                                    class="aspect-square bg-white dark:bg-stone-800 border border-emerald-500 rounded flex items-center justify-center p-1 relative group text-xs text-center overflow-hidden">
+                                                    <span
+                                                        class="text-[10px] leading-tight break-words w-full h-full flex items-center justify-center"
+                                                        x-text="char.inventory[2]"></span>
+                                                    <button @click="removeCharItem(char.id, 2)"
+                                                        class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center lg:opacity-0 lg:group-hover:opacity-100 transition-opacity text-[10px]">×</button>
+                                                </div>
+                                            </template>
+                                            <template x-if="!char.inventory || !char.inventory[2]">
+                                                <div class="aspect-square bg-transparent border border-dashed border-stone-300 dark:border-stone-600 rounded flex items-center justify-center text-stone-300 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5"
+                                                    @click="addCharItem(char.id)">+</div>
+                                            </template>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -595,701 +758,704 @@
                                         </template>
                                     </div>
                                 </div>
-                            </div>
-                        </template>
                     </div>
-
-                    <div class="grid grid-cols-2 gap-4 mt-4">
-                        <button @click="addCharacter()"
-                            class="bg-stone-200 dark:bg-stone-700 hover:bg-stone-300 dark:hover:bg-stone-600 text-stone-700 dark:text-stone-200 font-bold py-3 px-4 rounded-lg border-2 border-dashed border-stone-400 dark:border-stone-500 transition-colors">
-                            <span x-text="$t('group.addEmpty')"></span></button>
-                        <button @click="generateRandomChar()"
-                            class="bg-purple-100 dark:bg-purple-900/30 hover:bg-purple-200 dark:hover:bg-purple-900/50 text-purple-800 dark:text-purple-300 font-bold py-3 px-4 rounded-lg border-2 border-dashed border-purple-300 dark:border-purple-700 transition-colors">
-                            <span x-text="$t('group.addRandom')"></span></button>
-                    </div>
-
-                    <h3 class="text-xl font-bold text-emerald-800 dark:text-emerald-400 mt-8 mb-4"
-                        x-text="$t('group.sharedInventory')">
-                    </h3>
-                    <div id="inventory-list" class="grid grid-cols-3 gap-2 mb-4">
-                        <template x-for="i in 3" :key="i">
-                            <div class="contents">
-                                <template x-if="currentGroup?.inventory[i-1]">
-                                    <div
-                                        class="aspect-square bg-amber-100 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-800 rounded flex items-center justify-center p-2 relative group text-xs text-center overflow-hidden">
-                                        <span
-                                            class="text-[11px] leading-tight break-words w-full h-full flex items-center justify-center font-medium text-amber-900 dark:text-amber-100"
-                                            x-text="currentGroup.inventory[i-1]"></span>
-                                        <button @click="removeItem(i-1)"
-                                            class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center lg:opacity-0 lg:group-hover:opacity-100 transition-opacity font-bold shadow-sm">×</button>
-                                    </div>
-                                </template>
-                                <template x-if="!currentGroup?.inventory[i-1]">
-                                    <div @click="addGroupItem()"
-                                        class="aspect-square bg-transparent border-2 border-dashed border-stone-300 dark:border-stone-600 rounded flex items-center justify-center text-stone-300 cursor-pointer hover:bg-stone-50 dark:hover:bg-white/5 transition-colors">
-                                        <span class="text-2xl font-light">+</span>
-                                    </div>
-                                </template>
-                            </div>
-                        </template>
-                    </div>
+                    </details>
+                    </template>
                 </div>
-            </section>
 
-            <!--
+                <div class="grid grid-cols-2 gap-4 mt-4">
+                    <button @click="addCharacter()"
+                        class="bg-stone-200 dark:bg-stone-700 hover:bg-stone-300 dark:hover:bg-stone-600 text-stone-700 dark:text-stone-200 font-bold py-3 px-4 rounded-lg border-2 border-dashed border-stone-400 dark:border-stone-500 transition-colors">
+                        <span x-text="$t('group.addEmpty')"></span></button>
+                    <button @click="generateRandomChar()"
+                        class="bg-purple-100 dark:bg-purple-900/30 hover:bg-purple-200 dark:hover:bg-purple-900/50 text-purple-800 dark:text-purple-300 font-bold py-3 px-4 rounded-lg border-2 border-dashed border-purple-300 dark:border-purple-700 transition-colors">
+                        <span x-text="$t('group.addRandom')"></span></button>
+                </div>
+
+                <!-- Group Treasury (Shared Inventory) -->
+                <details
+                    class="mt-8 bg-amber-50 dark:bg-amber-900/20 rounded-xl border border-amber-200 dark:border-amber-800 overflow-hidden"
+                    :open="currentGroup?.inventory?.some(item => item)">
+                    <summary
+                        class="cursor-pointer p-4 flex items-center justify-between hover:bg-amber-100 dark:hover:bg-amber-900/30 transition-colors">
+                        <h3 class="text-xl font-bold text-amber-800 dark:text-amber-400 flex items-center gap-2">
+                            <span>🏆</span>
+                            <span x-text="$t('group.sharedInventory')"></span>
+                            <span x-show="currentGroup?.inventory?.some(item => item)"
+                                class="text-sm font-normal bg-amber-200 dark:bg-amber-800 text-amber-700 dark:text-amber-300 px-2 py-0.5 rounded-full"
+                                x-text="currentGroup?.inventory?.filter(item => item)?.length || 0"></span>
+                        </h3>
+                        <span class="arrow-down text-amber-600 dark:text-amber-400 transition-transform">▼</span>
+                    </summary>
+                    <div class="p-4 pt-0">
+                        <div id="inventory-list" class="grid grid-cols-3 gap-2 mb-4">
+                            <template x-for="i in 3" :key="i">
+                                <div class="contents">
+                                    <template x-if="currentGroup?.inventory[i-1]">
+                                        <div
+                                            class="aspect-square bg-amber-100 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-800 rounded flex items-center justify-center p-2 relative group text-xs text-center overflow-hidden">
+                                            <span
+                                                class="text-[11px] leading-tight break-words w-full h-full flex items-center justify-center font-medium text-amber-900 dark:text-amber-100"
+                                                x-text="currentGroup.inventory[i-1]"></span>
+                                            <button @click="removeItem(i-1)"
+                                                class="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center lg:opacity-0 lg:group-hover:opacity-100 transition-opacity font-bold shadow-sm">×</button>
+                                        </div>
+                                    </template>
+                                    <template x-if="!currentGroup?.inventory[i-1]">
+                                        <div @click="addGroupItem()"
+                                            class="aspect-square bg-transparent border-2 border-dashed border-stone-300 dark:border-stone-600 rounded flex items-center justify-center text-stone-300 cursor-pointer hover:bg-stone-50 dark:hover:bg-white/5 transition-colors">
+                                            <span class="text-2xl font-light">+</span>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Journal moved to top of section -->
+    </div>
+    </section>
+
+    <!--
                 ========================================================================
                 TAB 2: VORBEREITEN (GENERATOR)
                 ========================================================================
             -->
-            <section id="generator" class="game-section fade-in" x-show="$store.game.currentTab === 'generator'">
-                <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors overflow-hidden">
-                    <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4"
-                        x-text="$t('prepare.title')"></h2>
+    <section id="generator" class="game-section fade-in" x-show="$store.game.currentTab === 'generator'">
+        <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors overflow-hidden">
+            <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4" x-text="$t('prepare.title')">
+            </h2>
 
-                    <!-- Global Environment Selector -->
-                    <div class="bg-stone-50 dark:bg-stone-900 p-4 rounded-xl mb-4">
-                        <label
-                            class="block text-xs font-bold text-stone-500 dark:text-stone-400 uppercase tracking-wider mb-2"
-                            x-text="$t('quest.selectEnv')"></label>
-                        <div class="flex flex-wrap gap-2 justify-center">
-                            <template
-                                x-for="env in ['wald', 'quartier', 'stadt', 'altstadt', 'strand', 'gebirge', 'winter']"
-                                :key="env">
-                                <button @click="$store.game.generatorEnv = env"
-                                    class="px-3 py-1.5 rounded-full border transition-all text-xs font-medium"
-                                    :class="$store.game.generatorEnv === env 
+            <!-- Global Environment Selector -->
+            <div class="bg-stone-50 dark:bg-stone-900 p-4 rounded-xl mb-4">
+                <label class="block text-xs font-bold text-stone-500 dark:text-stone-400 uppercase tracking-wider mb-2"
+                    x-text="$t('quest.selectEnv')"></label>
+                <div class="flex flex-wrap gap-2 justify-center">
+                    <template x-for="env in ['wald', 'quartier', 'stadt', 'altstadt', 'strand', 'gebirge', 'winter']"
+                        :key="env">
+                        <button @click="$store.game.generatorEnv = env"
+                            class="px-3 py-1.5 rounded-full border transition-all text-xs font-medium"
+                            :class="$store.game.generatorEnv === env 
                                         ? 'bg-emerald-600 border-emerald-600 text-white shadow-md' 
                                         : 'bg-white dark:bg-stone-800 border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-300 hover:border-emerald-500'"
-                                    x-text="$t('quest.' + env)"></button>
+                            x-text="$t('quest.' + env)"></button>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Sub-Navigation (Segmented Control) -->
+            <div class="flex gap-1 mb-6 bg-stone-100 dark:bg-stone-900 p-1 rounded-xl">
+                <button @click="$store.game.prepareTab = 'quest'"
+                    class="flex-1 px-4 py-2 rounded-lg font-bold text-sm transition-all"
+                    :class="$store.game.prepareTab === 'quest' ? 'bg-emerald-600 text-white shadow-md' : 'text-stone-500 hover:text-stone-700 dark:hover:text-stone-300'"
+                    x-text="$t('prepare.quest')"></button>
+                <button @click="$store.game.prepareTab = 'inspiration'"
+                    class="flex-1 px-4 py-2 rounded-lg font-bold text-sm transition-all"
+                    :class="$store.game.prepareTab === 'inspiration' ? 'bg-emerald-600 text-white shadow-md' : 'text-stone-500 hover:text-stone-700 dark:hover:text-stone-300'"
+                    x-text="$t('prepare.inspiration')"></button>
+                <button @click="$store.game.prepareTab = 'bingo'"
+                    class="flex-1 px-4 py-2 rounded-lg font-bold text-sm transition-all"
+                    :class="$store.game.prepareTab === 'bingo' ? 'bg-emerald-600 text-white shadow-md' : 'text-stone-500 hover:text-stone-700 dark:hover:text-stone-300'"
+                    x-text="$t('prepare.bingo')"></button>
+            </div>
+
+
+            <!-- INNER: Quest Builder -->
+            <div x-show="$store.game.prepareTab === 'quest'" x-transition:enter="fade-in">
+                <div class="space-y-6">
+                    <p class="text-sm text-stone-600 dark:text-stone-300 mb-4" x-text="$t('quest.subtitle')">
+                    </p>
+
+                    <!-- STEP 1: SCENARIO -->
+                    <div class="mb-8">
+                        <label
+                            class="block text-sm font-bold text-stone-500 dark:text-stone-400 uppercase tracking-wider mb-4"
+                            x-text="$t('quest.v2.selectScenario')"></label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <template x-for="(scen, key) in $t('quest.v2.scenarios')" :key="key">
+                                <button @click="$store.game.quest.builder.scenario = key"
+                                    class="p-4 rounded-xl border-2 transition-all flex flex-col items-center gap-2 group"
+                                    :class="$store.game.quest.builder.scenario === key 
+                                                            ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/30' 
+                                                            : 'border-stone-100 dark:border-stone-700 hover:border-emerald-200 dark:hover:border-emerald-800'">
+                                    <span class="text-3xl group-hover:scale-110 transition-transform"
+                                        x-text="scen.emoji"></span>
+                                    <span class="font-bold text-sm" x-text="scen.name"></span>
+                                </button>
                             </template>
                         </div>
                     </div>
 
-                    <!-- Sub-Navigation (Segmented Control) -->
-                    <div class="flex gap-1 mb-6 bg-stone-100 dark:bg-stone-900 p-1 rounded-xl">
-                        <button @click="$store.game.prepareTab = 'quest'"
-                            class="flex-1 px-4 py-2 rounded-lg font-bold text-sm transition-all"
-                            :class="$store.game.prepareTab === 'quest' ? 'bg-emerald-600 text-white shadow-md' : 'text-stone-500 hover:text-stone-700 dark:hover:text-stone-300'"
-                            x-text="$t('prepare.quest')"></button>
-                        <button @click="$store.game.prepareTab = 'inspiration'"
-                            class="flex-1 px-4 py-2 rounded-lg font-bold text-sm transition-all"
-                            :class="$store.game.prepareTab === 'inspiration' ? 'bg-emerald-600 text-white shadow-md' : 'text-stone-500 hover:text-stone-700 dark:hover:text-stone-300'"
-                            x-text="$t('prepare.inspiration')"></button>
-                        <button @click="$store.game.prepareTab = 'bingo'"
-                            class="flex-1 px-4 py-2 rounded-lg font-bold text-sm transition-all"
-                            :class="$store.game.prepareTab === 'bingo' ? 'bg-emerald-600 text-white shadow-md' : 'text-stone-500 hover:text-stone-700 dark:hover:text-stone-300'"
-                            x-text="$t('prepare.bingo')"></button>
-                    </div>
 
-
-                    <!-- INNER: Quest Builder -->
-                    <div x-show="$store.game.prepareTab === 'quest'" x-transition:enter="fade-in">
-                        <div class="space-y-6">
-                            <p class="text-sm text-stone-600 dark:text-stone-300 mb-4" x-text="$t('quest.subtitle')">
-                            </p>
-
-                            <!-- STEP 1: SCENARIO -->
-                            <div class="mb-8">
-                                <label
-                                    class="block text-sm font-bold text-stone-500 dark:text-stone-400 uppercase tracking-wider mb-4"
-                                    x-text="$t('quest.v2.selectScenario')"></label>
-                                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                                    <template x-for="(scen, key) in $t('quest.v2.scenarios')" :key="key">
-                                        <button @click="$store.game.quest.builder.scenario = key"
-                                            class="p-4 rounded-xl border-2 transition-all flex flex-col items-center gap-2 group"
-                                            :class="$store.game.quest.builder.scenario === key 
+                    <!-- STEP 3: COMPLEXITY -->
+                    <div class="mb-8">
+                        <label
+                            class="block text-sm font-bold text-stone-500 dark:text-stone-400 uppercase tracking-wider mb-4"
+                            x-text="$t('quest.v2.selectComplexity')"></label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <template x-for="(label, key) in $t('quest.v2.complexity')" :key="key">
+                                <button @click="$store.game.quest.builder.complexity = key"
+                                    class="px-4 py-3 rounded-xl border-2 transition-all text-left flex items-center justify-between"
+                                    :class="$store.game.quest.builder.complexity === key 
                                                             ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/30' 
                                                             : 'border-stone-100 dark:border-stone-700 hover:border-emerald-200 dark:hover:border-emerald-800'">
-                                            <span class="text-3xl group-hover:scale-110 transition-transform"
-                                                x-text="scen.emoji"></span>
-                                            <span class="font-bold text-sm" x-text="scen.name"></span>
-                                        </button>
-                                    </template>
-                                </div>
-                            </div>
-
-
-                            <!-- STEP 3: COMPLEXITY -->
-                            <div class="mb-8">
-                                <label
-                                    class="block text-sm font-bold text-stone-500 dark:text-stone-400 uppercase tracking-wider mb-4"
-                                    x-text="$t('quest.v2.selectComplexity')"></label>
-                                <div class="grid grid-cols-3 gap-3">
-                                    <template x-for="(label, key) in $t('quest.v2.complexity')" :key="key">
-                                        <button @click="$store.game.quest.builder.complexity = key"
-                                            class="px-4 py-3 rounded-xl border-2 transition-all text-left flex items-center justify-between"
-                                            :class="$store.game.quest.builder.complexity === key 
-                                                            ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/30' 
-                                                            : 'border-stone-100 dark:border-stone-700 hover:border-emerald-200 dark:hover:border-emerald-800'">
-                                            <span class="font-bold text-sm" x-text="label"></span>
-                                        </button>
-                                    </template>
-                                </div>
-                            </div>
-
-                            <!-- EDUCATIONAL MODE TOGGLE -->
-                            <div
-                                class="mb-6 p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
-                                <label class="flex items-center gap-3 cursor-pointer group">
-                                    <input type="checkbox" x-model="$store.game.quest.builder.educational"
-                                        class="w-5 h-5 rounded text-amber-600 focus:ring-amber-500 border-amber-300">
-                                    <span class="font-bold text-amber-800 dark:text-amber-200"
-                                        x-text="$store.game.t('quest.v2.educationalMode')"></span>
-                                </label>
-
-                                <!-- Learning Goal Selector -->
-                                <div class="mt-4" x-show="$store.game.quest.builder.educational" x-transition>
-                                    <div class="grid grid-cols-2 gap-2">
-                                        <template
-                                            x-for="goal in ['nature', 'observation', 'mindfulness', 'orientation']"
-                                            :key="goal">
-                                            <button @click="$store.game.quest.builder.learningGoal = goal"
-                                                class="px-3 py-2 rounded-lg border-2 text-xs font-medium transition-all"
-                                                :class="$store.game.quest.builder.learningGoal === goal 
-                                                                    ? 'border-amber-500 bg-amber-100 dark:bg-amber-800/50 text-amber-800 dark:text-amber-100' 
-                                                                    : 'border-stone-200 dark:border-stone-600 hover:border-amber-300'">
-                                                <span x-text="$store.game.t('quest.v2.goals.' + goal)"></span>
-                                            </button>
-                                        </template>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- GENERATE -->
-                            <div class="pt-4 border-t border-stone-100 dark:border-stone-700">
-                                <button
-                                    @click="$store.game.quest.builder.educational 
-                                               ? $store.game.generateEducationalQuest($store.game.generatorEnv, $store.game.quest.builder.learningGoal)
-                                               : $store.game.generateQuestV2($store.game.quest.builder.scenario, $store.game.generatorEnv, $store.game.quest.builder.complexity)"
-                                    class="w-full bg-gradient-to-r from-emerald-600 to-teal-700 text-white font-bold py-4 rounded-xl shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2">
-                                    <span x-text="$store.game.quest.builder.educational ? '🎓' : '✨'"></span>
-                                    <span x-text="$t('quest.generate')"></span>
+                                    <span class="font-bold text-sm" x-text="label"></span>
                                 </button>
-                            </div>
+                            </template>
                         </div>
                     </div>
 
-                    <!-- INNER: Inspiration -->
-                    <div x-show="$store.game.prepareTab === 'inspiration'" x-transition:enter="fade-in">
-                        <div class="space-y-6">
-                            <p class="text-sm text-stone-600 dark:text-stone-300 mb-6"
-                                x-text="$t('inspiration.subtitle')"></p>
+                    <!-- EDUCATIONAL MODE TOGGLE -->
+                    <div
+                        class="mb-6 p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <input type="checkbox" x-model="$store.game.quest.builder.educational"
+                                class="w-5 h-5 rounded text-amber-600 focus:ring-amber-500 border-amber-300">
+                            <span class="font-bold text-amber-800 dark:text-amber-200"
+                                x-text="$store.game.t('quest.v2.educationalMode')"></span>
+                        </label>
 
-                            <div class="flex flex-wrap gap-2 items-center justify-center mb-6">
-                                <button @click="$store.game.addInspiration($store.game.generatorEnv)"
-                                    class="bg-emerald-600 text-white font-bold px-6 py-2 rounded-full shadow-md hover:bg-emerald-700 transition-all"
-                                    x-text="$store.game.t('inspiration.magicButton')"></button>
-                                <button @click="$store.game.clearInspirations()"
-                                    x-show="$store.game.quest.inspirations.length > 0"
-                                    class="text-stone-400 hover:text-red-500 text-sm underline px-2"
-                                    x-text="'🗑️ ' + $t('inspiration.clearAll')"></button>
-                            </div>
-
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                <template x-for="idea in $store.game.quest.inspirations" :key="idea.id">
-                                    <div
-                                        class="bg-stone-50 dark:bg-stone-900/40 p-4 rounded-lg border-l-4 border-emerald-500 relative group">
-                                        <div
-                                            class="absolute top-2 right-2 flex gap-1 opacity-60 group-hover:opacity-100 transition-opacity">
-                                            <button @click="$store.game.rerollInspiration(idea.id)"
-                                                class="w-6 h-6 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 text-xs flex items-center justify-center">🔄</button>
-                                            <button @click="$store.game.removeInspiration(idea.id)"
-                                                class="w-6 h-6 rounded-full bg-red-100 dark:bg-red-900/40 text-red-700 text-xs flex items-center justify-center">×</button>
-                                        </div>
-                                        <div class="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-1"
-                                            x-text="$t('inspiration.youFind')"></div>
-                                        <div class="font-bold text-emerald-800 dark:text-emerald-400 truncate pr-14"
-                                            x-text="'&quot;' + $store.game.t(idea.itemKey) + '&quot;'"></div>
-                                        <div class="text-xs text-stone-500 italic mt-1"
-                                            x-text="$t('inspiration.maybeIts') + ' ' + $store.game.t(idea.fantasyKey)">
-                                        </div>
-                                    </div>
+                        <!-- Learning Goal Selector -->
+                        <div class="mt-4" x-show="$store.game.quest.builder.educational" x-transition>
+                            <div class="grid grid-cols-2 gap-2">
+                                <template x-for="goal in ['nature', 'observation', 'mindfulness', 'orientation']"
+                                    :key="goal">
+                                    <button @click="$store.game.quest.builder.learningGoal = goal"
+                                        class="px-3 py-2 rounded-lg border-2 text-xs font-medium transition-all"
+                                        :class="$store.game.quest.builder.learningGoal === goal 
+                                                                    ? 'border-amber-500 bg-amber-100 dark:bg-amber-800/50 text-amber-800 dark:text-amber-100' 
+                                                                    : 'border-stone-200 dark:border-stone-600 hover:border-amber-300'">
+                                        <span x-text="$store.game.t('quest.v2.goals.' + goal)"></span>
+                                    </button>
                                 </template>
                             </div>
                         </div>
                     </div>
 
-                    <!-- INNER: Bingo -->
-                    <div x-show="$store.game.prepareTab === 'bingo'" x-transition:enter="fade-in">
-                        <div class="space-y-6">
-                            <p class="text-sm text-stone-600 dark:text-stone-300 mb-6" x-text="$t('bingo.subtitle')">
-                            </p>
+                    <!-- GENERATE -->
+                    <div class="pt-4 border-t border-stone-100 dark:border-stone-700">
+                        <button
+                            @click="$store.game.quest.builder.educational 
+                                               ? $store.game.generateEducationalQuest($store.game.generatorEnv, $store.game.quest.builder.learningGoal)
+                                               : $store.game.generateQuestV2($store.game.quest.builder.scenario, $store.game.generatorEnv, $store.game.quest.builder.complexity)"
+                            class="w-full bg-gradient-to-r from-emerald-600 to-teal-700 text-white font-bold py-4 rounded-xl shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                            <span x-text="$store.game.quest.builder.educational ? '🎓' : '✨'"></span>
+                            <span x-text="$t('quest.generate')"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-                            <div class="flex flex-wrap gap-2 items-center justify-center mb-6">
-                                <button @click="$store.game.generateBingo($store.game.generatorEnv, 3)"
-                                    class="bg-emerald-600 text-white font-bold px-6 py-2 rounded-lg shadow-md hover:bg-emerald-700 transition-all"
-                                    x-text="$t('bingo.generate')"></button>
-                                <button onclick="window.print()"
-                                    class="p-2 border rounded-lg bg-white dark:bg-stone-800"
-                                    x-show="$store.game.bingo.grid.length > 0">🖨️</button>
+            <!-- INNER: Inspiration -->
+            <div x-show="$store.game.prepareTab === 'inspiration'" x-transition:enter="fade-in">
+                <div class="space-y-6">
+                    <p class="text-sm text-stone-600 dark:text-stone-300 mb-6" x-text="$t('inspiration.subtitle')"></p>
+
+                    <div class="flex flex-wrap gap-2 items-center justify-center mb-6">
+                        <button @click="$store.game.addInspiration($store.game.generatorEnv)"
+                            class="bg-emerald-600 text-white font-bold px-6 py-2 rounded-full shadow-md hover:bg-emerald-700 transition-all"
+                            x-text="$store.game.t('inspiration.magicButton')"></button>
+                        <button @click="$store.game.clearInspirations()"
+                            x-show="$store.game.quest.inspirations.length > 0"
+                            class="text-stone-400 hover:text-red-500 text-sm underline px-2"
+                            x-text="'🗑️ ' + $t('inspiration.clearAll')"></button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <template x-for="idea in $store.game.quest.inspirations" :key="idea.id">
+                            <div
+                                class="bg-stone-50 dark:bg-stone-900/40 p-4 rounded-lg border-l-4 border-emerald-500 relative group">
+                                <div
+                                    class="absolute top-2 right-2 flex gap-1 opacity-60 group-hover:opacity-100 transition-opacity">
+                                    <button @click="$store.game.rerollInspiration(idea.id)"
+                                        class="w-6 h-6 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 text-xs flex items-center justify-center">🔄</button>
+                                    <button @click="$store.game.removeInspiration(idea.id)"
+                                        class="w-6 h-6 rounded-full bg-red-100 dark:bg-red-900/40 text-red-700 text-xs flex items-center justify-center">×</button>
+                                </div>
+                                <div class="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-1"
+                                    x-text="$t('inspiration.youFind')"></div>
+                                <div class="font-bold text-emerald-800 dark:text-emerald-400 truncate pr-14"
+                                    x-text="'&quot;' + $store.game.t(idea.itemKey) + '&quot;'"></div>
+                                <div class="text-xs text-stone-500 italic mt-1"
+                                    x-text="$t('inspiration.maybeIts') + ' ' + $store.game.t(idea.fantasyKey)">
+                                </div>
                             </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INNER: Bingo -->
+            <div x-show="$store.game.prepareTab === 'bingo'" x-transition:enter="fade-in">
+                <div class="space-y-6">
+                    <p class="text-sm text-stone-600 dark:text-stone-300 mb-6" x-text="$t('bingo.subtitle')">
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 items-center justify-center mb-6">
+                        <button @click="$store.game.generateBingo($store.game.generatorEnv, 3)"
+                            class="bg-emerald-600 text-white font-bold px-6 py-2 rounded-lg shadow-md hover:bg-emerald-700 transition-all"
+                            x-text="$t('bingo.generate')"></button>
+                        <button onclick="window.print()" class="p-2 border rounded-lg bg-white dark:bg-stone-800"
+                            x-show="$store.game.bingo.grid.length > 0">🖨️</button>
+                    </div>
 
 
-                            <template x-if="$store.game.bingo.grid.length > 0">
-                                <div class="grid grid-cols-3 gap-2 mx-auto max-w-xs">
-                                    <template x-for="(cell, index) in $store.game.bingo.grid" :key="index">
-                                        <div @click="$store.game.toggleBingoCheck(index)"
-                                            class="aspect-square border rounded-lg p-1 flex flex-col items-center justify-center text-center cursor-pointer transition-colors"
-                                            :class="cell.found ? 'bg-emerald-100 border-emerald-500' : 'bg-white dark:bg-stone-800 border-stone-200'">
-                                            <div class="font-bold text-[10px] leading-tight"
-                                                x-text="$store.game.t(cell.itemKey)"></div>
-                                            <div x-show="cell.found" class="text-emerald-600 font-bold text-lg mt-1">✓
-                                            </div>
-                                        </div>
-                                    </template>
+                    <template x-if="$store.game.bingo.grid.length > 0">
+                        <div class="grid grid-cols-3 gap-2 mx-auto max-w-xs">
+                            <template x-for="(cell, index) in $store.game.bingo.grid" :key="index">
+                                <div @click="$store.game.toggleBingoCheck(index)"
+                                    class="aspect-square border rounded-lg p-1 flex flex-col items-center justify-center text-center cursor-pointer transition-colors"
+                                    :class="cell.found ? 'bg-emerald-100 border-emerald-500' : 'bg-white dark:bg-stone-800 border-stone-200'">
+                                    <div class="font-bold text-[10px] leading-tight"
+                                        x-text="$store.game.t(cell.itemKey)"></div>
+                                    <div x-show="cell.found" class="text-emerald-600 font-bold text-lg mt-1">✓
+                                    </div>
                                 </div>
                             </template>
                         </div>
-                    </div>
+                    </template>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
 
 
 
-            <!-- 
+    <!-- 
                 ========================================================================
                 SECTION 3: RULEBOOK (HILFE)
                 ========================================================================
                 Purpose: Detailed reference for game mechanics and optional modules.
                 Visibility: 'rules' tab.
             -->
-            <section id="rules" class="game-section space-y-6 fade-in" x-show="$store.game.currentTab === 'rules'">
-                <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
-                    <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4"
-                        x-text="$t('rules.title')"></h2>
-                    <p class="text-stone-600 dark:text-stone-300 mb-6" x-text="$t('rules.subtitle')"></p>
+    <section id="rules" class="game-section space-y-6 fade-in" x-show="$store.game.currentTab === 'rules'">
+        <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
+            <h2 class="text-2xl font-bold text-emerald-700 dark:text-emerald-400 mb-4" x-text="$t('rules.title')"></h2>
+            <p class="text-stone-600 dark:text-stone-300 mb-6" x-text="$t('rules.subtitle')"></p>
 
-                    <!-- Module A: Challenges -->
-                    <details class="bg-blue-50 dark:bg-stone-700/30 p-4 rounded-lg mb-3 transition-colors"
-                        :class="{ 'opacity-60': !$store.game.modules.A }"
-                        @click="if(!$el.attributes.open) { $store.game.modules.A = true; $store.game.saveGame(); }">
-                        <summary
-                            class="font-semibold cursor-pointer flex justify-between items-center text-stone-800 dark:text-stone-200">
-                            <div class="flex items-center space-x-3">
-                                <input type="checkbox" x-model="$store.game.modules.A" @click.stop
-                                    @change="$store.game.saveGame()"
-                                    class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 bg-white dark:bg-stone-800 border-stone-300 dark:border-stone-500">
-                                <span x-text="$t('rules.moduleA_title')"></span>
-                            </div>
-                            <span class="arrow-down transition-transform duration-300">▼</span>
-                        </summary>
-                        <div x-show="$store.game.modules.A"
-                            class="mt-4 text-stone-700 dark:text-stone-300 space-y-3 border-t border-amber-200 dark:border-stone-600 pt-3">
-                            <p x-text="$t('rules.moduleA_intro')"></p>
-                            <p><strong x-text="$t('rules.moduleA_rps')"></strong> <span
-                                    x-text="$t('rules.moduleA_rps_desc')"></span></p>
-                            <p><strong x-text="$t('rules.moduleA_luck')"></strong> <span
-                                    x-text="$t('rules.moduleA_luck_desc')"></span></p>
-                            <p><strong x-text="$t('rules.moduleA_skill')"></strong> <span
-                                    x-text="$t('rules.moduleA_skill_desc')"></span></p>
-                        </div>
-                    </details>
+            <!-- Module A: Challenges -->
+            <details class="bg-blue-50 dark:bg-stone-700/30 p-4 rounded-lg mb-3 transition-colors"
+                :class="{ 'opacity-60': !$store.game.modules.A }"
+                @click="if(!$el.attributes.open) { $store.game.modules.A = true; $store.game.saveGame(); }">
+                <summary
+                    class="font-semibold cursor-pointer flex justify-between items-center text-stone-800 dark:text-stone-200">
+                    <div class="flex items-center space-x-3">
+                        <input type="checkbox" x-model="$store.game.modules.A" @click.stop
+                            @change="$store.game.saveGame()"
+                            class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 bg-white dark:bg-stone-800 border-stone-300 dark:border-stone-500">
+                        <span x-text="$t('rules.moduleA_title')"></span>
+                    </div>
+                    <span class="arrow-down transition-transform duration-300">▼</span>
+                </summary>
+                <div x-show="$store.game.modules.A"
+                    class="mt-4 text-stone-700 dark:text-stone-300 space-y-3 border-t border-amber-200 dark:border-stone-600 pt-3">
+                    <p x-text="$t('rules.moduleA_intro')"></p>
+                    <p><strong x-text="$t('rules.moduleA_rps')"></strong> <span
+                            x-text="$t('rules.moduleA_rps_desc')"></span></p>
+                    <p><strong x-text="$t('rules.moduleA_luck')"></strong> <span
+                            x-text="$t('rules.moduleA_luck_desc')"></span></p>
+                    <p><strong x-text="$t('rules.moduleA_skill')"></strong> <span
+                            x-text="$t('rules.moduleA_skill_desc')"></span></p>
+                </div>
+            </details>
 
-                    <!-- Module B: Tension -->
-                    <details class="bg-purple-50 dark:bg-stone-700/30 p-4 rounded-lg mb-3 transition-colors"
-                        :class="{ 'opacity-60': !$store.game.modules.B }"
-                        @click="if(!$el.attributes.open) { $store.game.modules.B = true; $store.game.saveGame(); }">
-                        <summary
-                            class="font-semibold cursor-pointer flex justify-between items-center text-stone-800 dark:text-stone-200">
-                            <div class="flex items-center space-x-3">
-                                <input type="checkbox" x-model="$store.game.modules.B" @click.stop
-                                    @change="$store.game.saveGame()"
-                                    class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 bg-white dark:bg-stone-800 border-stone-300 dark:border-stone-500">
-                                <span x-text="$t('rules.moduleB_title')"></span>
-                            </div>
-                            <span class="arrow-down transition-transform duration-300">▼</span>
-                        </summary>
-                        <div x-show="$store.game.modules.B"
-                            class="mt-4 text-stone-700 dark:text-stone-300 space-y-3 border-t border-amber-200 dark:border-stone-600 pt-3">
-                            <p>
-                                <strong x-text="$t('rules.moduleB_clock')"></strong> <span
-                                    x-text="$t('rules.moduleB_clock_desc')"></span>
-                                <br><em x-text="$t('rules.moduleB_pressure')"></em> "<span
-                                    x-text="$t('rules.moduleB_pressure_example')"></span>"
-                                <br><em x-text="$t('rules.moduleB_accumulation')"></em> "<span
-                                    x-text="$t('rules.moduleB_accumulation_example')"></span>"
-                        </div>
-                    </details>
+            <!-- Module B: Tension -->
+            <details class="bg-purple-50 dark:bg-stone-700/30 p-4 rounded-lg mb-3 transition-colors"
+                :class="{ 'opacity-60': !$store.game.modules.B }"
+                @click="if(!$el.attributes.open) { $store.game.modules.B = true; $store.game.saveGame(); }">
+                <summary
+                    class="font-semibold cursor-pointer flex justify-between items-center text-stone-800 dark:text-stone-200">
+                    <div class="flex items-center space-x-3">
+                        <input type="checkbox" x-model="$store.game.modules.B" @click.stop
+                            @change="$store.game.saveGame()"
+                            class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 bg-white dark:bg-stone-800 border-stone-300 dark:border-stone-500">
+                        <span x-text="$t('rules.moduleB_title')"></span>
+                    </div>
+                    <span class="arrow-down transition-transform duration-300">▼</span>
+                </summary>
+                <div x-show="$store.game.modules.B"
+                    class="mt-4 text-stone-700 dark:text-stone-300 space-y-3 border-t border-amber-200 dark:border-stone-600 pt-3">
+                    <p>
+                        <strong x-text="$t('rules.moduleB_clock')"></strong> <span
+                            x-text="$t('rules.moduleB_clock_desc')"></span>
+                        <br><em x-text="$t('rules.moduleB_pressure')"></em> "<span
+                            x-text="$t('rules.moduleB_pressure_example')"></span>"
+                        <br><em x-text="$t('rules.moduleB_accumulation')"></em> "<span
+                            x-text="$t('rules.moduleB_accumulation_example')"></span>"
+                </div>
+            </details>
 
 
-                    <!-- Modul: Fellnase (Optional) -->
-                    <details class="bg-amber-100/50 dark:bg-stone-700/30 p-4 rounded-lg mb-3 transition-colors"
-                        :class="{ 'opacity-60': !$store.game.modules.dog }"
-                        @click="if(!$el.attributes.open) { $store.game.modules.dog = true; $store.game.saveGame(); }">
-                        <summary
-                            class="font-semibold cursor-pointer flex justify-between items-center text-stone-800 dark:text-stone-200">
-                            <div class="flex items-center space-x-3">
-                                <input type="checkbox" x-model="$store.game.modules.dog" @click.stop
-                                    @change="$store.game.saveGame()"
-                                    class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 bg-white dark:bg-stone-800 border-stone-300 dark:border-stone-500">
-                                <span x-text="$t('settings.moduleF_label')"></span>
-                            </div>
-                            <span class="arrow-down transition-transform duration-300">▼</span>
-                        </summary>
-                        <div x-show="$store.game.modules.dog"
-                            class="mt-4 text-stone-700 dark:text-stone-300 space-y-3 border-t border-amber-200 dark:border-stone-600 pt-3">
-                            <p x-text="$t('rules.moduleC_intro')"></p>
-                            <p><strong x-text="$t('rules.moduleC_cmd_look')"></strong> <span
-                                    x-text="$t('rules.moduleC_cmd_look_desc')"></span></p>
-                            <p><strong x-text="$t('rules.moduleC_cmd_touch')"></strong> <span
-                                    x-text="$t('rules.moduleC_cmd_touch_desc')"></span></p>
-                            <p><strong x-text="$t('rules.moduleC_cmd_search')"></strong> <span
-                                    x-text="$t('rules.moduleC_cmd_search_desc')"></span></p>
-                            <p><strong x-text="$t('rules.moduleC_cmd_sit')"></strong> <span
-                                    x-text="$t('rules.moduleC_cmd_sit_desc')"></span></p>
-                            <p><strong x-text="$t('rules.moduleC_cmd_leave')"></strong> <span
-                                    x-text="$t('rules.moduleC_cmd_leave_desc')"></span></p>
-                        </div>
-                    </details>
+            <!-- Modul: Fellnase (Optional) -->
+            <details class="bg-amber-100/50 dark:bg-stone-700/30 p-4 rounded-lg mb-3 transition-colors"
+                :class="{ 'opacity-60': !$store.game.modules.dog }"
+                @click="if(!$el.attributes.open) { $store.game.modules.dog = true; $store.game.saveGame(); }">
+                <summary
+                    class="font-semibold cursor-pointer flex justify-between items-center text-stone-800 dark:text-stone-200">
+                    <div class="flex items-center space-x-3">
+                        <input type="checkbox" x-model="$store.game.modules.dog" @click.stop
+                            @change="$store.game.saveGame()"
+                            class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 bg-white dark:bg-stone-800 border-stone-300 dark:border-stone-500">
+                        <span x-text="$t('settings.moduleF_label')"></span>
+                    </div>
+                    <span class="arrow-down transition-transform duration-300">▼</span>
+                </summary>
+                <div x-show="$store.game.modules.dog"
+                    class="mt-4 text-stone-700 dark:text-stone-300 space-y-3 border-t border-amber-200 dark:border-stone-600 pt-3">
+                    <p x-text="$t('rules.moduleC_intro')"></p>
+                    <p><strong x-text="$t('rules.moduleC_cmd_look')"></strong> <span
+                            x-text="$t('rules.moduleC_cmd_look_desc')"></span></p>
+                    <p><strong x-text="$t('rules.moduleC_cmd_touch')"></strong> <span
+                            x-text="$t('rules.moduleC_cmd_touch_desc')"></span></p>
+                    <p><strong x-text="$t('rules.moduleC_cmd_search')"></strong> <span
+                            x-text="$t('rules.moduleC_cmd_search_desc')"></span></p>
+                    <p><strong x-text="$t('rules.moduleC_cmd_sit')"></strong> <span
+                            x-text="$t('rules.moduleC_cmd_sit_desc')"></span></p>
+                    <p><strong x-text="$t('rules.moduleC_cmd_leave')"></strong> <span
+                            x-text="$t('rules.moduleC_cmd_leave_desc')"></span></p>
+                </div>
+            </details>
 
-                    <!-- Module D: Combat -->
-                    <details class="bg-amber-100/50 dark:bg-stone-700/30 p-4 rounded-lg mb-3 transition-colors"
-                        :class="{ 'opacity-60': !$store.game.modules.D }"
-                        @click="if(!$el.attributes.open) { $store.game.modules.D = true; $store.game.saveGame(); }">
-                        <summary
-                            class="font-semibold cursor-pointer flex justify-between items-center text-stone-800 dark:text-stone-200">
-                            <div class="flex items-center space-x-3">
-                                <input type="checkbox" x-model="$store.game.modules.D" @click.stop
-                                    @change="$store.game.saveGame()"
-                                    class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 bg-white dark:bg-stone-800 border-stone-300 dark:border-stone-500">
-                                <span x-text="$t('rules.moduleD_title')"></span>
-                            </div>
-                            <span class="arrow-down transition-transform duration-300">▼</span>
-                        </summary>
-                        <div x-show="$store.game.modules.D"
-                            class="mt-4 text-stone-700 dark:text-stone-300 space-y-3 border-t border-amber-200 dark:border-stone-600 pt-3">
-                            <p x-text="$t('rules.moduleD_intro')"></p>
-                            <ul class="list-disc list-inside space-y-1 ml-2">
-                                <li x-text="$t('rules.moduleD_step1')"></li>
-                                <li x-text="$t('rules.moduleD_step2')"></li>
-                                <li x-text="$t('rules.moduleD_step3')"></li>
-                                <li x-text="$t('rules.moduleD_step4')"></li>
-                            </ul>
-                            <div
-                                class="mt-3 p-3 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-900/40">
-                                <p class="font-bold text-red-800 dark:text-red-300" x-text="$t('rules.moduleD_loss')">
-                                </p>
-                                <p class="text-xs text-red-700 dark:text-red-400 mt-1"
-                                    x-text="$t('rules.moduleD_loss_desc')">
-                                </p>
-                            </div>
-                        </div>
-                    </details>
+            <!-- Module D: Combat -->
+            <details class="bg-amber-100/50 dark:bg-stone-700/30 p-4 rounded-lg mb-3 transition-colors"
+                :class="{ 'opacity-60': !$store.game.modules.D }"
+                @click="if(!$el.attributes.open) { $store.game.modules.D = true; $store.game.saveGame(); }">
+                <summary
+                    class="font-semibold cursor-pointer flex justify-between items-center text-stone-800 dark:text-stone-200">
+                    <div class="flex items-center space-x-3">
+                        <input type="checkbox" x-model="$store.game.modules.D" @click.stop
+                            @change="$store.game.saveGame()"
+                            class="form-checkbox h-5 w-5 text-emerald-600 rounded focus:ring-emerald-500 bg-white dark:bg-stone-800 border-stone-300 dark:border-stone-500">
+                        <span x-text="$t('rules.moduleD_title')"></span>
+                    </div>
+                    <span class="arrow-down transition-transform duration-300">▼</span>
+                </summary>
+                <div x-show="$store.game.modules.D"
+                    class="mt-4 text-stone-700 dark:text-stone-300 space-y-3 border-t border-amber-200 dark:border-stone-600 pt-3">
+                    <p x-text="$t('rules.moduleD_intro')"></p>
+                    <ul class="list-disc list-inside space-y-1 ml-2">
+                        <li x-text="$t('rules.moduleD_step1')"></li>
+                        <li x-text="$t('rules.moduleD_step2')"></li>
+                        <li x-text="$t('rules.moduleD_step3')"></li>
+                        <li x-text="$t('rules.moduleD_step4')"></li>
+                    </ul>
+                    <div
+                        class="mt-3 p-3 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-900/40">
+                        <p class="font-bold text-red-800 dark:text-red-300" x-text="$t('rules.moduleD_loss')">
+                        </p>
+                        <p class="text-xs text-red-700 dark:text-red-400 mt-1" x-text="$t('rules.moduleD_loss_desc')">
+                        </p>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <!-- Essenz-Raster (Duel System) -->
+        <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
+            <h3 class="text-xl font-bold text-emerald-700 dark:text-emerald-400 mb-4" x-text="$t('essenz.title')"></h3>
+            <p class="text-stone-600 dark:text-stone-300 mb-4" x-text="$t('essenz.description')"></p>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <!-- Number Selection -->
+                <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg">
+                    <p class="font-semibold text-stone-700 dark:text-stone-300 mb-3 text-center"
+                        x-text="$t('essenz.selectNumbers')"></p>
+                    <!-- Row 1: 1-5 -->
+                    <div class="flex justify-center gap-3 mb-3">
+                        <template x-for="n in [1,2,3,4,5]" :key="n">
+                            <button @click="$store.game.selectEssenzNumber(n)"
+                                class="w-12 h-12 rounded-full font-bold text-lg transition-all transform hover:scale-110 shadow-md"
+                                :class="{
+                                            'bg-emerald-600 text-white ring-4 ring-emerald-300 scale-110': $store.game.essenzNumbers.includes(n),
+                                            'bg-white dark:bg-stone-700 text-stone-700 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-600': !$store.game.essenzNumbers.includes(n)
+                                        }" x-text="n"></button>
+                        </template>
+                    </div>
+                    <!-- Row 2: 6-10 -->
+                    <div class="flex justify-center gap-3">
+                        <template x-for="n in [6,7,8,9,10]" :key="n">
+                            <button @click="$store.game.selectEssenzNumber(n)"
+                                class="w-12 h-12 rounded-full font-bold text-lg transition-all transform hover:scale-110 shadow-md"
+                                :class="{
+                                            'bg-emerald-600 text-white ring-4 ring-emerald-300 scale-110': $store.game.essenzNumbers.includes(n),
+                                            'bg-white dark:bg-stone-700 text-stone-700 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-600': !$store.game.essenzNumbers.includes(n)
+                                        }" x-text="n"></button>
+                        </template>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button @click="$store.game.randomEssenzNumbers()"
+                            class="text-sm bg-stone-200 dark:bg-stone-700 px-4 py-2 rounded-full hover:bg-stone-300 dark:hover:bg-stone-600 transition-all hover:scale-105 shadow"
+                            x-text="$t('essenz.random')">
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Essenz-Raster (Duel System) -->
-                <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
-                    <h3 class="text-xl font-bold text-emerald-700 dark:text-emerald-400 mb-4"
-                        x-text="$t('essenz.title')"></h3>
-                    <p class="text-stone-600 dark:text-stone-300 mb-4" x-text="$t('essenz.description')"></p>
-
-                    <div class="grid md:grid-cols-2 gap-4 mb-6">
-                        <!-- Number Selection -->
-                        <div class="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg">
-                            <p class="font-semibold text-stone-700 dark:text-stone-300 mb-3 text-center"
-                                x-text="$t('essenz.selectNumbers')"></p>
-                            <!-- Row 1: 1-5 -->
-                            <div class="flex justify-center gap-3 mb-3">
-                                <template x-for="n in [1,2,3,4,5]" :key="n">
-                                    <button @click="$store.game.selectEssenzNumber(n)"
-                                        class="w-12 h-12 rounded-full font-bold text-lg transition-all transform hover:scale-110 shadow-md"
-                                        :class="{
-                                            'bg-emerald-600 text-white ring-4 ring-emerald-300 scale-110': $store.game.essenzNumbers.includes(n),
-                                            'bg-white dark:bg-stone-700 text-stone-700 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-600': !$store.game.essenzNumbers.includes(n)
-                                        }" x-text="n"></button>
-                                </template>
-                            </div>
-                            <!-- Row 2: 6-10 -->
-                            <div class="flex justify-center gap-3">
-                                <template x-for="n in [6,7,8,9,10]" :key="n">
-                                    <button @click="$store.game.selectEssenzNumber(n)"
-                                        class="w-12 h-12 rounded-full font-bold text-lg transition-all transform hover:scale-110 shadow-md"
-                                        :class="{
-                                            'bg-emerald-600 text-white ring-4 ring-emerald-300 scale-110': $store.game.essenzNumbers.includes(n),
-                                            'bg-white dark:bg-stone-700 text-stone-700 dark:text-stone-300 hover:bg-emerald-100 dark:hover:bg-stone-600': !$store.game.essenzNumbers.includes(n)
-                                        }" x-text="n"></button>
-                                </template>
-                            </div>
-                            <div class="text-center mt-4">
-                                <button @click="$store.game.randomEssenzNumbers()"
-                                    class="text-sm bg-stone-200 dark:bg-stone-700 px-4 py-2 rounded-full hover:bg-stone-300 dark:hover:bg-stone-600 transition-all hover:scale-105 shadow"
-                                    x-text="$t('essenz.random')">
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Result Display -->
-                        <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg">
-                            <p class="font-semibold text-stone-700 dark:text-stone-300 mb-2"
-                                x-text="$t('essenz.searchQuery')">
-                            </p>
-                            <template x-if="$store.game.essenzNumbers.length === 2">
-                                <div class="text-lg font-bold text-emerald-700 dark:text-emerald-400" x-text="$t('essenz.findTemplate')
+                <!-- Result Display -->
+                <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg">
+                    <p class="font-semibold text-stone-700 dark:text-stone-300 mb-2" x-text="$t('essenz.searchQuery')">
+                    </p>
+                    <template x-if="$store.game.essenzNumbers.length === 2">
+                        <div class="text-lg font-bold text-emerald-700 dark:text-emerald-400" x-text="$t('essenz.findTemplate')
                                         .replace('{0}', $store.game.getEssenzWord($store.game.essenzNumbers[0], 'A'))
                                         .replace('{1}', $store.game.getEssenzWord($store.game.essenzNumbers[1], 'B'))">
-                                </div>
-                            </template>
-                            <template x-if="$store.game.essenzNumbers.length < 2">
-                                <p class="text-stone-500 dark:text-stone-400 italic" x-text="$t('essenz.selectPrompt')">
-                                </p>
-                            </template>
                         </div>
-                    </div>
-
-                    <!-- Essenz-Raster Table -->
-                    <details class="bg-stone-100 dark:bg-stone-700/30 p-4 rounded-lg">
-                        <summary
-                            class="font-semibold cursor-pointer flex justify-between items-center text-stone-800 dark:text-stone-200">
-                            <span x-text="$t('essenz.referenceTitle')"></span>
-                            <span class="arrow-down transition-transform duration-300">▼</span>
-                        </summary>
-                        <div class="mt-4 overflow-x-auto">
-                            <table class="w-full text-sm border-collapse">
-                                <thead>
-                                    <tr class="bg-emerald-100 dark:bg-emerald-900/30">
-                                        <th class="p-2 text-left border border-stone-300 dark:border-stone-600">#</th>
-                                        <th class="p-2 text-left border border-stone-300 dark:border-stone-600">A
-                                            (Material)</th>
-                                        <th class="p-2 text-left border border-stone-300 dark:border-stone-600">B
-                                            (Beschaffenheit)</th>
-                                        <th class="p-2 text-left border border-stone-300 dark:border-stone-600">C
-                                            (Optik)</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-stone-700 dark:text-stone-300">
-                                    <template x-for="i in 10" :key="i">
-                                        <tr class="hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
-                                            <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold"
-                                                x-text="i">
-                                            </td>
-                                            <td class="p-2 border border-stone-300 dark:border-stone-600"
-                                                x-text="$store.game.getEssenzWord(i, 'A')"></td>
-                                            <td class="p-2 border border-stone-300 dark:border-stone-600"
-                                                x-text="$store.game.getEssenzWord(i, 'B')"></td>
-                                            <td class="p-2 border border-stone-300 dark:border-stone-600"
-                                                x-text="$store.game.getEssenzWord(i, 'C')"></td>
-                                        </tr>
-                                    </template>
-                                </tbody>
-                            </table>
-                        </div>
-                    </details>
-                </div>
-
-                <!-- Konsequenz-Raster (Consequence Grid) -->
-                <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors"
-                    x-data="{ whatChoice: null, howChoice: null, conditionChoice: null }">
-                    <h3 class="text-xl font-bold text-orange-600 dark:text-orange-400 mb-2"
-                        x-text="$t('rules.consequence_title')"></h3>
-                    <p class="text-stone-600 dark:text-stone-400 mb-4 text-sm"
-                        x-text="$t('rules.consequence_subtitle')"></p>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                        <!-- Column A: What happens? -->
-                        <div>
-                            <p class="font-semibold text-stone-700 dark:text-stone-300 mb-2"
-                                x-text="$t('rules.consequence_what')"></p>
-                            <div class="grid grid-cols-3 gap-2">
-                                <template x-for="i in 6" :key="'what_'+i">
-                                    <button @click="whatChoice = i"
-                                        :class="whatChoice === i ? 'bg-orange-500 text-white' : 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300'"
-                                        class="p-2 rounded text-xs font-medium hover:scale-105 transition-transform"
-                                        x-text="i"></button>
-                                </template>
-                            </div>
-                        </div>
-                        <!-- Column B: How does it feel? -->
-                        <div>
-                            <p class="font-semibold text-stone-700 dark:text-stone-300 mb-2"
-                                x-text="$t('rules.consequence_how')"></p>
-                            <div class="grid grid-cols-3 gap-2">
-                                <template x-for="i in 6" :key="'how_'+i">
-                                    <button @click="howChoice = i"
-                                        :class="howChoice === i ? 'bg-purple-500 text-white' : 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'"
-                                        class="p-2 rounded text-xs font-medium hover:scale-105 transition-transform"
-                                        x-text="i"></button>
-                                </template>
-                            </div>
-                        </div>
-                        <!-- Column C: Optional Condition -->
-                        <div>
-                            <p class="font-semibold text-stone-700 dark:text-stone-300 mb-2"
-                                x-text="$t('rules.consequence_condition')"></p>
-                            <div class="grid grid-cols-3 gap-2">
-                                <template x-for="i in 6" :key="'condition_'+i">
-                                    <button @click="conditionChoice = (conditionChoice === i ? null : i)"
-                                        :class="conditionChoice === i ? 'bg-emerald-500 text-white' : 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300'"
-                                        class="p-2 rounded text-xs font-medium hover:scale-105 transition-transform"
-                                        x-text="i"></button>
-                                </template>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Random Button -->
-                    <button
-                        @click="whatChoice = Math.floor(Math.random() * 6) + 1; howChoice = Math.floor(Math.random() * 6) + 1; if(Math.random() > 0.7) conditionChoice = Math.floor(Math.random() * 6) + 1; else conditionChoice = null"
-                        class="w-full bg-gradient-to-r from-orange-500 via-purple-500 to-emerald-500 text-white py-2 rounded-lg font-semibold mb-4 hover:opacity-90 transition-all shadow-md"
-                        x-text="$t('rules.consequence_random')">
-                    </button>
-
-                    <!-- Result Display -->
-                    <div x-show="whatChoice && howChoice"
-                        class="p-4 bg-stone-100 dark:bg-stone-900/40 rounded-lg border-2 border-dashed border-orange-200 dark:border-stone-700">
-                        <p class="text-center text-stone-500 dark:text-stone-400 text-xs mb-1 uppercase tracking-wider font-bold"
-                            x-text="$t('rules.consequence_result') + ': ' + whatChoice + ' + ' + howChoice + (conditionChoice ? ' + ' + conditionChoice : '')">
+                    </template>
+                    <template x-if="$store.game.essenzNumbers.length < 2">
+                        <p class="text-stone-500 dark:text-stone-400 italic" x-text="$t('essenz.selectPrompt')">
                         </p>
-                        <div class="text-center space-y-1">
-                            <p class="font-bold text-orange-600 dark:text-orange-400"
-                                x-text="$t('rules.consequence_what_' + whatChoice)"></p>
-                            <p class="text-purple-600 dark:text-purple-400"
-                                x-text="'+ ' + $t('rules.consequence_how_' + howChoice)"></p>
-                            <p x-show="conditionChoice" class="text-emerald-600 dark:text-emerald-400 font-semibold"
-                                x-text="'+ ' + $t('rules.consequence_condition') + ': ' + $t('rules.consequence_condition_' + conditionChoice)">
-                            </p>
-                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Essenz-Raster Table -->
+            <details class="bg-stone-100 dark:bg-stone-700/30 p-4 rounded-lg">
+                <summary
+                    class="font-semibold cursor-pointer flex justify-between items-center text-stone-800 dark:text-stone-200">
+                    <span x-text="$t('essenz.referenceTitle')"></span>
+                    <span class="arrow-down transition-transform duration-300">▼</span>
+                </summary>
+                <div class="mt-4 overflow-x-auto">
+                    <table class="w-full text-sm border-collapse">
+                        <thead>
+                            <tr class="bg-emerald-100 dark:bg-emerald-900/30">
+                                <th class="p-2 text-left border border-stone-300 dark:border-stone-600">#</th>
+                                <th class="p-2 text-left border border-stone-300 dark:border-stone-600">A
+                                    (Material)</th>
+                                <th class="p-2 text-left border border-stone-300 dark:border-stone-600">B
+                                    (Beschaffenheit)</th>
+                                <th class="p-2 text-left border border-stone-300 dark:border-stone-600">C
+                                    (Optik)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-stone-700 dark:text-stone-300">
+                            <template x-for="i in 10" :key="i">
+                                <tr class="hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+                                    <td class="p-2 border border-stone-300 dark:border-stone-600 font-bold" x-text="i">
+                                    </td>
+                                    <td class="p-2 border border-stone-300 dark:border-stone-600"
+                                        x-text="$store.game.getEssenzWord(i, 'A')"></td>
+                                    <td class="p-2 border border-stone-300 dark:border-stone-600"
+                                        x-text="$store.game.getEssenzWord(i, 'B')"></td>
+                                    <td class="p-2 border border-stone-300 dark:border-stone-600"
+                                        x-text="$store.game.getEssenzWord(i, 'C')"></td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+        </div>
+
+        <!-- Konsequenz-Raster (Consequence Grid) -->
+        <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors"
+            x-data="{ whatChoice: null, howChoice: null, conditionChoice: null }">
+            <h3 class="text-xl font-bold text-orange-600 dark:text-orange-400 mb-2"
+                x-text="$t('rules.consequence_title')"></h3>
+            <p class="text-stone-600 dark:text-stone-400 mb-4 text-sm" x-text="$t('rules.consequence_subtitle')"></p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <!-- Column A: What happens? -->
+                <div>
+                    <p class="font-semibold text-stone-700 dark:text-stone-300 mb-2"
+                        x-text="$t('rules.consequence_what')"></p>
+                    <div class="grid grid-cols-3 gap-2">
+                        <template x-for="i in 6" :key="'what_'+i">
+                            <button @click="whatChoice = i"
+                                :class="whatChoice === i ? 'bg-orange-500 text-white' : 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300'"
+                                class="p-2 rounded text-xs font-medium hover:scale-105 transition-transform"
+                                x-text="i"></button>
+                        </template>
                     </div>
                 </div>
-
-                <!-- Regeneration (Mumm Recovery) -->
-                <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
-                    <h3 class="text-xl font-bold text-emerald-600 dark:text-emerald-400 mb-2"
-                        x-text="$t('rules.regeneration_title')"></h3>
-                    <p class="text-stone-600 dark:text-stone-400 mb-4 text-sm"
-                        x-text="$t('rules.regeneration_subtitle')"></p>
-
-                    <!-- Quick Actions -->
-                    <div class="mb-4">
-                        <p class="font-semibold text-emerald-700 dark:text-emerald-300 mb-2"
-                            x-text="$t('rules.regeneration_quick')"></p>
-                        <ul class="space-y-2 text-stone-700 dark:text-stone-300 text-sm">
-                            <li class="flex items-center gap-2">
-                                <span class="text-emerald-500">🌬️</span>
-                                <span x-text="$t('rules.regeneration_breathe')"></span>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="text-emerald-500">👀</span>
-                                <span x-text="$t('rules.regeneration_see')"></span>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="text-emerald-500">👂</span>
-                                <span x-text="$t('rules.regeneration_hear')"></span>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="text-emerald-500">😂</span>
-                                <span x-text="$t('rules.regeneration_laugh')"></span>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="text-emerald-500">💬</span>
-                                <span x-text="$t('rules.regeneration_compliment')"></span>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="text-emerald-500">🏃</span>
-                                <span x-text="$t('rules.regeneration_jump')"></span>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="text-emerald-500">✨</span>
-                                <span x-text="$t('rules.regeneration_spell')"></span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Pause Actions -->
-                    <div class="mb-4">
-                        <p class="font-semibold text-amber-700 dark:text-amber-300 mb-2"
-                            x-text="$t('rules.regeneration_pause')"></p>
-                        <ul class="space-y-2 text-stone-700 dark:text-stone-300 text-sm">
-                            <li class="flex items-center gap-2">
-                                <span class="text-amber-500">🥪</span>
-                                <span x-text="$t('rules.regeneration_snack')"></span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Full Recovery -->
-                    <div class="bg-emerald-100 dark:bg-emerald-900/30 p-3 rounded-lg">
-                        <p class="font-bold text-emerald-700 dark:text-emerald-300"
-                            x-text="$t('rules.regeneration_quest')"></p>
+                <!-- Column B: How does it feel? -->
+                <div>
+                    <p class="font-semibold text-stone-700 dark:text-stone-300 mb-2"
+                        x-text="$t('rules.consequence_how')"></p>
+                    <div class="grid grid-cols-3 gap-2">
+                        <template x-for="i in 6" :key="'how_'+i">
+                            <button @click="howChoice = i"
+                                :class="howChoice === i ? 'bg-purple-500 text-white' : 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300'"
+                                class="p-2 rounded text-xs font-medium hover:scale-105 transition-transform"
+                                x-text="i"></button>
+                        </template>
                     </div>
                 </div>
-
-                <!-- SSP Probe Helper -->
-                <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
-                    <h3 class="text-xl font-bold text-emerald-700 dark:text-emerald-400 mb-4" x-text="$t('ssp.title')">
-                    </h3>
-                    <p class="text-stone-600 dark:text-stone-300 mb-4" x-text="$t('ssp.instructions')"></p>
-
-                    <div class="flex justify-center gap-4 mb-6">
-                        <button @click="$store.game.playSSP('rock')"
-                            class="w-20 h-20 text-4xl bg-stone-100 dark:bg-stone-700 hover:bg-stone-200 dark:hover:bg-stone-600 rounded-xl shadow-md hover:scale-105 transition-all"
-                            :class="{'ring-4 ring-emerald-500': $store.game.ssp.playerChoice === 'rock'}"
-                            :title="$t('ssp.rock')">🪨</button>
-                        <button @click="$store.game.playSSP('paper')"
-                            class="w-20 h-20 text-4xl bg-stone-100 dark:bg-stone-700 hover:bg-stone-200 dark:hover:bg-stone-600 rounded-xl shadow-md hover:scale-105 transition-all"
-                            :class="{'ring-4 ring-emerald-500': $store.game.ssp.playerChoice === 'paper'}"
-                            :title="$t('ssp.paper')">📄</button>
-                        <button @click="$store.game.playSSP('scissors')"
-                            class="w-20 h-20 text-4xl bg-stone-100 dark:bg-stone-700 hover:bg-stone-200 dark:hover:bg-stone-600 rounded-xl shadow-md hover:scale-105 transition-all"
-                            :class="{'ring-4 ring-emerald-500': $store.game.ssp.playerChoice === 'scissors'}"
-                            :title="$t('ssp.scissors')">✂️</button>
+                <!-- Column C: Optional Condition -->
+                <div>
+                    <p class="font-semibold text-stone-700 dark:text-stone-300 mb-2"
+                        x-text="$t('rules.consequence_condition')"></p>
+                    <div class="grid grid-cols-3 gap-2">
+                        <template x-for="i in 6" :key="'condition_'+i">
+                            <button @click="conditionChoice = (conditionChoice === i ? null : i)"
+                                :class="conditionChoice === i ? 'bg-emerald-500 text-white' : 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300'"
+                                class="p-2 rounded text-xs font-medium hover:scale-105 transition-transform"
+                                x-text="i"></button>
+                        </template>
                     </div>
+                </div>
+            </div>
 
-                    <!-- Result Display -->
-                    <template x-if="$store.game.ssp.result">
-                        <div class="text-center p-4 rounded-lg fade-in" :class="{
+            <!-- Random Button -->
+            <button
+                @click="whatChoice = Math.floor(Math.random() * 6) + 1; howChoice = Math.floor(Math.random() * 6) + 1; if(Math.random() > 0.7) conditionChoice = Math.floor(Math.random() * 6) + 1; else conditionChoice = null"
+                class="w-full bg-gradient-to-r from-orange-500 via-purple-500 to-emerald-500 text-white py-2 rounded-lg font-semibold mb-4 hover:opacity-90 transition-all shadow-md"
+                x-text="$t('rules.consequence_random')">
+            </button>
+
+            <!-- Result Display -->
+            <div x-show="whatChoice && howChoice"
+                class="p-4 bg-stone-100 dark:bg-stone-900/40 rounded-lg border-2 border-dashed border-orange-200 dark:border-stone-700">
+                <p class="text-center text-stone-500 dark:text-stone-400 text-xs mb-1 uppercase tracking-wider font-bold"
+                    x-text="$t('rules.consequence_result') + ': ' + whatChoice + ' + ' + howChoice + (conditionChoice ? ' + ' + conditionChoice : '')">
+                </p>
+                <div class="text-center space-y-1">
+                    <p class="font-bold text-orange-600 dark:text-orange-400"
+                        x-text="$t('rules.consequence_what_' + whatChoice)"></p>
+                    <p class="text-purple-600 dark:text-purple-400"
+                        x-text="'+ ' + $t('rules.consequence_how_' + howChoice)"></p>
+                    <p x-show="conditionChoice" class="text-emerald-600 dark:text-emerald-400 font-semibold"
+                        x-text="'+ ' + $t('rules.consequence_condition') + ': ' + $t('rules.consequence_condition_' + conditionChoice)">
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Regeneration (Mumm Recovery) -->
+        <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
+            <h3 class="text-xl font-bold text-emerald-600 dark:text-emerald-400 mb-2"
+                x-text="$t('rules.regeneration_title')"></h3>
+            <p class="text-stone-600 dark:text-stone-400 mb-4 text-sm" x-text="$t('rules.regeneration_subtitle')"></p>
+
+            <!-- Quick Actions -->
+            <div class="mb-4">
+                <p class="font-semibold text-emerald-700 dark:text-emerald-300 mb-2"
+                    x-text="$t('rules.regeneration_quick')"></p>
+                <ul class="space-y-2 text-stone-700 dark:text-stone-300 text-sm">
+                    <li class="flex items-center gap-2">
+                        <span class="text-emerald-500">🌬️</span>
+                        <span x-text="$t('rules.regeneration_breathe')"></span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-emerald-500">👀</span>
+                        <span x-text="$t('rules.regeneration_see')"></span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-emerald-500">👂</span>
+                        <span x-text="$t('rules.regeneration_hear')"></span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-emerald-500">😂</span>
+                        <span x-text="$t('rules.regeneration_laugh')"></span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-emerald-500">💬</span>
+                        <span x-text="$t('rules.regeneration_compliment')"></span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-emerald-500">🏃</span>
+                        <span x-text="$t('rules.regeneration_jump')"></span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-emerald-500">✨</span>
+                        <span x-text="$t('rules.regeneration_spell')"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Pause Actions -->
+            <div class="mb-4">
+                <p class="font-semibold text-amber-700 dark:text-amber-300 mb-2"
+                    x-text="$t('rules.regeneration_pause')"></p>
+                <ul class="space-y-2 text-stone-700 dark:text-stone-300 text-sm">
+                    <li class="flex items-center gap-2">
+                        <span class="text-amber-500">🥪</span>
+                        <span x-text="$t('rules.regeneration_snack')"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Full Recovery -->
+            <div class="bg-emerald-100 dark:bg-emerald-900/30 p-3 rounded-lg">
+                <p class="font-bold text-emerald-700 dark:text-emerald-300" x-text="$t('rules.regeneration_quest')"></p>
+            </div>
+        </div>
+
+        <!-- SSP Probe Helper -->
+        <div class="bg-white dark:bg-stone-800 p-6 rounded-xl shadow-lg transition-colors">
+            <h3 class="text-xl font-bold text-emerald-700 dark:text-emerald-400 mb-4" x-text="$t('ssp.title')">
+            </h3>
+            <p class="text-stone-600 dark:text-stone-300 mb-4" x-text="$t('ssp.instructions')"></p>
+
+            <div class="flex justify-center gap-4 mb-6">
+                <button @click="$store.game.playSSP('rock')"
+                    class="w-20 h-20 text-4xl bg-stone-100 dark:bg-stone-700 hover:bg-stone-200 dark:hover:bg-stone-600 rounded-xl shadow-md hover:scale-105 transition-all"
+                    :class="{'ring-4 ring-emerald-500': $store.game.ssp.playerChoice === 'rock'}"
+                    :title="$t('ssp.rock')">🪨</button>
+                <button @click="$store.game.playSSP('paper')"
+                    class="w-20 h-20 text-4xl bg-stone-100 dark:bg-stone-700 hover:bg-stone-200 dark:hover:bg-stone-600 rounded-xl shadow-md hover:scale-105 transition-all"
+                    :class="{'ring-4 ring-emerald-500': $store.game.ssp.playerChoice === 'paper'}"
+                    :title="$t('ssp.paper')">📄</button>
+                <button @click="$store.game.playSSP('scissors')"
+                    class="w-20 h-20 text-4xl bg-stone-100 dark:bg-stone-700 hover:bg-stone-200 dark:hover:bg-stone-600 rounded-xl shadow-md hover:scale-105 transition-all"
+                    :class="{'ring-4 ring-emerald-500': $store.game.ssp.playerChoice === 'scissors'}"
+                    :title="$t('ssp.scissors')">✂️</button>
+            </div>
+
+            <!-- Result Display -->
+            <template x-if="$store.game.ssp.result">
+                <div class="text-center p-4 rounded-lg fade-in" :class="{
                                 'bg-green-100 dark:bg-green-900/30': $store.game.ssp.result === 'win',
                                 'bg-yellow-100 dark:bg-yellow-900/30': $store.game.ssp.result === 'draw',
                                 'bg-red-100 dark:bg-red-900/30': $store.game.ssp.result === 'lose'
                             }">
-                            <div class="flex justify-center items-center gap-4 mb-2">
-                                <span class="text-3xl"
-                                    x-text="$store.game.getSSPEmoji($store.game.ssp.playerChoice)"></span>
-                                <span class="text-xl font-bold text-stone-500">vs</span>
-                                <span class="text-3xl"
-                                    x-text="$store.game.getSSPEmoji($store.game.ssp.gmChoice)"></span>
-                            </div>
-                            <p class="text-lg font-bold" :class="{
+                    <div class="flex justify-center items-center gap-4 mb-2">
+                        <span class="text-3xl" x-text="$store.game.getSSPEmoji($store.game.ssp.playerChoice)"></span>
+                        <span class="text-xl font-bold text-stone-500">vs</span>
+                        <span class="text-3xl" x-text="$store.game.getSSPEmoji($store.game.ssp.gmChoice)"></span>
+                    </div>
+                    <p class="text-lg font-bold" :class="{
                                     'text-green-700 dark:text-green-400': $store.game.ssp.result === 'win',
                                     'text-yellow-700 dark:text-yellow-400': $store.game.ssp.result === 'draw',
                                     'text-red-700 dark:text-red-400': $store.game.ssp.result === 'lose'
                                 }">
-                                <span x-show="$store.game.ssp.result === 'win'" x-text="$t('ssp.win')"></span>
-                                <span x-show="$store.game.ssp.result === 'draw'" x-text="$t('ssp.draw')"></span>
-                                <span x-show="$store.game.ssp.result === 'lose'" x-text="$t('ssp.lose')"></span>
-                            </p>
-                            <button @click="$store.game.resetSSP()"
-                                class="mt-3 text-sm text-stone-500 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 underline"
-                                x-text="$t('ssp.newChallenge')">
-                            </button>
-                        </div>
-                    </template>
+                        <span x-show="$store.game.ssp.result === 'win'" x-text="$t('ssp.win')"></span>
+                        <span x-show="$store.game.ssp.result === 'draw'" x-text="$t('ssp.draw')"></span>
+                        <span x-show="$store.game.ssp.result === 'lose'" x-text="$t('ssp.lose')"></span>
+                    </p>
+                    <button @click="$store.game.resetSSP()"
+                        class="mt-3 text-sm text-stone-500 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 underline"
+                        x-text="$t('ssp.newChallenge')">
+                    </button>
                 </div>
-            </section>
+            </template>
+        </div>
+    </section>
 
-        </main>
+    </main>
 
-        <!-- Footer -->
-        <footer class="mt-12 pb-8 text-center text-stone-500 dark:text-stone-400 text-sm">
-            <div class="flex flex-wrap justify-center items-center gap-4 mb-3">
-                <a href="https://ko-fi.com/tdoubleav" target="_blank" rel="noopener"
-                    class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-rose-500 text-white px-4 py-2 rounded-full font-semibold hover:from-pink-600 hover:to-rose-600 transition-all shadow-md hover:shadow-lg"
-                    x-text="$t('footer.support')">
-                </a>
-                <a href="https://github.com/TdoubleAV/TrailKin" target="_blank" rel="noopener"
-                    class="inline-flex items-center gap-2 text-stone-600 dark:text-stone-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
-                    x-text="$t('footer.github')">
-                </a>
-            </div>
-            <div class="mt-4 mb-2">
-                <a href="bingo/" target="_blank"
-                    class="inline-block bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 px-3 py-1 rounded-full text-sm font-bold border border-emerald-200 dark:border-emerald-800 hover:bg-emerald-200 dark:hover:bg-emerald-900/50 transition-colors">
-                    🔍 PDF Bingo Generator
-                </a>
-            </div>
-            <p class="text-xs text-stone-500 dark:text-stone-400 mt-4" x-text="$t('footer.version')"></p>
-            <p class="text-xs mt-1 opacity-70" x-text="$t('footer.madeWith')"></p>
-        </footer>
+    <!-- Footer -->
+    <footer class="mt-12 pb-8 text-center text-stone-500 dark:text-stone-400 text-sm">
+        <div class="flex flex-wrap justify-center items-center gap-4 mb-3">
+            <a href="https://ko-fi.com/tdoubleav" target="_blank" rel="noopener"
+                class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-rose-500 text-white px-4 py-2 rounded-full font-semibold hover:from-pink-600 hover:to-rose-600 transition-all shadow-md hover:shadow-lg"
+                x-text="$t('footer.support')">
+            </a>
+            <a href="https://github.com/TdoubleAV/TrailKin" target="_blank" rel="noopener"
+                class="inline-flex items-center gap-2 text-stone-600 dark:text-stone-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                x-text="$t('footer.github')">
+            </a>
+        </div>
+        <div class="mt-4 mb-2">
+            <a href="bingo/" target="_blank"
+                class="inline-block bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 px-3 py-1 rounded-full text-sm font-bold border border-emerald-200 dark:border-emerald-800 hover:bg-emerald-200 dark:hover:bg-emerald-900/50 transition-colors">
+                🔍 PDF Bingo Generator
+            </a>
+        </div>
+        <p class="text-xs text-stone-500 dark:text-stone-400 mt-4" x-text="$t('footer.version')"></p>
+        <p class="text-xs mt-1 opacity-70" x-text="$t('footer.madeWith')"></p>
+    </footer>
     </div>
 
 
@@ -1346,6 +1512,48 @@
                             <button @click="$store.game.closeModal()"
                                 class="px-4 py-2 rounded text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-700 font-medium"
                                 x-text="$t('modals.close')"></button>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Consequence Type (with Journal option) -->
+                <template x-if="$store.game.modal.type === 'consequence'">
+                    <div>
+                        <div
+                            class="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 p-4 rounded-lg mb-4 border-2 border-orange-200 dark:border-orange-800">
+                            <p class="text-lg font-bold text-orange-700 dark:text-orange-300 whitespace-pre-line"
+                                x-text="$store.game.modal.value"></p>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <button @click="$store.game.logConsequenceToJournal()"
+                                class="w-full px-4 py-3 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 font-bold shadow-md flex items-center justify-center gap-2">
+                                <span>📜</span>
+                                <span x-text="$t('journal.logToJournal')"></span>
+                            </button>
+                            <button @click="$store.game.closeModal()"
+                                class="w-full px-4 py-2 rounded text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-700 font-medium"
+                                x-text="$t('journal.justClose')"></button>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Spark Type (with Journal option) -->
+                <template x-if="$store.game.modal.type === 'spark'">
+                    <div>
+                        <div
+                            class="bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20 p-4 rounded-lg mb-4 border-2 border-purple-200 dark:border-purple-800">
+                            <p class="text-lg font-bold text-purple-700 dark:text-purple-300"
+                                x-text="$store.game.modal.value"></p>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <button @click="$store.game.logSparkToJournal()"
+                                class="w-full px-4 py-3 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 font-bold shadow-md flex items-center justify-center gap-2">
+                                <span>📜</span>
+                                <span x-text="$t('journal.logToJournal')"></span>
+                            </button>
+                            <button @click="$store.game.closeModal()"
+                                class="w-full px-4 py-2 rounded text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-700 font-medium"
+                                x-text="$t('journal.justClose')"></button>
                         </div>
                     </div>
                 </template>

@@ -126,6 +126,20 @@
     "addStatus": "+ Status",
     "noStatuses": "No statuses"
   },
+  "journal": {
+    "title": "📜 Adventure Journal",
+    "empty": "No entries yet. Consequences and story sparks will be collected here.",
+    "addNote": "+ Note",
+    "logToJournal": "📜 Log to Journal",
+    "justClose": "Close",
+    "consequence": "Consequence",
+    "spark": "Story Spark",
+    "questStart": "Quest started",
+    "questEnd": "Quest ended",
+    "note": "Note",
+    "deleteConfirm": "Delete entry?",
+    "editNote": "Edit note"
+  },
   "characters": {
     "newHero": "New Explorer",
     "adventurer": "Explorer",

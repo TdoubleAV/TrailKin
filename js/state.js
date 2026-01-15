@@ -84,7 +84,8 @@ export function createDefaultGroup(name, companionType = 'dog') {
         inventory: [],
         currentQuest: null,
         combat: { active: false, playerWins: 0, gmWins: 0, round: 1 },
-        clocks: []
+        clocks: [],
+        journal: [] // Adventure journal for consequences, sparks, notes
     };
 }
 

@@ -126,6 +126,20 @@
     "addStatus": "+ Zustand",
     "noStatuses": "Keine Zustände"
   },
+  "journal": {
+    "title": "📜 Abenteuer-Journal",
+    "empty": "Noch keine Einträge. Konsequenzen und Story-Funken werden hier gesammelt.",
+    "addNote": "+ Notiz",
+    "logToJournal": "📜 Ins Journal",
+    "justClose": "Schließen",
+    "consequence": "Konsequenz",
+    "spark": "Story-Funke",
+    "questStart": "Quest gestartet",
+    "questEnd": "Quest beendet",
+    "note": "Notiz",
+    "deleteConfirm": "Eintrag löschen?",
+    "editNote": "Notiz bearbeiten"
+  },
   "characters": {
     "newHero": "Neuer Entdecker",
     "adventurer": "Entdecker",

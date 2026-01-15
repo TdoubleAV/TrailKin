@@ -73,7 +73,8 @@ document.addEventListener('alpine:initialized', () => {
         const loader = document.getElementById('app-loader');
         if (loader) {
             console.log('🔄 Removing skeleton loader (alpine:initialized fallback)');
-            loader.classList.add('opacity-0');
+            loader.style.opacity = '0';
+            loader.style.pointerEvents = 'none';
             setTimeout(() => loader.remove(), 300);
         }
     }, 100);
@@ -153,7 +154,8 @@ setTimeout(() => {
         // Remove skeleton loader with fade animation
         const loader = document.getElementById('app-loader');
         if (loader) {
-            loader.classList.add('opacity-0');
+            loader.style.opacity = '0';
+            loader.style.pointerEvents = 'none';
             setTimeout(() => loader.remove(), 300);
         }
     } catch (error) {

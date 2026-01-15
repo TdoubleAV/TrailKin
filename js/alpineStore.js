@@ -136,22 +136,26 @@ export function initAlpineStore(Alpine) {
         },
 
         toggleTheme() {
-            this.theme = this.theme === 'dark' ? 'light' : 'dark';
+            if (this.theme === 'light') this.theme = 'dark';
+            else if (this.theme === 'dark') this.theme = 'nature';
+            else this.theme = 'light';
+
             localStorage.setItem('theme', this.theme);
+            this.applyTheme();
+        },
+
+        applyTheme() {
+            document.documentElement.classList.remove('dark', 'nature');
             if (this.theme === 'dark') {
                 document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
+            } else if (this.theme === 'nature') {
+                document.documentElement.classList.add('nature');
             }
         },
 
         init() {
             // Apply initial theme
-            if (this.theme === 'dark') {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
+            this.applyTheme();
 
             // Init Routing
             const hash = window.location.hash.substring(1);
@@ -260,6 +264,49 @@ export function initAlpineStore(Alpine) {
                 this.modal.callback(this.modal.value.trim());
             }
             this.closeModal();
+        },
+
+        // --- Journal System ---
+        addJournalEntry(type, content, notes = '') {
+            if (!this.currentGroup) return null;
+
+            // Ensure journal array exists (for legacy groups)
+            if (!this.currentGroup.journal) {
+                this.currentGroup.journal = [];
+            }
+
+            const entry = {
+                id: Date.now() + '-' + Math.random().toString(36).substr(2, 9),
+                timestamp: Date.now(),
+                type: type, // 'consequence', 'spark', 'quest_start', 'quest_end', 'note'
+                content: content,
+                notes: notes
+            };
+
+            // Add to beginning (newest first)
+            this.currentGroup.journal.unshift(entry);
+            this.saveGame();
+            return entry;
+        },
+
+        deleteJournalEntry(entryId) {
+            if (!this.currentGroup?.journal) return;
+            this.currentGroup.journal = this.currentGroup.journal.filter(e => e.id !== entryId);
+            this.saveGame();
+        },
+
+        updateJournalNote(entryId, newNote) {
+            if (!this.currentGroup?.journal) return;
+            const entry = this.currentGroup.journal.find(e => e.id === entryId);
+            if (entry) {
+                entry.notes = newNote;
+                this.saveGame();
+            }
+        },
+
+        formatJournalTime(timestamp) {
+            const date = new Date(timestamp);
+            return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         },
 
         // --- Generator Logic ---
@@ -383,6 +430,7 @@ export function initAlpineStore(Alpine) {
             let title = '';
             let text = '';
             let icon = '✨';
+            let sparkType = 'oracle';
 
             const activeLang = Alpine.store('i18n')?.current || 'de';
 
@@ -393,6 +441,7 @@ export function initAlpineStore(Alpine) {
                 title = this.t('quest.v2.spark.sensoryTitle');
                 text = activeLang === 'de' ? spark.text : spark.text_en;
                 icon = spark.icon;
+                sparkType = 'sensory';
             } else {
                 // Oracle Table (Action + Theme)
                 const actionList = sparkTables.oracle.actions[activeLang] || sparkTables.oracle.actions.de;
@@ -406,13 +455,31 @@ export function initAlpineStore(Alpine) {
                 icon = '🔮';
             }
 
-            // Reuse the Modal for output
-            this.showModal(
-                `${icon} ${title}`,
+            // Store spark data for journal entry
+            this.modal.sparkData = { title, text, icon, sparkType };
+
+            // Use custom 'spark' modal type
+            this.modal.type = 'spark';
+            this.modal.title = `${icon} ${title}`;
+            this.modal.value = text;
+            this.modal.open = true;
+        },
+
+        /**
+         * Logs the current spark from the modal to the journal
+         */
+        logSparkToJournal() {
+            if (!this.modal.sparkData) return;
+
+            const { title, text, icon, sparkType } = this.modal.sparkData;
+            this.addJournalEntry('spark', {
+                sparkType,
+                title,
                 text,
-                () => { },
-                false
-            );
+                icon
+            });
+
+            this.closeModal();
         },
 
         /**
@@ -499,22 +566,31 @@ export function initAlpineStore(Alpine) {
             const action = actions[Math.floor(Math.random() * actions.length)];
             const flavor = flavors[Math.floor(Math.random() * flavors.length)];
 
-            // Show result in a custom modal or alert for now
-            // using the detailed description
+            // Store the generated consequence for potential journal entry
+            const consequenceData = { action, flavor };
+
+            // Show result in modal with option to log to journal
             const title = `⚡ ${this.t('consequences.title')} ⚡`;
             const content = `${action.name}: ${action.desc}\n\n(${flavor.name}: ${flavor.desc})`;
 
-            // Re-using the input modal as a simple info modal for now by providing a dummy callback
-            this.showModal(title, content, () => { });
+            // Use a custom modal type for consequences
+            this.modal.type = 'consequence';
+            this.modal.title = title;
+            this.modal.value = content;
+            this.modal.consequenceData = consequenceData;
+            this.modal.open = true;
+        },
 
-            // Hack to make the input readonly and look like a message
-            setTimeout(() => {
-                const input = document.querySelector('[x-ref="modalInput"]');
-                if (input) {
-                    input.value = content;
-                    input.readOnly = true;
-                }
-            }, 50);
+        logConsequenceToJournal() {
+            if (!this.modal.consequenceData) return;
+
+            const { action, flavor } = this.modal.consequenceData;
+            this.addJournalEntry('consequence', {
+                action: { name: action.name, desc: action.desc },
+                flavor: { name: flavor.name, desc: flavor.desc }
+            });
+
+            this.closeModal();
         },
 
         // --- Combat System (Modul D) ---
