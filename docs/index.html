@@ -230,10 +230,10 @@
             }}%%
             graph TD
                 A(["${t('action')}"]) --> B{"${t('gm')}"}
-                B -->|"    ${t('routine')}    "| C(["${t('success')}"])
-                B -->|"    ${t('risky')}    "| D{"${t('check')}"}
-                D -->|"    Win    "| C
-                D -->|"    Fail    "| E["${t('fail')}"]
+                B -->|"${t('routine')}"| C(["${t('success')}"])
+                B -->|"${t('risky')}"| D{"${t('check')}"}
+                D -->|Win| C
+                D -->|Fail| E["${t('fail')}"]
                 E -.-> F(["${t('partial')}"])
 
                 %% Amber Glow Theme (High Contrast)
