@@ -51,6 +51,34 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Mermaid JS -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+
+    <!-- Mermaid Edge Label Styling -->
+    <style>
+        /* Fix edge label padding in Mermaid diagrams */
+        foreignObject {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        foreignObject:has(.edgeLabel) {
+            background-color: transparent;
+        }
+
+        foreignObject:has(.edgeLabel) .edgeLabel,
+        foreignObject:has(.edgeLabel) .labelBkg {
+            background-color: transparent !important;
+        }
+
+        foreignObject:has(.edgeLabel) p {
+            margin-inline: auto !important;
+            max-width: max-content;
+            border-radius: 6px;
+            padding: 4px 12px;
+            background-color: rgba(255, 251, 235, 0.95);
+            font-weight: 500;
+        }
+    </style>
     <script>
         mermaid.initialize({ startOnLoad: true, theme: 'base', themeVariables: { fontFamily: 'Inter' } });
 
