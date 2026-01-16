@@ -190,25 +190,40 @@
             if (!container || !window.mermaid) return;
 
             const graph = `
+            %%{init: {
+                'theme': 'base',
+                'themeVariables': {
+                    'primaryColor': '#FFFBEB',
+                    'primaryTextColor': '#0F172A',
+                    'primaryBorderColor': '#B45309',
+                    'lineColor': '#78350F',
+                    'fontFamily': 'Inter, system-ui, sans-serif',
+                    'fontSize': '14px',
+                    'edgeLabelBackground': '#FFFBEB'
+                },
+                'flowchart': {
+                    'htmlLabels': true,
+                    'curve': 'basis',
+                    'padding': 20
+                }
+            }}%%
             graph TD
                 A(["${t('action')}"]) --> B{"${t('gm')}"}
-                B -->|"${t('routine')}"| C(["${t('success')}"])
-                B -->|"${t('risky')}"| D{"${t('check')}"}
-                D -->|Win| C
-                D -->|Fail| E["${t('fail')}"]
+                B -->|"  ${t('routine')}  "| C(["${t('success')}"])
+                B -->|"  ${t('risky')}  "| D{"${t('check')}"}
+                D -->|"  Win  "| C
+                D -->|"  Fail  "| E["${t('fail')}"]
                 E -.-> F(["${t('partial')}"])
 
-                %% Emerald Theme (Action/Success)
-                style A fill:#ecfdf5,stroke:#059669,stroke-width:2px,color:#064e3b
-                style C fill:#d1fae5,stroke:#059669,stroke-width:3px,stroke-dasharray: 0,color:#064e3b
-                
-                %% Amber Theme (Risk/Challenge)
-                style B fill:#fffbeb,stroke:#d97706,stroke-width:2px,color:#78350f
-                style D fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#78350f
-                style E fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#7f1d1d
-                style F fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,stroke-dasharray: 4 4,color:#713f12
+                %% Amber Glow Theme (High Contrast)
+                style A fill:#FFFBEB,stroke:#D97706,stroke-width:3px,color:#78350F
+                style B fill:#FEF3C7,stroke:#B45309,stroke-width:3px,color:#78350F
+                style C fill:#ECFDF5,stroke:#047857,stroke-width:3px,color:#064E3B
+                style D fill:#FEF3C7,stroke:#B45309,stroke-width:3px,color:#78350F
+                style E fill:#FEE2E2,stroke:#B91C1C,stroke-width:3px,color:#7F1D1D
+                style F fill:#FEF9C3,stroke:#A16207,stroke-width:3px,stroke-dasharray:4 4,color:#713F12
 
-                linkStyle default stroke:#374151,stroke-width:2px;
+                linkStyle default stroke:#78350F,stroke-width:2px
             `;
 
             container.removeAttribute('data-processed');
@@ -233,12 +248,43 @@
 
         <!-- 1. Hero Content -->
         <section class="max-w-7xl mx-auto px-4 pt-24 pb-20 relative z-10 text-center">
-            <!-- Lang Toggle (Floating) -->
+            <!-- Lang Dropdown (Floating) -->
             <div class="absolute top-4 right-4 md:right-8">
-                <button @click="$store.i18n.toggle()"
-                    class="bg-black/50 hover:bg-black/70 text-white px-3 py-1 rounded-full text-sm font-semibold transition-colors border border-white/20 backdrop-blur-sm">
-                    <span x-text="$store.i18n.current === 'de' ? '🇺🇸 EN' : '🇩🇪 DE'"></span>
-                </button>
+                <div x-data="{ langOpen: false, langs: [{code: 'de', flag: '🇩🇪', name: 'Deutsch'}, {code: 'en', flag: '🇬🇧', name: 'English'}/*, {code: 'es', flag: '🇪🇸', name: 'Español'}*/] }"
+                    class="relative">
+                    <!-- Current Language Button -->
+                    <button @click="langOpen = !langOpen"
+                        class="flex items-center gap-1 px-3 py-1.5 rounded-full text-sm font-semibold transition-all border border-white/20 backdrop-blur-sm"
+                        :class="langOpen ? 'bg-emerald-600/80 text-white' : 'bg-black/50 hover:bg-black/70 text-white'"
+                        :title="langs.find(l => l.code === $store.i18n.current)?.name"
+                        :aria-label="'Change language. Current: ' + langs.find(l => l.code === $store.i18n.current)?.name">
+                        <span x-text="langs.find(l => l.code === $store.i18n.current)?.flag"></span>
+                        <span x-text="$store.i18n.current.toUpperCase()"></span>
+                        <span class="text-xs" x-text="langOpen ? '▴' : '▾'"></span>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <div x-show="langOpen" @click.away="langOpen = false"
+                        x-transition:enter="transition ease-out duration-100"
+                        x-transition:enter-start="transform opacity-0 scale-95"
+                        x-transition:enter-end="transform opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-75"
+                        x-transition:leave-start="transform opacity-100 scale-100"
+                        x-transition:leave-end="transform opacity-0 scale-95"
+                        class="absolute right-0 mt-2 w-28 rounded-lg bg-stone-900/95 backdrop-blur-md shadow-xl border border-white/10 overflow-hidden z-50"
+                        style="display: none;">
+                        <template x-for="lang in langs" :key="lang.code">
+                            <button
+                                @click="$store.i18n.current = lang.code; localStorage.setItem('trailkin_lang', lang.code); langOpen = false; document.dispatchEvent(new CustomEvent('lang-change'));"
+                                class="w-full flex items-center gap-2 px-3 py-2 hover:bg-emerald-600/30 transition-colors text-left text-white/90"
+                                :class="$store.i18n.current === lang.code ? 'bg-emerald-600/50' : ''" :title="lang.name"
+                                :aria-label="lang.name">
+                                <span x-text="lang.flag"></span>
+                                <span class="font-semibold text-sm" x-text="lang.code.toUpperCase()"></span>
+                            </button>
+                        </template>
+                    </div>
+                </div>
             </div>
 
             <span

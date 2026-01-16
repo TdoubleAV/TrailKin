@@ -3,19 +3,22 @@
  * Provides reactive language switching and translation helpers
  */
 
+import { LANGUAGES, getLanguageCodes } from './languages.js';
+
 const LANG_STORAGE_KEY = 'trailkin_lang';
 
 /**
  * Initializes i18n Alpine.js store with pre-fetched data
  * @param {Object} Alpine - Alpine.js instance
- * @param {Object} translationData - The loaded translation files { de: {...}, en: {...} }
+ * @param {Object} translationData - The loaded translation files { de: {...}, en: {...}, es: {...} }
  */
 export function initI18nStore(Alpine, translationData) {
     if (!translationData || !translationData.de) {
         console.warn('i18n: No translation data provided!');
         translationData = {
             de: { meta: { name: 'Deutsch', flag: '🇩🇪' } },
-            en: { meta: { name: 'English', flag: '🇬🇧' } }
+            en: { meta: { name: 'English', flag: '🇬🇧' } },
+            es: { meta: { name: 'Español', flag: '🇪🇸' } }
         };
     }
 
@@ -26,16 +29,12 @@ export function initI18nStore(Alpine, translationData) {
         // Current active language
         current: 'de',
 
-        // Available languages
-        languages: ['de', 'en'],
+        // Available languages (from shared config)
+        languages: getLanguageCodes(),
 
-        // Language metadata for UI
+        // Language metadata for UI (from shared config)
         get languageOptions() {
-            return this.languages.map(lang => ({
-                code: lang,
-                name: translationData[lang]?.meta?.name || lang,
-                flag: translationData[lang]?.meta?.flag || '🌐'
-            }));
+            return LANGUAGES;
         },
 
         /**

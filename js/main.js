@@ -127,9 +127,10 @@ setTimeout(() => {
     console.log('⏳ Loading translations...');
     try {
         const basePath = window.location.pathname.includes('/TrailKin/') ? '/TrailKin' : '';
-        const [de, en] = await Promise.all([
+        const [de, en/*, es*/] = await Promise.all([
             fetch(`${basePath}/js/i18n/de.json`).then(r => r.json()),
-            fetch(`${basePath}/js/i18n/en.json`).then(r => r.json())
+            fetch(`${basePath}/js/i18n/en.json`).then(r => r.json())/*,
+            fetch(`${basePath}/js/i18n/es.json`).then(r => r.json())*/
         ]);
 
         // Wait for Alpine to be ready
@@ -147,8 +148,8 @@ setTimeout(() => {
         });
 
         // Reactively update translations
-        window.TRAILKIN_TRANSLATIONS = { de, en };
-        window.Alpine.store('i18n').updateTranslations({ de, en });
+        window.TRAILKIN_TRANSLATIONS = { de, en/*, es*/ };
+        window.Alpine.store('i18n').updateTranslations({ de, en/*, es*/ });
         console.log('✅ Translations loaded and updated');
 
         // Remove skeleton loader with fade animation

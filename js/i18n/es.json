@@ -1,0 +1,49 @@
+{
+    "meta": {
+        "name": "Español",
+        "flag": "🇪🇸"
+    },
+    "header": {
+        "title": "Trailkin",
+        "tagline": "Tu aventura comienza en tu puerta",
+        "themeToggle": "Cambiar tema"
+    },
+    "nav": {
+        "play": "Jugar",
+        "prepare": "Preparar",
+        "help": "Ayuda",
+        "start": "🚀 Inicio",
+        "group": "🛡️ Grupo",
+        "rules": "📜 Reglas",
+        "ideas": "💡 Ideas",
+        "quest": "🗺️ Misión",
+        "bingo": "🎲 Bingo"
+    },
+    "group": {
+        "title": "Tu Grupo de Aventureros",
+        "subtitle": "Gestiona tus héroes y su equipamiento",
+        "newGroup": "+ Nuevo Grupo",
+        "rename": "Renombrar",
+        "delete": "Eliminar",
+        "addEmpty": "+ Añadir Héroe Vacío",
+        "addRandom": "🎲 Generar Héroe Aleatorio",
+        "statuses": "Estados",
+        "addStatus": "+ Añadir Estado",
+        "noStatuses": "Sin estados activos",
+        "endQuest": "Terminar misión"
+    },
+    "characters": {
+        "hpLabel": "PV",
+        "equipment": "Equipamiento Personal",
+        "deleteHero": "Eliminar héroe"
+    },
+    "journal": {
+        "title": "Diario de Aventuras",
+        "empty": "Aún no hay entradas. ¡Comienza tu aventura!",
+        "deleteConfirm": "¿Eliminar esta entrada?",
+        "consequence": "Consecuencia",
+        "spark": "Chispa",
+        "quest_start": "Misión Iniciada",
+        "quest_end": "Misión Completada"
+    }
+}
