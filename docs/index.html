@@ -55,16 +55,22 @@
     <!-- Mermaid Edge Label Styling -->
     <style>
         /* Fix edge label padding in Mermaid diagrams */
-        /* ONLY target edge labels, not node labels */
-        .edgeLabel {
-            background-color: rgba(255, 251, 235, 0.95) !important;
-            padding: 4px 12px !important;
-            border-radius: 6px;
+        /* ONLY target edge labels that contain text to avoid phantom boxes */
+        .edgeLabel:not(:empty) {
+            background-color: rgba(255, 251, 235, 0.9) !important;
+            padding: 2px 8px !important;
+            border-radius: 4px;
             font-weight: 500;
+            color: #78350F !important;
         }
 
         .edgeLabel .label {
             background-color: transparent !important;
+        }
+
+        /* Ensure the box doesn't appear for edges without labels */
+        .edgeLabel:empty {
+            display: none !important;
         }
     </style>
     <script>
@@ -214,8 +220,7 @@
                     'primaryBorderColor': '#B45309',
                     'lineColor': '#78350F',
                     'fontFamily': 'Inter, system-ui, sans-serif',
-                    'fontSize': '14px',
-                    'edgeLabelBackground': '#FFFBEB'
+                    'fontSize': '14px'
                 },
                 'flowchart': {
                     'htmlLabels': true,
